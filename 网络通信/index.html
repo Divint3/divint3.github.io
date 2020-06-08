@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"www.divint3.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="交换机就是多路网桥MAC表由交换机维护,记录了自己子网中的所有主机MAC地址 ARP表由计算机维护,记录了MAC与IP地址的对应关系 路由表由路由器维护,记录了不同网段网段的信息 直连路由是直接连接在路由器接口的网段，由路由器自动生成. 非直连路由就是不是直接连接在路由器接口上的网段，此记录需要手动添加或者是使用动态路由. 主机路由&#x2F;网络路由最佳匹配作为选择标准 默认路由路由表中无法匹配 路由汇聚">
+  <meta name="description" content="交换机就是多路网桥 MAC表 由交换机维护,记录了自己子网中的所有主机MAC地址 ARP表 由计算机维护,记录了MAC与IP地址的对应关系 路由表 由路由器维护,记录了不同网段网段的信息 直连路由 是直接连接在路由器接口的网段，由路由器自动生成. 非直连路由 就是不是直接连接在路由器接口上的网段，此记录需要手动添加或者是使用动态路由. 主机路由&#x2F;网络路由 最佳匹配作为选择标准 默认路由 路由表中无">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络通信">
 <meta property="og:url" content="https://www.divint3.xyz/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/index.html">
 <meta property="og:site_name" content="HexBlog">
-<meta property="og:description" content="交换机就是多路网桥MAC表由交换机维护,记录了自己子网中的所有主机MAC地址 ARP表由计算机维护,记录了MAC与IP地址的对应关系 路由表由路由器维护,记录了不同网段网段的信息 直连路由是直接连接在路由器接口的网段，由路由器自动生成. 非直连路由就是不是直接连接在路由器接口上的网段，此记录需要手动添加或者是使用动态路由. 主机路由&#x2F;网络路由最佳匹配作为选择标准 默认路由路由表中无法匹配 路由汇聚">
+<meta property="og:description" content="交换机就是多路网桥 MAC表 由交换机维护,记录了自己子网中的所有主机MAC地址 ARP表 由计算机维护,记录了MAC与IP地址的对应关系 路由表 由路由器维护,记录了不同网段网段的信息 直连路由 是直接连接在路由器接口的网段，由路由器自动生成. 非直连路由 就是不是直接连接在路由器接口上的网段，此记录需要手动添加或者是使用动态路由. 主机路由&#x2F;网络路由 最佳匹配作为选择标准 默认路由 路由表中无">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-07-29T20:33:00.000Z">
 <meta property="article:modified_time" content="2020-06-08T10:41:31.563Z">
@@ -238,25 +238,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="交换机就是多路网桥"><a href="#交换机就是多路网桥" class="headerlink" title="交换机就是多路网桥"></a>交换机就是多路网桥</h3><h3 id="MAC表"><a href="#MAC表" class="headerlink" title="MAC表"></a>MAC表</h3><p>由交换机维护,记录了自己子网中的所有主机MAC地址</p>
-<h3 id="ARP表"><a href="#ARP表" class="headerlink" title="ARP表"></a>ARP表</h3><p>由计算机维护,记录了MAC与IP地址的对应关系</p>
-<h3 id="路由表"><a href="#路由表" class="headerlink" title="路由表"></a>路由表</h3><p>由路由器维护,记录了不同网段网段的信息</p>
-<h4 id="直连路由"><a href="#直连路由" class="headerlink" title="直连路由"></a>直连路由</h4><p>是直接连接在路由器接口的网段，由路由器自动生成.</p>
-<h4 id="非直连路由"><a href="#非直连路由" class="headerlink" title="非直连路由"></a>非直连路由</h4><p>就是不是直接连接在路由器接口上的网段，此记录需要手动添加或者是使用动态路由.</p>
-<h4 id="主机路由-网络路由"><a href="#主机路由-网络路由" class="headerlink" title="主机路由/网络路由"></a>主机路由/网络路由</h4><p>最佳匹配作为选择标准</p>
-<h4 id="默认路由"><a href="#默认路由" class="headerlink" title="默认路由"></a>默认路由</h4><p>路由表中无法匹配</p>
-<h5 id="路由汇聚"><a href="#路由汇聚" class="headerlink" title="路由汇聚"></a>路由汇聚</h5><h4 id="网络地址-主机地址"><a href="#网络地址-主机地址" class="headerlink" title="网络地址/主机地址"></a>网络地址/主机地址</h4><h5 id="子网划分"><a href="#子网划分" class="headerlink" title="子网划分"></a>子网划分</h5><p>子网掩码借用位/右移位<br>剩下的地址<br>全0为网络地址,全一为广播地址<br>其余为主机地址</p>
-<h4 id="合并网络"><a href="#合并网络" class="headerlink" title="合并网络"></a>合并网络</h4><p>子网掩码左移<br>子网个数为(2^位移数)个<br>由于子网掩码左移,原来子网中的部分广播地址变为可用地址由于多了一位,是原来受限制的位不再受限制,拓展了一位,使原来子网中的广播地址不再是全1,所以可以作为主机地址使用<br>使用连续子网可以合并为超网</p>
-<h3 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h3><h4 id="受限广播"><a href="#受限广播" class="headerlink" title="受限广播"></a>受限广播</h4><p>在子网内传播,不被路由转发,地址为255.255.255.255 0xFFFFFFFF</p>
-<h4 id="直接广播"><a href="#直接广播" class="headerlink" title="直接广播"></a>直接广播</h4><p>发送到广播地址,会发送到该子网内的所有主机</p>
-<h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><p>网关就是子网中路由器的地址</p>
-<h3 id="IP地址与类别"><a href="#IP地址与类别" class="headerlink" title="IP地址与类别"></a>IP地址与类别</h3><h4 id="不进行子网划分"><a href="#不进行子网划分" class="headerlink" title="不进行子网划分"></a>不进行子网划分</h4><h4 id="A类"><a href="#A类" class="headerlink" title="A类:"></a>A类:</h4><p>地址范围:1.0.0.1-126.255.255.254 (0000 0001.00000000.00000000.00000000<del>01111110.111111111.11111111.11111110）<br>地址范围:1.0.0.0-126.255.255.255 （这种写法是把全0全1都算进去了，其它几类类似）<br>网络号范围: 1</del>126                        （0000 0001 ~ 0111 1110）<br>默认子网掩码:255.0.0.0 或  0xFF000000（十六进制）<br>私有号段:10.0.0.0-10.255.255.255<br>前1个字节(8位)为网络号，后3个字节(24位)为主机号.<br>A类第1位必须是0.<br>最大网络数:2^7-2<br>最大主机数:2^24-2<br>全0全1的地址不可分配，作为保留地址. 上面减2也是这个原因.<br>一般用于大型网络.</p>
-<h4 id="B类"><a href="#B类" class="headerlink" title="B类:"></a>B类:</h4><p>地址范围:128.1.0.1-191.255.255.254<br>网络号范围:128.1 ~ 191.255<br>默认子网掩码:255.255.0.0 或 0xFFFF0000(十六进制)<br>私有号段:172.16.0.0-172.31.255.255<br>前2个字节(16位)为网络号，后2个字节(16位)为主机号.<br>前两位固定为10.<br>最大网络数:2^14-1<br>最大主机数:2^16-2<br>一般用于中等规模网络.</p>
-<h4 id="C类"><a href="#C类" class="headerlink" title="C类:"></a>C类:</h4><p>地址范围:192.0.1.1-223.255.255.254<br>网络号段范围:192.0.1 ~ 223.255.255<br>子网掩码:255.255.255.0 或  0xFFFFFF00 (十六进制)<br>私有号段:192.168.0.0-192.168.255.255<br>前3个字节(24位)为网络号，后1个字节(8位)为主机号.<br>前3位固定为110.<br>最大网络数:2^21-1<br>最大主机数:2^8-2<br>一般用于小型网络.</p>
-<h4 id="D类"><a href="#D类" class="headerlink" title="D类:"></a>D类:</h4><p>地址范围:224.0.0.1-239.255.255.254<br>是多播地址.该类IP地址的最前面为“1110”，所以地址的网络号取值于224~239之间.<br>一般用于多路广播用户 .</p>
-<h4 id="E类"><a href="#E类" class="headerlink" title="E类:"></a>E类:</h4><p>是保留地址.该类IP地址的最前面为“1111”，所以地址的网络号取值于240~255之间.</p>
-<h5 id="回送地址"><a href="#回送地址" class="headerlink" title="回送地址:"></a>回送地址:</h5><p>127.x.x.x        有的资料说，它属于A类.<br>如127.0.0.1  等效于localhost或本机IP.  一般用于测试使用.<br>例如:ping 127.0.0.1来测试本机TCP/IP是否正常.<a href="http://127.0.0.1:8080" target="_blank" rel="noopener">http://127.0.0.1:8080</a> 等效 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></p>
-<h5 id="特殊说明"><a href="#特殊说明" class="headerlink" title="特殊说明"></a>特殊说明</h5><p>每一个字节都为0的地址（0.0.0.0）对应当前主机.<br>IP地址中的每一个字节都为1的IP地址（255.255.255.255）是当前子网的广播地址.<br>IP地址中凡是以11110开头的E类IP的地址，都保留用于将来和实验使用.<br>网络号的第一个8位不能全为0.<br>IP地址不能以127为开头，该类地址中数字127.0.0.1~127.255.255.254用于回路测试.</p>
+        <h3 id="交换机就是多路网桥">交换机就是多路网桥</h3>
+<h3 id="mac表">MAC表</h3>
+<p>由交换机维护,记录了自己子网中的所有主机MAC地址</p>
+<h3 id="arp表">ARP表</h3>
+<p>由计算机维护,记录了MAC与IP地址的对应关系</p>
+<h3 id="路由表">路由表</h3>
+<p>由路由器维护,记录了不同网段网段的信息</p>
+<h4 id="直连路由">直连路由</h4>
+<p>是直接连接在路由器接口的网段，由路由器自动生成.</p>
+<h4 id="非直连路由">非直连路由</h4>
+<p>就是不是直接连接在路由器接口上的网段，此记录需要手动添加或者是使用动态路由.</p>
+<h4 id="主机路由网络路由">主机路由/网络路由</h4>
+<p>最佳匹配作为选择标准</p>
+<h4 id="默认路由">默认路由</h4>
+<p>路由表中无法匹配</p>
+<h5 id="路由汇聚">路由汇聚</h5>
+<h4 id="网络地址主机地址">网络地址/主机地址</h4>
+<h5 id="子网划分">子网划分</h5>
+<p>子网掩码借用位/右移位 剩下的地址 全0为网络地址,全一为广播地址 其余为主机地址</p>
+<h4 id="合并网络">合并网络</h4>
+<p>子网掩码左移 子网个数为(2^位移数)个 由于子网掩码左移,原来子网中的部分广播地址变为可用地址由于多了一位,是原来受限制的位不再受限制,拓展了一位,使原来子网中的广播地址不再是全1,所以可以作为主机地址使用 使用连续子网可以合并为超网</p>
+<h3 id="广播">广播</h3>
+<h4 id="受限广播">受限广播</h4>
+<p>在子网内传播,不被路由转发,地址为255.255.255.255 0xFFFFFFFF #### 直接广播 发送到广播地址,会发送到该子网内的所有主机</p>
+<h3 id="网关">网关</h3>
+<p>网关就是子网中路由器的地址</p>
+<h3 id="ip地址与类别">IP地址与类别</h3>
+<h4 id="不进行子网划分">不进行子网划分</h4>
+<h4 id="a类">A类:</h4>
+<p>地址范围:1.0.0.1-126.255.255.254 (0000 0001.00000000.00000000.00000000~01111110.111111111.11111111.11111110） 地址范围:1.0.0.0-126.255.255.255 （这种写法是把全0全1都算进去了，其它几类类似） 网络号范围: 1~126                        （0000 0001 ~ 0111 1110） 默认子网掩码:255.0.0.0 或  0xFF000000（十六进制） 私有号段:10.0.0.0-10.255.255.255 前1个字节(8位)为网络号，后3个字节(24位)为主机号. A类第1位必须是0. 最大网络数:2^7-2 最大主机数:2^24-2 全0全1的地址不可分配，作为保留地址. 上面减2也是这个原因. 一般用于大型网络.</p>
+<h4 id="b类">B类:</h4>
+<p>地址范围:128.1.0.1-191.255.255.254  网络号范围:128.1 ~ 191.255 默认子网掩码:255.255.0.0 或 0xFFFF0000(十六进制) 私有号段:172.16.0.0-172.31.255.255 前2个字节(16位)为网络号，后2个字节(16位)为主机号. 前两位固定为10. 最大网络数:2^14-1 最大主机数:2^16-2 一般用于中等规模网络.</p>
+<h4 id="c类">C类:</h4>
+<p>地址范围:192.0.1.1-223.255.255.254 网络号段范围:192.0.1 ~ 223.255.255 子网掩码:255.255.255.0 或  0xFFFFFF00 (十六进制) 私有号段:192.168.0.0-192.168.255.255 前3个字节(24位)为网络号，后1个字节(8位)为主机号. 前3位固定为110. 最大网络数:2^21-1 最大主机数:2^8-2 一般用于小型网络. #### D类: 地址范围:224.0.0.1-239.255.255.254 是多播地址.该类IP地址的最前面为“1110”，所以地址的网络号取值于224~239之间. 一般用于多路广播用户 . #### E类: 是保留地址.该类IP地址的最前面为“1111”，所以地址的网络号取值于240~255之间.</p>
+<h5 id="回送地址">回送地址:</h5>
+<p>127.x.x.x        有的资料说，它属于A类. 如127.0.0.1  等效于localhost或本机IP.  一般用于测试使用. 例如:ping 127.0.0.1来测试本机TCP/IP是否正常.http://127.0.0.1:8080 等效 http://localhost:8080</p>
+<h5 id="特殊说明">特殊说明</h5>
+<p>每一个字节都为0的地址（0.0.0.0）对应当前主机. IP地址中的每一个字节都为1的IP地址（255.255.255.255）是当前子网的广播地址. IP地址中凡是以11110开头的E类IP的地址，都保留用于将来和实验使用. 网络号的第一个8位不能全为0. IP地址不能以127为开头，该类地址中数字127.0.0.1~127.255.255.254用于回路测试.</p>
 
     </div>
 
@@ -357,7 +376,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#交换机就是多路网桥"><span class="nav-number">1.</span> <span class="nav-text">交换机就是多路网桥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC表"><span class="nav-number">2.</span> <span class="nav-text">MAC表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP表"><span class="nav-number">3.</span> <span class="nav-text">ARP表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由表"><span class="nav-number">4.</span> <span class="nav-text">路由表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直连路由"><span class="nav-number">4.1.</span> <span class="nav-text">直连路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非直连路由"><span class="nav-number">4.2.</span> <span class="nav-text">非直连路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主机路由-网络路由"><span class="nav-number">4.3.</span> <span class="nav-text">主机路由&#x2F;网络路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认路由"><span class="nav-number">4.4.</span> <span class="nav-text">默认路由</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#路由汇聚"><span class="nav-number">4.4.1.</span> <span class="nav-text">路由汇聚</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络地址-主机地址"><span class="nav-number">4.5.</span> <span class="nav-text">网络地址&#x2F;主机地址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#子网划分"><span class="nav-number">4.5.1.</span> <span class="nav-text">子网划分</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并网络"><span class="nav-number">4.6.</span> <span class="nav-text">合并网络</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广播"><span class="nav-number">5.</span> <span class="nav-text">广播</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#受限广播"><span class="nav-number">5.1.</span> <span class="nav-text">受限广播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#直接广播"><span class="nav-number">5.2.</span> <span class="nav-text">直接广播</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网关"><span class="nav-number">6.</span> <span class="nav-text">网关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP地址与类别"><span class="nav-number">7.</span> <span class="nav-text">IP地址与类别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不进行子网划分"><span class="nav-number">7.1.</span> <span class="nav-text">不进行子网划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A类"><span class="nav-number">7.2.</span> <span class="nav-text">A类:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B类"><span class="nav-number">7.3.</span> <span class="nav-text">B类:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C类"><span class="nav-number">7.4.</span> <span class="nav-text">C类:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#D类"><span class="nav-number">7.5.</span> <span class="nav-text">D类:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E类"><span class="nav-number">7.6.</span> <span class="nav-text">E类:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#回送地址"><span class="nav-number">7.6.1.</span> <span class="nav-text">回送地址:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特殊说明"><span class="nav-number">7.6.2.</span> <span class="nav-text">特殊说明</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#交换机就是多路网桥"><span class="nav-number">1.</span> <span class="nav-text">交换机就是多路网桥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mac表"><span class="nav-number">2.</span> <span class="nav-text">MAC表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#arp表"><span class="nav-number">3.</span> <span class="nav-text">ARP表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由表"><span class="nav-number">4.</span> <span class="nav-text">路由表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直连路由"><span class="nav-number">4.1.</span> <span class="nav-text">直连路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非直连路由"><span class="nav-number">4.2.</span> <span class="nav-text">非直连路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主机路由网络路由"><span class="nav-number">4.3.</span> <span class="nav-text">主机路由&#x2F;网络路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认路由"><span class="nav-number">4.4.</span> <span class="nav-text">默认路由</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#路由汇聚"><span class="nav-number">4.4.1.</span> <span class="nav-text">路由汇聚</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络地址主机地址"><span class="nav-number">4.5.</span> <span class="nav-text">网络地址&#x2F;主机地址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#子网划分"><span class="nav-number">4.5.1.</span> <span class="nav-text">子网划分</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并网络"><span class="nav-number">4.6.</span> <span class="nav-text">合并网络</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广播"><span class="nav-number">5.</span> <span class="nav-text">广播</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#受限广播"><span class="nav-number">5.1.</span> <span class="nav-text">受限广播</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网关"><span class="nav-number">6.</span> <span class="nav-text">网关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ip地址与类别"><span class="nav-number">7.</span> <span class="nav-text">IP地址与类别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不进行子网划分"><span class="nav-number">7.1.</span> <span class="nav-text">不进行子网划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a类"><span class="nav-number">7.2.</span> <span class="nav-text">A类:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#b类"><span class="nav-number">7.3.</span> <span class="nav-text">B类:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c类"><span class="nav-number">7.4.</span> <span class="nav-text">C类:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#回送地址"><span class="nav-number">7.4.1.</span> <span class="nav-text">回送地址:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特殊说明"><span class="nav-number">7.4.2.</span> <span class="nav-text">特殊说明</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

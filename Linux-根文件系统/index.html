@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"www.divint3.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Linux根目录”&#x2F;“下各个系统文件夹的含义和用途中英对照&#x2F;bin &#x3D; BINaries&#x2F;sbin &#x3D; Superuser BINaries  &#x2F;sys&#x3D;SYStem&#x2F;proc &#x3D; PROCesses     &#x2F;var &#x3D; VARiable&#x2F;usr &#x3D; Unix Shared Resources&#x2F;opt&#x3D;OPTional application software packages   &#x2F;etc &#x3D;">
+  <meta name="description" content="Linux根目录&quot;&#x2F;&quot;下各个系统文件夹的含义和用途 中英对照 &#x2F;bin &#x3D; BINaries &#x2F;sbin &#x3D; Superuser BINaries &#x2F;sys&#x3D;SYStem &#x2F;proc &#x3D; PROCesses &#x2F;var &#x3D; VARiable &#x2F;usr &#x3D; Unix Shared Resources &#x2F;opt&#x3D;OPTional application software packages &#x2F;etc &#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux文件夹详解">
 <meta property="og:url" content="https://www.divint3.xyz/Linux-%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="HexBlog">
-<meta property="og:description" content="Linux根目录”&#x2F;“下各个系统文件夹的含义和用途中英对照&#x2F;bin &#x3D; BINaries&#x2F;sbin &#x3D; Superuser BINaries  &#x2F;sys&#x3D;SYStem&#x2F;proc &#x3D; PROCesses     &#x2F;var &#x3D; VARiable&#x2F;usr &#x3D; Unix Shared Resources&#x2F;opt&#x3D;OPTional application software packages   &#x2F;etc &#x3D;">
+<meta property="og:description" content="Linux根目录&quot;&#x2F;&quot;下各个系统文件夹的含义和用途 中英对照 &#x2F;bin &#x3D; BINaries &#x2F;sbin &#x3D; Superuser BINaries &#x2F;sys&#x3D;SYStem &#x2F;proc &#x3D; PROCesses &#x2F;var &#x3D; VARiable &#x2F;usr &#x3D; Unix Shared Resources &#x2F;opt&#x3D;OPTional application software packages &#x2F;etc &#x3D;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-03-27T16:09:04.000Z">
 <meta property="article:modified_time" content="2020-06-08T10:41:31.343Z">
@@ -238,12 +238,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="Linux根目录”-“下各个系统文件夹的含义和用途"><a href="#Linux根目录”-“下各个系统文件夹的含义和用途" class="headerlink" title="Linux根目录”/“下各个系统文件夹的含义和用途"></a>Linux根目录”/“下各个系统文件夹的含义和用途</h4><h5 id="中英对照"><a href="#中英对照" class="headerlink" title="中英对照"></a>中英对照</h5><p>/bin = BINaries<br>/sbin = Superuser BINaries </p>
-<p>/sys=SYStem<br>/proc = PROCesses    </p>
-<p>/var = VARiable<br>/usr = Unix Shared Resources<br>/opt=OPTional application software packages  </p>
-<p>/etc = ETCetera<br>/mnt=MouNT<br>/dev = DEVices<br>/lib = LIBrary<br>/srv=SeRVice<br>/tmp = TeMPorary  </p>
-<h5 id="详细说明"><a href="#详细说明" class="headerlink" title="详细说明"></a>详细说明</h5><p><strong>/boot</strong> 该目录默认下存放的是Linux的启动文件和内核。</p>
-<p><strong>/initrd</strong> 它的英文含义是boot loader initialized RAM disk,就是由boot loader初始化的内存盘。在linux<br>内核启动前，boot loader会将存储介质(一般是硬盘)中的initrd文件加载到内存，内核启动时会在访问真正的根文件系统前先访问该内存中的initrd文件系统。</p>
+        <h4 id="linux根目录下各个系统文件夹的含义和用途">Linux根目录"/"下各个系统文件夹的含义和用途</h4>
+<h5 id="中英对照">中英对照</h5>
+<p>/bin = BINaries<br />
+/sbin = Superuser BINaries</p>
+<p>/sys=SYStem /proc = PROCesses</p>
+<p>/var = VARiable<br />
+/usr = Unix Shared Resources<br />
+/opt=OPTional application software packages</p>
+<p>/etc = ETCetera<br />
+/mnt=MouNT /dev = DEVices<br />
+/lib = LIBrary<br />
+/srv=SeRVice /tmp = TeMPorary</p>
+<h5 id="详细说明">详细说明</h5>
+<p><strong>/boot</strong> 该目录默认下存放的是Linux的启动文件和内核。</p>
+<p><strong>/initrd</strong> 它的英文含义是boot loader initialized RAM disk,就是由boot loader初始化的内存盘。在linux 内核启动前，boot loader会将存储介质(一般是硬盘)中的initrd文件加载到内存，内核启动时会在访问真正的根文件系统前先访问该内存中的initrd文件系统。</p>
 <p><strong>/bin</strong> 该目录中存放Linux的常用命令。</p>
 <p><strong>/sbin</strong> 该目录用来存放系统管理员使用的管理程序。</p>
 <p><strong>/var</strong> 该目录存放那些经常被修改的文件，包括各种日志、数据文件。</p>
@@ -272,17 +281,12 @@
 <p><strong>lib64</strong>:64位系统所用的库</p>
 <p><strong>usr</strong>:user shared read-only</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;bin </span><br><span class="line">&#x2F;usr&#x2F;sbin</span><br><span class="line">&#x2F;usr&#x2F;lib</span><br><span class="line">&#96;&#96;&#96;	</span><br><span class="line"></span><br><span class="line">上面的库与系统启动有关,不可缺失</span><br></pre></td></tr></table></figure>
-<p>/usr/local/bin<br>/usr/local/sbin<br>/usr/local/lib</p>
-<pre><code>
-上面的库和二进制可执行文件,与系统运行无关,但和服务运行有关
+<p>/usr/local/bin /usr/local/sbin /usr/local/lib ```</p>
+<p>上面的库和二进制可执行文件,与系统运行无关,但和服务运行有关</p>
+<p><strong>opt</strong>:可有可无的文件目录</p>
+<p><strong>root</strong>:根权限用户目录</p>
+<p><strong>home</strong>:用户目录</p>
 
-**opt**:可有可无的文件目录
-
-**root**:根权限用户目录
-
-**home**:用户目录
-
-</code></pre>
     </div>
 
     
@@ -382,7 +386,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux根目录”-“下各个系统文件夹的含义和用途"><span class="nav-number">1.</span> <span class="nav-text">Linux根目录”&#x2F;“下各个系统文件夹的含义和用途</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#中英对照"><span class="nav-number">1.1.</span> <span class="nav-text">中英对照</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#详细说明"><span class="nav-number">1.2.</span> <span class="nav-text">详细说明</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#linux根目录下各个系统文件夹的含义和用途"><span class="nav-number">1.</span> <span class="nav-text">Linux根目录&quot;&#x2F;&quot;下各个系统文件夹的含义和用途</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#中英对照"><span class="nav-number">1.1.</span> <span class="nav-text">中英对照</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#详细说明"><span class="nav-number">1.2.</span> <span class="nav-text">详细说明</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -213,7 +213,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-08 18:41:31" itemprop="dateModified" datetime="2020-06-08T18:41:31+08:00">2020-06-08</time>
+                <time title="修改时间：2020-06-08 20:21:50" itemprop="dateModified" datetime="2020-06-08T20:21:50+08:00">2020-06-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,69 +236,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="基础学习"><a href="#基础学习" class="headerlink" title="基础学习"></a>基础学习</h2><p><a href="http://c.biancheng.net/cpp/danpianji/" target="_blank" rel="noopener">C语言中文网</a></p>
-<h3 id="延时函数计算"><a href="#延时函数计算" class="headerlink" title="延时函数计算:"></a>延时函数计算:</h3><table>
-<thead>
-<tr>
-<th align="center">周期名称</th>
-<th align="left">描述</th>
-<th align="center">时间</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">振荡(时钟)</td>
-<td align="left">单片机提供时钟脉冲信号的振荡源的周期</td>
-<td align="center">T=1/f</td>
-</tr>
-<tr>
-<td align="center">状态</td>
-<td align="left">$振荡周期经二分频后得到的$</td>
-<td align="center">2T</td>
-</tr>
-<tr>
-<td align="center">机器</td>
-<td align="left">在一个机器周期内，CPU可以完成一个独立的操作</td>
-<td align="center">12T</td>
-</tr>
-<tr>
-<td align="center">指令</td>
-<td align="left">指CPU完成一条操作所需的全部时间</td>
-<td align="center">12-12nT</td>
-</tr>
-</tbody></table>
-<h4 id="指令："><a href="#指令：" class="headerlink" title="指令："></a>指令：</h4><ol>
-<li>MUL DIV：仅有的4周期指令</li>
-<li>包含DPTR和PC的指令均为2周期指令</li>
-<li>所有的绝对跳转和条件转移指令，均为2周期指令</li>
-<li>所有包括A寄存器的指令，均为单周期指令</li>
-<li>位操作指令中，ANL和ORL是2周期指令</li>
-<li>所有包含立即地址的指令，除INC direct及DEC direct外，均为2周期指令</li>
-<li>剩下的均为单周期指令。</li>
-</ol>
-<h4 id="延时函数"><a href="#延时函数" class="headerlink" title="延时函数:"></a>延时函数:</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">delay</span>(uint z)&#123;</span><br><span class="line">    uint i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=z;i&gt;<span class="number">0</span>;i--)</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">921</span>;j++);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="I2C总线学习"><a href="#I2C总线学习" class="headerlink" title="I2C总线学习"></a>I2C总线学习</h3><p><a href="https://www.cnblogs.com/whik/p/6650092.html" target="_blank" rel="noopener">I2C总线协议学习</a></p>
-<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><ol>
-<li>先计算你单片机的振荡（时钟）周期 T= 1/晶振（11.0592MHZ）</li>
-<li>一次i--操作为12T</li>
-<li>忽略变量定义，上述延时函数共需时间：921*z*12T</li>
-<li>带入T：921*12*T*z 约为 z ms</li>
-</ol>
-<h3 id="元器件说明书-英文"><a href="#元器件说明书-英文" class="headerlink" title="元器件说明书(英文)"></a>元器件说明书(英文)</h3><p><a href="https://www.alldatasheet.com/" target="_blank" rel="noopener">说明书大全-英文</a></p>
-<h3 id="传送门"><a href="#传送门" class="headerlink" title="传送门:"></a>传送门:</h3><p><a href="http://bbs.21ic.com/icview-2408628-1-1.html" target="_blank" rel="noopener">【蓝桥杯单片机01】从历年决赛真题中寻找单片机常见的考点</a></p>
-<p><a href="http://bbs.21ic.com/icview-2409172-1-1.html" target="_blank" rel="noopener">【蓝桥杯单片机02】LED的基本控制</a></p>
-<p><a href="http://bbs.21ic.com/icview-2409312-1-1.html" target="_blank" rel="noopener">【蓝桥杯单片机03】数码管的静态显示</a></p>
-<p><a href="http://bbs.21ic.com/icview-2409380-1-1.html" target="_blank" rel="noopener">【蓝桥杯单片机04】数码管的动态显示</a></p>
-<p><a href="http://bbs.21ic.com/icview-2409568-1-1.html" target="_blank" rel="noopener">【蓝桥杯单片机05】独立按键的基本操作</a></p>
-<p><a href="http://bbs.21ic.com/icview-2422974-1-1.html" target="_blank" rel="noopener">【蓝桥杯单片机06】矩阵键盘的基本控制</a></p>
-<p><a href="http://bbs.21ic.com/icview-2477100-1-1.html" target="_blank" rel="noopener">【蓝桥杯单片机07】彻底理解51单片机的中断系统</a></p>
-<p><a href="http://bbs.21ic.com/icview-2477676-1-1.html" target="_blank" rel="noopener">【蓝桥杯单片机08】定时器的基本原理与应用</a></p>
-<p><a href="http://bbs.21ic.com/icview-2478488-1-1.html" target="_blank" rel="noopener">【蓝桥杯单片机09】串行接口的基本原理与应用</a></p>
-<p><a href="http://bbs.21ic.com/icview-2478572-1-1.html" target="_blank" rel="noopener">【蓝桥杯单片机10】串行接口的进阶与实战应用</a></p>
-<p><a href="http://bbs.21ic.com/icview-2478740-1-1.html" target="_blank" rel="noopener">【蓝桥杯单片机11】单总线温度传感器DS18B20的基本操作</a></p>
-<p><a href="http://bbs.21ic.com/icview-2479052-1-1.html" target="_blank" rel="noopener">【蓝桥杯单片机12】实时时钟DS1302的基本操作</a></p>
-<p><a href="http://bbs.21ic.com/icview-2479198-1-1.html" target="_blank" rel="noopener">【蓝桥杯单片机13】基于单片机的电子钟程序设计与调试</a></p>
-
+          <h2 id="基础学习">基础学习</h2>
+<p><a href="http://c.biancheng.net/cpp/danpianji/" target="_blank" rel="noopener">C语言中文网</a>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E4%BC%A0%E9%80%81%E9%97%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -372,6 +319,7 @@
 
       
           <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git:</span><br><span class="line">    .git&#x2F;</span><br><span class="line">mac:</span><br><span class="line">    .ds_store</span><br><span class="line">vim:</span><br><span class="line">    .*.swp</span><br><span class="line">备份文件</span><br><span class="line">    *.zip</span><br><span class="line">    *.tar</span><br><span class="line">    *.tar.gz</span><br><span class="line">    *.bak</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -445,6 +393,7 @@
 
       
           <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --pretty=format:<span class="string">"%h %s"</span> --graph</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -517,8 +466,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>git泄露,用Git_Assemble拖下来<br>获得源码</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <p>git泄露,用Git_Assemble拖下来 获得源码 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -592,6 +541,7 @@
 
       
           <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget -r -p -np -k http:&#x2F;&#x2F;www.xxx.com&#x2F;.git&#x2F;</span><br><span class="line">--recursive（递归）</span><br><span class="line">-k,  --convert-links（转换链接）</span><br><span class="line">-p,  --page-requisites（页面必需元素）</span><br><span class="line">-np, --no-parent（不追溯至父级）</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -641,7 +591,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-08 18:41:31" itemprop="dateModified" datetime="2020-06-08T18:41:31+08:00">2020-06-08</time>
+                <time title="修改时间：2020-06-08 20:19:03" itemprop="dateModified" datetime="2020-06-08T20:19:03+08:00">2020-06-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -664,23 +614,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h3><h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><p>在hexo根目录安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>我安装完插件后,hexo就被卸载了,还要使用<code>yarn upgrade</code>重新安装一遍hexo,你也可以使用<code>yarn add hexo-generator-searchdb</code>命令安装插件</p>
-</blockquote>
-<p>修改根目录下的_config.yml</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">    <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">    <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">    <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure>
-<p>编辑主题配置文件,我是用的next主题</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h4 id="出现的异常"><a href="#出现的异常" class="headerlink" title="出现的异常"></a>出现的异常</h4><p>当我点击搜索按钮时,会发生页面无限加载,问题是我的一篇文章中出现了非<code>utf-8</code>的文字,所以造成了xml报错,无法被读取.根据根目录下的<code>search.xml</code>出错信息,找到原文章删除特殊字符即可.</p>
-<h3 id="引用标签"><a href="#引用标签" class="headerlink" title="引用标签"></a>引用标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125; #路径引用</span><br><span class="line">&#123;% asset_img slug [title] %&#125; #图片引用</span><br><span class="line">&#123;% asset_link slug [title] %&#125; #文件引用,用作下载链接</span><br></pre></td></tr></table></figure>
-
-<h3 id="latex支持"><a href="#latex支持" class="headerlink" title="latex支持"></a>latex支持</h3><h4 id="卸载原有渲染器-安装hexo-renderer-kramed"><a href="#卸载原有渲染器-安装hexo-renderer-kramed" class="headerlink" title="卸载原有渲染器,安装hexo-renderer-kramed"></a>卸载原有渲染器,安装<strong>hexo-renderer-kramed</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn remove hexo-renderer-marked</span><br><span class="line">yarn add hexo-renderer-kramed</span><br></pre></td></tr></table></figure>
-
-<h4 id="修改next配置文件"><a href="#修改next配置文件" class="headerlink" title="修改next配置文件"></a>修改next配置文件</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Default (true) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in Front Matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">mathjax</span></span><br><span class="line">  <span class="comment">#engine: katex</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-rendering-pandoc (or hexo-renderer-kramed) needed to full MathJax support.</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">cdn:</span> <span class="string">https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML</span> <span class="comment">#问号后面的是引用配置</span></span><br><span class="line">    <span class="comment">#cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="修改解析错误"><a href="#修改解析错误" class="headerlink" title="修改解析错误"></a>修改解析错误</h4><p>这里的解析错误代表单行引用时要加四个反斜线才能正常换行</p>
+          <h3 id="本地搜索">本地搜索</h3>
+<h4 id="插件安装">插件安装</h4>
+<p>在hexo根目录安装 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure> &gt; 我安装完插件后,hexo就被卸载了,还要使用<code>yarn upgrade</code>重新安装一遍hexo,你也可以使用<code>yarn add hexo-generator-searchdb</code>命令安装插件</p>
+<p>修改根目录下的_config.yml <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">    <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">    <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">    <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure> 编辑主题配置文件,我是用的next主题 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure> #### 出现的异常 当我点击搜索按钮时,会发生页面无限加载,问题是我的一篇文章中出现了非<code>utf-8</code>的文字,所以造成了xml报错,无法被读取.根据根目录下的<code>search.xml</code>出错信息,找到原文章删除特殊字符即可.</p>
+<h3 id="引用标签">引用标签</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125; #路径引用</span><br><span class="line">&#123;% asset_img slug [title] %&#125; #图片引用</span><br><span class="line">&#123;% asset_link slug [title] %&#125; #文件引用,用作下载链接</span><br></pre></td></tr></table></figure>
+<h3 id="latex支持">latex支持</h3>
+<h4 id="卸载原有渲染器安装hexo-renderer-kramed">卸载原有渲染器,安装<strong>hexo-renderer-kramed</strong></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn remove hexo-renderer-marked</span><br><span class="line">yarn add hexo-renderer-kramed</span><br></pre></td></tr></table></figure>
+<h4 id="修改next配置文件">修改next配置文件</h4>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Default (true) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in Front Matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">mathjax</span></span><br><span class="line">  <span class="comment">#engine: katex</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-rendering-pandoc (or hexo-renderer-kramed) needed to full MathJax support.</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">cdn:</span> <span class="string">https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML</span> <span class="comment">#问号后面的是引用配置</span></span><br><span class="line">    <span class="comment">#cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML</span></span><br></pre></td></tr></table></figure>
+<h4 id="修改解析错误">修改解析错误</h4>
+<p>这里的解析错误代表单行引用时要加四个反斜线才能正常换行</p>
+<h4 id="更换pandoc解码器">更换pandoc解码器</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn remove hexo-renderer-marked</span><br><span class="line">yarn add hexo-renderer-pandoc</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -731,7 +679,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-08 18:41:31" itemprop="dateModified" datetime="2020-06-08T18:41:31+08:00">2020-06-08</time>
+                <time title="修改时间：2020-06-08 20:21:50" itemprop="dateModified" datetime="2020-06-08T20:21:50+08:00">2020-06-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -755,9 +703,11 @@
 
       
           
+<a id="more"></a>
+<h3 id="原理">原理：</h3>
+<p>三极管与线圈和可变电容器构成了一个振荡电路，振荡电路的作用呢就是可以输出高频电流，这个高频电流的频率能够随声音变化而变化。振荡的中心频率由线圈跟可变电容数值来决定。电源和电阻给三极管和驻极体话筒供电。当话筒输出的音频电压加到三极管的发射极时发射极电流发生变化，振荡频率会随音频信号变化，从而达到调频的目的。调频后的高频电流经电容器C2通过天线发射出去。</p>
+<h2 id="私制无线电信号设备违法请申请批准">私制无线电信号设备违法,请申请批准</h2>
 
-<h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p>三极管与线圈和可变电容器构成了一个振荡电路，振荡电路的作用呢就是可以输出高频电流，这个高频电流的频率能够随声音变化而变化。振荡的中心频率由线圈跟可变电容数值来决定。电源和电阻给三极管和驻极体话筒供电。当话筒输出的音频电压加到三极管的发射极时发射极电流发生变化，振荡频率会随音频信号变化，从而达到调频的目的。调频后的高频电流经电容器C2通过天线发射出去。</p>
-<h2 id="私制无线电信号设备违法-请申请批准"><a href="#私制无线电信号设备违法-请申请批准" class="headerlink" title="私制无线电信号设备违法,请申请批准"></a>私制无线电信号设备违法,请申请批准</h2>
       
     </div>
 
@@ -830,20 +780,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>首先在用户配置json配置这个,用于显示默认配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;workbench.settings.useSplitJSON&quot;: true,</span><br></pre></td></tr></table></figure>
-<p>###　源形式</p>
-<p>安装对应版本的php(版本号)-dev,可以使用<code>phpize</code>命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install php版本号-dev</span><br></pre></td></tr></table></figure>
-
+          <p>首先在用户配置json配置这个,用于显示默认配置 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;workbench.settings.useSplitJSON&quot;: true,</span><br></pre></td></tr></table></figure> ###　源形式</p>
+<p>安装对应版本的php(版本号)-dev,可以使用<code>phpize</code>命令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install php版本号-dev</span><br></pre></td></tr></table></figure></p>
 <p>检查你是否使用fpm启动php,如果是fpm,请添加语句到fpm目录下的<code>php.ini</code></p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[XDebug]</span></span><br><span class="line"><span class="attr">xdebug.remote_enable</span> = <span class="number">1</span></span><br><span class="line"><span class="attr">xdebug.remote_autostart</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p>###　源码形式</p>
-<p>下载xdebug源码包,解压进入目录,运行<code>phpize</code>生成configure</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">phpize</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make intall</span><br></pre></td></tr></table></figure>
-<p>得到<code>.so</code>路径,添加上述允许远程调试的指令,并添加引用目录</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">zend_extension</span> = php_xdebug.so</span><br></pre></td></tr></table></figure>
-
+<p>下载xdebug源码包,解压进入目录,运行<code>phpize</code>生成configure <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">phpize</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make intall</span><br></pre></td></tr></table></figure> 得到<code>.so</code>路径,添加上述允许远程调试的指令,并添加引用目录 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">zend_extension</span> = php_xdebug.so</span><br></pre></td></tr></table></figure></p>
 <p>当你可以在phpinfo页面看到xdebug以及 xdebug.remote_enable 与 xdebug.remote_autostart 为on时则说明开启成功</p>
 
       
@@ -918,45 +860,53 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><h3 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h3>
+          <h2 id="背景知识">背景知识</h2>
+<h3 id="内存">内存</h3>
 
-<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3>
+<h3 id="栈">栈</h3>
 
-<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>与栈情况类似,但存储的是文件之类的数据</p>
-<h3 id="GDB基本调试命令"><a href="#GDB基本调试命令" class="headerlink" title="GDB基本调试命令"></a>GDB基本调试命令</h3><p><a href="https://www.cnblogs.com/qigaohua/p/6077790.html" target="_blank" rel="noopener">GDB基本调试命令</a><br><a href="http://lazybing.github.io/blog/2016/04/01/how-to-use-gdb/" target="_blank" rel="noopener">如何使用 GDB</a></p>
-<h2 id="GDB工具使用前期配置"><a href="#GDB工具使用前期配置" class="headerlink" title="GDB工具使用前期配置"></a>GDB工具使用前期配置</h2><h3 id="设置对core文件输出大小无限制"><a href="#设置对core文件输出大小无限制" class="headerlink" title="设置对core文件输出大小无限制"></a>设置对core文件输出大小无限制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"></span><br><span class="line">vi /etc/profile</span><br><span class="line">Shift + G</span><br><span class="line">i</span><br><span class="line"><span class="comment"># No core files by default 0, unlimited is oo</span></span><br><span class="line"><span class="built_in">ulimit</span> -S -c unlimited &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-<h4 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h4><p>在图形界面的虚拟终端下,可能需要每次启动都source一遍<code>/etc/profile</code>,请把source加入你的<code>~/.bashrc</code>或<code>~/.zshrc</code>第一行</p>
-<h3 id="设置croe信息转储"><a href="#设置croe信息转储" class="headerlink" title="设置croe信息转储"></a>设置croe信息转储</h3><p>core文件同名会覆盖. 这里为其加上一个 core命名规则, 让其变成 [core.pid] 格式.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"></span><br><span class="line">vi /etc/sysctl.conf</span><br><span class="line">Shift + G</span><br><span class="line">i</span><br><span class="line"></span><br><span class="line"><span class="comment"># open, add core.pid </span></span><br><span class="line">kernel.core_pattern = ./core_%t_%p_%e</span><br><span class="line">kernel.core_uses_pid = 1</span><br><span class="line"></span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line">sysctl -p /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置peda"><a href="#配置peda" class="headerlink" title="配置peda"></a>配置peda</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;longld&#x2F;peda.git ~&#x2F;peda</span><br><span class="line">echo &quot;source ~&#x2F;peda&#x2F;peda.py&quot; &gt;&gt; ~&#x2F;.gdbinit</span><br></pre></td></tr></table></figure>
-
-<h2 id="GDB使用"><a href="#GDB使用" class="headerlink" title="GDB使用"></a>GDB使用</h2><h3 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h3><ol>
+<h3 id="堆">堆</h3>
+<p>与栈情况类似,但存储的是文件之类的数据</p>
+<h3 id="gdb基本调试命令">GDB基本调试命令</h3>
+<p><a href="https://www.cnblogs.com/qigaohua/p/6077790.html" target="_blank" rel="noopener">GDB基本调试命令</a> <a href="http://lazybing.github.io/blog/2016/04/01/how-to-use-gdb/" target="_blank" rel="noopener">如何使用 GDB</a></p>
+<h2 id="gdb工具使用前期配置">GDB工具使用前期配置</h2>
+<h3 id="设置对core文件输出大小无限制">设置对core文件输出大小无限制</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"></span><br><span class="line">vi /etc/profile</span><br><span class="line">Shift + G</span><br><span class="line">i</span><br><span class="line"><span class="comment"># No core files by default 0, unlimited is oo</span></span><br><span class="line"><span class="built_in">ulimit</span> -S -c unlimited &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<h4 id="提示">提示</h4>
+<p>在图形界面的虚拟终端下,可能需要每次启动都source一遍<code>/etc/profile</code>,请把source加入你的<code>~/.bashrc</code>或<code>~/.zshrc</code>第一行</p>
+<h3 id="设置croe信息转储">设置croe信息转储</h3>
+<p>core文件同名会覆盖. 这里为其加上一个 core命名规则, 让其变成 [core.pid] 格式. <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"></span><br><span class="line">vi /etc/sysctl.conf</span><br><span class="line">Shift + G</span><br><span class="line">i</span><br><span class="line"></span><br><span class="line"><span class="comment"># open, add core.pid </span></span><br><span class="line">kernel.core_pattern = ./core_%t_%p_%e</span><br><span class="line">kernel.core_uses_pid = 1</span><br><span class="line"></span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line">sysctl -p /etc/sysctl.conf</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置peda">配置peda</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;longld&#x2F;peda.git ~&#x2F;peda</span><br><span class="line">echo &quot;source ~&#x2F;peda&#x2F;peda.py&quot; &gt;&gt; ~&#x2F;.gdbinit</span><br></pre></td></tr></table></figure>
+<h2 id="gdb使用">GDB使用</h2>
+<h3 id="常见用法">常见用法</h3>
+<ol type="1">
 <li>调试程序。有几种方法可以在gdb下运行你的程序：</li>
 </ol>
 <ul>
 <li>gdb ${你的程序} 进入gdb后，输入run(简写r) ${arg1} ${arg2} … ${argN}</li>
-<li>gdb –args ${你的程序} ${arg1} ${arg2} … ${argN} 进入gdb后，运行run。</li>
-<li>gdb进入gdb后，输入file ${你的程序}。然后使用set args  ${arg1} ${arg2} … ${argN} 设定好你的程序参数，再运行run。</li>
+<li>gdb --args ${你的程序} ${arg1} ${arg2} … ${argN} 进入gdb后，运行run。</li>
+<li>gdb进入gdb后，输入file ${你的程序}。然后使用set args ${arg1} ${arg2} … ${argN} 设定好你的程序参数，再运行run。</li>
 </ul>
-<ol start="2">
+<ol start="2" type="1">
 <li>调试正在运行的程序：</li>
 </ol>
 <ul>
 <li>gdb ${你的程序} ${程序pid}</li>
 </ul>
-<ol start="3">
+<ol start="3" type="1">
 <li>查core：</li>
 </ol>
 <ul>
 <li>gdb ${你的程序} -core ${core文件}</li>
 </ul>
-<h4 id="静默模式启动gdb"><a href="#静默模式启动gdb" class="headerlink" title="静默模式启动gdb"></a>静默模式启动gdb</h4><p><code>gdb -q</code></p>
+<h4 id="静默模式启动gdb">静默模式启动gdb</h4>
+<p><code>gdb -q</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">gdb:b (break) #设置断点</span><br><span class="line"></span><br><span class="line">b func_name #对函数下断点</span><br><span class="line"></span><br><span class="line">b *addr   #对地址下断点</span><br><span class="line"></span><br><span class="line">info b   # 查看断点</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">delete</span><br><span class="line">用法：delete [breakpoints num] [range...]</span><br><span class="line">delete可删除单个断点，也可删除一个断点的集合，这个集合用连续的断点号来描述。</span><br><span class="line">例如：</span><br><span class="line">delete 5</span><br><span class="line">delete 1-10</span><br><span class="line"></span><br><span class="line">clear</span><br><span class="line">用法:clear </span><br><span class="line">    删除所在行的多有断点。</span><br><span class="line">    clear location</span><br><span class="line">clear 删除所选定的环境中所有的断点</span><br><span class="line">clear location location描述具体的断点。</span><br><span class="line">例如：</span><br><span class="line">clear list_insert         &#x2F;&#x2F;删除函数的所有断点</span><br><span class="line">clear list.c:list_delet   &#x2F;&#x2F;删除文件：函数的所有断点</span><br><span class="line">clear 12                  &#x2F;&#x2F;删除行号的所有断点</span><br><span class="line">clear list.c:12           &#x2F;&#x2F;删除文件：行号的所有断点</span><br><span class="line"></span><br><span class="line">clear 删除断点是基于行的，不是把所有的断点都删除。</span><br><span class="line"></span><br><span class="line">r #启动加载的程序</span><br><span class="line"></span><br><span class="line">gdb:disas main #查看函数汇编指令</span><br><span class="line"></span><br><span class="line">info r(egister) #查看寄存器情况</span><br><span class="line"></span><br><span class="line">ni #单步调试</span><br><span class="line"></span><br><span class="line">si #step into 步进 进到某个函数里面</span><br><span class="line"></span><br><span class="line">bt  #backtrace 查看现在的堆栈情况   对于了解程序执行比较有用</span><br><span class="line"></span><br><span class="line">c  #continue #继续执行到下一个断点</span><br><span class="line"></span><br><span class="line">x &#x2F;100xg $rsp  #以八进制查看从栈顶开始的100字节</span><br></pre></td></tr></table></figure>
-
-<h3 id="pattern-工具"><a href="#pattern-工具" class="headerlink" title="pattern 工具"></a>pattern 工具</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pattern 指令,生成长字符串,</span><br><span class="line"></span><br><span class="line">pattern create 150 #生成一个长度为150字节的字符串</span><br><span class="line">pattern offset rip地址 #判断从多少字节开始溢出,前提是程序非正常退出,rip内容被覆盖</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://yaov.net/2018/09/15/linux-pwn%E5%9F%BA%E7%A1%801/" target="_blank" rel="noopener">http://yaov.net/2018/09/15/linux-pwn%E5%9F%BA%E7%A1%801/</a></p>
+<h3 id="pattern-工具">pattern 工具</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pattern 指令,生成长字符串,</span><br><span class="line"></span><br><span class="line">pattern create 150 #生成一个长度为150字节的字符串</span><br><span class="line">pattern offset rip地址 #判断从多少字节开始溢出,前提是程序非正常退出,rip内容被覆盖</span><br></pre></td></tr></table></figure>
+<h2 id="参考链接">参考链接</h2>
+<p>http://yaov.net/2018/09/15/linux-pwn%E5%9F%BA%E7%A1%801/</p>
 
       
     </div>
@@ -1007,7 +957,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-08 18:41:31" itemprop="dateModified" datetime="2020-06-08T18:41:31+08:00">2020-06-08</time>
+                <time title="修改时间：2020-06-08 20:13:25" itemprop="dateModified" datetime="2020-06-08T20:13:25+08:00">2020-06-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1030,18 +980,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="靶场八"><a href="#靶场八" class="headerlink" title="靶场八"></a>靶场八</h1><p>看网页源代码,得到flag1<code>flag1{Q0lBIC0gT3BlcmF0aW9uIFRyZWFkc3RvbmU=}</code></p>
-<p>解码得到<code>CIA – Operation Treadstone</code><br>cwel 爬取字典<code>https://bourne.fandom.com/wiki/Operation_Treadstone</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># root @ Divint3 in /home/divint3 [21:12:08] C:130</span></span><br><span class="line">$ dirb http://172.17.135.8/ -S </span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line">DIRB v2.22    </span><br><span class="line">By The Dark Raver</span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">START_TIME: Fri May 31 21:12:11 2019</span><br><span class="line">URL_BASE: http://172.17.135.8/</span><br><span class="line">WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt</span><br><span class="line">OPTION: Silent Mode</span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">GENERATED WORDS: 4612</span><br><span class="line"></span><br><span class="line">---- Scanning URL: http://172.17.135.8/ ----</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/admin/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/css/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/db/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/dist/</span><br><span class="line">+ http://172.17.135.8/index.php (CODE:200|SIZE:2433)</span><br><span class="line">+ http://172.17.135.8/server-status (CODE:403|SIZE:292)</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/squirrelmail/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/supplier/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/upload/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/user/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/vendor/</span><br></pre></td></tr></table></figure>
-
-
-<p>nmap </p>
+          <h1 id="靶场八">靶场八</h1>
+<p>看网页源代码,得到flag1<code>flag1{Q0lBIC0gT3BlcmF0aW9uIFRyZWFkc3RvbmU=}</code></p>
+<p>解码得到<code>CIA – Operation Treadstone</code> cwel 爬取字典<code>https://bourne.fandom.com/wiki/Operation_Treadstone</code> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># root @ Divint3 in /home/divint3 [21:12:08] C:130</span></span><br><span class="line">$ dirb http://172.17.135.8/ -S </span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line">DIRB v2.22    </span><br><span class="line">By The Dark Raver</span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">START_TIME: Fri May 31 21:12:11 2019</span><br><span class="line">URL_BASE: http://172.17.135.8/</span><br><span class="line">WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt</span><br><span class="line">OPTION: Silent Mode</span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">GENERATED WORDS: 4612</span><br><span class="line"></span><br><span class="line">---- Scanning URL: http://172.17.135.8/ ----</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/admin/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/css/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/db/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/dist/</span><br><span class="line">+ http://172.17.135.8/index.php (CODE:200|SIZE:2433)</span><br><span class="line">+ http://172.17.135.8/server-status (CODE:403|SIZE:292)</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/squirrelmail/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/supplier/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/upload/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/user/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/vendor/</span><br></pre></td></tr></table></figure></p>
+<p>nmap</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># root @ Divint3 in /home/divint3 [21:49:01] </span></span><br><span class="line">$ nmap 172.17.135.8 -Pn -sS                        </span><br><span class="line"></span><br><span class="line">Starting Nmap 7.40 ( https://nmap.org ) at 2019-05-31 22:00 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 172.17.135.8</span><br><span class="line">Host is up (0.0021s latency).</span><br><span class="line">Not shown: 993 filtered ports</span><br><span class="line">PORT    STATE SERVICE</span><br><span class="line">21/tcp  open  ftp</span><br><span class="line">22/tcp  open  ssh</span><br><span class="line">80/tcp  open  http</span><br><span class="line">110/tcp open  pop3</span><br><span class="line">143/tcp open  imap</span><br><span class="line">993/tcp open  imaps</span><br><span class="line">995/tcp open  pop3s</span><br><span class="line"></span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 20.90 seconds</span><br><span class="line"></span><br><span class="line"><span class="comment"># root @ Divint3 in /home/divint3 [21:14:25] C:130</span></span><br><span class="line">$ nmap 172.17.135.8 -A -O -sS</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.40 ( https://nmap.org ) at 2019-05-31 21:14 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 172.17.135.8</span><br><span class="line">Host is up (0.0020s latency).</span><br><span class="line">Not shown: 993 filtered ports</span><br><span class="line">PORT    STATE SERVICE  VERSION</span><br><span class="line">21/tcp  open  ftp      vsftpd 3.0.2</span><br><span class="line">22/tcp  open  ssh      OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.7 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   1024 a9:98:84:aa:90:7e:f1:e6:be:c0:84:3e:fa:aa:83:8a (DSA)</span><br><span class="line">|   2048 07:5c:77:15:30:5a:17:95:8e:0f:91:f0:2d:0b:c3:7a (RSA)</span><br><span class="line">|_  256 2f:9c:29:b5:f5:dc:f4:95:07:6d:41:ee:f9:0d:15:b8 (ECDSA)</span><br><span class="line">80/tcp  open  http     Apache httpd 2.4.7 ((Ubuntu))</span><br><span class="line">|_http-server-header: Apache/2.4.7 (Ubuntu)</span><br><span class="line">|_http-title: BlackMarket Weapon Management System</span><br><span class="line">110/tcp open  pop3     Dovecot pop3d</span><br><span class="line">|_pop3-capabilities: AUTH-RESP-CODE SASL STLS PIPELINING RESP-CODES UIDL CAPA TOP</span><br><span class="line">| ssl-cert: Subject: commonName=localhost/organizationName=Dovecot mail server</span><br><span class="line">| Not valid before: 2017-11-01T07:05:35</span><br><span class="line">|_Not valid after:  2027-11-01T07:05:35</span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">143/tcp open  imap     Dovecot imapd (Ubuntu)</span><br><span class="line">|_imap-capabilities: listed OK IDLE more ID ENABLE LOGIN-REFERRALS LITERAL+ STARTTLS post-login capabilities SASL-IR Pre-login LOGINDISABLEDA0001 have IMAP4rev1</span><br><span class="line">| ssl-cert: Subject: commonName=localhost/organizationName=Dovecot mail server</span><br><span class="line">| Not valid before: 2017-11-01T07:05:35</span><br><span class="line">|_Not valid after:  2027-11-01T07:05:35</span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">993/tcp open  ssl/imap Dovecot imapd (Ubuntu)</span><br><span class="line">|_imap-capabilities: listed OK IDLE IMAP4rev1 AUTH=PLAINA0001 LOGIN-REFERRALS LITERAL+ post-login more ID SASL-IR capabilities Pre-login have ENABLE</span><br><span class="line">| ssl-cert: Subject: commonName=localhost/organizationName=Dovecot mail server</span><br><span class="line">| Not valid before: 2017-11-01T07:05:35</span><br><span class="line">|_Not valid after:  2027-11-01T07:05:35</span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">995/tcp open  ssl/pop3 Dovecot pop3d</span><br><span class="line">|_pop3-capabilities: AUTH-RESP-CODE SASL(PLAIN) USER PIPELINING RESP-CODES UIDL CAPA TOP</span><br><span class="line">| ssl-cert: Subject: commonName=localhost/organizationName=Dovecot mail server</span><br><span class="line">| Not valid before: 2017-11-01T07:05:35</span><br><span class="line">|_Not valid after:  2027-11-01T07:05:35</span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port</span><br><span class="line">Device <span class="built_in">type</span>: general purpose</span><br><span class="line">Running: Linux 3.X|4.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4</span><br><span class="line">OS details: Linux 3.10 - 4.2, Linux 3.16 - 4.6, Linux 3.2 - 4.6, Linux 4.4</span><br><span class="line">Network Distance: 3 hops</span><br><span class="line">Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">TRACEROUTE (using port 80/tcp)</span><br><span class="line">HOP RTT     ADDRESS</span><br><span class="line">1   ...</span><br><span class="line">2   5.15 ms bogon (192.168.230.30)</span><br><span class="line">3   3.27 ms 172.17.135.8</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 26.36 seconds</span><br></pre></td></tr></table></figure>
-
-<p>配置漏洞扫描器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;share&#x2F;nmap&#x2F;scripts&#x2F;</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;vulnersCom&#x2F;nmap-vulners.git</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;scipag&#x2F;vulscan.git</span><br><span class="line">cd vulscan&#x2F;utilities&#x2F;updater&#x2F;</span><br><span class="line">chmod +x updateFiles.sh</span><br><span class="line">.&#x2F;updateFiles.sh</span><br></pre></td></tr></table></figure>
-
+<p>配置漏洞扫描器 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;share&#x2F;nmap&#x2F;scripts&#x2F;</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;vulnersCom&#x2F;nmap-vulners.git</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;scipag&#x2F;vulscan.git</span><br><span class="line">cd vulscan&#x2F;utilities&#x2F;updater&#x2F;</span><br><span class="line">chmod +x updateFiles.sh</span><br><span class="line">.&#x2F;updateFiles.sh</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap --script vulscan  -sV 172.17.135.8</span><br></pre></td></tr></table></figure>
+
       
     </div>
 

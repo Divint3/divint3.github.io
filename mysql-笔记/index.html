@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"www.divint3.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="mysql数据库    主表为文章名    附表为文章内容    相互独立 主表索引附表 配置远程访问授权法12345mysql -u root -pmysql&gt;use mysql;mysql&gt;grant all privileges  on *.* to root@&#39;%&#39; identified by &quot;password&quot;;mysql&gt;flus">
+  <meta name="description" content="mysql 数据库 主表为文章名 附表为文章内容 相互独立 主表索引附表 配置远程访问 授权法 12345mysql -u root -pmysql&gt;use mysql;mysql&gt;grant all privileges  on *.* to root@&#39;%&#39; identified by &quot;password&quot;;mysql&gt;flush priv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql-笔记">
 <meta property="og:url" content="https://www.divint3.xyz/mysql-%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="HexBlog">
-<meta property="og:description" content="mysql数据库    主表为文章名    附表为文章内容    相互独立 主表索引附表 配置远程访问授权法12345mysql -u root -pmysql&gt;use mysql;mysql&gt;grant all privileges  on *.* to root@&#39;%&#39; identified by &quot;password&quot;;mysql&gt;flus">
+<meta property="og:description" content="mysql 数据库 主表为文章名 附表为文章内容 相互独立 主表索引附表 配置远程访问 授权法 12345mysql -u root -pmysql&gt;use mysql;mysql&gt;grant all privileges  on *.* to root@&#39;%&#39; identified by &quot;password&quot;;mysql&gt;flush priv">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-03-30T13:39:24.000Z">
 <meta property="article:modified_time" content="2020-06-08T10:41:31.404Z">
@@ -238,15 +238,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><p>数据库<br>    主表为文章名<br>    附表为文章内容<br>    相互独立 主表索引附表</p>
-<h4 id="配置远程访问"><a href="#配置远程访问" class="headerlink" title="配置远程访问"></a>配置远程访问</h4><h5 id="授权法"><a href="#授权法" class="headerlink" title="授权法"></a>授权法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">mysql&gt;use mysql;</span><br><span class="line">mysql&gt;grant all privileges  on *.* to root@&#39;%&#39; identified by &quot;password&quot;;</span><br><span class="line">mysql&gt;flush privileges;</span><br></pre></td></tr></table></figure>
-<hr>
+        <h3 id="mysql">mysql</h3>
+<p>数据库 主表为文章名 附表为文章内容 相互独立 主表索引附表</p>
+<h4 id="配置远程访问">配置远程访问</h4>
+<h5 id="授权法">授权法</h5>
+<h2 id="section"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">mysql&gt;use mysql;</span><br><span class="line">mysql&gt;grant all privileges  on *.* to root@&#39;%&#39; identified by &quot;password&quot;;</span><br><span class="line">mysql&gt;flush privileges;</span><br></pre></td></tr></table></figure></h2>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; USE mysql ;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; UPDATE user SET Password = password ( '新密码' ) WHERE User = 'root' ;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line">Rows matched: 2 Changed: 0 Warnings: 0</span><br><span class="line">mysql&gt; flush privileges ;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line">mysql&gt; quit</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="string">`tp5`</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> <span class="string">'utf8'</span> <span class="keyword">COLLATE</span> <span class="string">'utf8_czech_ci'</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="limit"><a href="#limit" class="headerlink" title="limit"></a>limit</h4><p><strong>limit</strong>是用来限制查询结果的</p>
+<h4 id="limit">limit</h4>
+<p><strong>limit</strong>是用来限制查询结果的</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM TABLE LIMIT m,n</span><br></pre></td></tr></table></figure>
-<p>其中m是指记录开始的index，从0开始，表示第一条记录<br>n是指从第m+1条开始，取n条。<br>select * from tablename limit 2,4<br>即取出第3条至第6条，4条记录</p>
-<h4 id="order"><a href="#order" class="headerlink" title="order"></a>order</h4><p><strong>order</strong>子句用来排序表,<strong>order by 后加列名</strong><br>如果要逆序 在列名后加 <strong>desc</strong><br>正序<strong>ASC</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM `table` ORDER BY `column` ASC;</span><br></pre></td></tr></table></figure>
+<p>其中m是指记录开始的index，从0开始，表示第一条记录 n是指从第m+1条开始，取n条。 select * from tablename limit 2,4 即取出第3条至第6条，4条记录</p>
+<h4 id="order">order</h4>
+<p><strong>order</strong>子句用来排序表,<strong>order by 后加列名</strong> 如果要逆序 在列名后加 <strong>desc</strong> 正序<strong>ASC</strong> <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM `table` ORDER BY `column` ASC;</span><br></pre></td></tr></table></figure></p>
+
     </div>
 
     
@@ -346,7 +350,17 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql"><span class="nav-number">1.</span> <span class="nav-text">mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置远程访问"><span class="nav-number">1.1.</span> <span class="nav-text">配置远程访问</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#授权法"><span class="nav-number">1.1.1.</span> <span class="nav-text">授权法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#limit"><span class="nav-number">1.2.</span> <span class="nav-text">limit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#order"><span class="nav-number">1.3.</span> <span class="nav-text">order</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql"><span class="nav-number">1.</span> <span class="nav-text">mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置远程访问"><span class="nav-number">1.1.</span> <span class="nav-text">配置远程访问</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#授权法"><span class="nav-number">1.1.1.</span> <span class="nav-text">授权法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section"><span class="nav-number"></span> <span class="nav-text">1
+2
+3
+4
+5
+mysql -u root -p
+
+mysql&gt;use mysql;
+mysql&gt;grant all privileges  on *.* to root@&#39;%&#39; identified by &quot;password&quot;;
+mysql&gt;flush privileges;
+</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#limit"><span class="nav-number">0.1.</span> <span class="nav-text">limit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#order"><span class="nav-number">0.2.</span> <span class="nav-text">order</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

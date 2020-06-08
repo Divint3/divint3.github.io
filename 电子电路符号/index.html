@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"www.divint3.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="重要结论:零值电阻从电气特性上来说,是等效于零值电压源的.独立电压源的电流是由外电路决定的.开路或无穷值电阻从电气特性上等效为零值电流源.2b法是指根据两个b(branch支路)求解出b个电流和b个电压 $P_a$是吸收功率$P_d$是发出功率$U_S$是电压源,Voltage Source$I_S$是电流源,current Intensity Source$R_{EQ}$是等效电阻">
+  <meta name="description" content="重要结论: 零值电阻从电气特性上来说,是等效于零值电压源的. 独立电压源的电流是由外电路决定的. 开路或无穷值电阻从电气特性上等效为零值电流源. 2b法是指根据两个b(branch支路)求解出b个电流和b个电压 \(P_a\)是吸收功率 \(P_d\)是发出功率 \(U_S\)是电压源,Voltage Source \(I_S\)是电流源,current Intensity Source \(R_">
 <meta property="og:type" content="article">
 <meta property="og:title" content="电子电路符号">
 <meta property="og:url" content="https://www.divint3.xyz/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%A6%E5%8F%B7/index.html">
 <meta property="og:site_name" content="HexBlog">
-<meta property="og:description" content="重要结论:零值电阻从电气特性上来说,是等效于零值电压源的.独立电压源的电流是由外电路决定的.开路或无穷值电阻从电气特性上等效为零值电流源.2b法是指根据两个b(branch支路)求解出b个电流和b个电压 $P_a$是吸收功率$P_d$是发出功率$U_S$是电压源,Voltage Source$I_S$是电流源,current Intensity Source$R_{EQ}$是等效电阻">
+<meta property="og:description" content="重要结论: 零值电阻从电气特性上来说,是等效于零值电压源的. 独立电压源的电流是由外电路决定的. 开路或无穷值电阻从电气特性上等效为零值电流源. 2b法是指根据两个b(branch支路)求解出b个电流和b个电压 \(P_a\)是吸收功率 \(P_d\)是发出功率 \(U_S\)是电压源,Voltage Source \(I_S\)是电流源,current Intensity Source \(R_">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-11-20T21:07:27.000Z">
 <meta property="article:modified_time" content="2020-06-08T10:41:31.555Z">
@@ -238,8 +238,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="重要结论"><a href="#重要结论" class="headerlink" title="重要结论:"></a>重要结论:</h2><h4 id="零值电阻从电气特性上来说-是等效于零值电压源的"><a href="#零值电阻从电气特性上来说-是等效于零值电压源的" class="headerlink" title="零值电阻从电气特性上来说,是等效于零值电压源的."></a>零值电阻从电气特性上来说,是等效于零值电压源的.</h4><h4 id="独立电压源的电流是由外电路决定的"><a href="#独立电压源的电流是由外电路决定的" class="headerlink" title="独立电压源的电流是由外电路决定的."></a>独立电压源的电流是由外电路决定的.</h4><h4 id="开路或无穷值电阻从电气特性上等效为零值电流源"><a href="#开路或无穷值电阻从电气特性上等效为零值电流源" class="headerlink" title="开路或无穷值电阻从电气特性上等效为零值电流源."></a>开路或无穷值电阻从电气特性上等效为零值电流源.</h4><p>2b法是指根据两个b(branch支路)求解出b个电流和b个电压</p>
-<p>$P_a$是吸收功率<br>$P_d$是发出功率<br>$U_S$是电压源,Voltage Source<br>$I_S$是电流源,current Intensity Source<br>$R_{EQ}$是等效电阻</p>
+        <h2 id="重要结论">重要结论:</h2>
+<h4 id="零值电阻从电气特性上来说是等效于零值电压源的.">零值电阻从电气特性上来说,是等效于零值电压源的.</h4>
+<h4 id="独立电压源的电流是由外电路决定的.">独立电压源的电流是由外电路决定的.</h4>
+<h4 id="开路或无穷值电阻从电气特性上等效为零值电流源.">开路或无穷值电阻从电气特性上等效为零值电流源.</h4>
+<p>2b法是指根据两个b(branch支路)求解出b个电流和b个电压</p>
+<p><span class="math inline">\(P_a\)</span>是吸收功率 <span class="math inline">\(P_d\)</span>是发出功率 <span class="math inline">\(U_S\)</span>是电压源,Voltage Source <span class="math inline">\(I_S\)</span>是电流源,current Intensity Source <span class="math inline">\(R_{EQ}\)</span>是等效电阻</p>
 
     </div>
 
@@ -340,7 +344,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重要结论"><span class="nav-number">1.</span> <span class="nav-text">重要结论:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#零值电阻从电气特性上来说-是等效于零值电压源的"><span class="nav-number">1.0.1.</span> <span class="nav-text">零值电阻从电气特性上来说,是等效于零值电压源的.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#独立电压源的电流是由外电路决定的"><span class="nav-number">1.0.2.</span> <span class="nav-text">独立电压源的电流是由外电路决定的.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开路或无穷值电阻从电气特性上等效为零值电流源"><span class="nav-number">1.0.3.</span> <span class="nav-text">开路或无穷值电阻从电气特性上等效为零值电流源.</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重要结论"><span class="nav-number">1.</span> <span class="nav-text">重要结论:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#零值电阻从电气特性上来说是等效于零值电压源的."><span class="nav-number">1.0.1.</span> <span class="nav-text">零值电阻从电气特性上来说,是等效于零值电压源的.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#独立电压源的电流是由外电路决定的."><span class="nav-number">1.0.2.</span> <span class="nav-text">独立电压源的电流是由外电路决定的.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开路或无穷值电阻从电气特性上等效为零值电流源."><span class="nav-number">1.0.3.</span> <span class="nav-text">开路或无穷值电阻从电气特性上等效为零值电流源.</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
