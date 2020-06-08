@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.divint3.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="进程通信概念及分类进程通信实现机制 进程通信概念 指进程之间的信息交换   实现机制 低级进程通信：效率低，针对控制信息的传送。典型为信号量机制。 高级进程通信：能传送大量数据，效率高，进程通信实现细节由操作系统提供，整个通信对用户透明，通信程序编制简单    类型 共享存储器系统（操作系统提供相应的系统调用） 基于共享数据结构的通信方式 基于共享存储区的通信方式   信息传递系统 直接&#x2F;间接通信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统第七节课笔记-进程通信">
+<meta property="og:url" content="https://www.divint3.xyz/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%83%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/index.html">
+<meta property="og:site_name" content="HexBlog">
+<meta property="og:description" content="进程通信概念及分类进程通信实现机制 进程通信概念 指进程之间的信息交换   实现机制 低级进程通信：效率低，针对控制信息的传送。典型为信号量机制。 高级进程通信：能传送大量数据，效率高，进程通信实现细节由操作系统提供，整个通信对用户透明，通信程序编制简单    类型 共享存储器系统（操作系统提供相应的系统调用） 基于共享数据结构的通信方式 基于共享存储区的通信方式   信息传递系统 直接&#x2F;间接通信">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-15T10:05:20.000Z">
+<meta property="article:modified_time" content="2020-06-08T10:41:31.498Z">
+<meta property="article:author" content="Divint3">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://www.divint3.xyz/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%83%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>操作系统第七节课笔记-进程通信 | HexBlog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">HexBlog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section">首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section">分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section">归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.divint3.xyz/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%83%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.png">
+      <meta itemprop="name" content="Divint3">
+      <meta itemprop="description" content="おかわいいこと">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HexBlog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统第七节课笔记-进程通信
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-15 18:05:20" itemprop="dateCreated datePublished" datetime="2020-04-15T18:05:20+08:00">2020-04-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-08 18:41:31" itemprop="dateModified" datetime="2020-06-08T18:41:31+08:00">2020-06-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="进程通信概念及分类"><a href="#进程通信概念及分类" class="headerlink" title="进程通信概念及分类"></a>进程通信概念及分类</h1><h2 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h2><h3 id="实现机制"><a href="#实现机制" class="headerlink" title="实现机制"></a>实现机制</h3><ul>
+<li>进程通信概念<ul>
+<li>指进程之间的信息交换</li>
+</ul>
+</li>
+<li>实现机制<ul>
+<li>低级进程通信：效率低，针对控制信息的传送。典型为信号量机制。</li>
+<li>高级进程通信：能传送大量数据，效率高，进程通信实现细节由操作系统提供，整个通信对用户透明，通信程序编制简单</li>
+</ul>
+</li>
+</ul>
+<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><ul>
+<li>共享存储器系统（操作系统提供相应的系统调用）<ul>
+<li>基于共享数据结构的通信方式</li>
+<li>基于共享存储区的通信方式</li>
+</ul>
+</li>
+<li>信息传递系统<ul>
+<li>直接/间接通信方式</li>
+</ul>
+</li>
+<li>管道通信系统<ul>
+<li>管道概念</li>
+<li>协调机制：互斥、同步、通信前提</li>
+</ul>
+</li>
+</ul>
+<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%83%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/shm.tar.gz" title="共享内存示例下载">共享内存示例下载</a>
+<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%83%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/pipe.tar.gz" title="管道示例下载">管道示例下载</a>
+
+<h2 id="消息传递通信实现方式"><a href="#消息传递通信实现方式" class="headerlink" title="消息传递通信实现方式"></a>消息传递通信实现方式</h2><h3 id="直接通信方式"><a href="#直接通信方式" class="headerlink" title="直接通信方式"></a>直接通信方式</h3><ul>
+<li>通信原语<ul>
+<li>Send(Receiver,message)；</li>
+<li>Receive(Sender,message);<ul>
+<li>不知道发送者是谁<ul>
+<li>典型例子是打印机</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一个接收进程可以与多个发送进程通信<ul>
+<li>打印进程</li>
+<li>Sender无法事先制定，故为变参性质</li>
+</ul>
+</li>
+</ul>
+<h3 id="间接通信方式"><a href="#间接通信方式" class="headerlink" title="间接通信方式"></a>间接通信方式</h3><ul>
+<li>信箱<ul>
+<li>进程间通信有关共享数据结构的中间实体</li>
+<li>有操作系统或用户进程创建</li>
+<li>私有/公有/共享信箱</li>
+<li>可实现实时/非实时通信</li>
+</ul>
+</li>
+<li>通信原语<ul>
+<li>信箱的创建和撤销、消息的发送和接收</li>
+</ul>
+</li>
+<li>发送/接收金层间存在的四种关系<ul>
+<li>一对一、多对一、一对多、多对多</li>
+</ul>
+</li>
+</ul>
+<h3 id="信息传递系统中的几个问题"><a href="#信息传递系统中的几个问题" class="headerlink" title="信息传递系统中的几个问题"></a>信息传递系统中的几个问题</h3><ul>
+<li>通信链路<ul>
+<li>显式/隐式建立（计算机网络/单机）</li>
+<li>点-点或多点连接通信链路</li>
+<li>单/双向通信链路</li>
+<li>无容量/有容量通信链路（缓冲区）</li>
+</ul>
+</li>
+<li>消息格式<ul>
+<li>有消息头和效益正文构成，分定长/变长两种</li>
+</ul>
+</li>
+<li>进程同步方式<ul>
+<li>发送/接受进程阻塞与否（三种情况）</li>
+</ul>
+</li>
+</ul>
+<h2 id="消息缓冲队列通信机制"><a href="#消息缓冲队列通信机制" class="headerlink" title="消息缓冲队列通信机制"></a>消息缓冲队列通信机制</h2><h3 id="缓冲队列是通过数据结构实现的"><a href="#缓冲队列是通过数据结构实现的" class="headerlink" title="缓冲队列是通过数据结构实现的"></a>缓冲队列是通过数据结构实现的</h3><p>消息缓冲队列是一种临界资源,应该设计相应的信号量进行访问控制</p>
+<h4 id="消息缓冲区"><a href="#消息缓冲区" class="headerlink" title="消息缓冲区"></a>消息缓冲区</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type MassageBuffer&#x3D;record</span><br><span class="line">	Sender;</span><br><span class="line">	&#x2F;&#x2F;发送者进程标识符</span><br><span class="line">	Size;</span><br><span class="line">	&#x2F;&#x2F;消息长度</span><br><span class="line">	Text;</span><br><span class="line">	&#x2F;&#x2F;消息正文</span><br><span class="line">	Next;</span><br><span class="line">	&#x2F;&#x2F;指向下一缓冲区的指针</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
+
+<h4 id="PCB通信数据项"><a href="#PCB通信数据项" class="headerlink" title="PCB通信数据项"></a>PCB通信数据项</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">type PCB&#x3D;record</span><br><span class="line">	massageQueue;</span><br><span class="line">	&#x2F;&#x2F;队首指针</span><br><span class="line">	mutexOfMQ;</span><br><span class="line">	&#x2F;&#x2F;消息队列互斥信号量</span><br><span class="line">	semphoreOfMQ;</span><br><span class="line">	&#x2F;&#x2F;消息队列资源信号量</span><br><span class="line">	...</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
+
+<h4 id="假设A发送消息给B-A使用发送原语-把消息队列挂接到B的进程控制块的消息缓冲区-B使用接收原语-从PCB上接收数据队列-拷贝到本进程的接收区中"><a href="#假设A发送消息给B-A使用发送原语-把消息队列挂接到B的进程控制块的消息缓冲区-B使用接收原语-从PCB上接收数据队列-拷贝到本进程的接收区中" class="headerlink" title="假设A发送消息给B,A使用发送原语,把消息队列挂接到B的进程控制块的消息缓冲区,B使用接收原语,从PCB上接收数据队列,拷贝到本进程的接收区中"></a>假设A发送消息给B,A使用发送原语,把消息队列挂接到B的进程控制块的消息缓冲区,B使用接收原语,从PCB上接收数据队列,拷贝到本进程的接收区中</h4><h4 id="发送原语"><a href="#发送原语" class="headerlink" title="发送原语"></a>发送原语</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Procedure Sender(Receiver,SA)</span><br><span class="line">Begin</span><br><span class="line">	getBuf(SA.Size,Buffer_i);</span><br><span class="line">	&#x2F;&#x2F;创建缓冲区</span><br><span class="line">	Buffer_i.Sender:&#x3D;SA.Sender;Buffer_i.Size:&#x3D;SA.Size;</span><br><span class="line">	Buffer_i.Text:&#x3D;SA.Text;Buffer_i.Next:&#x3D;0;</span><br><span class="line">	&#x2F;&#x2F;把数据拷贝到缓冲区中</span><br><span class="line">	getid(PCB_Set,Receiver,PID);</span><br><span class="line">	&#x2F;&#x2F;从PCB区通过进程名解析目标进程ID</span><br><span class="line">	wait(PID.mutexOfMQ);</span><br><span class="line">	&#x2F;&#x2F;因为是对临界资源的操作,所以要使用互斥信号量</span><br><span class="line">	insert(PID.massageQueue,Buffer);</span><br><span class="line">	&#x2F;&#x2F;挂接缓冲区到目标进程的PCB上</span><br><span class="line">	signal(PID.mutexOfMQ);</span><br><span class="line">	&#x2F;&#x2F;使用完毕,释放互斥信号量</span><br><span class="line">	signal(PID.semphoreOfMQ);</span><br><span class="line">	&#x2F;&#x2F;添加资源信号量,使可用资源数增加</span><br><span class="line">End;</span><br></pre></td></tr></table></figure>
+
+<h4 id="接收原语"><a href="#接收原语" class="headerlink" title="接收原语"></a>接收原语</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Procedure Receive(RB)</span><br><span class="line">Begin</span><br><span class="line">	PID:&#x3D;InternalNameOfProcess();</span><br><span class="line">	&#x2F;&#x2F;获取本进程的PID号</span><br><span class="line">	wait(PID.semphoreOFMQ);</span><br><span class="line">	&#x2F;&#x2F;先确认有没有可用资源</span><br><span class="line">	wait(PID.mutexOfMQ);</span><br><span class="line">	&#x2F;&#x2F;对资源进行操作,上锁</span><br><span class="line">	remove(PID.messageQueue,Buffer_i);</span><br><span class="line">	&#x2F;&#x2F;从缓冲区取下消息</span><br><span class="line">	signal(PID.mutexOfMQ);</span><br><span class="line">	&#x2F;&#x2F;释放互斥信号量</span><br><span class="line">	RB.Sender:&#x3D;Buffer_j.Sender;</span><br><span class="line">	RB.Size:&#x3D;Buffer_j.Size;</span><br><span class="line">	RB.Text:&#x3D;Buffer_j.Text;</span><br><span class="line">	&#x2F;&#x2F;复制到接收区</span><br><span class="line">	putbuf(Buffer_j);</span><br><span class="line">	&#x2F;&#x2F;释放缓冲区</span><br><span class="line">End;</span><br></pre></td></tr></table></figure>
+
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><h3 id="线程的概念"><a href="#线程的概念" class="headerlink" title="线程的概念"></a>线程的概念</h3><h4 id="线程的引入"><a href="#线程的引入" class="headerlink" title="线程的引入"></a>线程的引入</h4><ul>
+<li>进程并发机制缺陷分析<ul>
+<li>进程并发执行基础(<strong>资源拥有与调度的基本单位</strong>)</li>
+<li>进程创建、切换和撤销等操作的时空开销较大</li>
+<li>进程并发执行程度及进程间通信效率受限</li>
+</ul>
+</li>
+<li>系统并发进一步提高客观需求</li>
+<li>对策<ul>
+<li>资源的拥有与调度分派两种属性的分离<ul>
+<li>进程拥有资源、内存空间</li>
+<li>线程拥有处理器调度</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="线程的特征"><a href="#线程的特征" class="headerlink" title="线程的特征"></a>线程的特征</h4><ul>
+<li>轻型实体及共享进程资源</li>
+<li>独立调度和分派的基本单位</li>
+<li>创建、撤销、切换等系统开销</li>
+<li>地址空间及通信效率</li>
+<li>系统的并发执行程度大大提高</li>
+</ul>
+<h3 id="线程的控制、同步与通信"><a href="#线程的控制、同步与通信" class="headerlink" title="线程的控制、同步与通信"></a>线程的控制、同步与通信</h3><h4 id="线程的控制"><a href="#线程的控制" class="headerlink" title="线程的控制"></a>线程的控制</h4><ul>
+<li>线程的基本属性<ul>
+<li>线程标识符、寄存器状态、堆栈及专有存储器</li>
+<li>线程状态、优先级与信号屏蔽 </li>
+</ul>
+</li>
+<li>线程的创建和终止<ul>
+<li>初始化线程</li>
+<li>线程创建函数或系统调用</li>
+<li>线程完成型终止与被被迫强制性终止</li>
+<li>被终止线程重新恢复运行</li>
+</ul>
+</li>
+</ul>
+<h4 id="线程间的同步和通信"><a href="#线程间的同步和通信" class="headerlink" title="线程间的同步和通信"></a>线程间的同步和通信</h4><ul>
+<li>信号量机制<ul>
+<li>私有信号量/共有信号量</li>
+</ul>
+</li>
+<li>互斥锁<ul>
+<li>实现资源互斥使用的简单极致</li>
+<li>lock/unlock 两种状态和原语操作</li>
+<li>适合于高频使用的<strong>关键共享数据</strong>和<strong>程序段</strong></li>
+</ul>
+</li>
+<li>条件变量与互斥锁<ul>
+<li>互斥锁与特定条件变量相联系</li>
+<li>互斥锁用于短期锁定,保证互斥进入临界区</li>
+<li>条件变量用于长期等待,直至所得呢个资源可用</li>
+</ul>
+</li>
+</ul>
+<h3 id="基于互斥锁和条件变量的线程同步"><a href="#基于互斥锁和条件变量的线程同步" class="headerlink" title="基于互斥锁和条件变量的线程同步"></a>基于互斥锁和条件变量的线程同步</h3><h4 id="访问请求资源入口"><a href="#访问请求资源入口" class="headerlink" title="访问请求资源入口"></a>访问请求资源入口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Lock(mutex);</span><br><span class="line">&#x2F;&#x2F;互斥锁上锁</span><br><span class="line">Check data structure of Resource;</span><br><span class="line">&#x2F;&#x2F;检查是否可以使用 </span><br><span class="line">if Resource is busy</span><br><span class="line">	begin</span><br><span class="line">	Unlock(mutex);</span><br><span class="line">	&#x2F;&#x2F;方便其他线程检查状态,能够对资源进程访问</span><br><span class="line">	wait(condition_variable);</span><br><span class="line">	&#x2F;&#x2F;这条语句会等待到资源不忙结束,执行下面的操作</span><br><span class="line">	Lock(mutex);</span><br><span class="line">	&#x2F;&#x2F;非常关键,因为下面要进行对资源的操作</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">Mark resource as busy;</span><br><span class="line">Unlock(mutex);</span><br></pre></td></tr></table></figure>
+
+<h4 id="访问资源结束"><a href="#访问资源结束" class="headerlink" title="访问资源结束"></a>访问资源结束</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Lock(mutex);</span><br><span class="line">Mark resource as free;</span><br><span class="line">Unlock(mutex);</span><br><span class="line">wakeup(condition_variable);</span><br></pre></td></tr></table></figure>
+
+<h3 id="线程实现方式"><a href="#线程实现方式" class="headerlink" title="线程实现方式"></a>线程实现方式</h3><h4 id="线程实现方式-1"><a href="#线程实现方式-1" class="headerlink" title="线程实现方式"></a>线程实现方式</h4><ul>
+<li>内核支持线程<ul>
+<li>依赖于内核及其中的线程控制块(任务数据区:PTDA)<ul>
+<li>可以真正实现处理机的调度和分配在线程级别上</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>用户级线程<ul>
+<li>仅存在于用户空间之中,与内核无关<ul>
+<li>没办法实现处理机和调度分配在线程级别</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实现方式比较<ul>
+<li>操作系统要求、系统开销与性能、调度算法灵活性、并发线程数量及书记效果</li>
+<li>系统调用阻塞连锁效应</li>
+<li>时钟中断与轮转调度可行性</li>
+<li>线程调度与执行时间</li>
+</ul>
+</li>
+</ul>
+<h4 id="用户级线程模型1-运行管理系统（Run-Time-System）"><a href="#用户级线程模型1-运行管理系统（Run-Time-System）" class="headerlink" title="用户级线程模型1-运行管理系统（Run-Time System）"></a>用户级线程模型1-运行管理系统（Run-Time System）</h4><h4 id="用户级线程模型2-轻型进程（Solaris）"><a href="#用户级线程模型2-轻型进程（Solaris）" class="headerlink" title="用户级线程模型2-轻型进程（Solaris）"></a>用户级线程模型2-轻型进程（Solaris）</h4>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>恰饭,恰饭</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Divint3 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Divint3 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE-%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F/" rel="prev" title="概率论第三节课-条件概率和全概率公式">
+      <i class="fa fa-chevron-left"></i> 概率论第三节课-条件概率和全概率公式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/%E6%8C%89%E6%91%A9%E5%99%A8/" rel="next" title="按摩器">
+      按摩器 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程通信概念及分类"><span class="nav-number">1.</span> <span class="nav-text">进程通信概念及分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程通信"><span class="nav-number">1.1.</span> <span class="nav-text">进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现机制"><span class="nav-number">1.1.1.</span> <span class="nav-text">实现机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型"><span class="nav-number">1.1.2.</span> <span class="nav-text">类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息传递通信实现方式"><span class="nav-number">1.2.</span> <span class="nav-text">消息传递通信实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接通信方式"><span class="nav-number">1.2.1.</span> <span class="nav-text">直接通信方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#间接通信方式"><span class="nav-number">1.2.2.</span> <span class="nav-text">间接通信方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息传递系统中的几个问题"><span class="nav-number">1.2.3.</span> <span class="nav-text">信息传递系统中的几个问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息缓冲队列通信机制"><span class="nav-number">1.3.</span> <span class="nav-text">消息缓冲队列通信机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓冲队列是通过数据结构实现的"><span class="nav-number">1.3.1.</span> <span class="nav-text">缓冲队列是通过数据结构实现的</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#消息缓冲区"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">消息缓冲区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PCB通信数据项"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">PCB通信数据项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设A发送消息给B-A使用发送原语-把消息队列挂接到B的进程控制块的消息缓冲区-B使用接收原语-从PCB上接收数据队列-拷贝到本进程的接收区中"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">假设A发送消息给B,A使用发送原语,把消息队列挂接到B的进程控制块的消息缓冲区,B使用接收原语,从PCB上接收数据队列,拷贝到本进程的接收区中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发送原语"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">发送原语</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接收原语"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">接收原语</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程"><span class="nav-number">1.4.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的概念"><span class="nav-number">1.4.1.</span> <span class="nav-text">线程的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程的引入"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">线程的引入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程的特征"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">线程的特征</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的控制、同步与通信"><span class="nav-number">1.4.2.</span> <span class="nav-text">线程的控制、同步与通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程的控制"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">线程的控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程间的同步和通信"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">线程间的同步和通信</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于互斥锁和条件变量的线程同步"><span class="nav-number">1.4.3.</span> <span class="nav-text">基于互斥锁和条件变量的线程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#访问请求资源入口"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">访问请求资源入口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问资源结束"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">访问资源结束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程实现方式"><span class="nav-number">1.4.4.</span> <span class="nav-text">线程实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程实现方式-1"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">线程实现方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户级线程模型1-运行管理系统（Run-Time-System）"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">用户级线程模型1-运行管理系统（Run-Time System）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户级线程模型2-轻型进程（Solaris）"><span class="nav-number">1.4.4.3.</span> <span class="nav-text">用户级线程模型2-轻型进程（Solaris）</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Divint3"
+      src="/images/head.png">
+  <p class="site-author-name" itemprop="name">Divint3</p>
+  <div class="site-description" itemprop="description">おかわいいこと</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Divint3</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
