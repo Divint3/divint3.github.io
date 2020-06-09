@@ -22,17 +22,19 @@
     var CONFIG = {"hostname":"www.divint3.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Windows 程序的调试与破解 脱壳方法 单步跟踪法 脱壳的方法有很多，先来讲脱壳方法中最基础的单步跟踪法。单步跟踪法就是利用OD的单条指令执行功能，从壳的入口一直执行到OEP，最终通过这个OEP将原程序dump出来。然当，在单步跟踪的时候需要跳过一些不能执行到的指令。 使用单步跟踪法追踪OEP的常见步骤：  用OD载入待脱壳文件，如果出现压缩提示，选择“不分析代码”； 向下单步跟踪，实现向下的">
+  <meta name="description" content="Windows 程序的调试与破解 OD脱壳方法 单步跟踪法 脱壳的方法有很多，先来讲脱壳方法中最基础的单步跟踪法。单步跟踪法就是利用OD的单条指令执行功能，从壳的入口一直执行到OEP，最终通过这个OEP将原程序dump出来。然当，在单步跟踪的时候需要跳过一些不能执行到的指令。 使用单步跟踪法追踪OEP的常见步骤：  用OD载入待脱壳文件，如果出现压缩提示，选择“不分析代码”； 向下单步跟踪，实现向">
 <meta property="og:type" content="article">
 <meta property="og:title" content="软件破解">
 <meta property="og:url" content="https://www.divint3.xyz/%E8%BD%AF%E4%BB%B6%E7%A0%B4%E8%A7%A3/index.html">
 <meta property="og:site_name" content="HexBlog">
-<meta property="og:description" content="Windows 程序的调试与破解 脱壳方法 单步跟踪法 脱壳的方法有很多，先来讲脱壳方法中最基础的单步跟踪法。单步跟踪法就是利用OD的单条指令执行功能，从壳的入口一直执行到OEP，最终通过这个OEP将原程序dump出来。然当，在单步跟踪的时候需要跳过一些不能执行到的指令。 使用单步跟踪法追踪OEP的常见步骤：  用OD载入待脱壳文件，如果出现压缩提示，选择“不分析代码”； 向下单步跟踪，实现向下的">
+<meta property="og:description" content="Windows 程序的调试与破解 OD脱壳方法 单步跟踪法 脱壳的方法有很多，先来讲脱壳方法中最基础的单步跟踪法。单步跟踪法就是利用OD的单条指令执行功能，从壳的入口一直执行到OEP，最终通过这个OEP将原程序dump出来。然当，在单步跟踪的时候需要跳过一些不能执行到的指令。 使用单步跟踪法追踪OEP的常见步骤：  用OD载入待脱壳文件，如果出现压缩提示，选择“不分析代码”； 向下单步跟踪，实现向">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.divint3.xyz/%E8%BD%AF%E4%BB%B6%E7%A0%B4%E8%A7%A3/PYG%E5%86%85%E5%AD%98%E8%A1%A5%E4%B8%81%E5%88%B6%E4%BD%9C%E5%B7%A5%E5%85%B7.png">
 <meta property="article:published_time" content="2020-06-09T06:29:04.000Z">
-<meta property="article:modified_time" content="2020-06-09T11:10:47.702Z">
+<meta property="article:modified_time" content="2020-06-09T11:41:51.857Z">
 <meta property="article:author" content="Divint3">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.divint3.xyz/%E8%BD%AF%E4%BB%B6%E7%A0%B4%E8%A7%A3/PYG%E5%86%85%E5%AD%98%E8%A1%A5%E4%B8%81%E5%88%B6%E4%BD%9C%E5%B7%A5%E5%85%B7.png">
 
 <link rel="canonical" href="https://www.divint3.xyz/%E8%BD%AF%E4%BB%B6%E7%A0%B4%E8%A7%A3/">
 
@@ -209,7 +211,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-06-09 14:29:04 / 修改时间：19:10:47" itemprop="dateCreated datePublished" datetime="2020-06-09T14:29:04+08:00">2020-06-09</time>
+              <time title="创建时间：2020-06-09 14:29:04 / 修改时间：19:41:51" itemprop="dateCreated datePublished" datetime="2020-06-09T14:29:04+08:00">2020-06-09</time>
             </span>
 
           
@@ -224,7 +226,7 @@
 
       
         <h1 id="windows-程序的调试与破解">Windows 程序的调试与破解</h1>
-<h2 id="脱壳方法">脱壳方法</h2>
+<h2 id="od脱壳方法">OD脱壳方法</h2>
 <h3 id="单步跟踪法">单步跟踪法</h3>
 <p>脱壳的方法有很多，先来讲脱壳方法中最基础的单步跟踪法。单步跟踪法就是利用OD的单条指令执行功能，从壳的入口一直执行到OEP，最终通过这个OEP将原程序dump出来。然当，在单步跟踪的时候需要跳过一些不能执行到的指令。 使用单步跟踪法追踪OEP的常见步骤：</p>
 <ol type="1">
@@ -300,9 +302,8 @@
 <li>单步跟踪到OEP</li>
 </ol>
 <hr />
-<h2 id="软件破解">软件破解</h2>
-<h3 id="注册破解">注册破解</h3>
-<h4 id="超级断点">超级断点</h4>
+<h2 id="特殊断点">特殊断点</h2>
+<h3 id="超级断点">超级断点</h3>
 <p>原理：在widows 最基础的模块 user32 处下断点，这样就可以做到，你做出任何动作都会发生中断。</p>
 <ol type="1">
 <li>鼠标右键-&gt;查看-&gt;user32 进入代码段</li>
@@ -310,19 +311,23 @@
 <li>shift+f9 返回用户代码</li>
 <li>单步跟踪，观察堆栈及寄存器内容有无特殊字符串</li>
 </ol>
-<h4 id="配置文件断点">配置文件断点</h4>
+<hr />
+<h3 id="配置文件断点">配置文件断点</h3>
 <p>原理： 在程序读取配置文件的代码段上下断点，来中断程序运行。</p>
 <ol type="1">
 <li>在悬浮窗上有个BP选项卡，点击查看</li>
 <li>找到BP GetPrivateProfileStringA，点击即可下断点</li>
 <li>单步跟踪，观察堆栈及寄存器内容有无特殊字符串</li>
 </ol>
-<h4 id="vb专属断点">VB专属断点</h4>
+<hr />
+<h3 id="vb专属断点">VB专属断点</h3>
 <p>原理：VB有自己特有的系统调用，所以在系统调用上下断点就可以中断程序。</p>
 <ol type="1">
 <li>在悬浮窗上找到VB选项卡，点击查看</li>
 <li>常用的是 BP rtcMsgBox，消息窗口</li>
 </ol>
+<hr />
+<h2 id="软件破解">软件破解</h2>
 <h4 id="干掉烦人的窗口">干掉烦人的窗口</h4>
 <p>原理：找到系统调用，返回程序领空，通过修改条件跳转实现不弹出窗口的目的。</p>
 <ol type="1">
@@ -333,8 +338,21 @@
 <li>干掉关键跳转</li>
 </ol>
 <hr />
-<h3 id="易语言网络验证初级破解">易语言网络验证初级破解</h3>
-<h4 id="pushd窗体法">pushd窗体法</h4>
+<h4 id="有壳程序破解">有壳程序破解</h4>
+<p>原理：使用内存补丁，在不修改程序结构的前提下实现修改进程内存</p>
+<img src="/%E8%BD%AF%E4%BB%B6%E7%A0%B4%E8%A7%A3/PYG%E5%86%85%E5%AD%98%E8%A1%A5%E4%B8%81%E5%88%B6%E4%BD%9C%E5%B7%A5%E5%85%B7.png" class="" title="PYG内存补丁制作工具">
+<ol type="1">
+<li>添加程序</li>
+<li>添加补丁地址</li>
+<li>填写原来的机器码</li>
+<li>替换为新的机器码</li>
+<li>点击添加</li>
+<li>点击生成即可</li>
+</ol>
+<hr />
+<h2 id="易语言网络验证初级破解">易语言网络验证初级破解</h2>
+<hr />
+<h3 id="pushd窗体法">pushd窗体法</h3>
 <ol type="1">
 <li>ctrl+g跳转到00401000</li>
 <li>ctrl+b查找二进制字串 勾选整个块 FF 25</li>
@@ -385,7 +403,10 @@
     <a href="/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%99%BA%E8%83%BD%E8%AE%BE%E5%A4%87/" rel="prev" title="时间管理智能设备">
       <i class="fa fa-chevron-left"></i> 时间管理智能设备
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/%E8%A7%A3%E5%86%B3cencrack%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7%E5%8C%85%E7%9A%84Direct%E9%94%99%E8%AF%AF/" rel="next" title="解决cencrack在线工具包的Direct错误">
+      解决cencrack在线工具包的Direct错误 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -444,7 +465,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#windows-程序的调试与破解"><span class="nav-number">1.</span> <span class="nav-text">Windows 程序的调试与破解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#脱壳方法"><span class="nav-number">1.1.</span> <span class="nav-text">脱壳方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单步跟踪法"><span class="nav-number">1.1.1.</span> <span class="nav-text">单步跟踪法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#esp定律法"><span class="nav-number">1.1.2.</span> <span class="nav-text">ESP定律法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二次断点法"><span class="nav-number">1.1.3.</span> <span class="nav-text">二次断点法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#末次异常法"><span class="nav-number">1.1.4.</span> <span class="nav-text">末次异常法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟跟踪法"><span class="nav-number">1.1.5.</span> <span class="nav-text">模拟跟踪法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sfx自动脱壳法"><span class="nav-number">1.1.6.</span> <span class="nav-text">SFX自动脱壳法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#出口标志法"><span class="nav-number">1.1.7.</span> <span class="nav-text">出口标志法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pecompact高版本-特征码定位法"><span class="nav-number">1.1.8.</span> <span class="nav-text">PECompact高版本-特征码定位法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件破解"><span class="nav-number">1.2.</span> <span class="nav-text">软件破解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册破解"><span class="nav-number">1.2.1.</span> <span class="nav-text">注册破解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#超级断点"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">超级断点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置文件断点"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">配置文件断点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vb专属断点"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">VB专属断点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#干掉烦人的窗口"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">干掉烦人的窗口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#易语言网络验证初级破解"><span class="nav-number">1.2.2.</span> <span class="nav-text">易语言网络验证初级破解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pushd窗体法"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">pushd窗体法</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#windows-程序的调试与破解"><span class="nav-number">1.</span> <span class="nav-text">Windows 程序的调试与破解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#od脱壳方法"><span class="nav-number">1.1.</span> <span class="nav-text">OD脱壳方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单步跟踪法"><span class="nav-number">1.1.1.</span> <span class="nav-text">单步跟踪法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#esp定律法"><span class="nav-number">1.1.2.</span> <span class="nav-text">ESP定律法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二次断点法"><span class="nav-number">1.1.3.</span> <span class="nav-text">二次断点法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#末次异常法"><span class="nav-number">1.1.4.</span> <span class="nav-text">末次异常法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟跟踪法"><span class="nav-number">1.1.5.</span> <span class="nav-text">模拟跟踪法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sfx自动脱壳法"><span class="nav-number">1.1.6.</span> <span class="nav-text">SFX自动脱壳法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#出口标志法"><span class="nav-number">1.1.7.</span> <span class="nav-text">出口标志法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pecompact高版本-特征码定位法"><span class="nav-number">1.1.8.</span> <span class="nav-text">PECompact高版本-特征码定位法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊断点"><span class="nav-number">1.2.</span> <span class="nav-text">特殊断点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#超级断点"><span class="nav-number">1.2.1.</span> <span class="nav-text">超级断点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件断点"><span class="nav-number">1.2.2.</span> <span class="nav-text">配置文件断点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vb专属断点"><span class="nav-number">1.2.3.</span> <span class="nav-text">VB专属断点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件破解"><span class="nav-number">1.3.</span> <span class="nav-text">软件破解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#干掉烦人的窗口"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">干掉烦人的窗口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有壳程序破解"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">有壳程序破解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#易语言网络验证初级破解"><span class="nav-number">1.4.</span> <span class="nav-text">易语言网络验证初级破解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pushd窗体法"><span class="nav-number">1.4.1.</span> <span class="nav-text">pushd窗体法</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -460,7 +481,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">84</span>
+          <span class="site-state-item-count">85</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
