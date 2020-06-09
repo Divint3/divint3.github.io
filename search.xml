@@ -1,49 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2018-寒假作业笔记</title>
-    <url>/2018-%E5%AF%92%E5%81%87%E4%BD%9C%E4%B8%9A%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="寒假作业笔记">2018寒假作业笔记</h1>
-<a id="more"></a>
-<h5 id="ftp">ftp</h5>
-<p><code>apt-get install vsftpd</code></p>
-<p>ftp的配置文件主要有三个，位于/etc/vsftpd/目录下，分别是：</p>
-<ul>
-<li>ftpusers 该文件用来指定那些用户不能访问ftp服务器。</li>
-<li>user_list 该文件用来指示的默认账户在默认情况下也不能访问ftp</li>
-<li>vsftpd.conf vsftpd的主配置文件</li>
-</ul>
-<p>编辑vsftpd.conf <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">listen&#x3D;YES</span><br><span class="line">&#x2F;&#x2F;开启端口监听</span><br><span class="line">anonymous_enable&#x3D;YES</span><br><span class="line">&#x2F;&#x2F;允许匿名下载</span><br><span class="line">lcoal_enable&#x3D;YES</span><br><span class="line">&#x2F;&#x2F;允许本地用户登录</span><br><span class="line">anao_upload_enable&#x3D;NO</span><br><span class="line">&#x2F;&#x2F;禁止匿名用户上传</span><br><span class="line">local_umask&#x3D;022</span><br><span class="line">&#x2F;&#x2F;umask值</span><br></pre></td></tr></table></figure></p>
-<h5 id="umask权限总结">umask权限总结</h5>
-<p>文件省缺权限:666 文件夹省缺权限:777 umask的作用就是省缺权限减去umask每位的值得到新建文件的权限 例如默认umask为022 666-022=644 777-022=755</p>
-<hr />
-<h5 id="nmap弱口令爆破">nmap弱口令爆破</h5>
-<ul>
-<li><p>ftp <code>nmap -p 21 -sV --script=ftp-anon -v x.x.x.x(ip)</code></p></li>
-<li><p>mysql <code>nmap -p 3306 --script mysql-empty-password.nse -v x.x.x.x(ip)</code>//空密码爆破,适用于批量 <code>nmap -p 3306 --script mysql-brute.nse -v x.x.x.x(ip)</code>//弱口令爆破</p></li>
-<li><p>smb <code>nmap -p 445 --script smb-vuln-ms17-010.nse x.x.x.x(ip)</code> &gt; 脚本集 &gt; smb-vuln-ms08-067.nse &gt; smb-vuln-ms10-054.nse &gt; smb-vuln-ms10-061.nse &gt; smb-vuln-ms17-010.nse</p></li>
-<li><h2 id="smtp-nmap--p-25---script-smtp-brute.nse--v-x.x.x.xip">smtp <code>nmap -p 25 --script smtp-brute.nse -v x.x.x.x(ip)</code></h2>
-<h5 id="hydra爆破">Hydra爆破</h5></li>
-<li><p>ssh <code>hydra 127.0.0.2 ssh -l root -P pass.txt</code></p></li>
-<li><p>smb <code>hydra -l administrator -P pass.txt IP smb</code></p></li>
-<li><p>ftp <code>hydra IP ftp -l 用户名 -P 密码字典 -t 线程(默认16) -vV</code></p></li>
-</ul>
-]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>ARM-相关知识及传送门</title>
-    <url>/ARM-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%8F%8A%E4%BC%A0%E9%80%81%E9%97%A8/</url>
-    <content><![CDATA[<h3 id="portal">Portal</h3>
-<p><a href="https://azeria-labs.com/writing-arm-assembly-part-1/" target="_blank" rel="noopener">官方介绍</a> <a href="https://blog.csdn.net/MyArrow/article/details/9701499" target="_blank" rel="noopener">CPSR/SPSR</a> <a href="https://blog.csdn.net/caihaitao2000/article/details/84843270" target="_blank" rel="noopener">异常处理</a> <a href="https://blog.csdn.net/SoaringLee_fighting/article/details/81906495" target="_blank" rel="noopener">arm架构64位入门基础：架构分析、寄存器、调用规则、指令集、程序调试以及参考手册</a> <a href="https://blog.csdn.net/SoaringLee_fighting/article/details/82530435" target="_blank" rel="noopener">arm架构64位（AArch64）汇编优化总结</a></p>
-]]></content>
-      <categories>
-        <category>ARM</category>
-      </categories>
-  </entry>
-  <entry>
     <title>51例程</title>
     <url>/51%E4%BE%8B%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="背景知识">背景知识</h2>
@@ -59,6 +16,29 @@
 ]]></content>
       <categories>
         <category>单片机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hexo-插件及配置</title>
+    <url>/Hexo-%E6%8F%92%E4%BB%B6%E5%8F%8A%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h3 id="本地搜索">本地搜索</h3>
+<h4 id="插件安装">插件安装</h4>
+<p>在hexo根目录安装 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure> &gt; 我安装完插件后,hexo就被卸载了,还要使用<code>yarn upgrade</code>重新安装一遍hexo,你也可以使用<code>yarn add hexo-generator-searchdb</code>命令安装插件</p>
+<p>修改根目录下的_config.yml <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">    <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">    <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">    <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure> 编辑主题配置文件,我是用的next主题 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure> #### 出现的异常 当我点击搜索按钮时,会发生页面无限加载,问题是我的一篇文章中出现了非<code>utf-8</code>的文字,所以造成了xml报错,无法被读取.根据根目录下的<code>search.xml</code>出错信息,找到原文章删除特殊字符即可.</p>
+<h3 id="引用标签">引用标签</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125; #路径引用</span><br><span class="line">&#123;% asset_img slug [title] %&#125; #图片引用</span><br><span class="line">&#123;% asset_link slug [title] %&#125; #文件引用,用作下载链接</span><br></pre></td></tr></table></figure>
+<h3 id="latex支持">latex支持</h3>
+<h4 id="卸载原有渲染器安装hexo-renderer-kramed">卸载原有渲染器,安装<strong>hexo-renderer-kramed</strong></h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn remove hexo-renderer-marked</span><br><span class="line">yarn add hexo-renderer-kramed</span><br></pre></td></tr></table></figure>
+<h4 id="修改next配置文件">修改next配置文件</h4>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Default (true) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in Front Matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">mathjax</span></span><br><span class="line">  <span class="comment">#engine: katex</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-rendering-pandoc (or hexo-renderer-kramed) needed to full MathJax support.</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">cdn:</span> <span class="string">https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML</span> <span class="comment">#问号后面的是引用配置</span></span><br><span class="line">    <span class="comment">#cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML</span></span><br></pre></td></tr></table></figure>
+<h4 id="修改解析错误">修改解析错误</h4>
+<p>这里的解析错误代表单行引用时要加四个反斜线才能正常换行</p>
+<h4 id="更换pandoc解码器">更换pandoc解码器</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn remove hexo-renderer-marked</span><br><span class="line">yarn add hexo-renderer-pandoc</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>博客相关</category>
       </categories>
   </entry>
   <entry>
@@ -992,6 +972,26 @@
       </categories>
   </entry>
   <entry>
+    <title>ARM-相关知识及传送门</title>
+    <url>/ARM-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%8F%8A%E4%BC%A0%E9%80%81%E9%97%A8/</url>
+    <content><![CDATA[<h3 id="portal">Portal</h3>
+<p><a href="https://azeria-labs.com/writing-arm-assembly-part-1/" target="_blank" rel="noopener">官方介绍</a> <a href="https://blog.csdn.net/MyArrow/article/details/9701499" target="_blank" rel="noopener">CPSR/SPSR</a> <a href="https://blog.csdn.net/caihaitao2000/article/details/84843270" target="_blank" rel="noopener">异常处理</a> <a href="https://blog.csdn.net/SoaringLee_fighting/article/details/81906495" target="_blank" rel="noopener">arm架构64位入门基础：架构分析、寄存器、调用规则、指令集、程序调试以及参考手册</a> <a href="https://blog.csdn.net/SoaringLee_fighting/article/details/82530435" target="_blank" rel="noopener">arm架构64位（AArch64）汇编优化总结</a></p>
+]]></content>
+      <categories>
+        <category>ARM</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Dns服务相关</title>
+    <url>/Dns%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3/</url>
+    <content><![CDATA[<h4 id="dig命令">dig命令</h4>
+<p>显示域名详细信息,所有记录 以前的方式是全量区域传送,但是大部分域名服务器经过配置已经不允许区域传送,所以使用如下命令 <code>dig -t ANY +noall +multiline +answer 域名 @DNS服务器</code> 全量区域传送方式: <code>dig -t AXFR 域名 @DNS服务器</code> 反向解析 <code>dig -x ip地址 @DNS服务器</code></p>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+  </entry>
+  <entry>
     <title>bind9-笔记</title>
     <url>/bind9-%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="bind9">bind9</h1>
@@ -1039,39 +1039,6 @@
 <img src="/bind9-%E7%AC%94%E8%AE%B0/%E7%AE%A1%E7%90%86%E6%8C%89%E9%92%AE.png" class="" title="管理按钮">
 <img src="/bind9-%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%AE%9A%E4%B9%89dns%E6%9C%8D%E5%8A%A1%E5%99%A8.png" class="" title="自定义dns服务器">
 <p><strong>注意</strong>：网络dns服务器生效需要时间注册，并不是设置完之后直接可用，一定要在自己的dns服务器上写出dns服务器自己的A记录。</p>
-]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>docker-笔记</title>
-    <url>/docker-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="docker-笔记">docker-笔记</h1>
-<h4 id="概念">概念</h4>
-<blockquote>
-<p>你从仓库里pull的文件叫做镜像，只可读，不可写 当你执行<strong>docker run</strong>的时候，系统会创建一个容器，而他是可读可写的，所有的修改都是建立在容器层上 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">└── 只读层-镜像</span><br><span class="line">    └──可读可写层-容器</span><br></pre></td></tr></table></figure> - 为了方便数据共享 所以形成了镜像与容器的概念 - 即使你修改了docker中的文件,被修改的也只是<strong>容器</strong>层，只读层 不会发生任何改变，所以可以镜像复用 - 当exit结束docker中的交互式shell后,容器的内容仍会保留(可以指定docker -rm 指定镜像启动的容器 来删除容器内的修改)</p>
-</blockquote>
-<p>由于 <strong>union fs</strong>结构 使镜象中的层可以像动态链接库一样继承,复用 <a id="more"></a></p>
-<hr />
-<h4 id="命令">命令</h4>
-<p>拉取镜像 <strong>pull</strong></p>
-<p><code>$ docker pull ubuntu:16.04</code></p>
-<p>运行镜像 <strong>run</strong></p>
-<p><code>$ docker run -it --rm ubuntu:16.04 bash</code> <code>$ docker run --name webserver -d -p 80:80 nginx</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">相关参数:</span><br><span class="line">--name:命名</span><br><span class="line">--rm:这个参数是说容器退出后随之将其删除</span><br><span class="line">-i:	交互式操作</span><br><span class="line">-t:	终端</span><br><span class="line">bash:所运行的命令</span><br></pre></td></tr></table></figure>
-<p>列出镜像 <strong>image ls</strong> <code>$ docker image ls</code></p>
-<p>删除虚悬镜像 <strong>image prune</strong> <code>$ docker image prune</code></p>
-<p>中间层镜像 <strong>image ls -a</strong> <code>$ docker image ls -a</code></p>
-<p>删除本地镜像 <strong>image rm</strong> <code>$ docker image rm [选项] &lt;镜像1&gt;</code> <code>$ docker image rm 501(根据id删除镜像文件,一般取前三位)</code></p>
-<p>进入容器 <strong>exec</strong> <code>$ docker exec -it webserver bash</code></p>
-<p>查看后台容器 <strong>container ls</strong> <code>$ docker container ls</code></p>
-<p>查看所有容器 <strong>container ls -a</strong> <code>$ docker container ls -a</code></p>
-<p>附加到后台容器 <strong>attatch</strong> <code>$ docker attatch [container id]</code></p>
-<p>容器保存为镜像的命令 <strong>commit</strong> <code>docker commit [选项] &lt;容器ID或容器名&gt; [&lt;仓库名&gt;[:&lt;标签&gt;]]</code></p>
-<hr />
-<h4 id="dockerfile-编写">dockerfile 编写</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">命令:</span><br><span class="line">    RUN	执行命令</span><br><span class="line">    COPY 复制文件</span><br><span class="line">    FROM 指定基础镜像</span><br><span class="line">    ADD 更高级的复制文件</span><br><span class="line">    CMD 容器启动命令</span><br><span class="line">    ENTRYPOINT 入口点</span><br><span class="line">    ENV 设置环境变量</span><br><span class="line">    ARG 构建参数</span><br><span class="line">    VOLUME 定义匿名卷</span><br><span class="line">    EXPOSE 声明端口</span><br><span class="line">    WORKDIR 指定工作目录</span><br><span class="line">    USER 指定当前用户</span><br><span class="line">    HEALTHCHECK 健康检查</span><br><span class="line">首先写出一个Dockerfile</span><br><span class="line">	$ docker build -t 镜像名:标签 .(点代表当前目录,由于docker上传Dockermakefile到服务端,形成了上下文概念,所以要使用相对路径,不可以使用绝对路径,因为绝对路径会超出上下文的管理范围)</span><br><span class="line">	cat Dockerfile | docker build -</span><br><span class="line">	##如果标准输入传入的是文本文件，则将其视为 Dockerfile，并开始构建。这种形式由于直接从标准输入中读取 Dockerfile 的内容，它没有上下文，因此不可以像其他方法那样可以将本地文件 COPY 进镜像之类的事情</span><br><span class="line">	</span><br><span class="line">	COPY 指令将从构建上下文目录中 &lt;源路径&gt; 的文件&#x2F;目录复制到新的一层的镜像内的 &lt;目标路径&gt; 位置。比如：</span><br><span class="line">	COPY package.json &#x2F;usr&#x2F;src&#x2F;app&#x2F;##上下文路径中,只能使用相对路径,因为会上传当前目录所有文件到上下文目录中,所以只能当前目录的相对路径,指定其他路径超出上下文目录管理范围</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>运维</category>
@@ -1219,61 +1186,6 @@
       </categories>
   </entry>
   <entry>
-    <title>gdb-常用调试指令</title>
-    <url>/gdb-%E5%B8%B8%E7%94%A8%E8%B0%83%E8%AF%95%E6%8C%87%E4%BB%A4/</url>
-    <content><![CDATA[<h2 id="背景知识">背景知识</h2>
-<h3 id="内存">内存</h3>
-
-<h3 id="栈">栈</h3>
-
-<h3 id="堆">堆</h3>
-<p>与栈情况类似,但存储的是文件之类的数据</p>
-<h3 id="gdb基本调试命令">GDB基本调试命令</h3>
-<p><a href="https://www.cnblogs.com/qigaohua/p/6077790.html" target="_blank" rel="noopener">GDB基本调试命令</a> <a href="http://lazybing.github.io/blog/2016/04/01/how-to-use-gdb/" target="_blank" rel="noopener">如何使用 GDB</a></p>
-<h2 id="gdb工具使用前期配置">GDB工具使用前期配置</h2>
-<h3 id="设置对core文件输出大小无限制">设置对core文件输出大小无限制</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line"></span><br><span class="line">vi /etc/profile</span><br><span class="line">Shift + G</span><br><span class="line">i</span><br><span class="line"><span class="comment"># No core files by default 0, unlimited is oo</span></span><br><span class="line"><span class="built_in">ulimit</span> -S -c unlimited &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-<h4 id="提示">提示</h4>
-<p>在图形界面的虚拟终端下,可能需要每次启动都source一遍<code>/etc/profile</code>,请把source加入你的<code>~/.bashrc</code>或<code>~/.zshrc</code>第一行</p>
-<h3 id="设置croe信息转储">设置croe信息转储</h3>
-<p>core文件同名会覆盖. 这里为其加上一个 core命名规则, 让其变成 [core.pid] 格式. <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line"></span><br><span class="line">vi /etc/sysctl.conf</span><br><span class="line">Shift + G</span><br><span class="line">i</span><br><span class="line"></span><br><span class="line"><span class="comment"># open, add core.pid </span></span><br><span class="line">kernel.core_pattern = ./core_%t_%p_%e</span><br><span class="line">kernel.core_uses_pid = 1</span><br><span class="line"></span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line">sysctl -p /etc/sysctl.conf</span><br></pre></td></tr></table></figure></p>
-<h3 id="配置peda">配置peda</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;longld&#x2F;peda.git ~&#x2F;peda</span><br><span class="line">echo &quot;source ~&#x2F;peda&#x2F;peda.py&quot; &gt;&gt; ~&#x2F;.gdbinit</span><br></pre></td></tr></table></figure>
-<h2 id="gdb使用">GDB使用</h2>
-<h3 id="常见用法">常见用法</h3>
-<ol type="1">
-<li>调试程序。有几种方法可以在gdb下运行你的程序：</li>
-</ol>
-<ul>
-<li>gdb ${你的程序} 进入gdb后，输入run(简写r) ${arg1} ${arg2} … ${argN}</li>
-<li>gdb --args ${你的程序} ${arg1} ${arg2} … ${argN} 进入gdb后，运行run。</li>
-<li>gdb进入gdb后，输入file ${你的程序}。然后使用set args ${arg1} ${arg2} … ${argN} 设定好你的程序参数，再运行run。</li>
-</ul>
-<ol start="2" type="1">
-<li>调试正在运行的程序：</li>
-</ol>
-<ul>
-<li>gdb ${你的程序} ${程序pid}</li>
-</ul>
-<ol start="3" type="1">
-<li>查core：</li>
-</ol>
-<ul>
-<li>gdb ${你的程序} -core ${core文件}</li>
-</ul>
-<h4 id="静默模式启动gdb">静默模式启动gdb</h4>
-<p><code>gdb -q</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gdb:b (break) #设置断点</span><br><span class="line"></span><br><span class="line">b func_name #对函数下断点</span><br><span class="line"></span><br><span class="line">b *addr   #对地址下断点</span><br><span class="line"></span><br><span class="line">info b   # 查看断点</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">delete</span><br><span class="line">用法：delete [breakpoints num] [range...]</span><br><span class="line">delete可删除单个断点，也可删除一个断点的集合，这个集合用连续的断点号来描述。</span><br><span class="line">例如：</span><br><span class="line">delete 5</span><br><span class="line">delete 1-10</span><br><span class="line"></span><br><span class="line">clear</span><br><span class="line">用法:clear </span><br><span class="line">    删除所在行的多有断点。</span><br><span class="line">    clear location</span><br><span class="line">clear 删除所选定的环境中所有的断点</span><br><span class="line">clear location location描述具体的断点。</span><br><span class="line">例如：</span><br><span class="line">clear list_insert         &#x2F;&#x2F;删除函数的所有断点</span><br><span class="line">clear list.c:list_delet   &#x2F;&#x2F;删除文件：函数的所有断点</span><br><span class="line">clear 12                  &#x2F;&#x2F;删除行号的所有断点</span><br><span class="line">clear list.c:12           &#x2F;&#x2F;删除文件：行号的所有断点</span><br><span class="line"></span><br><span class="line">clear 删除断点是基于行的，不是把所有的断点都删除。</span><br><span class="line"></span><br><span class="line">r #启动加载的程序</span><br><span class="line"></span><br><span class="line">gdb:disas main #查看函数汇编指令</span><br><span class="line"></span><br><span class="line">info r(egister) #查看寄存器情况</span><br><span class="line"></span><br><span class="line">ni #单步调试</span><br><span class="line"></span><br><span class="line">si #step into 步进 进到某个函数里面</span><br><span class="line"></span><br><span class="line">bt  #backtrace 查看现在的堆栈情况   对于了解程序执行比较有用</span><br><span class="line"></span><br><span class="line">c  #continue #继续执行到下一个断点</span><br><span class="line"></span><br><span class="line">x &#x2F;100xg $rsp  #以八进制查看从栈顶开始的100字节</span><br></pre></td></tr></table></figure>
-<h3 id="pattern-工具">pattern 工具</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pattern 指令,生成长字符串,</span><br><span class="line"></span><br><span class="line">pattern create 150 #生成一个长度为150字节的字符串</span><br><span class="line">pattern offset rip地址 #判断从多少字节开始溢出,前提是程序非正常退出,rip内容被覆盖</span><br></pre></td></tr></table></figure>
-<h2 id="参考链接">参考链接</h2>
-<p>http://yaov.net/2018/09/15/linux-pwn%E5%9F%BA%E7%A1%801/</p>
-]]></content>
-      <categories>
-        <category>linux工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>git可视化查看分支</title>
     <url>/git-%E5%8F%AF%E8%A7%86%E5%8C%96%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF/</url>
     <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> --pretty=format:<span class="string">"%h %s"</span> --graph</span><br></pre></td></tr></table></figure>
@@ -1348,13 +1260,23 @@
       </categories>
   </entry>
   <entry>
-    <title>Dns服务相关</title>
-    <url>/Dns%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3/</url>
-    <content><![CDATA[<h4 id="dig命令">dig命令</h4>
-<p>显示域名详细信息,所有记录 以前的方式是全量区域传送,但是大部分域名服务器经过配置已经不允许区域传送,所以使用如下命令 <code>dig -t ANY +noall +multiline +answer 域名 @DNS服务器</code> 全量区域传送方式: <code>dig -t AXFR 域名 @DNS服务器</code> 反向解析 <code>dig -x ip地址 @DNS服务器</code></p>
+    <title>mysql-笔记</title>
+    <url>/mysql-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="mysql">mysql</h3>
+<p>数据库 主表为文章名 附表为文章内容 相互独立 主表索引附表</p>
+<h4 id="配置远程访问">配置远程访问</h4>
+<h5 id="授权法">授权法</h5>
+<h2 id="section"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">mysql&gt;use mysql;</span><br><span class="line">mysql&gt;grant all privileges  on *.* to root@&#39;%&#39; identified by &quot;password&quot;;</span><br><span class="line">mysql&gt;flush privileges;</span><br></pre></td></tr></table></figure></h2>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">mysql&gt; USE mysql ;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; UPDATE user SET Password = password ( '新密码' ) WHERE User = 'root' ;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line">Rows matched: 2 Changed: 0 Warnings: 0</span><br><span class="line">mysql&gt; flush privileges ;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line">mysql&gt; quit</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="string">`tp5`</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> <span class="string">'utf8'</span> <span class="keyword">COLLATE</span> <span class="string">'utf8_czech_ci'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="limit">limit</h4>
+<p><strong>limit</strong>是用来限制查询结果的</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM TABLE LIMIT m,n</span><br></pre></td></tr></table></figure>
+<p>其中m是指记录开始的index，从0开始，表示第一条记录 n是指从第m+1条开始，取n条。 select * from tablename limit 2,4 即取出第3条至第6条，4条记录</p>
+<h4 id="order">order</h4>
+<p><strong>order</strong>子句用来排序表,<strong>order by 后加列名</strong> 如果要逆序 在列名后加 <strong>desc</strong> 正序<strong>ASC</strong> <figure class="highlight"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM `table` ORDER BY `column` ASC;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
-        <category>运维</category>
+        <category>编程</category>
       </categories>
   </entry>
   <entry>
@@ -1384,26 +1306,43 @@
       </categories>
   </entry>
   <entry>
-    <title>Hexo-插件及配置</title>
-    <url>/Hexo-%E6%8F%92%E4%BB%B6%E5%8F%8A%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h3 id="本地搜索">本地搜索</h3>
-<h4 id="插件安装">插件安装</h4>
-<p>在hexo根目录安装 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure> &gt; 我安装完插件后,hexo就被卸载了,还要使用<code>yarn upgrade</code>重新安装一遍hexo,你也可以使用<code>yarn add hexo-generator-searchdb</code>命令安装插件</p>
-<p>修改根目录下的_config.yml <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">    <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">    <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">    <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure> 编辑主题配置文件,我是用的next主题 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure> #### 出现的异常 当我点击搜索按钮时,会发生页面无限加载,问题是我的一篇文章中出现了非<code>utf-8</code>的文字,所以造成了xml报错,无法被读取.根据根目录下的<code>search.xml</code>出错信息,找到原文章删除特殊字符即可.</p>
-<h3 id="引用标签">引用标签</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125; #路径引用</span><br><span class="line">&#123;% asset_img slug [title] %&#125; #图片引用</span><br><span class="line">&#123;% asset_link slug [title] %&#125; #文件引用,用作下载链接</span><br></pre></td></tr></table></figure>
-<h3 id="latex支持">latex支持</h3>
-<h4 id="卸载原有渲染器安装hexo-renderer-kramed">卸载原有渲染器,安装<strong>hexo-renderer-kramed</strong></h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn remove hexo-renderer-marked</span><br><span class="line">yarn add hexo-renderer-kramed</span><br></pre></td></tr></table></figure>
-<h4 id="修改next配置文件">修改next配置文件</h4>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Default (true) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in Front Matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">mathjax</span></span><br><span class="line">  <span class="comment">#engine: katex</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-rendering-pandoc (or hexo-renderer-kramed) needed to full MathJax support.</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">cdn:</span> <span class="string">https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML</span> <span class="comment">#问号后面的是引用配置</span></span><br><span class="line">    <span class="comment">#cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML</span></span><br></pre></td></tr></table></figure>
-<h4 id="修改解析错误">修改解析错误</h4>
-<p>这里的解析错误代表单行引用时要加四个反斜线才能正常换行</p>
-<h4 id="更换pandoc解码器">更换pandoc解码器</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn remove hexo-renderer-marked</span><br><span class="line">yarn add hexo-renderer-pandoc</span><br></pre></td></tr></table></figure>
+    <title>od-快捷键</title>
+    <url>/od-%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<p>无论当前的OllyDbg窗口是什么，这些快捷键均有效：  Ctrl+F2 - 重启程序，即重新启动被调试程序。如果当前没有调试的程序，OllyDbg会运行历史列表［history list］中的第一个程序。程序重启后，将会删除所有内存断点和硬件断点。 译者注：从实际使用效果看，硬件断点在程序重启后并没有移除。</p>
+<p>Alt+F2 - 关闭，即关闭被调试程序。如果程序仍在运行，会弹出一个提示信息，询问您是否要关闭程序。   F3 - 弹出“打开32位.EXE文件”对话框［Open 32-bit .EXE file］，您可以选择可执行文件，并可以输入运行参数。   Alt+F5 - 让OllyDbg总在最前面。如果被调试程序在某个断点处发生中断，而这时调试程序弹出一个总在最前面的窗口（一般为模式消息或模式对话框［modal message or dialog］），它可能会遮住OllyDbg的一部分，但是我们又不能移动最小化这个窗口。激活OllyDbg（比如按任务栏上的标签）并按 Alt+F5，OllyDbg将设置成总在最前面，会反过来遮住刚才那个窗口。如果您再按一下Alt+F5，OllyDbg会恢复到正常状态。 OllyDbg是否处于总在最前面状态，将会保存，在下一次调试时依然有效。当前是否处于总在最前面状态，会显示在状态栏中。</p>
+<p>F7 - 单步步入到下一条命令，如果当前命令是一个函数［Call］，则会停在这个函数体的第一条命令上。如果当前命令是是含有REP前缀，则只执行一次重复操作。 <a id="more"></a> Shift+F7 - 与F7相同，但是如果被调试程序发生异常而中止，调试器会首先尝试步入被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。</p>
+<p>Ctrl+F7 - 自动步入，在所有的函数调用中一条一条地执行命令（就像您按住F7键不放一样，只是更快一些）。当您执行其他一些单步命令，或者程序到达断点，或者发生异常时，自动步入过程都会停止。每次单步步入，OllyDbg都会更新所有的窗口。所以为了提高自动步入的速度，请您关闭不必要成窗口，对于保留的窗口最好尽量的小。按Esc键，可以停止自动步入。   F8 - 单步步过到下一条命令。如果当前命令是一个函数，则一次执行完这个函数（除非这个函数内部包含断点，或发生了异常）。如果当前命令是含有REP前缀，则会执行完重复操作，并停在下一条命令上。   Shift+F8 - 与F8相同，但是如果被调试程序发生异常而中止，调试器会首先尝试步过被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。   Ctrl+F8 - 自动步过，一条一条的执行命令，但并不进入函数调用内部（就像您按住F8键不放一样，只是更快一些）。当您执行其他一些单步命令，或者程序到达断点，或者发生异常时，自动步过过程都会停止。每次单步步过，OllyDbg都会更新所有的窗口。所以为了提高自动步过的速度，请您关闭不必要成窗口，对于保留的窗口最好尽量的小。按Esc键，可以停止自动步过。   F9 - 让程序继续执行。</p>
+<p>Shift+F9 - 与F9相同，但是如果被调试程序发生异常而中止，调试器会首先尝试执行被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。   Ctrl+F9 - 执行直到返回，跟踪程序直到遇到返回，在此期间不进入子函数也不更新CPU数据。因为程序是一条一条命令执行的，所以速度可能会慢一些。按Esc键，可以停止跟踪。   Alt+F9 - 执行直到返回到用户代码段，跟踪程序直到指令所属于的模块不在系统目录中，在此期间不进入子函数也不更新CPU数据。因为程序是一条一条执行的，所以速度可能会慢一些。按Esc键，可以停止跟踪。   Ctrl+F11 -Run跟踪步入，一条一条执行命令，进入每个子函数调用，并把寄存器的信息加入到Run跟踪的存储数据中。Run跟踪不会同步更新CPU窗口。</p>
+<p>F12 - 停止程序执行，同时暂停被调试程序的所有线程。请不要手动恢复线程运行，最好使用继续执行快捷键或菜单选项（像 F9）。   Ctrl+F12 - Run跟踪 步过，一条一条执行命令，但是不进入子函数调用，，并把寄存器的信息加入到Run跟踪的存储数据中。Run跟踪不会同步更新CPU窗口。   Esc - 如果当前处于自动运行或跟踪状态，则停止自动运行或跟踪；如果CPU显示的是跟踪数据，则显示真实数据。   Alt+B - 显示断点窗口。在这个窗口中，您可以编辑、删除、或跟进到断点处。 Alt+C - 显示CPU窗口。 Alt+E - 显示模块列表［list of modules］。   Alt+K - 显示调用栈［Call stack］窗口。   Alt+L - 显示日志窗口。   Alt+M - 显示内存窗口。   Alt+O - 显示选项对话框［Options dialog］   Ctrl+P - 显示补丁窗口。   Ctrl+T - 打开 暂停 Run跟踪 对话框   Alt+X - 关闭 OllyDbg。   大多数窗口都支持以下的键盘命令：   Alt+F3 - 关闭当前窗口。 c.&amp;vWmLSGE  Ctrl+F4 - 关闭当前窗口。 F5 - 最大化当前窗口或将当前窗口大小改为正常化。   F6 - 切换到下一个窗口。   Shift+F6 - 切换到前一个窗口。   F10 - 打开与当前窗口或面板相关的快捷菜单。   左方向键 - 显示窗口左方一个字节宽度的内容。   Ctrl+左方向键 - 显示窗口左方一栏的内容。   右方向键 - 显示窗口右方一个字节宽度的内容</p>
+<p>Ctrl+右方向键 - 显示窗口右方一栏的内容   反汇编窗口中的快捷键［Disassembler shortcuts］   当CPU窗口中的反汇编面板［Disassembler pane］处于激活状态时，您可以使用以下快捷键：   回车键 - 将选中的命令添加到命令历史［command history］中，如果当前命令是一个跳转、函数或者是转换表的一个部分，则进入到目的地址。   退格键 - 移除选中部分的自动分析信息。如果分析器将代码误识别为数据，这个快捷键就非常有用。请参考解码提示［decoding hints］. </p>
+<p>Alt+退格键 - 撤消所选部分的修改，以备份数据的相应内容替换所选部分。仅当备份数据存在且与所选部分不同时可用。</p>
+<p>Ctrl+F1 -如果API帮助文件已经选择，将打开与首个选择行内的符号名相关联的帮助主题。   F2 -在首个选择的命令上开关INT3 断点［Breakpoint］，也可以双击该行第二列。   Shift+F2 -在首个选择命令设置条件断点，参见忽略Kernel32中内存访问异常［Ignore memory access violations in Kernel32］。   F4 -执行到所选行，在首个选择的命令上设置一次性断点，然后继续执行调试程序，直到OllyDbg捕获到异常或者停止在该断点上。在程序执行到该命令之前，该一次性断点一直有效。如有必要，可在断点窗口［Breakpoints window］中删除它。   Shift+F4 -设置记录断点（一种条件断点，当条件满足时一些表达式的值会记录下来）， 详情参见断点［Breakpoint］。   Ctrl+F5 -打开与首个选择的命令相对应的源文件。   Alt+F7 -转到上一个找到的参考。   Alt+F8 -转到下一个找到参考。   Ctrl+A -分析当前模块的代码段。</p>
+<p>Ctrl+B - 开始二进制搜索。   Ctrl+C -复制所选内容到剪贴板。复制时会简单地按列宽截断不可见内容，如果希望排除不需要的列，可把这些列的宽度调整到最小。   Ctrl+E -以二进制（十六进制）格式编辑所选内容。   Ctrl+F -开始命令搜索。   Ctrl+G -转到某地址。该命令将弹出输入地址或表达式的窗口。该命令不会修改 EIP。</p>
+<p>Ctrl+J -列出所有的涉及到该位置的调用和跳转，在您用这个功能之前，您必须使用分析代码功能。 Ctrl+K - 查看与当前函数相关的调用树［Call tree］。在您用这个功能之前，您必须使用分析代码功能。</p>
+<p>Ctrl+L - 搜索下一个，重复上一次的搜索内容。   Ctrl+N - 打开当前模块的名称（标签）列表。</p>
+<p>Ctrl+O - 扫描object文件。扫描Object文件。该命令会显示扫描Object文件对话框，您可以在该对话框中选择Object文件或者lib文件，并扫描这个文件，试图找到在实际代码段中用到的目标模块。   Ctrl+R -搜索所选命令的参考。该命令扫描激活模块的全部可执行代码，以找到涉及到首个选中的命令的全部相关参考（包括：常量、跳转及调用），您可以在参考中使用快捷键 Alt+F7 和 Alt+F8来浏览这些参考。为便于您使用，被参考的命令也包含在该列表中。</p>
+<p>Ctrl+S -命令搜索。该命令显示命令查找［Find command］对话框供您输入汇编命令，并从当前命令开始搜索。   星号［Asterisk］(*) -转到原始位置（激活线程的EIP处）。</p>
+<p>Ctrl+星号(*) - 指定新的起始位置，设置当前所选线程的EIP为首个选择字节的地址。您可以在选择EIP并撤消该操作。</p>
+<p>加号［Plus］(+) -如果run跟踪［run trace］ 没有激活，则根据命令历史［command history］跳到下一条运行过命令的地方；否则跳到Run跟踪的下一个记录。   Ctrl+加号 - 跳到前一个函数开始处。（注意只是跳到，并不执行）</p>
+<p>减号［Minus］(-) - 如果run跟踪［run trace］ 没有激活，则根据命令历史［command history］跳到前一条运行过命令的地方；否则跳到Run跟踪的前一个记录。</p>
+<p>Ctrl+减号 - 跳到下一个函数开始处。（注意只是跳到，并不执行）   空格［Space］ - 修改命令。您可在显示对话框中以汇编语言修改实际指令或输入新指令，这些指令将替换实际代码，您也可以在想要修改的指令处双击鼠标。   冒号［Colon］( - 添加标签。显示添加标签窗口［Add label］或修改标签窗口［Change label］，您可在此输入与首个选择的命令中的第一个字节相关联的标签（符号名）。注意，在多种编程语言中，冒号可以是标签的一部分。</p>
+<p>分号［Semicolon］(;) - 添加注释［comment］。显示添加注释窗口［Add label］或修改注释窗口［Change label］，您可在此输入与首条所选命令的第一个字节相关联的注释（注释串会显示在最后一列中）。注意，多种汇编语言使用分号作为注释开始。您也可以在注释列双击需要注释的命令行。   命令行插件支持的命令   CALC 判断表达式   WATCH 添加监视表达式</p>
+<p>AT 在指定地址进行反汇编</p>
+<p>FOLLOW 跟随命令 ORIG 反汇编于 EIP   DUMP 在指定地址进行转存</p>
+<p>DA 转存为反汇编代码   DB 使用十六进制字节格式转存   DC 使用 ASCII 格式转存</p>
+<p>DD 转存在堆栈格式   DU 转存在 UNICODE 格式</p>
+<p>DW 使用十六进制字词格式转存   STK   AS （AS + 地址 + 字符串） 在指定地址进行汇编   BP 进行条件中断（有条件的断点）</p>
+<p>BPX 中断在全部调用 （Call） BPD 清除全部调用中的断点   BC 清除断点   MR 内存断点于访问时   MW 内存断点于写入时   MD 清除内存断点   HR 访问时进行硬件中断   HW 写入时进行硬件中断</p>
+<p>HE 执行时进行硬件中断   HD 清除硬件断点   STOP 停止运行程序调试 PAUSE 暂停执行程序调试   RUN 运行程序进行调试   GE 运行和通过例外</p>
+<p>SI 单步进入 Call 中 SO 步过 Call TI 跟踪进入直到地址   TO 跟踪步过直到地址 TC 跟踪进入直到满足条件</p>
+<p>TOC 跟踪步过直到满足条件   TR 运行直到返回   TU 运行直到用户代码   LOG 查看记录窗口   MOD 查看模块窗口</p>
+<p>MEM 查看内存窗口</p>
+<p>CPU 查看 CPU 窗口</p>
+<p>CS 查看 Call 堆栈   BRK 查看断点窗口</p>
+<p>OPT 打开选项设置窗口   EXIT 退出 OllyDbg   QUIT 退出 OllyDbg   OPEN 打开一个可执行文件   CLOSE 关闭可执行文件   RST 重新运行当前程序   HELP 查看 API 函数的帮助</p>
 ]]></content>
       <categories>
-        <category>博客相关</category>
+        <category>windows工具</category>
       </categories>
   </entry>
   <entry>
@@ -1433,21 +1372,21 @@
       </categories>
   </entry>
   <entry>
-    <title>screen-笔记</title>
-    <url>/screen-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="常用参数">常用参数</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -S yourname -&gt; 新建一个叫yourname的session</span><br><span class="line">screen -ls -&gt; 列出当前所有的session</span><br><span class="line">screen -r yourname -&gt; 回到yourname这个session</span><br><span class="line">screen -d yourname -&gt; 远程detach某个session</span><br><span class="line">screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</span><br><span class="line">在每个screen session 下，所有命令都以 ctrl+a(C-a) 开始。</span><br><span class="line">C-a ? -&gt; Help，显示简单说明</span><br><span class="line">C-a c -&gt; Create，开启新的 window</span><br><span class="line">C-a n -&gt; Next，切换到下个 window </span><br><span class="line">C-a p -&gt; Previous，前一个 window </span><br><span class="line">C-a 0..9 -&gt; 切换到第 0..9 个window</span><br><span class="line">Ctrl+a [Space] -&gt; 由視窗0循序換到視窗9</span><br><span class="line">C-a C-a -&gt; 在两个最近使用的 window 间切换</span><br><span class="line">C-a x -&gt; 锁住当前的 window，需用用户密码解锁</span><br><span class="line">C-a d -&gt; detach，暂时离开当前session，将目前的 screen session (可能含有多个 windows) 丢到后台执行，并会回到还没进 screen 时的状态，此时在 screen session 里    每个 window 内运行的 process (无论是前台&#x2F;后台)都在继续执行，即使 logout 也不影响。 </span><br><span class="line">C-a z -&gt; 把当前session放到后台执行，用 shell 的 fg 命令則可回去。</span><br><span class="line">C-a w -&gt; Windows，列出已开启的 windows 有那些 </span><br><span class="line">C-a t -&gt; Time，显示当前时间，和系统的 load </span><br><span class="line">C-a K -&gt; kill window，强行关闭当前的 window</span><br></pre></td></tr></table></figure>
-<h3 id="还是tmux好用">还是TMUX好用</h3>
+    <title>solarized-vim美化</title>
+    <url>/solarized-vim%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<h3 id="vimrc">.vimrc</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">syntax enable</span><br><span class="line">set t_Co&#x3D;256</span><br><span class="line">set background&#x3D;dark</span><br><span class="line">let g:solarized_termtrans &#x3D; 1   #这一条存在的原因是,xwindows情境下,由于透明度等因素,会使vim页面变得灰白,加上这一条命令即可</span><br><span class="line">colorscheme solarized</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>linux工具</category>
       </categories>
   </entry>
   <entry>
-    <title>solarized-vim美化</title>
-    <url>/solarized-vim%E7%BE%8E%E5%8C%96/</url>
-    <content><![CDATA[<h3 id="vimrc">.vimrc</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">syntax enable</span><br><span class="line">set t_Co&#x3D;256</span><br><span class="line">set background&#x3D;dark</span><br><span class="line">let g:solarized_termtrans &#x3D; 1   #这一条存在的原因是,xwindows情境下,由于透明度等因素,会使vim页面变得灰白,加上这一条命令即可</span><br><span class="line">colorscheme solarized</span><br></pre></td></tr></table></figure>
+    <title>screen-笔记</title>
+    <url>/screen-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="常用参数">常用参数</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -S yourname -&gt; 新建一个叫yourname的session</span><br><span class="line">screen -ls -&gt; 列出当前所有的session</span><br><span class="line">screen -r yourname -&gt; 回到yourname这个session</span><br><span class="line">screen -d yourname -&gt; 远程detach某个session</span><br><span class="line">screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</span><br><span class="line">在每个screen session 下，所有命令都以 ctrl+a(C-a) 开始。</span><br><span class="line">C-a ? -&gt; Help，显示简单说明</span><br><span class="line">C-a c -&gt; Create，开启新的 window</span><br><span class="line">C-a n -&gt; Next，切换到下个 window </span><br><span class="line">C-a p -&gt; Previous，前一个 window </span><br><span class="line">C-a 0..9 -&gt; 切换到第 0..9 个window</span><br><span class="line">Ctrl+a [Space] -&gt; 由視窗0循序換到視窗9</span><br><span class="line">C-a C-a -&gt; 在两个最近使用的 window 间切换</span><br><span class="line">C-a x -&gt; 锁住当前的 window，需用用户密码解锁</span><br><span class="line">C-a d -&gt; detach，暂时离开当前session，将目前的 screen session (可能含有多个 windows) 丢到后台执行，并会回到还没进 screen 时的状态，此时在 screen session 里    每个 window 内运行的 process (无论是前台&#x2F;后台)都在继续执行，即使 logout 也不影响。 </span><br><span class="line">C-a z -&gt; 把当前session放到后台执行，用 shell 的 fg 命令則可回去。</span><br><span class="line">C-a w -&gt; Windows，列出已开启的 windows 有那些 </span><br><span class="line">C-a t -&gt; Time，显示当前时间，和系统的 load </span><br><span class="line">C-a K -&gt; kill window，强行关闭当前的 window</span><br></pre></td></tr></table></figure>
+<h3 id="还是tmux好用">还是TMUX好用</h3>
 ]]></content>
       <categories>
         <category>linux工具</category>
@@ -1488,12 +1427,36 @@
       </categories>
   </entry>
   <entry>
-    <title>sql注入-拼接注入</title>
-    <url>/sql%E6%B3%A8%E5%85%A5-%E6%8B%BC%E6%8E%A5%E6%B3%A8%E5%85%A5/</url>
-    <content><![CDATA[<p>git泄露,用Git_Assemble拖下来 获得源码 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+    <title>docker-笔记</title>
+    <url>/docker-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="docker-笔记">docker-笔记</h1>
+<h4 id="概念">概念</h4>
+<blockquote>
+<p>你从仓库里pull的文件叫做镜像，只可读，不可写 当你执行<strong>docker run</strong>的时候，系统会创建一个容器，而他是可读可写的，所有的修改都是建立在容器层上 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">└── 只读层-镜像</span><br><span class="line">    └──可读可写层-容器</span><br></pre></td></tr></table></figure> - 为了方便数据共享 所以形成了镜像与容器的概念 - 即使你修改了docker中的文件,被修改的也只是<strong>容器</strong>层，只读层 不会发生任何改变，所以可以镜像复用 - 当exit结束docker中的交互式shell后,容器的内容仍会保留(可以指定docker -rm 指定镜像启动的容器 来删除容器内的修改)</p>
+</blockquote>
+<p>由于 <strong>union fs</strong>结构 使镜象中的层可以像动态链接库一样继承,复用 <a id="more"></a></p>
+<hr />
+<h4 id="命令">命令</h4>
+<p>拉取镜像 <strong>pull</strong></p>
+<p><code>$ docker pull ubuntu:16.04</code></p>
+<p>运行镜像 <strong>run</strong></p>
+<p><code>$ docker run -it --rm ubuntu:16.04 bash</code> <code>$ docker run --name webserver -d -p 80:80 nginx</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">相关参数:</span><br><span class="line">--name:命名</span><br><span class="line">--rm:这个参数是说容器退出后随之将其删除</span><br><span class="line">-i:	交互式操作</span><br><span class="line">-t:	终端</span><br><span class="line">bash:所运行的命令</span><br></pre></td></tr></table></figure>
+<p>列出镜像 <strong>image ls</strong> <code>$ docker image ls</code></p>
+<p>删除虚悬镜像 <strong>image prune</strong> <code>$ docker image prune</code></p>
+<p>中间层镜像 <strong>image ls -a</strong> <code>$ docker image ls -a</code></p>
+<p>删除本地镜像 <strong>image rm</strong> <code>$ docker image rm [选项] &lt;镜像1&gt;</code> <code>$ docker image rm 501(根据id删除镜像文件,一般取前三位)</code></p>
+<p>进入容器 <strong>exec</strong> <code>$ docker exec -it webserver bash</code></p>
+<p>查看后台容器 <strong>container ls</strong> <code>$ docker container ls</code></p>
+<p>查看所有容器 <strong>container ls -a</strong> <code>$ docker container ls -a</code></p>
+<p>附加到后台容器 <strong>attatch</strong> <code>$ docker attatch [container id]</code></p>
+<p>容器保存为镜像的命令 <strong>commit</strong> <code>docker commit [选项] &lt;容器ID或容器名&gt; [&lt;仓库名&gt;[:&lt;标签&gt;]]</code></p>
+<hr />
+<h4 id="dockerfile-编写">dockerfile 编写</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">命令:</span><br><span class="line">    RUN	执行命令</span><br><span class="line">    COPY 复制文件</span><br><span class="line">    FROM 指定基础镜像</span><br><span class="line">    ADD 更高级的复制文件</span><br><span class="line">    CMD 容器启动命令</span><br><span class="line">    ENTRYPOINT 入口点</span><br><span class="line">    ENV 设置环境变量</span><br><span class="line">    ARG 构建参数</span><br><span class="line">    VOLUME 定义匿名卷</span><br><span class="line">    EXPOSE 声明端口</span><br><span class="line">    WORKDIR 指定工作目录</span><br><span class="line">    USER 指定当前用户</span><br><span class="line">    HEALTHCHECK 健康检查</span><br><span class="line">首先写出一个Dockerfile</span><br><span class="line">	$ docker build -t 镜像名:标签 .(点代表当前目录,由于docker上传Dockermakefile到服务端,形成了上下文概念,所以要使用相对路径,不可以使用绝对路径,因为绝对路径会超出上下文的管理范围)</span><br><span class="line">	cat Dockerfile | docker build -</span><br><span class="line">	##如果标准输入传入的是文本文件，则将其视为 Dockerfile，并开始构建。这种形式由于直接从标准输入中读取 Dockerfile 的内容，它没有上下文，因此不可以像其他方法那样可以将本地文件 COPY 进镜像之类的事情</span><br><span class="line">	</span><br><span class="line">	COPY 指令将从构建上下文目录中 &lt;源路径&gt; 的文件&#x2F;目录复制到新的一层的镜像内的 &lt;目标路径&gt; 位置。比如：</span><br><span class="line">	COPY package.json &#x2F;usr&#x2F;src&#x2F;app&#x2F;##上下文路径中,只能使用相对路径,因为会上传当前目录所有文件到上下文目录中,所以只能当前目录的相对路径,指定其他路径超出上下文目录管理范围</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>writeup</category>
+        <category>运维</category>
       </categories>
   </entry>
   <entry>
@@ -1517,14 +1480,12 @@
       </categories>
   </entry>
   <entry>
-    <title>vim忘记使用sudo</title>
-    <url>/vim%E5%BF%98%E8%AE%B0%E4%BD%BF%E7%94%A8sudo/</url>
-    <content><![CDATA[<h1 id="vim忘记使用sudo">vim忘记使用sudo</h1>
-<p>修改完文件后，进入命令模式</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">:w !sudo tee %</span><br></pre></td></tr></table></figure>
+    <title>sql注入-拼接注入</title>
+    <url>/sql%E6%B3%A8%E5%85%A5-%E6%8B%BC%E6%8E%A5%E6%B3%A8%E5%85%A5/</url>
+    <content><![CDATA[<p>git泄露,用Git_Assemble拖下来 获得源码 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
-        <category>linux知识</category>
+        <category>writeup</category>
       </categories>
   </entry>
   <entry>
@@ -1825,6 +1786,204 @@
       </categories>
   </entry>
   <entry>
+    <title>操作系统第七节课笔记-进程通信</title>
+    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%83%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/</url>
+    <content><![CDATA[<h1 id="进程通信概念及分类">进程通信概念及分类</h1>
+<h2 id="进程通信">进程通信</h2>
+<h3 id="实现机制">实现机制</h3>
+<ul>
+<li>进程通信概念
+<ul>
+<li>指进程之间的信息交换</li>
+</ul></li>
+<li>实现机制
+<ul>
+<li>低级进程通信：效率低，针对控制信息的传送。典型为信号量机制。</li>
+<li>高级进程通信：能传送大量数据，效率高，进程通信实现细节由操作系统提供，整个通信对用户透明，通信程序编制简单 <a id="more"></a> ### 类型</li>
+</ul></li>
+<li>共享存储器系统（操作系统提供相应的系统调用）
+<ul>
+<li>基于共享数据结构的通信方式</li>
+<li>基于共享存储区的通信方式</li>
+</ul></li>
+<li>信息传递系统
+<ul>
+<li>直接/间接通信方式</li>
+</ul></li>
+<li>管道通信系统
+<ul>
+<li>管道概念</li>
+<li>协调机制：互斥、同步、通信前提</li>
+</ul></li>
+</ul>
+<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%83%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/shm.tar.gz" title="共享内存示例下载">共享内存示例下载</a>
+<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%83%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/pipe.tar.gz" title="管道示例下载">管道示例下载</a>
+<h2 id="消息传递通信实现方式">消息传递通信实现方式</h2>
+<h3 id="直接通信方式">直接通信方式</h3>
+<ul>
+<li>通信原语
+<ul>
+<li>Send(Receiver,message)；</li>
+<li>Receive(Sender,message);
+<ul>
+<li>不知道发送者是谁
+<ul>
+<li>典型例子是打印机</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>一个接收进程可以与多个发送进程通信
+<ul>
+<li>打印进程</li>
+<li>Sender无法事先制定，故为变参性质</li>
+</ul></li>
+</ul>
+<h3 id="间接通信方式">间接通信方式</h3>
+<ul>
+<li>信箱
+<ul>
+<li>进程间通信有关共享数据结构的中间实体</li>
+<li>有操作系统或用户进程创建</li>
+<li>私有/公有/共享信箱</li>
+<li>可实现实时/非实时通信</li>
+</ul></li>
+<li>通信原语
+<ul>
+<li>信箱的创建和撤销、消息的发送和接收</li>
+</ul></li>
+<li>发送/接收金层间存在的四种关系
+<ul>
+<li>一对一、多对一、一对多、多对多</li>
+</ul></li>
+</ul>
+<h3 id="信息传递系统中的几个问题">信息传递系统中的几个问题</h3>
+<ul>
+<li>通信链路
+<ul>
+<li>显式/隐式建立（计算机网络/单机）</li>
+<li>点-点或多点连接通信链路</li>
+<li>单/双向通信链路</li>
+<li>无容量/有容量通信链路（缓冲区）</li>
+</ul></li>
+<li>消息格式
+<ul>
+<li>有消息头和效益正文构成，分定长/变长两种</li>
+</ul></li>
+<li>进程同步方式
+<ul>
+<li>发送/接受进程阻塞与否（三种情况）</li>
+</ul></li>
+</ul>
+<h2 id="消息缓冲队列通信机制">消息缓冲队列通信机制</h2>
+<h3 id="缓冲队列是通过数据结构实现的">缓冲队列是通过数据结构实现的</h3>
+<p>消息缓冲队列是一种临界资源,应该设计相应的信号量进行访问控制</p>
+<h4 id="消息缓冲区">消息缓冲区</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type MassageBuffer&#x3D;record</span><br><span class="line">	Sender;</span><br><span class="line">	&#x2F;&#x2F;发送者进程标识符</span><br><span class="line">	Size;</span><br><span class="line">	&#x2F;&#x2F;消息长度</span><br><span class="line">	Text;</span><br><span class="line">	&#x2F;&#x2F;消息正文</span><br><span class="line">	Next;</span><br><span class="line">	&#x2F;&#x2F;指向下一缓冲区的指针</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
+<h4 id="pcb通信数据项">PCB通信数据项</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type PCB&#x3D;record</span><br><span class="line">	massageQueue;</span><br><span class="line">	&#x2F;&#x2F;队首指针</span><br><span class="line">	mutexOfMQ;</span><br><span class="line">	&#x2F;&#x2F;消息队列互斥信号量</span><br><span class="line">	semphoreOfMQ;</span><br><span class="line">	&#x2F;&#x2F;消息队列资源信号量</span><br><span class="line">	...</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
+<h4 id="假设a发送消息给ba使用发送原语把消息队列挂接到b的进程控制块的消息缓冲区b使用接收原语从pcb上接收数据队列拷贝到本进程的接收区中">假设A发送消息给B,A使用发送原语,把消息队列挂接到B的进程控制块的消息缓冲区,B使用接收原语,从PCB上接收数据队列,拷贝到本进程的接收区中</h4>
+<h4 id="发送原语">发送原语</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Procedure Sender(Receiver,SA)</span><br><span class="line">Begin</span><br><span class="line">	getBuf(SA.Size,Buffer_i);</span><br><span class="line">	&#x2F;&#x2F;创建缓冲区</span><br><span class="line">	Buffer_i.Sender:&#x3D;SA.Sender;Buffer_i.Size:&#x3D;SA.Size;</span><br><span class="line">	Buffer_i.Text:&#x3D;SA.Text;Buffer_i.Next:&#x3D;0;</span><br><span class="line">	&#x2F;&#x2F;把数据拷贝到缓冲区中</span><br><span class="line">	getid(PCB_Set,Receiver,PID);</span><br><span class="line">	&#x2F;&#x2F;从PCB区通过进程名解析目标进程ID</span><br><span class="line">	wait(PID.mutexOfMQ);</span><br><span class="line">	&#x2F;&#x2F;因为是对临界资源的操作,所以要使用互斥信号量</span><br><span class="line">	insert(PID.massageQueue,Buffer);</span><br><span class="line">	&#x2F;&#x2F;挂接缓冲区到目标进程的PCB上</span><br><span class="line">	signal(PID.mutexOfMQ);</span><br><span class="line">	&#x2F;&#x2F;使用完毕,释放互斥信号量</span><br><span class="line">	signal(PID.semphoreOfMQ);</span><br><span class="line">	&#x2F;&#x2F;添加资源信号量,使可用资源数增加</span><br><span class="line">End;</span><br></pre></td></tr></table></figure>
+<h4 id="接收原语">接收原语</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Procedure Receive(RB)</span><br><span class="line">Begin</span><br><span class="line">	PID:&#x3D;InternalNameOfProcess();</span><br><span class="line">	&#x2F;&#x2F;获取本进程的PID号</span><br><span class="line">	wait(PID.semphoreOFMQ);</span><br><span class="line">	&#x2F;&#x2F;先确认有没有可用资源</span><br><span class="line">	wait(PID.mutexOfMQ);</span><br><span class="line">	&#x2F;&#x2F;对资源进行操作,上锁</span><br><span class="line">	remove(PID.messageQueue,Buffer_i);</span><br><span class="line">	&#x2F;&#x2F;从缓冲区取下消息</span><br><span class="line">	signal(PID.mutexOfMQ);</span><br><span class="line">	&#x2F;&#x2F;释放互斥信号量</span><br><span class="line">	RB.Sender:&#x3D;Buffer_j.Sender;</span><br><span class="line">	RB.Size:&#x3D;Buffer_j.Size;</span><br><span class="line">	RB.Text:&#x3D;Buffer_j.Text;</span><br><span class="line">	&#x2F;&#x2F;复制到接收区</span><br><span class="line">	putbuf(Buffer_j);</span><br><span class="line">	&#x2F;&#x2F;释放缓冲区</span><br><span class="line">End;</span><br></pre></td></tr></table></figure>
+<h2 id="线程">线程</h2>
+<h3 id="线程的概念">线程的概念</h3>
+<h4 id="线程的引入">线程的引入</h4>
+<ul>
+<li>进程并发机制缺陷分析
+<ul>
+<li>进程并发执行基础(<strong>资源拥有与调度的基本单位</strong>)</li>
+<li>进程创建、切换和撤销等操作的时空开销较大</li>
+<li>进程并发执行程度及进程间通信效率受限</li>
+</ul></li>
+<li>系统并发进一步提高客观需求</li>
+<li>对策
+<ul>
+<li>资源的拥有与调度分派两种属性的分离
+<ul>
+<li>进程拥有资源、内存空间</li>
+<li>线程拥有处理器调度</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 id="线程的特征">线程的特征</h4>
+<ul>
+<li>轻型实体及共享进程资源</li>
+<li>独立调度和分派的基本单位</li>
+<li>创建、撤销、切换等系统开销</li>
+<li>地址空间及通信效率</li>
+<li>系统的并发执行程度大大提高</li>
+</ul>
+<h3 id="线程的控制同步与通信">线程的控制、同步与通信</h3>
+<h4 id="线程的控制">线程的控制</h4>
+<ul>
+<li>线程的基本属性
+<ul>
+<li>线程标识符、寄存器状态、堆栈及专有存储器</li>
+<li>线程状态、优先级与信号屏蔽</li>
+</ul></li>
+<li>线程的创建和终止
+<ul>
+<li>初始化线程</li>
+<li>线程创建函数或系统调用</li>
+<li>线程完成型终止与被被迫强制性终止</li>
+<li>被终止线程重新恢复运行</li>
+</ul></li>
+</ul>
+<h4 id="线程间的同步和通信">线程间的同步和通信</h4>
+<ul>
+<li>信号量机制
+<ul>
+<li>私有信号量/共有信号量</li>
+</ul></li>
+<li>互斥锁
+<ul>
+<li>实现资源互斥使用的简单极致</li>
+<li>lock/unlock 两种状态和原语操作</li>
+<li>适合于高频使用的<strong>关键共享数据</strong>和<strong>程序段</strong></li>
+</ul></li>
+<li>条件变量与互斥锁
+<ul>
+<li>互斥锁与特定条件变量相联系</li>
+<li>互斥锁用于短期锁定,保证互斥进入临界区</li>
+<li>条件变量用于长期等待,直至所得呢个资源可用</li>
+</ul></li>
+</ul>
+<h3 id="基于互斥锁和条件变量的线程同步">基于互斥锁和条件变量的线程同步</h3>
+<h4 id="访问请求资源入口">访问请求资源入口</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Lock(mutex);</span><br><span class="line">&#x2F;&#x2F;互斥锁上锁</span><br><span class="line">Check data structure of Resource;</span><br><span class="line">&#x2F;&#x2F;检查是否可以使用 </span><br><span class="line">if Resource is busy</span><br><span class="line">	begin</span><br><span class="line">	Unlock(mutex);</span><br><span class="line">	&#x2F;&#x2F;方便其他线程检查状态,能够对资源进程访问</span><br><span class="line">	wait(condition_variable);</span><br><span class="line">	&#x2F;&#x2F;这条语句会等待到资源不忙结束,执行下面的操作</span><br><span class="line">	Lock(mutex);</span><br><span class="line">	&#x2F;&#x2F;非常关键,因为下面要进行对资源的操作</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">Mark resource as busy;</span><br><span class="line">Unlock(mutex);</span><br></pre></td></tr></table></figure>
+<h4 id="访问资源结束">访问资源结束</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Lock(mutex);</span><br><span class="line">Mark resource as free;</span><br><span class="line">Unlock(mutex);</span><br><span class="line">wakeup(condition_variable);</span><br></pre></td></tr></table></figure>
+<h3 id="线程实现方式">线程实现方式</h3>
+<h4 id="线程实现方式-1">线程实现方式</h4>
+<ul>
+<li>内核支持线程
+<ul>
+<li>依赖于内核及其中的线程控制块(任务数据区:PTDA)
+<ul>
+<li>可以真正实现处理机的调度和分配在线程级别上</li>
+</ul></li>
+</ul></li>
+<li>用户级线程
+<ul>
+<li>仅存在于用户空间之中,与内核无关
+<ul>
+<li>没办法实现处理机和调度分配在线程级别</li>
+</ul></li>
+</ul></li>
+<li>实现方式比较
+<ul>
+<li>操作系统要求、系统开销与性能、调度算法灵活性、并发线程数量及书记效果</li>
+<li>系统调用阻塞连锁效应</li>
+<li>时钟中断与轮转调度可行性</li>
+<li>线程调度与执行时间</li>
+</ul></li>
+</ul>
+<h4 id="用户级线程模型1-运行管理系统run-time-system">用户级线程模型1-运行管理系统（Run-Time System）</h4>
+<h4 id="用户级线程模型2-轻型进程solaris">用户级线程模型2-轻型进程（Solaris）</h4>
+]]></content>
+  </entry>
+  <entry>
     <title>操作系统第一节课笔记-什么是操作系统</title>
     <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E4%BB%80%E4%B9%88%E6%98%AF%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E4%BB%80%E4%B9%88%E6%98%AF%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E4%BB%80%E4%B9%88%E6%98%AF%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.pdf" title="操作系统第一节课笔记-什么是操作系统pdf文档下载">操作系统第一节课笔记-什么是操作系统pdf文档下载</a>
@@ -2111,398 +2270,330 @@
       </categories>
   </entry>
   <entry>
-    <title>操作系统第七节课笔记-进程通信</title>
-    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%83%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/</url>
-    <content><![CDATA[<h1 id="进程通信概念及分类">进程通信概念及分类</h1>
-<h2 id="进程通信">进程通信</h2>
-<h3 id="实现机制">实现机制</h3>
-<ul>
-<li>进程通信概念
-<ul>
-<li>指进程之间的信息交换</li>
-</ul></li>
-<li>实现机制
-<ul>
-<li>低级进程通信：效率低，针对控制信息的传送。典型为信号量机制。</li>
-<li>高级进程通信：能传送大量数据，效率高，进程通信实现细节由操作系统提供，整个通信对用户透明，通信程序编制简单 <a id="more"></a> ### 类型</li>
-</ul></li>
-<li>共享存储器系统（操作系统提供相应的系统调用）
-<ul>
-<li>基于共享数据结构的通信方式</li>
-<li>基于共享存储区的通信方式</li>
-</ul></li>
-<li>信息传递系统
-<ul>
-<li>直接/间接通信方式</li>
-</ul></li>
-<li>管道通信系统
-<ul>
-<li>管道概念</li>
-<li>协调机制：互斥、同步、通信前提</li>
-</ul></li>
-</ul>
-<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%83%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/shm.tar.gz" title="共享内存示例下载">共享内存示例下载</a>
-<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%83%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/pipe.tar.gz" title="管道示例下载">管道示例下载</a>
-<h2 id="消息传递通信实现方式">消息传递通信实现方式</h2>
-<h3 id="直接通信方式">直接通信方式</h3>
-<ul>
-<li>通信原语
-<ul>
-<li>Send(Receiver,message)；</li>
-<li>Receive(Sender,message);
-<ul>
-<li>不知道发送者是谁
-<ul>
-<li>典型例子是打印机</li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li>一个接收进程可以与多个发送进程通信
-<ul>
-<li>打印进程</li>
-<li>Sender无法事先制定，故为变参性质</li>
-</ul></li>
-</ul>
-<h3 id="间接通信方式">间接通信方式</h3>
-<ul>
-<li>信箱
-<ul>
-<li>进程间通信有关共享数据结构的中间实体</li>
-<li>有操作系统或用户进程创建</li>
-<li>私有/公有/共享信箱</li>
-<li>可实现实时/非实时通信</li>
-</ul></li>
-<li>通信原语
-<ul>
-<li>信箱的创建和撤销、消息的发送和接收</li>
-</ul></li>
-<li>发送/接收金层间存在的四种关系
-<ul>
-<li>一对一、多对一、一对多、多对多</li>
-</ul></li>
-</ul>
-<h3 id="信息传递系统中的几个问题">信息传递系统中的几个问题</h3>
-<ul>
-<li>通信链路
-<ul>
-<li>显式/隐式建立（计算机网络/单机）</li>
-<li>点-点或多点连接通信链路</li>
-<li>单/双向通信链路</li>
-<li>无容量/有容量通信链路（缓冲区）</li>
-</ul></li>
-<li>消息格式
-<ul>
-<li>有消息头和效益正文构成，分定长/变长两种</li>
-</ul></li>
-<li>进程同步方式
-<ul>
-<li>发送/接受进程阻塞与否（三种情况）</li>
-</ul></li>
-</ul>
-<h2 id="消息缓冲队列通信机制">消息缓冲队列通信机制</h2>
-<h3 id="缓冲队列是通过数据结构实现的">缓冲队列是通过数据结构实现的</h3>
-<p>消息缓冲队列是一种临界资源,应该设计相应的信号量进行访问控制</p>
-<h4 id="消息缓冲区">消息缓冲区</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type MassageBuffer&#x3D;record</span><br><span class="line">	Sender;</span><br><span class="line">	&#x2F;&#x2F;发送者进程标识符</span><br><span class="line">	Size;</span><br><span class="line">	&#x2F;&#x2F;消息长度</span><br><span class="line">	Text;</span><br><span class="line">	&#x2F;&#x2F;消息正文</span><br><span class="line">	Next;</span><br><span class="line">	&#x2F;&#x2F;指向下一缓冲区的指针</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
-<h4 id="pcb通信数据项">PCB通信数据项</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type PCB&#x3D;record</span><br><span class="line">	massageQueue;</span><br><span class="line">	&#x2F;&#x2F;队首指针</span><br><span class="line">	mutexOfMQ;</span><br><span class="line">	&#x2F;&#x2F;消息队列互斥信号量</span><br><span class="line">	semphoreOfMQ;</span><br><span class="line">	&#x2F;&#x2F;消息队列资源信号量</span><br><span class="line">	...</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
-<h4 id="假设a发送消息给ba使用发送原语把消息队列挂接到b的进程控制块的消息缓冲区b使用接收原语从pcb上接收数据队列拷贝到本进程的接收区中">假设A发送消息给B,A使用发送原语,把消息队列挂接到B的进程控制块的消息缓冲区,B使用接收原语,从PCB上接收数据队列,拷贝到本进程的接收区中</h4>
-<h4 id="发送原语">发送原语</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Procedure Sender(Receiver,SA)</span><br><span class="line">Begin</span><br><span class="line">	getBuf(SA.Size,Buffer_i);</span><br><span class="line">	&#x2F;&#x2F;创建缓冲区</span><br><span class="line">	Buffer_i.Sender:&#x3D;SA.Sender;Buffer_i.Size:&#x3D;SA.Size;</span><br><span class="line">	Buffer_i.Text:&#x3D;SA.Text;Buffer_i.Next:&#x3D;0;</span><br><span class="line">	&#x2F;&#x2F;把数据拷贝到缓冲区中</span><br><span class="line">	getid(PCB_Set,Receiver,PID);</span><br><span class="line">	&#x2F;&#x2F;从PCB区通过进程名解析目标进程ID</span><br><span class="line">	wait(PID.mutexOfMQ);</span><br><span class="line">	&#x2F;&#x2F;因为是对临界资源的操作,所以要使用互斥信号量</span><br><span class="line">	insert(PID.massageQueue,Buffer);</span><br><span class="line">	&#x2F;&#x2F;挂接缓冲区到目标进程的PCB上</span><br><span class="line">	signal(PID.mutexOfMQ);</span><br><span class="line">	&#x2F;&#x2F;使用完毕,释放互斥信号量</span><br><span class="line">	signal(PID.semphoreOfMQ);</span><br><span class="line">	&#x2F;&#x2F;添加资源信号量,使可用资源数增加</span><br><span class="line">End;</span><br></pre></td></tr></table></figure>
-<h4 id="接收原语">接收原语</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Procedure Receive(RB)</span><br><span class="line">Begin</span><br><span class="line">	PID:&#x3D;InternalNameOfProcess();</span><br><span class="line">	&#x2F;&#x2F;获取本进程的PID号</span><br><span class="line">	wait(PID.semphoreOFMQ);</span><br><span class="line">	&#x2F;&#x2F;先确认有没有可用资源</span><br><span class="line">	wait(PID.mutexOfMQ);</span><br><span class="line">	&#x2F;&#x2F;对资源进行操作,上锁</span><br><span class="line">	remove(PID.messageQueue,Buffer_i);</span><br><span class="line">	&#x2F;&#x2F;从缓冲区取下消息</span><br><span class="line">	signal(PID.mutexOfMQ);</span><br><span class="line">	&#x2F;&#x2F;释放互斥信号量</span><br><span class="line">	RB.Sender:&#x3D;Buffer_j.Sender;</span><br><span class="line">	RB.Size:&#x3D;Buffer_j.Size;</span><br><span class="line">	RB.Text:&#x3D;Buffer_j.Text;</span><br><span class="line">	&#x2F;&#x2F;复制到接收区</span><br><span class="line">	putbuf(Buffer_j);</span><br><span class="line">	&#x2F;&#x2F;释放缓冲区</span><br><span class="line">End;</span><br></pre></td></tr></table></figure>
-<h2 id="线程">线程</h2>
-<h3 id="线程的概念">线程的概念</h3>
-<h4 id="线程的引入">线程的引入</h4>
-<ul>
-<li>进程并发机制缺陷分析
-<ul>
-<li>进程并发执行基础(<strong>资源拥有与调度的基本单位</strong>)</li>
-<li>进程创建、切换和撤销等操作的时空开销较大</li>
-<li>进程并发执行程度及进程间通信效率受限</li>
-</ul></li>
-<li>系统并发进一步提高客观需求</li>
-<li>对策
-<ul>
-<li>资源的拥有与调度分派两种属性的分离
-<ul>
-<li>进程拥有资源、内存空间</li>
-<li>线程拥有处理器调度</li>
-</ul></li>
-</ul></li>
-</ul>
-<h4 id="线程的特征">线程的特征</h4>
-<ul>
-<li>轻型实体及共享进程资源</li>
-<li>独立调度和分派的基本单位</li>
-<li>创建、撤销、切换等系统开销</li>
-<li>地址空间及通信效率</li>
-<li>系统的并发执行程度大大提高</li>
-</ul>
-<h3 id="线程的控制同步与通信">线程的控制、同步与通信</h3>
-<h4 id="线程的控制">线程的控制</h4>
-<ul>
-<li>线程的基本属性
-<ul>
-<li>线程标识符、寄存器状态、堆栈及专有存储器</li>
-<li>线程状态、优先级与信号屏蔽</li>
-</ul></li>
-<li>线程的创建和终止
-<ul>
-<li>初始化线程</li>
-<li>线程创建函数或系统调用</li>
-<li>线程完成型终止与被被迫强制性终止</li>
-<li>被终止线程重新恢复运行</li>
-</ul></li>
-</ul>
-<h4 id="线程间的同步和通信">线程间的同步和通信</h4>
-<ul>
-<li>信号量机制
-<ul>
-<li>私有信号量/共有信号量</li>
-</ul></li>
-<li>互斥锁
-<ul>
-<li>实现资源互斥使用的简单极致</li>
-<li>lock/unlock 两种状态和原语操作</li>
-<li>适合于高频使用的<strong>关键共享数据</strong>和<strong>程序段</strong></li>
-</ul></li>
-<li>条件变量与互斥锁
-<ul>
-<li>互斥锁与特定条件变量相联系</li>
-<li>互斥锁用于短期锁定,保证互斥进入临界区</li>
-<li>条件变量用于长期等待,直至所得呢个资源可用</li>
-</ul></li>
-</ul>
-<h3 id="基于互斥锁和条件变量的线程同步">基于互斥锁和条件变量的线程同步</h3>
-<h4 id="访问请求资源入口">访问请求资源入口</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Lock(mutex);</span><br><span class="line">&#x2F;&#x2F;互斥锁上锁</span><br><span class="line">Check data structure of Resource;</span><br><span class="line">&#x2F;&#x2F;检查是否可以使用 </span><br><span class="line">if Resource is busy</span><br><span class="line">	begin</span><br><span class="line">	Unlock(mutex);</span><br><span class="line">	&#x2F;&#x2F;方便其他线程检查状态,能够对资源进程访问</span><br><span class="line">	wait(condition_variable);</span><br><span class="line">	&#x2F;&#x2F;这条语句会等待到资源不忙结束,执行下面的操作</span><br><span class="line">	Lock(mutex);</span><br><span class="line">	&#x2F;&#x2F;非常关键,因为下面要进行对资源的操作</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">Mark resource as busy;</span><br><span class="line">Unlock(mutex);</span><br></pre></td></tr></table></figure>
-<h4 id="访问资源结束">访问资源结束</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Lock(mutex);</span><br><span class="line">Mark resource as free;</span><br><span class="line">Unlock(mutex);</span><br><span class="line">wakeup(condition_variable);</span><br></pre></td></tr></table></figure>
-<h3 id="线程实现方式">线程实现方式</h3>
-<h4 id="线程实现方式-1">线程实现方式</h4>
-<ul>
-<li>内核支持线程
-<ul>
-<li>依赖于内核及其中的线程控制块(任务数据区:PTDA)
-<ul>
-<li>可以真正实现处理机的调度和分配在线程级别上</li>
-</ul></li>
-</ul></li>
-<li>用户级线程
-<ul>
-<li>仅存在于用户空间之中,与内核无关
-<ul>
-<li>没办法实现处理机和调度分配在线程级别</li>
-</ul></li>
-</ul></li>
-<li>实现方式比较
-<ul>
-<li>操作系统要求、系统开销与性能、调度算法灵活性、并发线程数量及书记效果</li>
-<li>系统调用阻塞连锁效应</li>
-<li>时钟中断与轮转调度可行性</li>
-<li>线程调度与执行时间</li>
-</ul></li>
-</ul>
-<h4 id="用户级线程模型1-运行管理系统run-time-system">用户级线程模型1-运行管理系统（Run-Time System）</h4>
-<h4 id="用户级线程模型2-轻型进程solaris">用户级线程模型2-轻型进程（Solaris）</h4>
-]]></content>
-  </entry>
-  <entry>
-    <title>操作系统第三节课笔记-操作系统接口</title>
-    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/</url>
-    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3.pdf" title="操作系统第三节课笔记-操作系统接口pdf文档下载">操作系统第三节课笔记-操作系统接口pdf文档下载</a>
+    <title>操作系统第二节课笔记-处理器管理功能概要</title>
+    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E6%A6%82%E8%A6%81/</url>
+    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E6%A6%82%E8%A6%81/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E6%A6%82%E8%A6%81.pdf" title="操作系统第二节课笔记-处理器管理功能概要pdf文档下载">操作系统第二节课笔记-处理器管理功能概要pdf文档下载</a>
 <a id="more"></a>
-<h1 id="操作系统接口">操作系统接口</h1>
-<h2 id="用户接口">用户接口</h2>
-<h3 id="用户接口分类">用户接口分类</h3>
+<h2 id="操作系统的处理器管理功能概要">操作系统的处理器管理功能概要</h2>
+<h3 id="处理器资源-最重要的资源">处理器资源-最重要的资源</h3>
+<h4 id="处理器调度-如何分配">处理器调度-如何分配</h4>
 <ul>
-<li>基于表现形式划分
+<li>作业调度
 <ul>
-<li>用户交互接口
-<ul>
-<li>CLI：文本界面，命令窗口(联/脱机命令接口)</li>
-<li>GUI：图形化用户接口(图形化操作界面)</li>
+<li>作业后备队列选取若干作业装入内存</li>
+<li>作业选择与资源分配</li>
+<li>调入内存建立进程</li>
 </ul></li>
-<li>用户程序接口(方便用户调用访问系统资源，由一组系统调用(System call)组成</li>
+<li>进程调度
+<ul>
+<li>就绪进程队列</li>
+<li>进程选择与处理及分配</li>
+<li>保存现场<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，恢复现场<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
 </ul></li>
-<li>基于使用者类型划分
+<li>调度算法
 <ul>
-<li>本地用户接口</li>
-<li>远程用户接口(网络用户接口)</li>
-</ul></li>
-</ul>
-<h3 id="联机命令接口">联机命令接口</h3>
-<ul>
-<li><p>一组联机命令</p>
-<ul>
-<li>内部命令</li>
-<li>外部命令</li>
-</ul></li>
-<li><p>键盘处理程序</p></li>
-<li><p>命令解释程序</p></li>
-</ul>
-<h4 id="联机命令格式与分类">联机命令格式与分类</h4>
-<ul>
-<li><p>联机命令格式</p>
-<p><code>&lt;命令&gt; [&lt;可选项&gt;] &lt;参数&gt;</code></p></li>
-<li><p>联机命令类型</p>
-<ul>
-<li>系统访问类</li>
-<li>磁盘操作类</li>
-<li>网络通信类</li>
-<li><strong>输入输出重定向</strong>、<strong>管道</strong>、过滤命令</li>
-<li><strong>批处理方式</strong>(批处理文件/脚本)</li>
+<li>先来先服务，nice值低的进程优先权高，时间轮片选择的几率更大，运行的机会更多</li>
 </ul></li>
 </ul>
-<h3 id="键盘终端处理程序">键盘终端处理程序</h3>
+<h4 id="进程控制">进程控制</h4>
 <ul>
-<li><p>基本功能</p>
+<li>主要任务
 <ul>
-<li>接收用户从终端输入的字符
-<ul>
-<li>面向字符/行方式</li>
+<li>创建进程</li>
+<li>撤销进程</li>
+<li>切换进程状态</li>
 </ul></li>
-<li>管理字符缓冲
+<li>进程控制机制
 <ul>
-<li>专用缓冲区/公用缓冲区</li>
-</ul></li>
-<li>将字符打印到屏幕
-<ul>
-<li>硬件/软件实现方式</li>
+<li><strong>原语</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li><strong>进程&amp;线程</strong><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
 </ul></li>
 </ul>
-<p>特殊字符处理(中断/清屏/恢复jobs)</p></li>
-</ul>
-<h3 id="图形化用户接口">图形化用户接口</h3>
-<h4 id="图形化接口元素">图形化接口元素</h4>
+<h4 id="进程同步">进程同步</h4>
 <ul>
-<li>桌面、鼠标、图标</li>
-<li>窗口、标题栏、工具栏、菜单栏</li>
-<li>菜单
+<li>主要任务
 <ul>
-<li>弹出式(右键菜单等)</li>
-<li>下拉式(菜单栏的下拉菜单)</li>
+<li>进程/现成的并发执行协调</li>
+<li>互斥/同步方式</li>
+<li><strong>临界资源</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a><strong>&amp;临界区</strong><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>
+<ul>
+<li>要保证各个进程互斥的访问临界资源/临界区</li>
 </ul></li>
-<li>对话框</li>
-</ul>
-<h4 id="图形化接口特点">图形化接口特点</h4>
-<ul>
-<li>简单,直观</li>
-<li>多屏,多窗口</li>
-<li>即使交互</li>
-<li>传递参数信息量大</li>
-</ul>
-<h4 id="图形化接口的实现及运行机制">图形化接口的实现及运行机制</h4>
-<ul>
-<li>面向对象的程序设计方法</li>
-<li>消息产生、传递及处理</li>
-<li>事件驱动方式</li>
-</ul>
-<h2 id="系统调用">系统调用</h2>
-<h3 id="系统调用基本概念">系统调用基本概念</h3>
-<h5 id="linux-系统调用列表"><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part1/appendix.html" target="_blank" rel="noopener">Linux 系统调用列表</a></h5>
-<ul>
-<li>定义
-<ul>
-<li>系统过程-&gt;系统服务-&gt;系统调用命令</li>
 </ul></li>
-<li>与普通过程调用的区别
+<li>进程同步机制
 <ul>
-<li>运行在不同的系统状态</li>
-<li>软中断进入机制</li>
-<li>返回及重新调度问题</li>
-<li>嵌套调用</li>
+<li>开/关锁原语【支持简单的/短时间的互斥问题】</li>
+<li>信号量机制</li>
+<li>管程【高级编程概念】</li>
 </ul></li>
 </ul>
-<h3 id="系统调用的类型">系统调用的类型</h3>
+<h4 id="进程通信">进程通信</h4>
 <ul>
-<li>进程控制
+<li>主要任务
 <ul>
-<li>进程的创建<em>fork</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、结束<em>exit</em>、等待子进程结束<em>waitpid</em></li>
-<li>进程属性设置<em>pid</em>与获取</li>
-<li>执行一个文件<em>exec</em></li>
+<li>进程(线程)间的信息交换</li>
 </ul></li>
-<li>文件操控
+<li>进程通信方式
 <ul>
-<li>文件的创建<em>creat</em>、打开<em>open</em>、关闭<em>close</em>、读/写 <em>read/write</em></li>
+<li>共享存储器</li>
+<li>管道通信</li>
+<li>消息传递系统
+<ul>
+<li>消息缓冲队列</li>
+<li>邮箱</li>
 </ul></li>
-<li>进程通信-基于<em>IPC</em>
-<ul>
-<li>连接打开与关闭、消息收发与接收</li>
-</ul></li>
-<li>系统信息维护
-<ul>
-<li>时间设置与获取、文建访问/修改时间设置</li>
 </ul></li>
 </ul>
+<hr />
+<h3 id="内存资源管理">内存资源管理</h3>
+<h4 id="内存分配">内存分配</h4>
+<ul>
+<li>主要任务
+<ul>
+<li>使程序各得其所</li>
+<li>提高存储器利用率</li>
+<li>适应程序和数据的动态增长需要</li>
+</ul></li>
+<li>内存分配机制
+<ul>
+<li>内存分配用数据结构</li>
+<li>内存分配
+<ul>
+<li>连续/离散分配方式</li>
+<li>静态/动态分配方式</li>
+</ul></li>
+<li>内存回收</li>
+</ul></li>
+</ul>
+<h4 id="内存保护">内存保护</h4>
+<ul>
+<li>主要任务
+<ul>
+<li>首先保证内核安全，其次确保程序见互不干扰</li>
+<li>存取访问控制</li>
+</ul></li>
+<li>内存保护机制
+<ul>
+<li>越界检查</li>
+<li>硬件实现</li>
+<li>保护方式
+<ul>
+<li>上下限界限寄存器</li>
+<li>页号&lt;页表长度</li>
+<li>段号&lt;段表长度&amp;&amp;段内地址&lt;段长</li>
+<li>特权级比较</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 id="地址映射转换">地址映射/转换</h4>
+<ul>
+<li><p>主要任务</p>
+<ul>
+<li>逻辑地址转换为物理地址</li>
+</ul></li>
+<li><p>基本概念</p>
+<ul>
+<li>地址空间&amp;内存空间</li>
+<li>逻辑/相对/有效地址</li>
+<li>物理/绝对地址</li>
+</ul></li>
+<li><p>地址映射机制</p>
+<ul>
+<li>硬件实现</li>
+<li>重定位寄存器、页表/段表、快表</li>
+</ul></li>
+</ul>
+<h4 id="内存扩充">内存扩充</h4>
+<ul>
+<li><p>主要任务</p>
+<ul>
+<li>从逻辑上扩充内存容量</li>
+</ul></li>
+<li><p>内存扩充的可行性</p>
+<ul>
+<li><p>程序运行局部性原理</p></li>
+<li><p>离散分配方式</p></li>
+</ul></li>
+<li><p>内存扩充机制</p>
+<ul>
+<li>虚拟存储技术</li>
+<li>硬件(页/段表、缺页/段中断、地址变换)</li>
+<li>软件(请求调入/置换功能)</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="设备管理">设备管理</h3>
+<h4 id="设备分配">设备分配</h4>
+<ul>
+<li>主要任务
+<ul>
+<li>设备及相应控制器的通道的分配</li>
+</ul></li>
+<li>设备分配机制
+<ul>
+<li>设备分配用的数据结构</li>
+<li>设备分配与设备分配所对应的方式</li>
+<li>设备分配与回收算法</li>
+<li><strong>设备独立性</strong><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></li>
+<li><strong>虚拟设备</strong><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></li>
+</ul></li>
+</ul>
+<h4 id="缓冲管理">缓冲管理</h4>
+<ul>
+<li>主要任务
+<ul>
+<li>管理各样的缓冲区</li>
+<li>缓和CPU和I/O速度不匹配</li>
+<li>提高资源利用率和系统吞吐量</li>
+</ul></li>
+<li>缓冲管理机制
+<ul>
+<li>单/双/多缓冲类型</li>
+<li><strong>字符缓冲</strong><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>与<strong>盘块缓冲</strong><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></li>
+<li>共用缓冲池机制</li>
+</ul></li>
+</ul>
+<h4 id="设备处理">设备处理</h4>
+<ul>
+<li>主要任务
+<ul>
+<li>CPU与设备控制器间的通信</li>
+</ul></li>
+<li>设备处理过程
+<ul>
+<li>I/O请求提出</li>
+<li>I/O请求合法性检查</li>
+<li>了解设备状态</li>
+<li>传递参数并设置工作方式</li>
+<li>通道程序自动构成<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></li>
+<li>发送I/O指令和启动I/O设备</li>
+<li>及时响应中断请求</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="文件管理">文件管理</h3>
+<h4 id="文件存储空间管理">文件存储空间管理</h4>
+<ul>
+<li>主要任务
+<ul>
+<li>使每个文件各得其所</li>
+<li>提高外存空间利用率</li>
+<li>提高外存空间访问速度</li>
+</ul></li>
+<li>文件存储空间管理机制
+<ul>
+<li>存储空间所用的数据结构</li>
+<li>存储空间的分配与回收功能</li>
+<li>离散/连续的分配方式</li>
+<li>以盘块/<strong>簇</strong><a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>为基本分配单位</li>
+</ul></li>
+</ul>
+<h4 id="目录管理">目录管理</h4>
+<ul>
+<li>主要任务
+<ul>
+<li>文件的按名存取</li>
+<li>提高文件查找速度</li>
+<li>支持文件的重命名，共享，保护</li>
+</ul></li>
+<li>目录管理机制
+<ul>
+<li>文件控制块与索引节点(inode)</li>
+<li>目录结构</li>
+<li>目录检索手段</li>
+</ul></li>
+</ul>
+<h4 id="文件的读写和存取控制">文件的读写和存取控制</h4>
+<ul>
+<li>文件的读写管理
+<ul>
+<li>从外存读取数据或将数据存入外存</li>
+<li>目录检索-&gt;外存地址-&gt;读写指针-&gt;读写操作</li>
+<li>文件描述符表和文件表(提高文件的读写)</li>
+</ul></li>
+<li>文件的存取控制
+<ul>
+<li>防止未经核准的用户存取文件</li>
+<li>防止冒名顶替存取文件</li>
+<li>防止以不正确的方式使用文件</li>
+<li>系统级/用户级/文件级存取控制</li>
+</ul></li>
+</ul>
+<h3 id="操作系统的特征">操作系统的特征</h3>
+<ul>
+<li>并发性·
+<ul>
+<li><strong>并行与并发、程序与进程/线程</strong><a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></li>
+</ul></li>
+<li>共享性
+<ul>
+<li>互斥共享方式，同时访问方式，<strong>可重入码</strong><a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></li>
+</ul></li>
+<li>虚拟性
+<ul>
+<li>模拟虚拟机，虚拟内存，虚拟盘，虚拟设备</li>
+</ul></li>
+<li>异步性
+<ul>
+<li>进程的执行顺序与执行时间的不确定性</li>
+</ul></li>
+</ul>
+<h2 id="操作系统的设计原则及非结构化设计问题">操作系统的设计原则及非结构化设计问题</h2>
+<h3 id="操作系统的设计原则">操作系统的设计原则</h3>
+<ul>
+<li>可维护性
+<ul>
+<li>纠错性/适应性/完善性/预防性维护</li>
+</ul></li>
+<li>可靠性
+<ul>
+<li>正确性/健壮性</li>
+</ul></li>
+<li>可理解性</li>
+<li>可用性</li>
+<li>性能
+<ul>
+<li>系统资源利用率及用户请求响应</li>
+</ul></li>
+</ul>
+<h3 id="模块化操作系统的结构评价">模块化操作系统的结构评价</h3>
+<ul>
+<li>优点
+<ul>
+<li>提高了设计的正确性、可理解性和可维护性</li>
+<li>增强了操作系统的可适应性</li>
+<li>加速了操作系统的开发过程</li>
+</ul></li>
+<li>尚存改进空间方面
+<ul>
+<li>模块划分和接口规定难保正确和合理</li>
+<li>未能区别共享资源和独占资源</li>
+<li>管理差异导致模块间依赖关系复杂</li>
+</ul></li>
+</ul>
+<hr />
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>除了第一个进程[init]不是由fork创建的之外,其余所有进程都是由init fork出来的<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p>将当前寄存器中的内容入栈，并跳转至至下一现场<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>把原寄存器中的内容从栈顶恢复到寄存器中<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>计算机进程的控制通常由原语完成。所谓原语，一般是指由若干条指令组成的程序段，用来实现某个特定功能，在执行过程中不可被中断。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>线程包含于进程，共享进程在内存中的资源<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>一段时间之内只能被一个进程所访问的资源叫做临界资源<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>临界资源的代码区叫做临界区,访问临界资源的代码栈<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>程序和设备不直接关联，程序应访问逻辑设备，便于程序移植，提高程序可扩充性，提高程序的可维护性<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p>独占性质设备，设置共享，通过虚拟技术，把物理上的独占设备转换成共享设备<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p>对于键盘使用字符缓冲<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p>对于磁盘/软盘/硬盘/使用盘块缓冲<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p>仅限于通道控制方式，通道的形成，是由驱动程序自动构成的<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p>簇是由多个扇区组成的逻辑结构，每个扇区512个字节，簇的大小就是扇区的整数倍<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13" role="doc-endnote"><p>并行：任何一个时间点上，多个事件同时发生；并发：一段时间内，多个事件同时发生；线程：本身不用有资源，可以共享进程的资源<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p>不可修改的可执行代码，大家都要对该代码调用和执行<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 ]]></content>
       <categories>
         <category>大学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2018-寒假学习记录</title>
-    <url>/2018-%E5%AF%92%E5%81%87%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h1 id="寒假学习记录">2018-寒假学习记录</h1>
-<h3 id="假期学习了">假期学习了</h3>
-<ul>
-<li>Thinkphp5.1</li>
-<li>Bootstrap4</li>
-<li>jquery ajax</li>
-<li>markdown</li>
-</ul>
-<h2 id="section"><a id="more"></a></h2>
-<h4 id="便于爬虫识别的html标签">便于爬虫识别的html标签</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">section定义 </span><br><span class="line">	用来区分各板块</span><br><span class="line">header main footer为方便爬虫检索</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">table定义</span><br><span class="line"></span><br><span class="line">&lt;table border&#x3D;&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;th&gt;Month&lt;&#x2F;th&gt;</span><br><span class="line">&lt;th&gt;Savings&lt;&#x2F;th&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td&gt;January&lt;&#x2F;td&gt;</span><br><span class="line">&lt;td&gt;$100&lt;&#x2F;td&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">div 背景图片自适应显示</span><br><span class="line">	background-image: url(..&#x2F;imgs&#x2F;footerkuang.png);</span><br><span class="line">    background-repeat: no-repeat;     &#x2F;&#x2F;无重复</span><br><span class="line">    background-size: 100% 100%;</span><br><span class="line">    -moz-background-size: 100% 100%;</span><br><span class="line">	</span><br><span class="line">图片自适应div大小 </span><br><span class="line">	可重复</span><br><span class="line">	background-size:contain</span><br></pre></td></tr></table></figure>
-<h4 id="thinkphp5.1">ThinkPhp5.1</h4>
-<ol type="1">
-<li>在linux下,需要权限php程序才能运行php文件,所以需要<code>chown apache2.apache2 /var/html/tp5/runtime -R</code> 递归修改tp5下的runtime目录</li>
-<li>在linux下,使用文件上传,应该给tp5目录下的public/upload目录apapche用户权限,否则无法上传文件.</li>
-<li>在linux下,需要额外安装php7.2-mysql,否则会产生无法访问数据库的错误.</li>
-<li>linux配置php-fpm时,使用sock连接fpm时应该这么写</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        DocumentRoot &quot;&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&quot;                        </span><br><span class="line">        ServerName www.divint3.com            </span><br><span class="line">        ServerAlias divint3.com               </span><br><span class="line">        DirectoryIndex index.htm index.php index.html</span><br><span class="line">  &lt;Directory &quot;&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&quot;&gt;</span><br><span class="line">        Options FollowSymLinks ExecCGI &#x2F;&#x2F;禁止访问目录,允许在该目录下执行CGI脚本</span><br><span class="line">        AllowOverride All &#x2F;&#x2F;允许rewrite,根据htc</span><br><span class="line">        Order allow,deny &#x2F;&#x2F;设置缺省的访问权限与Allow和Deny语句的处理顺序</span><br><span class="line">        Allow from all &#x2F;&#x2F;允许从任何地址访问</span><br><span class="line">        Require all granted &#x2F;&#x2F;允许所有请求访问资源</span><br><span class="line">        Satisfy all &#x2F;&#x2F;禁止直接访问</span><br><span class="line">  &lt;&#x2F;Directory&gt;</span><br><span class="line">        ProxyRequests Off</span><br><span class="line">        ProxyPassMatch ^&#x2F;(.*\.php(&#x2F;.*)?)$ unix:&#x2F;run&#x2F;php&#x2F;php7.2-fpm.sock|fcgi:&#x2F;&#x2F;localhost&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&#x2F;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
-<p>最后用phpinfo()验证是否开启php-fpm成功</p>
-<ol start="5" type="1">
-<li>linux下apache开启模块 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">a2enmod rewrite </span><br><span class="line">a2enmod proxy</span><br><span class="line">a2enmod proxy_fcgi</span><br></pre></td></tr></table></figure></li>
-<li>想要隐藏url的php文件名,应该编辑.<strong>htaccess</strong> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">  Options +FollowSymlinks -Multiviews</span><br><span class="line">  RewriteEngine On</span><br><span class="line"></span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">  &#x2F;&#x2F;以上为默认配置文件</span><br><span class="line">  RewriteRule ^(.*)$ index.php?s&#x3D;$1 [QSA,PT,L]</span><br><span class="line">  &#x2F;&#x2F;写的是rewrite规则,可以省略index.php文件访问</span><br><span class="line">&lt;&#x2F;IfModule&gt;</span><br></pre></td></tr></table></figure></li>
-<li>本来要自己写分页操作的,没想到tp5自己有分页操作,语法 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">bkList</span><span class="params">($type)</span></span>&#123;</span><br><span class="line">    $info=Bkarticle::where(<span class="string">"type"</span>,$type)-&gt;paginate(<span class="number">10</span>);</span><br><span class="line">    <span class="comment">// 获取分页显示</span></span><br><span class="line">    $page = $info-&gt;render();</span><br><span class="line">    <span class="comment">// 模板变量赋值</span></span><br><span class="line">    <span class="keyword">$this</span>-&gt;assign(<span class="string">'info'</span>, $info);</span><br><span class="line">    <span class="keyword">$this</span>-&gt;assign(<span class="string">'page'</span>, $page);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;fetch();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> Bkartical为数据库中的同名表.可用于查询数据库中的同名表.<code>paginate(10)</code>的意思是每页显示十条数据. 这是tp5中的模型操作数据库. <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;extend name="./common/father" /&#125; //继承父模板</span><br><span class="line"></span><br><span class="line">&#123;block name="title"&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>灾害大百科<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">&#123;/block&#125;</span><br><span class="line"></span><br><span class="line">&#123;block name="content"&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"text-center table  table-bordered"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>文章标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>文章内容预览<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            &#123;volist name='info' id='bklist' length="50"&#125;</span><br><span class="line">            &#123;php&#125;</span><br><span class="line">                $content=$bklist["content"];</span><br><span class="line">                preg_replace('/<span class="tag">&lt;<span class="name">\s*img\s+[^</span>&gt;</span>]*?src\s*=\s*(\'|\")(.*?)\\1[^&gt;]*?\/?\s*&gt;/i','[图片]',$content); //把数据库中取出的html文本数据中的匹配img标签的文本替换为[img],因为这这只是一个预览内容,不能把整个img文件链接地址暴露出来</span><br><span class="line">                preg_replace('/(<span class="tag">&lt;/<span class="name">?)(w+)([^</span>&gt;</span>]*&gt;)/e', "'\1'.strtoupper('\2').'\3'", $content); //替换掉所有标签,只保留文本内容</span><br><span class="line">                $content=substr($content,0,100); //截取100的长度</span><br><span class="line">            &#123;/php&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/bkarticle/&#123;$bklist.id&#125;"</span>&gt;</span>&#123;$bklist.title&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"text-left"</span>&gt;</span>&#123;php&#125;echo $content;&#123;/php&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            &#123;/volist&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float-right"</span>&gt;</span>&#123;$info|raw&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span> //这里输出分页表</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;/block&#125;</span><br><span class="line"></span><br><span class="line">&#123;block name="js"&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/static/js/baike/bklist.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;/block&#125;</span><br></pre></td></tr></table></figure> 使用jquery为对象添加class,因为{$info|raw}输出的是一个html代码,而这个代码不法修改,只能用jquery确定元素,增加class <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;main section div div ul li&quot;).addClass(&quot;page-item&quot;);</span><br><span class="line">    $(&quot;main section div div ul span&quot;).addClass(&quot;page-link&quot;);</span><br><span class="line">    $(&quot;main section div div ul li a&quot;).addClass(&quot;page-link&quot;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure> 分页效果如下 <img src="/uploads/fzcms.png" alt="分页" /></li>
-<li>phpstrom在linux下有个东西不知道怎么取消,反正就是根据是否使用git提交文件的颜色会有变化,其实只要Alt+F12 用git同步就行了,一个add,一个comment颜色就没啦,这种颜色不一样保持了我这个强迫症不断备份啊.红色是未提交,绿色是新添加,蓝色是已修改</li>
-</ol>
-<p>9.PHP版本过高会使tp5无法连接数据库,在尝试数据库迁移时,会报错<code>SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client</code>发生这种错误，是由于MySQL 8默认使用了新的密码验证插件：caching_sha2_password，而之前的PHP版本中所带的mysqlnd无法支持这种验证。</p>
-<p>修改 /etc/mysql/my.cnf，添加下面一行： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">default_authentication_plugin&#x3D; mysql_native_password</span><br></pre></td></tr></table></figure> 然后重置密码： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER USER &#39;user&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;password&#39;;</span><br></pre></td></tr></table></figure> ---</p>
-<h4 id="简单的ajax.post">简单的ajax.post</h4>
-<ol type="1">
-<li>首先说说a标签如何触发onclick事件</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span> <span class="attr">onclick</span>=<span class="string">"js_method()"</span>&gt;</span>Some Thing<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这里herf超链接指向了一个空的js脚本,然后定义onclick事件 这样,我们可以使用a标签使用onclick事件发送一个ajax请求 定义一个类 叫做upload,创建一个方法,用来接收数据,这里在js处理完数据后,php仍然会检验数据可用性,我把它定义在了<strong>admin/bkadd/addcheck</strong>下, <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 前端文章上传类</span></span><br><span class="line"><span class="comment">* @author Divint3</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> upload = &#123;</span><br><span class="line">    check: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> type = $(<span class="string">'input[name="type"]:checked'</span>).val();</span><br><span class="line">        <span class="keyword">var</span> title = $(<span class="string">'input[name="title"]'</span>).val();</span><br><span class="line">        <span class="keyword">var</span> content = editor.txt.html();<span class="comment">//获取各种值并定义变量</span></span><br><span class="line">        <span class="keyword">if</span> (content == <span class="string">"&lt;p&gt;&lt;br&gt;&lt;/p&gt;"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"内容不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!title) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"标题不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!type) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"未指定文章类型"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> url = <span class="string">"admin/bkadd/addcheck"</span>;</span><br><span class="line">        <span class="keyword">var</span> data = &#123;</span><br><span class="line">            <span class="string">"type"</span>: type,</span><br><span class="line">            <span class="string">"title"</span>: title,</span><br><span class="line">            <span class="string">"content"</span>: content,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        $.post(url, data, <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;<span class="comment">//result是admin/bkadd/addcheck返回的json数据</span></span><br><span class="line">            <span class="keyword">if</span> (result.status) &#123;<span class="comment">//status返回的是php检验数据是否成功,检验数据成功后,tp5助手函数db会返回一个非零数值,如果插入失败,返回零</span></span><br><span class="line">                dialog.success(result.message);<span class="comment">//dialog封装了layer弹出层的方法,方便调用</span></span><br><span class="line">                editor.txt.html(<span class="string">'&lt;p&gt;&lt;br&gt;&lt;/p&gt;'</span>);</span><br><span class="line">                $(<span class="string">'input[name="title"]'</span>).val(<span class="string">""</span>);<span class="comment">//数据信息清空</span></span><br><span class="line">            &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                dialog.error(result.message);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"JSON"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>PHP检验代码如下</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addCheck</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//这里接收ajax请求,处理请求</span></span><br><span class="line">        $type = $_POST[<span class="string">'type'</span>];</span><br><span class="line">        $title = $_POST[<span class="string">'title'</span>];</span><br><span class="line">        $content = $_POST[<span class="string">'content'</span>];</span><br><span class="line">        <span class="keyword">if</span> (!$type) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'未指定文章类型'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!$title) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'标题不能为空'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ($content == <span class="string">"&lt;p&gt;&lt;br&gt;&lt;/p&gt;"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'内容不能为空'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        $data = [</span><br><span class="line">            <span class="string">"type"</span> =&gt; $type,</span><br><span class="line">            <span class="string">"title"</span> =&gt; $title,</span><br><span class="line">            <span class="string">"content"</span> =&gt; $content,</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        $isset = Bkarticle::where(<span class="string">"title"</span>, $title)-&gt;find();</span><br><span class="line">        <span class="keyword">if</span> ($isset == <span class="keyword">array</span>()) &#123;</span><br><span class="line">            $s = db(<span class="string">"bkarticle"</span>)-&gt;data($data)-&gt;insert();</span><br><span class="line">            <span class="keyword">return</span> show($s, <span class="string">"插入百科文章成功"</span>, <span class="keyword">array</span>(</span><br><span class="line">                <span class="string">"type"</span> =&gt; $type,</span><br><span class="line">                <span class="string">"content"</span> =&gt; $content,</span><br><span class="line">            ));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">"这个文章名已经被用过了"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>这里的show方法我定义在了application下的comment.php下,因为这里是公共方法,所有方法都可以引用 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">($status, $message, $data = array<span class="params">()</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $result=[</span><br><span class="line">        <span class="string">'status'</span>=&gt;$status,</span><br><span class="line">        <span class="string">'message'</span>=&gt;$message,</span><br><span class="line">        <span class="string">'data'</span>=&gt;$data,</span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">exit</span>(json_encode($result));</span><br><span class="line">&#125;<span class="comment">//就是返回了一个json,给使用ajax.post方法的一个result,这样js才能处理插入状态</span></span><br></pre></td></tr></table></figure></p>
-<hr />
-<h4 id="bootstrap4">bootstrap4</h4>
-<ol type="1">
-<li>使用bs4的原因是他的排版和配色真的好看,给大家一个bs4主题链接https://bootswatch.com/ ,配色什么的方案多样.</li>
-<li>bs4的栅格结构也很好,支持动态响应.反正我现阶段是写不出来.</li>
-<li>bs4没啥好说的,就是个css加js,调用就完事了. 常用知识点 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">容器</span><br><span class="line">	container 类用于固定宽度并支持响应式布局的容器。</span><br><span class="line">	container-fluid 类用于 100% 宽度，占据全部视口（viewport）的容器</span><br><span class="line">颜色操作 bg-</span><br><span class="line">	primary</span><br><span class="line">	secondary</span><br><span class="line">	success</span><br><span class="line">	waring</span><br><span class="line">	light(高亮)</span><br><span class="line">	</span><br><span class="line">前景色 text-</span><br><span class="line"></span><br><span class="line">字体位置</span><br><span class="line">	text-center&#x2F;left&#x2F;right</span><br><span class="line">	font-weight-normal 普通</span><br><span class="line">				-bold 加粗</span><br><span class="line">英文变换</span><br><span class="line">	text-lowercase 小写</span><br><span class="line">		-uppercase 大写</span><br><span class="line">		-capitalize 自动大小写</span><br><span class="line">字体大小 display-</span><br><span class="line">	display-1 最大</span><br><span class="line">			-2</span><br><span class="line">			-3</span><br><span class="line">			-4 最小</span><br><span class="line"></span><br><span class="line">网格系统 col-</span><br><span class="line">	一共划分为12个网格</span><br><span class="line">	.col- 针对极小屏幕</span><br><span class="line">	.col-sm- 平板 - 屏幕宽度等于或大于 576px</span><br><span class="line">	.col-md- 桌面显示器 - 屏幕宽度等于或大于 768px)</span><br><span class="line">	.col-lg- 大桌面显示器 - 屏幕宽度等于或大于 992px)</span><br><span class="line">	.col-xl- 超大桌面显示器 - 屏幕宽度等于或大于 1200px)</span><br><span class="line">	</span><br><span class="line">	xl与lg同时存在,若大于xl判定,使用xl规则,大于lg小于xl,使用lg规则,以此类推</span><br><span class="line">	只定义了col-md 那么md及md以上使用md的规则,md以下使用默认规则</span><br><span class="line">	</span><br><span class="line">	offset-</span><br><span class="line">		偏移系统,指定偏移多少单位,最高12</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">余白与边框 </span><br><span class="line">	padding 余白</span><br><span class="line">	margin 边框</span><br><span class="line">	写法</span><br><span class="line">		p&#x2F;m&#123;location&#x3D;t[op]b[lod]l[eft]r[ight]xy&#125;-size</span><br><span class="line">		x代表上下</span><br><span class="line">		y代表左右</span><br><span class="line">	size定义值</span><br><span class="line">		1 0.25rem</span><br><span class="line">		2 0.5rem</span><br><span class="line">		3 1rem</span><br><span class="line">		4 1.5rem</span><br><span class="line">		5 3rem</span><br><span class="line">	maigin在class中定义</span><br><span class="line">		margin-tblr:#px %</span><br><span class="line">	        &#123;margin-left: auto;</span><br><span class="line">            margin-right: auto;&#125;代表水平居中</span><br><span class="line">			</span><br><span class="line">按钮定义 btn-</span><br><span class="line">	primary</span><br><span class="line">	secondary</span><br><span class="line">	success</span><br><span class="line">	waring</span><br><span class="line">	light(高亮)</span><br><span class="line">定义行 row</span><br><span class="line">显示顺序 order	</span><br><span class="line">	order-屏幕尺寸-顺序值</span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr />
-<h4 id="layer弹出层">layer弹出层</h4>
-<p>这就是个充数的,调用看官网就行了.</p>
-<hr />
-<h4 id="markdown">MarkDown</h4>
-<p>同上</p>
-]]></content>
-      <categories>
-        <category>编程</category>
       </categories>
   </entry>
   <entry>
@@ -3449,6 +3540,61 @@ P(AB)=\frac{AB中基本事件数}{S中基本事件数}
       </categories>
   </entry>
   <entry>
+    <title>gdb-常用调试指令</title>
+    <url>/gdb-%E5%B8%B8%E7%94%A8%E8%B0%83%E8%AF%95%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="背景知识">背景知识</h2>
+<h3 id="内存">内存</h3>
+
+<h3 id="栈">栈</h3>
+
+<h3 id="堆">堆</h3>
+<p>与栈情况类似,但存储的是文件之类的数据</p>
+<h3 id="gdb基本调试命令">GDB基本调试命令</h3>
+<p><a href="https://www.cnblogs.com/qigaohua/p/6077790.html" target="_blank" rel="noopener">GDB基本调试命令</a> <a href="http://lazybing.github.io/blog/2016/04/01/how-to-use-gdb/" target="_blank" rel="noopener">如何使用 GDB</a></p>
+<h2 id="gdb工具使用前期配置">GDB工具使用前期配置</h2>
+<h3 id="设置对core文件输出大小无限制">设置对core文件输出大小无限制</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line"></span><br><span class="line">vi /etc/profile</span><br><span class="line">Shift + G</span><br><span class="line">i</span><br><span class="line"><span class="comment"># No core files by default 0, unlimited is oo</span></span><br><span class="line"><span class="built_in">ulimit</span> -S -c unlimited &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<h4 id="提示">提示</h4>
+<p>在图形界面的虚拟终端下,可能需要每次启动都source一遍<code>/etc/profile</code>,请把source加入你的<code>~/.bashrc</code>或<code>~/.zshrc</code>第一行</p>
+<h3 id="设置croe信息转储">设置croe信息转储</h3>
+<p>core文件同名会覆盖. 这里为其加上一个 core命名规则, 让其变成 [core.pid] 格式. <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line"></span><br><span class="line">vi /etc/sysctl.conf</span><br><span class="line">Shift + G</span><br><span class="line">i</span><br><span class="line"></span><br><span class="line"><span class="comment"># open, add core.pid </span></span><br><span class="line">kernel.core_pattern = ./core_%t_%p_%e</span><br><span class="line">kernel.core_uses_pid = 1</span><br><span class="line"></span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line">sysctl -p /etc/sysctl.conf</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置peda">配置peda</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;longld&#x2F;peda.git ~&#x2F;peda</span><br><span class="line">echo &quot;source ~&#x2F;peda&#x2F;peda.py&quot; &gt;&gt; ~&#x2F;.gdbinit</span><br></pre></td></tr></table></figure>
+<h2 id="gdb使用">GDB使用</h2>
+<h3 id="常见用法">常见用法</h3>
+<ol type="1">
+<li>调试程序。有几种方法可以在gdb下运行你的程序：</li>
+</ol>
+<ul>
+<li>gdb ${你的程序} 进入gdb后，输入run(简写r) ${arg1} ${arg2} … ${argN}</li>
+<li>gdb --args ${你的程序} ${arg1} ${arg2} … ${argN} 进入gdb后，运行run。</li>
+<li>gdb进入gdb后，输入file ${你的程序}。然后使用set args ${arg1} ${arg2} … ${argN} 设定好你的程序参数，再运行run。</li>
+</ul>
+<ol start="2" type="1">
+<li>调试正在运行的程序：</li>
+</ol>
+<ul>
+<li>gdb ${你的程序} ${程序pid}</li>
+</ul>
+<ol start="3" type="1">
+<li>查core：</li>
+</ol>
+<ul>
+<li>gdb ${你的程序} -core ${core文件}</li>
+</ul>
+<h4 id="静默模式启动gdb">静默模式启动gdb</h4>
+<p><code>gdb -q</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gdb:b (break) #设置断点</span><br><span class="line"></span><br><span class="line">b func_name #对函数下断点</span><br><span class="line"></span><br><span class="line">b *addr   #对地址下断点</span><br><span class="line"></span><br><span class="line">info b   # 查看断点</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">delete</span><br><span class="line">用法：delete [breakpoints num] [range...]</span><br><span class="line">delete可删除单个断点，也可删除一个断点的集合，这个集合用连续的断点号来描述。</span><br><span class="line">例如：</span><br><span class="line">delete 5</span><br><span class="line">delete 1-10</span><br><span class="line"></span><br><span class="line">clear</span><br><span class="line">用法:clear </span><br><span class="line">    删除所在行的多有断点。</span><br><span class="line">    clear location</span><br><span class="line">clear 删除所选定的环境中所有的断点</span><br><span class="line">clear location location描述具体的断点。</span><br><span class="line">例如：</span><br><span class="line">clear list_insert         &#x2F;&#x2F;删除函数的所有断点</span><br><span class="line">clear list.c:list_delet   &#x2F;&#x2F;删除文件：函数的所有断点</span><br><span class="line">clear 12                  &#x2F;&#x2F;删除行号的所有断点</span><br><span class="line">clear list.c:12           &#x2F;&#x2F;删除文件：行号的所有断点</span><br><span class="line"></span><br><span class="line">clear 删除断点是基于行的，不是把所有的断点都删除。</span><br><span class="line"></span><br><span class="line">r #启动加载的程序</span><br><span class="line"></span><br><span class="line">gdb:disas main #查看函数汇编指令</span><br><span class="line"></span><br><span class="line">info r(egister) #查看寄存器情况</span><br><span class="line"></span><br><span class="line">ni #单步调试</span><br><span class="line"></span><br><span class="line">si #step into 步进 进到某个函数里面</span><br><span class="line"></span><br><span class="line">bt  #backtrace 查看现在的堆栈情况   对于了解程序执行比较有用</span><br><span class="line"></span><br><span class="line">c  #continue #继续执行到下一个断点</span><br><span class="line"></span><br><span class="line">x &#x2F;100xg $rsp  #以八进制查看从栈顶开始的100字节</span><br></pre></td></tr></table></figure>
+<h3 id="pattern-工具">pattern 工具</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pattern 指令,生成长字符串,</span><br><span class="line"></span><br><span class="line">pattern create 150 #生成一个长度为150字节的字符串</span><br><span class="line">pattern offset rip地址 #判断从多少字节开始溢出,前提是程序非正常退出,rip内容被覆盖</span><br></pre></td></tr></table></figure>
+<h2 id="参考链接">参考链接</h2>
+<p>http://yaov.net/2018/09/15/linux-pwn%E5%9F%BA%E7%A1%801/</p>
+]]></content>
+      <categories>
+        <category>linux工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>电子电路基础</title>
     <url>/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h4 id="电功率">电功率</h4>
@@ -3467,20 +3613,6 @@ P(AB)=\frac{AB中基本事件数}{S中基本事件数}
     W=Pt
 \end{aligned}
 \]</span> 符号:<span class="math inline">\(W\)</span> 单位:<span class="math inline">\(J\)</span> 单位转换:千瓦时(<span class="math inline">\(kW\cdot h\)</span>) * 一千瓦时等于一度电 :<span class="math inline">\(1kW\cdot h=3.6 \times 10^6J\)</span></p>
-]]></content>
-      <categories>
-        <category>电子电路</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>电子电路符号</title>
-    <url>/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%A6%E5%8F%B7/</url>
-    <content><![CDATA[<h2 id="重要结论">重要结论:</h2>
-<h4 id="零值电阻从电气特性上来说是等效于零值电压源的.">零值电阻从电气特性上来说,是等效于零值电压源的.</h4>
-<h4 id="独立电压源的电流是由外电路决定的.">独立电压源的电流是由外电路决定的.</h4>
-<h4 id="开路或无穷值电阻从电气特性上等效为零值电流源.">开路或无穷值电阻从电气特性上等效为零值电流源.</h4>
-<p>2b法是指根据两个b(branch支路)求解出b个电流和b个电压</p>
-<p><span class="math inline">\(P_a\)</span>是吸收功率 <span class="math inline">\(P_d\)</span>是发出功率 <span class="math inline">\(U_S\)</span>是电压源,Voltage Source <span class="math inline">\(I_S\)</span>是电流源,current Intensity Source <span class="math inline">\(R_{EQ}\)</span>是等效电阻</p>
 ]]></content>
       <categories>
         <category>电子电路</category>
@@ -3911,23 +4043,142 @@ A\overrightarrow{x}=\overrightarrow{v}
       </categories>
   </entry>
   <entry>
-    <title>mysql-笔记</title>
-    <url>/mysql-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="mysql">mysql</h3>
-<p>数据库 主表为文章名 附表为文章内容 相互独立 主表索引附表</p>
-<h4 id="配置远程访问">配置远程访问</h4>
-<h5 id="授权法">授权法</h5>
-<h2 id="section"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">mysql&gt;use mysql;</span><br><span class="line">mysql&gt;grant all privileges  on *.* to root@&#39;%&#39; identified by &quot;password&quot;;</span><br><span class="line">mysql&gt;flush privileges;</span><br></pre></td></tr></table></figure></h2>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">mysql&gt; USE mysql ;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; UPDATE user SET Password = password ( '新密码' ) WHERE User = 'root' ;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line">Rows matched: 2 Changed: 0 Warnings: 0</span><br><span class="line">mysql&gt; flush privileges ;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line">mysql&gt; quit</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="string">`tp5`</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> <span class="string">'utf8'</span> <span class="keyword">COLLATE</span> <span class="string">'utf8_czech_ci'</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="limit">limit</h4>
-<p><strong>limit</strong>是用来限制查询结果的</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM TABLE LIMIT m,n</span><br></pre></td></tr></table></figure>
-<p>其中m是指记录开始的index，从0开始，表示第一条记录 n是指从第m+1条开始，取n条。 select * from tablename limit 2,4 即取出第3条至第6条，4条记录</p>
-<h4 id="order">order</h4>
-<p><strong>order</strong>子句用来排序表,<strong>order by 后加列名</strong> 如果要逆序 在列名后加 <strong>desc</strong> 正序<strong>ASC</strong> <figure class="highlight"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM `table` ORDER BY `column` ASC;</span><br></pre></td></tr></table></figure></p>
+    <title>操作系统第三节课笔记-操作系统接口</title>
+    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/</url>
+    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3.pdf" title="操作系统第三节课笔记-操作系统接口pdf文档下载">操作系统第三节课笔记-操作系统接口pdf文档下载</a>
+<a id="more"></a>
+<h1 id="操作系统接口">操作系统接口</h1>
+<h2 id="用户接口">用户接口</h2>
+<h3 id="用户接口分类">用户接口分类</h3>
+<ul>
+<li>基于表现形式划分
+<ul>
+<li>用户交互接口
+<ul>
+<li>CLI：文本界面，命令窗口(联/脱机命令接口)</li>
+<li>GUI：图形化用户接口(图形化操作界面)</li>
+</ul></li>
+<li>用户程序接口(方便用户调用访问系统资源，由一组系统调用(System call)组成</li>
+</ul></li>
+<li>基于使用者类型划分
+<ul>
+<li>本地用户接口</li>
+<li>远程用户接口(网络用户接口)</li>
+</ul></li>
+</ul>
+<h3 id="联机命令接口">联机命令接口</h3>
+<ul>
+<li><p>一组联机命令</p>
+<ul>
+<li>内部命令</li>
+<li>外部命令</li>
+</ul></li>
+<li><p>键盘处理程序</p></li>
+<li><p>命令解释程序</p></li>
+</ul>
+<h4 id="联机命令格式与分类">联机命令格式与分类</h4>
+<ul>
+<li><p>联机命令格式</p>
+<p><code>&lt;命令&gt; [&lt;可选项&gt;] &lt;参数&gt;</code></p></li>
+<li><p>联机命令类型</p>
+<ul>
+<li>系统访问类</li>
+<li>磁盘操作类</li>
+<li>网络通信类</li>
+<li><strong>输入输出重定向</strong>、<strong>管道</strong>、过滤命令</li>
+<li><strong>批处理方式</strong>(批处理文件/脚本)</li>
+</ul></li>
+</ul>
+<h3 id="键盘终端处理程序">键盘终端处理程序</h3>
+<ul>
+<li><p>基本功能</p>
+<ul>
+<li>接收用户从终端输入的字符
+<ul>
+<li>面向字符/行方式</li>
+</ul></li>
+<li>管理字符缓冲
+<ul>
+<li>专用缓冲区/公用缓冲区</li>
+</ul></li>
+<li>将字符打印到屏幕
+<ul>
+<li>硬件/软件实现方式</li>
+</ul></li>
+</ul>
+<p>特殊字符处理(中断/清屏/恢复jobs)</p></li>
+</ul>
+<h3 id="图形化用户接口">图形化用户接口</h3>
+<h4 id="图形化接口元素">图形化接口元素</h4>
+<ul>
+<li>桌面、鼠标、图标</li>
+<li>窗口、标题栏、工具栏、菜单栏</li>
+<li>菜单
+<ul>
+<li>弹出式(右键菜单等)</li>
+<li>下拉式(菜单栏的下拉菜单)</li>
+</ul></li>
+<li>对话框</li>
+</ul>
+<h4 id="图形化接口特点">图形化接口特点</h4>
+<ul>
+<li>简单,直观</li>
+<li>多屏,多窗口</li>
+<li>即使交互</li>
+<li>传递参数信息量大</li>
+</ul>
+<h4 id="图形化接口的实现及运行机制">图形化接口的实现及运行机制</h4>
+<ul>
+<li>面向对象的程序设计方法</li>
+<li>消息产生、传递及处理</li>
+<li>事件驱动方式</li>
+</ul>
+<h2 id="系统调用">系统调用</h2>
+<h3 id="系统调用基本概念">系统调用基本概念</h3>
+<h5 id="linux-系统调用列表"><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part1/appendix.html" target="_blank" rel="noopener">Linux 系统调用列表</a></h5>
+<ul>
+<li>定义
+<ul>
+<li>系统过程-&gt;系统服务-&gt;系统调用命令</li>
+</ul></li>
+<li>与普通过程调用的区别
+<ul>
+<li>运行在不同的系统状态</li>
+<li>软中断进入机制</li>
+<li>返回及重新调度问题</li>
+<li>嵌套调用</li>
+</ul></li>
+</ul>
+<h3 id="系统调用的类型">系统调用的类型</h3>
+<ul>
+<li>进程控制
+<ul>
+<li>进程的创建<em>fork</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、结束<em>exit</em>、等待子进程结束<em>waitpid</em></li>
+<li>进程属性设置<em>pid</em>与获取</li>
+<li>执行一个文件<em>exec</em></li>
+</ul></li>
+<li>文件操控
+<ul>
+<li>文件的创建<em>creat</em>、打开<em>open</em>、关闭<em>close</em>、读/写 <em>read/write</em></li>
+</ul></li>
+<li>进程通信-基于<em>IPC</em>
+<ul>
+<li>连接打开与关闭、消息收发与接收</li>
+</ul></li>
+<li>系统信息维护
+<ul>
+<li>时间设置与获取、文建访问/修改时间设置</li>
+</ul></li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>除了第一个进程[init]不是由fork创建的之外,其余所有进程都是由init fork出来的<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 ]]></content>
       <categories>
-        <category>编程</category>
+        <category>大学</category>
       </categories>
   </entry>
   <entry>
@@ -4377,105 +4628,6 @@ A\overrightarrow{x}=\overrightarrow{v}
       </categories>
   </entry>
   <entry>
-    <title>计算机网络第一节课笔记</title>
-    <url>/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0.pdf" title="计算机网络第一节课笔记pdf文档下载">计算机网络第一节课笔记pdf文档下载</a>
-<a id="more"></a>
-<h1 id="计算机网络第一节课">计算机网络第一节课</h1>
-<h3 id="网络分类">网络分类</h3>
-<ul>
-<li>从逻辑上看,计算机网络分为资源子网和通信子网</li>
-</ul>
-<h3 id="互联网起源">互联网起源</h3>
-<ul>
-<li>美国的阿帕网(ARPANET)</li>
-</ul>
-<h3 id="中国发出的第一封电子邮件">中国发出的第一封电子邮件</h3>
-<ul>
-<li>时间：1987年9月14日21时07分</li>
-<li>地点：北京计算机应用技术研究所-&gt;德国卡尔斯鲁厄大学</li>
-<li>人物：吴为民、王运丰</li>
-<li>内容：越过长城，走向世界。Across the Great Wall we can reach every corner in the world.</li>
-</ul>
-<h3 id="中国管理互联网资源的机构">中国管理互联网资源的机构</h3>
-<ul>
-<li>中国互联网络信息中心</li>
-</ul>
-<h3 id="拓扑结构">拓扑结构</h3>
-<h4 id="总线拓扑-主机挂接在总线上互相直接通达">总线拓扑-主机挂接在总线上，互相直接通达</h4>
-<ul>
-<li>主线发出的信号在总线上双向传输</li>
-<li>所有主机都可以接收到此信号</li>
-</ul>
-<h4 id="星形拓扑-主机挂接在一个中心节点上">星形拓扑-主机挂接在一个中心节点上</h4>
-<ul>
-<li>早期的中心节点由集线器充当</li>
-<li>现在的中心节点由交换机充当</li>
-</ul>
-<h4 id="环形结构">环形结构</h4>
-<h4 id="树形结构">树形结构</h4>
-<h4 id="网状结构">网状结构</h4>
-<h3 id="协议">协议</h3>
-<h4 id="是一种规范规定了网络设备之间如何交换数据互相理解">是一种规范，规定了网络设备之间如何交换数据，互相理解</h4>
-<h3 id="带宽">带宽</h3>
-<h4 id="数字带宽">数字带宽</h4>
-<ul>
-<li>数字带宽是指在一个固定的时间内可传输的最大比特数据的量</li>
-<li>基本单位比特每秒【bit/s】：bps</li>
-</ul>
-<h4 id="常见单位">常见单位</h4>
-<ul>
-<li>Kbps</li>
-<li>Mbps</li>
-<li>Gbps</li>
-<li>Tbps 通常说的带宽是理想数字带宽</li>
-</ul>
-<h4 id="吞吐率是实际带宽">吞吐率是实际带宽</h4>
-<ul>
-<li>吞吐率是指在固定时间内成功传输的比特数据的量</li>
-<li>吞吐率受很多条件影响，计算机性能，传输介质等</li>
-</ul>
-<h3 id="下载时间计算">下载时间计算</h3>
-<p>S代表信息量 T代表下载时间</p>
-<h4 id="理想型">理想型</h4>
-<ul>
-<li><span class="math inline">\(T=\frac{S}{BW}\)</span> BW代表带宽</li>
-</ul>
-<h4 id="现实型">现实型</h4>
-<ul>
-<li><span class="math inline">\(T=\frac{S}{P}\)</span> P代表吞吐量</li>
-</ul>
-<h3 id="网络连接方式">网络连接方式</h3>
-<h4 id="点到点">点到点</h4>
-<ul>
-<li>计算机直接相连</li>
-<li>计算机和交换机相连</li>
-<li>电脑到通信局的电脑相连</li>
-</ul>
-<h4 id="端到端">端到端</h4>
-<ul>
-<li>虚连接，由一个一个点到点连接构成，类似链</li>
-</ul>
-<h3 id="计算机网络的分类">计算机网络的分类</h3>
-<h4 id="按传输介质">按传输介质</h4>
-<ul>
-<li>有线网络</li>
-<li>无线网络</li>
-</ul>
-<h4 id="按覆盖范围划分">按覆盖范围划分</h4>
-<ul>
-<li>PAN（Personal Area Network） 个域网 1米左右</li>
-<li>LAN（Local Area Network） 局域网 1公里左右</li>
-<li>MAN （Mertopolian Area Network）城域网 10公里左右</li>
-<li>WAN （Wide Area Network）广域网 100-1000公里</li>
-<li>Internet 互联网 全球</li>
-</ul>
-]]></content>
-      <categories>
-        <category>大学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>计算机网络第三节课笔记-物理层</title>
     <url>/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%89%A9%E7%90%86%E5%B1%82/</url>
     <content><![CDATA[
@@ -4639,6 +4791,229 @@ A\overrightarrow{x}=\overrightarrow{v}
       </categories>
   </entry>
   <entry>
+    <title>计算机网络第一节课笔记</title>
+    <url>/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0.pdf" title="计算机网络第一节课笔记pdf文档下载">计算机网络第一节课笔记pdf文档下载</a>
+<a id="more"></a>
+<h1 id="计算机网络第一节课">计算机网络第一节课</h1>
+<h3 id="网络分类">网络分类</h3>
+<ul>
+<li>从逻辑上看,计算机网络分为资源子网和通信子网</li>
+</ul>
+<h3 id="互联网起源">互联网起源</h3>
+<ul>
+<li>美国的阿帕网(ARPANET)</li>
+</ul>
+<h3 id="中国发出的第一封电子邮件">中国发出的第一封电子邮件</h3>
+<ul>
+<li>时间：1987年9月14日21时07分</li>
+<li>地点：北京计算机应用技术研究所-&gt;德国卡尔斯鲁厄大学</li>
+<li>人物：吴为民、王运丰</li>
+<li>内容：越过长城，走向世界。Across the Great Wall we can reach every corner in the world.</li>
+</ul>
+<h3 id="中国管理互联网资源的机构">中国管理互联网资源的机构</h3>
+<ul>
+<li>中国互联网络信息中心</li>
+</ul>
+<h3 id="拓扑结构">拓扑结构</h3>
+<h4 id="总线拓扑-主机挂接在总线上互相直接通达">总线拓扑-主机挂接在总线上，互相直接通达</h4>
+<ul>
+<li>主线发出的信号在总线上双向传输</li>
+<li>所有主机都可以接收到此信号</li>
+</ul>
+<h4 id="星形拓扑-主机挂接在一个中心节点上">星形拓扑-主机挂接在一个中心节点上</h4>
+<ul>
+<li>早期的中心节点由集线器充当</li>
+<li>现在的中心节点由交换机充当</li>
+</ul>
+<h4 id="环形结构">环形结构</h4>
+<h4 id="树形结构">树形结构</h4>
+<h4 id="网状结构">网状结构</h4>
+<h3 id="协议">协议</h3>
+<h4 id="是一种规范规定了网络设备之间如何交换数据互相理解">是一种规范，规定了网络设备之间如何交换数据，互相理解</h4>
+<h3 id="带宽">带宽</h3>
+<h4 id="数字带宽">数字带宽</h4>
+<ul>
+<li>数字带宽是指在一个固定的时间内可传输的最大比特数据的量</li>
+<li>基本单位比特每秒【bit/s】：bps</li>
+</ul>
+<h4 id="常见单位">常见单位</h4>
+<ul>
+<li>Kbps</li>
+<li>Mbps</li>
+<li>Gbps</li>
+<li>Tbps 通常说的带宽是理想数字带宽</li>
+</ul>
+<h4 id="吞吐率是实际带宽">吞吐率是实际带宽</h4>
+<ul>
+<li>吞吐率是指在固定时间内成功传输的比特数据的量</li>
+<li>吞吐率受很多条件影响，计算机性能，传输介质等</li>
+</ul>
+<h3 id="下载时间计算">下载时间计算</h3>
+<p>S代表信息量 T代表下载时间</p>
+<h4 id="理想型">理想型</h4>
+<ul>
+<li><span class="math inline">\(T=\frac{S}{BW}\)</span> BW代表带宽</li>
+</ul>
+<h4 id="现实型">现实型</h4>
+<ul>
+<li><span class="math inline">\(T=\frac{S}{P}\)</span> P代表吞吐量</li>
+</ul>
+<h3 id="网络连接方式">网络连接方式</h3>
+<h4 id="点到点">点到点</h4>
+<ul>
+<li>计算机直接相连</li>
+<li>计算机和交换机相连</li>
+<li>电脑到通信局的电脑相连</li>
+</ul>
+<h4 id="端到端">端到端</h4>
+<ul>
+<li>虚连接，由一个一个点到点连接构成，类似链</li>
+</ul>
+<h3 id="计算机网络的分类">计算机网络的分类</h3>
+<h4 id="按传输介质">按传输介质</h4>
+<ul>
+<li>有线网络</li>
+<li>无线网络</li>
+</ul>
+<h4 id="按覆盖范围划分">按覆盖范围划分</h4>
+<ul>
+<li>PAN（Personal Area Network） 个域网 1米左右</li>
+<li>LAN（Local Area Network） 局域网 1公里左右</li>
+<li>MAN （Mertopolian Area Network）城域网 10公里左右</li>
+<li>WAN （Wide Area Network）广域网 100-1000公里</li>
+<li>Internet 互联网 全球</li>
+</ul>
+]]></content>
+      <categories>
+        <category>大学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>计算机网络第二节课笔记-计算机网络模型</title>
+    <url>/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[
+<a id="more"></a>
+<h1 id="计算机网络模型">计算机网络模型</h1>
+<h2 id="osi七层模型">OSI七层模型</h2>
+<h3 id="open-system-inerconnection-开放性系统互联">Open System Inerconnection 开放性系统互联</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">OSI七层模型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">7. Application <strong>应用层</strong>：软件交流协议</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6. Presentation <strong>表示层</strong>：对数据的压缩解压缩，加密解密，把比特信息转换为一定格式的数据流</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5. Session <strong>会话层</strong>：会话的建立，连接，拆除</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4. Transport <strong>传输层</strong>：核心层之一，负责端到端连接，例如负责TCP的可靠性传输</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3. Network <strong>网络层</strong>：核心层之一，最优路径<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，从源主机送达至目标机，以ip地址<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>作为主机标识</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2. Data Link <strong>数据链路层:提供介质访问服务</strong>。通过MAC<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>提供可靠的帧传递。提供差错控制、流控等</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1. Physical 物理层：提供透明的比特流，任何可以表示两种状态的信号都可以。只管传输，不关心内容</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>七层模型每一层都完成特定功能，都为其上一层服务，每一层都使用下一层提供的服务【第一层和第七层除外】</li>
+</ul>
+<h2 id="dod模型">DOD模型</h2>
+<h3 id="department-of-defense-model-美国国防部模型">Department of Defense Model 美国国防部模型</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">TCP/IP四层模型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">4. Application <strong>应用层</strong><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3. Transport <strong>传输层</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2. Internet <strong>网络层</strong><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1. Network Access <strong>物理层</strong><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="osi模型和tcpip模型的不同">OSI模型和TCP/IP模型的不同</h2>
+<ul>
+<li>TCP/IP更简洁；OSI更易开发，更容易排除故障</li>
+<li>TCP/IP是在实践中产生的，OSI只是一种理论模型</li>
+</ul>
+<h2 id="osi没有流行的原因">OSI没有流行的原因</h2>
+<ul>
+<li>糟糕的时机
+<ul>
+<li>TCP/IP已经流行</li>
+<li>参杂了太多政策考量</li>
+<li>庞大，笨拙</li>
+</ul></li>
+</ul>
+<h2 id="数据传输">数据传输</h2>
+<h3 id="发方工作">发方工作</h3>
+<ol type="1">
+<li>封装打包，由高到低，逐级打包</li>
+<li>每一层上，加上头部信息
+<ol type="1">
+<li>OSI上三层，信息被表示为一定格式的数据流 <strong>DataStream</strong></li>
+<li>数据流到达传输层，会被切割为方便传输的数据段 <strong>Segment</strong>，并加上段头，标明序列号，端口号等信息</li>
+<li>数据段传到网络层，添加分组头成型分组 (<strong>Packet</strong>)分组头部中包含了寻址主机的IP和其他一些信息</li>
+<li>分组传到数据链路层，添加帧头，帧头包含物理地址，校验和</li>
+<li>帧到了物理层，被转换为比特流，被传送</li>
+<li><a href="https://blog.csdn.net/mincheat/article/details/61192701" target="_blank" rel="noopener">MAC、IP头、TCP头、UDP头帧格式、详解</a></li>
+</ol></li>
+</ol>
+<h3 id="收方工作">收方工作</h3>
+<ul>
+<li>逐层去掉头部，获取报文内部信息</li>
+</ul>
+<h3 id="关于协议数据单元不同层也有好多种说法">关于协议数据单元，不同层也有好多种说法</h3>
+<ol type="1">
+<li>应用层的PDU<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>叫数据流或者报文</li>
+<li>运输层（也叫传输层）PDU叫报文段，数据段，用户数据报</li>
+<li>网络层的是分组、包、IP数据报、数据报</li>
+<li>数据链路层的是帧</li>
+<li>物理层的是比特流</li>
+</ol>
+<h3 id="协议作用于对应层之间层与层之间有接口接口用于服务的调用">协议作用于对应层之间，层与层之间有接口，接口用于服务的调用</h3>
+<h3 id="任何一次通信都是由发方的封装开始接收方的解封装结束">任何一次通信，都是由发方的封装开始，接收方的解封装结束</h3>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>最优路径就是路由最短路径<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>IP(<strong>Internet Protorol</strong>)地址，用于标识/寻找主机<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>MAC（<strong>Media Access Control Address</strong>）地址也称为<strong>局域网地址</strong>（LAN Address），<strong>MAC位址</strong>，<strong>以太网地址</strong>（Ethernet Address）或<strong>物理地址</strong>。不做修改的情况下，一般是唯一的。MAC地址用于在网络中唯一标示一个网卡，一台设备若有一或多个网卡，则每个网卡都需要并会有一个唯一的MAC地址。一个网卡亦可以虚拟出多个虚拟网卡，每个虚拟网卡都会有各自的MAC地址和ip地址<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>等同于OSI模型中的5-7层<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>等同于OSI模型中的4层<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>等同于OSI模型中的3层<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>等同于OSI模型中的1-2层<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p>PDU (<strong>Protocol Data Unit</strong>)是指对等层次之间传递的数据单位<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>大学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>认证与授权</title>
     <url>/%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83/</url>
     <content><![CDATA[<h1 id="认证与授权">认证与授权</h1>
@@ -4773,137 +5148,96 @@ A\overrightarrow{x}=\overrightarrow{v}
       </categories>
   </entry>
   <entry>
-    <title>计算机网络第二节课笔记-计算机网络模型</title>
-    <url>/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/</url>
-    <content><![CDATA[
+    <title>调制与解调</title>
+    <url>/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/</url>
+    <content><![CDATA[<h1 id="调制与解调">调制与解调</h1>
+<h2 id="相关术语">相关术语</h2>
+<ul>
+<li>消息(massage)-有意义的实体</li>
+<li>数据(data)-运送消息的实体，编码后的消息</li>
+<li>信号(signal)-数据的表现形式，电器/电磁表现</li>
+</ul>
 <a id="more"></a>
-<h1 id="计算机网络模型">计算机网络模型</h1>
-<h2 id="osi七层模型">OSI七层模型</h2>
-<h3 id="open-system-inerconnection-开放性系统互联">Open System Inerconnection 开放性系统互联</h3>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">OSI七层模型</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">7. Application <strong>应用层</strong>：软件交流协议</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6. Presentation <strong>表示层</strong>：对数据的压缩解压缩，加密解密，把比特信息转换为一定格式的数据流</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5. Session <strong>会话层</strong>：会话的建立，连接，拆除</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4. Transport <strong>传输层</strong>：核心层之一，负责端到端连接，例如负责TCP的可靠性传输</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3. Network <strong>网络层</strong>：核心层之一，最优路径<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，从源主机送达至目标机，以ip地址<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>作为主机标识</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2. Data Link <strong>数据链路层:提供介质访问服务</strong>。通过MAC<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>提供可靠的帧传递。提供差错控制、流控等</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">1. Physical 物理层：提供透明的比特流，任何可以表示两种状态的信号都可以。只管传输，不关心内容</td>
-</tr>
-</tbody>
-</table>
+<h2 id="信号分类">信号分类</h2>
+<h3 id="数字信号">数字信号</h3>
 <ul>
-<li>七层模型每一层都完成特定功能，都为其上一层服务，每一层都使用下一层提供的服务【第一层和第七层除外】</li>
+<li>离散的</li>
 </ul>
-<h2 id="dod模型">DOD模型</h2>
-<h3 id="department-of-defense-model-美国国防部模型">Department of Defense Model 美国国防部模型</h3>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">TCP/IP四层模型</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">4. Application <strong>应用层</strong><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">3. Transport <strong>传输层</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">2. Internet <strong>网络层</strong><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1. Network Access <strong>物理层</strong><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="osi模型和tcpip模型的不同">OSI模型和TCP/IP模型的不同</h2>
+<h3 id="模拟信号">模拟信号</h3>
 <ul>
-<li>TCP/IP更简洁；OSI更易开发，更容易排除故障</li>
-<li>TCP/IP是在实践中产生的，OSI只是一种理论模型</li>
+<li>连续的</li>
 </ul>
-<h2 id="osi没有流行的原因">OSI没有流行的原因</h2>
+<h2 id="数据分类">数据分类</h2>
 <ul>
-<li>糟糕的时机
-<ul>
-<li>TCP/IP已经流行</li>
-<li>参杂了太多政策考量</li>
-<li>庞大，笨拙</li>
-</ul></li>
+<li>模拟数据</li>
+<li>数字数据</li>
 </ul>
-<h2 id="数据传输">数据传输</h2>
-<h3 id="发方工作">发方工作</h3>
-<ol type="1">
-<li>封装打包，由高到低，逐级打包</li>
-<li>每一层上，加上头部信息
-<ol type="1">
-<li>OSI上三层，信息被表示为一定格式的数据流 <strong>DataStream</strong></li>
-<li>数据流到达传输层，会被切割为方便传输的数据段 <strong>Segment</strong>，并加上段头，标明序列号，端口号等信息</li>
-<li>数据段传到网络层，添加分组头成型分组 (<strong>Packet</strong>)分组头部中包含了寻址主机的IP和其他一些信息</li>
-<li>分组传到数据链路层，添加帧头，帧头包含物理地址，校验和</li>
-<li>帧到了物理层，被转换为比特流，被传送</li>
-<li><a href="https://blog.csdn.net/mincheat/article/details/61192701" target="_blank" rel="noopener">MAC、IP头、TCP头、UDP头帧格式、详解</a></li>
-</ol></li>
-</ol>
-<h3 id="收方工作">收方工作</h3>
+<h2 id="码元">码元</h2>
+<p>这只是我的理解，我搜索了很多资料，都是在说电平云云。</p>
+<p>导体传输信号，他的最高电平是+5v，最低电压是-5v。</p>
+<p>以下说明建立在<strong>归零制</strong>的前提下，且在理想条件下，没有介质电阻导致压降，且接收端没有误差，理论上，是可以无限制的分区段的</p>
+<p>现在我们定义+5v代表为1，-5v代表0，0v不代表信息。那么这套系统每一次非归零的跳变都传输了1bit，设每秒发生一次跳变，则他的比特率为1bps，波特率也等于1baud。</p>
+<p>我们把-5v到+5v分成四个区段，令-5v代表00，-2.5v代表01，+2.5v代表10，+5v代表11，设每秒发生一次跳变，那么这套系统每次非归零的跳变传输了2bit，则它的比特率为2bps，波特率为1baud。他有四个种离散状态，称为四进制码元。</p>
+<p>我们把-5V到+5v分成八个区段，令-5v代表000，-3.75v代表001，-2.5v代表010，-1.25v代表011，1.25v代表100，2.5v代表101，3.75v代表110，5v代表111。那么这套系统每一次非归零的跳变都传输了3bit，设每秒发生一次跳变，则它的比特率为3bps，波特率为1baud。他有八种离散状态，称为八进制码元。</p>
+<p>以此类推，如果可以把-5v到+5v均分成更多2的整数次方个区段，那么理论上每次发生非归零的跳变都会发送<span class="math inline">\(\log_{2}区段数\)</span>个bit。但是每次只发送了1baud。</p>
+<h3 id="波特率计算">波特率计算</h3>
+<p><span class="math display">\[
+I=S\log_2N​
+\]</span></p>
+<p>其中<span class="math inline">\(I\)</span> 为传信率，<span class="math inline">\(S\)</span> 为波特率，<span class="math inline">\(N\)</span> 为每个码元负载的信息量，而<span class="math inline">\(\log _{2}{N}\)</span>以比特为单位。</p>
+<h2 id="基带信号">基带信号</h2>
+<p>基本频带信号，信源信号，原始信号，一般为数字信号</p>
+<h3 id="基带调制">基带调制</h3>
+<p>基带信号进行波形变换，这种过程称为编码(<strong>coding</strong>)，编码后的信号能通过一定手段还原。基带调制后的信号仍然是基带信号</p>
+<h3 id="带通调制">带通调制</h3>
+<p>使用载波(<strong>carrier</strong>)进行调制，把基带信号加载到高频信号上，并转换为模拟信号，这种过程叫做带通调制</p>
+<h4 id="带通信号">带通信号</h4>
+<p>经过带通调制的模拟信号叫做带通信号</p>
+<h2 id="数字信号基带信号常用编码方式">数字信号/基带信号常用编码方式</h2>
 <ul>
-<li>逐层去掉头部，获取报文内部信息</li>
+<li><strong>不归零制</strong>：正电平代表1，负电平代表0</li>
+<li><strong>归零制</strong>：正脉冲代表1，负脉冲代表0</li>
+<li><strong>曼彻斯特编码</strong>：周期中心向上跳变代表1，周期中心向下跳变代表0，反之亦可</li>
+<li><strong>差分曼彻斯特编码</strong>：每一位中心始终有跳变，位边界有跳变代表0，位边界没有跳变代表1</li>
 </ul>
-<h3 id="关于协议数据单元不同层也有好多种说法">关于协议数据单元，不同层也有好多种说法</h3>
-<ol type="1">
-<li>应用层的PDU<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>叫数据流或者报文</li>
-<li>运输层（也叫传输层）PDU叫报文段，数据段，用户数据报</li>
-<li>网络层的是分组、包、IP数据报、数据报</li>
-<li>数据链路层的是帧</li>
-<li>物理层的是比特流</li>
-</ol>
-<h3 id="协议作用于对应层之间层与层之间有接口接口用于服务的调用">协议作用于对应层之间，层与层之间有接口，接口用于服务的调用</h3>
-<h3 id="任何一次通信都是由发方的封装开始接收方的解封装结束">任何一次通信，都是由发方的封装开始，接收方的解封装结束</h3>
-<section class="footnotes" role="doc-endnotes">
+<img src="/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/%E5%B8%B8%E8%A7%81%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E7%BC%96%E7%A0%81.png" class="" title="常见数字信号编码">
+<h4 id="从波形来看曼彻斯特编码产生信号的频率比不归零制高">从波形来看：曼彻斯特编码产生信号的频率比不归零制高</h4>
+<h4 id="从自同步能力来看-不归零制不能推断信号的时钟频率这叫没有自同步能力曼彻斯特与差分曼彻斯特编码可以推断信号的始终频率具有自同步能力">从自同步能力来看 ，不归零制不能推断信号的时钟频率，这叫没有自同步能力；曼彻斯特与差分曼彻斯特编码可以推断信号的始终频率，具有自同步能力</h4>
 <hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p>最优路径就是路由最短路径<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>IP(<strong>Internet Protorol</strong>)地址，用于标识/寻找主机<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>MAC（<strong>Media Access Control Address</strong>）地址也称为<strong>局域网地址</strong>（LAN Address），<strong>MAC位址</strong>，<strong>以太网地址</strong>（Ethernet Address）或<strong>物理地址</strong>。不做修改的情况下，一般是唯一的。MAC地址用于在网络中唯一标示一个网卡，一台设备若有一或多个网卡，则每个网卡都需要并会有一个唯一的MAC地址。一个网卡亦可以虚拟出多个虚拟网卡，每个虚拟网卡都会有各自的MAC地址和ip地址<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>等同于OSI模型中的5-7层<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5" role="doc-endnote"><p>等同于OSI模型中的4层<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p>等同于OSI模型中的3层<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7" role="doc-endnote"><p>等同于OSI模型中的1-2层<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8" role="doc-endnote"><p>PDU (<strong>Protocol Data Unit</strong>)是指对等层次之间传递的数据单位<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
+<h2 id="基本带通载波信号调制">基本带通/载波信号调制</h2>
+<ul>
+<li>调幅(AM)：载波的振幅随基带数字信号变化，可用乘法器实现，也叫幅度键控</li>
+<li>调频(FM)：载波的频率随基带数字信号变化，也叫频移键控</li>
+<li>调相(PM)：载波的初始相位随基带数字信号变化，也叫相移键控</li>
+</ul>
+<img src="/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/%E5%9F%BA%E6%9C%AC%E5%B8%A6%E9%80%9A%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95.jpg" class="" title="基本带通调制方法">
+<h3 id="为什么需要载波调制">为什么需要载波调制</h3>
+<ul>
+<li>因为数字基带信号主要集中在低频段，只适合在低通型信道中传输。但是带通型信道更常见，所以必须用数字基带信号对载波进行调制，使基带信号搬移到高频的载波频率上。</li>
+<li>天线尺寸(<span class="math inline">\(\lambda/4\)</span>)，其中<span class="math inline">\(\lambda=c/f\)</span>为载波波长</li>
+</ul>
+<h3 id="调频调幅调制与信号的关系">调频调幅调制与信号的关系</h3>
+<img src="/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/%E8%B0%83%E9%A2%91%E8%B0%83%E5%B9%85%E4%B8%8E%E4%BF%A1%E5%8F%B7%E5%85%B3%E7%B3%BB.gif" class="" title="调频调幅与信号关系">
+<h3 id="二进制数字调制">二进制数字调制</h3>
+<h4 id="二进制幅度键控2ask">二进制幅度键控（2ASK）</h4>
+<ul>
+<li>在幅度键控中，载波幅度随调制信号而变化，载波的幅度随着数字信号1和0在两个电平间转换。</li>
+<li>二进制幅度控件又称为<strong>通-断控件</strong>（OOK）</li>
+<li>OOK信号的时域表达</li>
+</ul>
+<p><span class="math display">\[
+S_{OOK}(t)=a_n \cdot Acos\omega_ct
+\]</span></p>
+其中a为二进制信息，可表示为 $$ a_n
+<span class="math display">\[\begin{cases}
+0 出现概率为P\\
+1 出现概率为1-P
+
+\end{cases}\]</span>
+<p>$$</p>
 ]]></content>
       <categories>
-        <category>大学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>解决cencrack在线工具包的Direct错误</title>
-    <url>/%E8%A7%A3%E5%86%B3cencrack%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7%E5%8C%85%E7%9A%84Direct%E9%94%99%E8%AF%AF/</url>
-    <content><![CDATA[<p>开启此功能即可正常运行:</p>
-<img src="/%E8%A7%A3%E5%86%B3cencrack%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7%E5%8C%85%E7%9A%84Direct%E9%94%99%E8%AF%AF/directplay.png" class="" title="directplay">
-]]></content>
-      <categories>
-        <category>windows工具</category>
+        <category>无线电</category>
       </categories>
   </entry>
   <entry>
@@ -5228,463 +5562,129 @@ A\overrightarrow{x}=\overrightarrow{v}
       </categories>
   </entry>
   <entry>
-    <title>od-快捷键</title>
-    <url>/od-%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-    <content><![CDATA[<p>无论当前的OllyDbg窗口是什么，这些快捷键均有效：  Ctrl+F2 - 重启程序，即重新启动被调试程序。如果当前没有调试的程序，OllyDbg会运行历史列表［history list］中的第一个程序。程序重启后，将会删除所有内存断点和硬件断点。 译者注：从实际使用效果看，硬件断点在程序重启后并没有移除。</p>
-<p>Alt+F2 - 关闭，即关闭被调试程序。如果程序仍在运行，会弹出一个提示信息，询问您是否要关闭程序。   F3 - 弹出“打开32位.EXE文件”对话框［Open 32-bit .EXE file］，您可以选择可执行文件，并可以输入运行参数。   Alt+F5 - 让OllyDbg总在最前面。如果被调试程序在某个断点处发生中断，而这时调试程序弹出一个总在最前面的窗口（一般为模式消息或模式对话框［modal message or dialog］），它可能会遮住OllyDbg的一部分，但是我们又不能移动最小化这个窗口。激活OllyDbg（比如按任务栏上的标签）并按 Alt+F5，OllyDbg将设置成总在最前面，会反过来遮住刚才那个窗口。如果您再按一下Alt+F5，OllyDbg会恢复到正常状态。 OllyDbg是否处于总在最前面状态，将会保存，在下一次调试时依然有效。当前是否处于总在最前面状态，会显示在状态栏中。</p>
-<p>F7 - 单步步入到下一条命令，如果当前命令是一个函数［Call］，则会停在这个函数体的第一条命令上。如果当前命令是是含有REP前缀，则只执行一次重复操作。 <a id="more"></a> Shift+F7 - 与F7相同，但是如果被调试程序发生异常而中止，调试器会首先尝试步入被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。</p>
-<p>Ctrl+F7 - 自动步入，在所有的函数调用中一条一条地执行命令（就像您按住F7键不放一样，只是更快一些）。当您执行其他一些单步命令，或者程序到达断点，或者发生异常时，自动步入过程都会停止。每次单步步入，OllyDbg都会更新所有的窗口。所以为了提高自动步入的速度，请您关闭不必要成窗口，对于保留的窗口最好尽量的小。按Esc键，可以停止自动步入。   F8 - 单步步过到下一条命令。如果当前命令是一个函数，则一次执行完这个函数（除非这个函数内部包含断点，或发生了异常）。如果当前命令是含有REP前缀，则会执行完重复操作，并停在下一条命令上。   Shift+F8 - 与F8相同，但是如果被调试程序发生异常而中止，调试器会首先尝试步过被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。   Ctrl+F8 - 自动步过，一条一条的执行命令，但并不进入函数调用内部（就像您按住F8键不放一样，只是更快一些）。当您执行其他一些单步命令，或者程序到达断点，或者发生异常时，自动步过过程都会停止。每次单步步过，OllyDbg都会更新所有的窗口。所以为了提高自动步过的速度，请您关闭不必要成窗口，对于保留的窗口最好尽量的小。按Esc键，可以停止自动步过。   F9 - 让程序继续执行。</p>
-<p>Shift+F9 - 与F9相同，但是如果被调试程序发生异常而中止，调试器会首先尝试执行被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。   Ctrl+F9 - 执行直到返回，跟踪程序直到遇到返回，在此期间不进入子函数也不更新CPU数据。因为程序是一条一条命令执行的，所以速度可能会慢一些。按Esc键，可以停止跟踪。   Alt+F9 - 执行直到返回到用户代码段，跟踪程序直到指令所属于的模块不在系统目录中，在此期间不进入子函数也不更新CPU数据。因为程序是一条一条执行的，所以速度可能会慢一些。按Esc键，可以停止跟踪。   Ctrl+F11 -Run跟踪步入，一条一条执行命令，进入每个子函数调用，并把寄存器的信息加入到Run跟踪的存储数据中。Run跟踪不会同步更新CPU窗口。</p>
-<p>F12 - 停止程序执行，同时暂停被调试程序的所有线程。请不要手动恢复线程运行，最好使用继续执行快捷键或菜单选项（像 F9）。   Ctrl+F12 - Run跟踪 步过，一条一条执行命令，但是不进入子函数调用，，并把寄存器的信息加入到Run跟踪的存储数据中。Run跟踪不会同步更新CPU窗口。   Esc - 如果当前处于自动运行或跟踪状态，则停止自动运行或跟踪；如果CPU显示的是跟踪数据，则显示真实数据。   Alt+B - 显示断点窗口。在这个窗口中，您可以编辑、删除、或跟进到断点处。 Alt+C - 显示CPU窗口。 Alt+E - 显示模块列表［list of modules］。   Alt+K - 显示调用栈［Call stack］窗口。   Alt+L - 显示日志窗口。   Alt+M - 显示内存窗口。   Alt+O - 显示选项对话框［Options dialog］   Ctrl+P - 显示补丁窗口。   Ctrl+T - 打开 暂停 Run跟踪 对话框   Alt+X - 关闭 OllyDbg。   大多数窗口都支持以下的键盘命令：   Alt+F3 - 关闭当前窗口。 c.&amp;vWmLSGE  Ctrl+F4 - 关闭当前窗口。 F5 - 最大化当前窗口或将当前窗口大小改为正常化。   F6 - 切换到下一个窗口。   Shift+F6 - 切换到前一个窗口。   F10 - 打开与当前窗口或面板相关的快捷菜单。   左方向键 - 显示窗口左方一个字节宽度的内容。   Ctrl+左方向键 - 显示窗口左方一栏的内容。   右方向键 - 显示窗口右方一个字节宽度的内容</p>
-<p>Ctrl+右方向键 - 显示窗口右方一栏的内容   反汇编窗口中的快捷键［Disassembler shortcuts］   当CPU窗口中的反汇编面板［Disassembler pane］处于激活状态时，您可以使用以下快捷键：   回车键 - 将选中的命令添加到命令历史［command history］中，如果当前命令是一个跳转、函数或者是转换表的一个部分，则进入到目的地址。   退格键 - 移除选中部分的自动分析信息。如果分析器将代码误识别为数据，这个快捷键就非常有用。请参考解码提示［decoding hints］. </p>
-<p>Alt+退格键 - 撤消所选部分的修改，以备份数据的相应内容替换所选部分。仅当备份数据存在且与所选部分不同时可用。</p>
-<p>Ctrl+F1 -如果API帮助文件已经选择，将打开与首个选择行内的符号名相关联的帮助主题。   F2 -在首个选择的命令上开关INT3 断点［Breakpoint］，也可以双击该行第二列。   Shift+F2 -在首个选择命令设置条件断点，参见忽略Kernel32中内存访问异常［Ignore memory access violations in Kernel32］。   F4 -执行到所选行，在首个选择的命令上设置一次性断点，然后继续执行调试程序，直到OllyDbg捕获到异常或者停止在该断点上。在程序执行到该命令之前，该一次性断点一直有效。如有必要，可在断点窗口［Breakpoints window］中删除它。   Shift+F4 -设置记录断点（一种条件断点，当条件满足时一些表达式的值会记录下来）， 详情参见断点［Breakpoint］。   Ctrl+F5 -打开与首个选择的命令相对应的源文件。   Alt+F7 -转到上一个找到的参考。   Alt+F8 -转到下一个找到参考。   Ctrl+A -分析当前模块的代码段。</p>
-<p>Ctrl+B - 开始二进制搜索。   Ctrl+C -复制所选内容到剪贴板。复制时会简单地按列宽截断不可见内容，如果希望排除不需要的列，可把这些列的宽度调整到最小。   Ctrl+E -以二进制（十六进制）格式编辑所选内容。   Ctrl+F -开始命令搜索。   Ctrl+G -转到某地址。该命令将弹出输入地址或表达式的窗口。该命令不会修改 EIP。</p>
-<p>Ctrl+J -列出所有的涉及到该位置的调用和跳转，在您用这个功能之前，您必须使用分析代码功能。 Ctrl+K - 查看与当前函数相关的调用树［Call tree］。在您用这个功能之前，您必须使用分析代码功能。</p>
-<p>Ctrl+L - 搜索下一个，重复上一次的搜索内容。   Ctrl+N - 打开当前模块的名称（标签）列表。</p>
-<p>Ctrl+O - 扫描object文件。扫描Object文件。该命令会显示扫描Object文件对话框，您可以在该对话框中选择Object文件或者lib文件，并扫描这个文件，试图找到在实际代码段中用到的目标模块。   Ctrl+R -搜索所选命令的参考。该命令扫描激活模块的全部可执行代码，以找到涉及到首个选中的命令的全部相关参考（包括：常量、跳转及调用），您可以在参考中使用快捷键 Alt+F7 和 Alt+F8来浏览这些参考。为便于您使用，被参考的命令也包含在该列表中。</p>
-<p>Ctrl+S -命令搜索。该命令显示命令查找［Find command］对话框供您输入汇编命令，并从当前命令开始搜索。   星号［Asterisk］(*) -转到原始位置（激活线程的EIP处）。</p>
-<p>Ctrl+星号(*) - 指定新的起始位置，设置当前所选线程的EIP为首个选择字节的地址。您可以在选择EIP并撤消该操作。</p>
-<p>加号［Plus］(+) -如果run跟踪［run trace］ 没有激活，则根据命令历史［command history］跳到下一条运行过命令的地方；否则跳到Run跟踪的下一个记录。   Ctrl+加号 - 跳到前一个函数开始处。（注意只是跳到，并不执行）</p>
-<p>减号［Minus］(-) - 如果run跟踪［run trace］ 没有激活，则根据命令历史［command history］跳到前一条运行过命令的地方；否则跳到Run跟踪的前一个记录。</p>
-<p>Ctrl+减号 - 跳到下一个函数开始处。（注意只是跳到，并不执行）   空格［Space］ - 修改命令。您可在显示对话框中以汇编语言修改实际指令或输入新指令，这些指令将替换实际代码，您也可以在想要修改的指令处双击鼠标。   冒号［Colon］( - 添加标签。显示添加标签窗口［Add label］或修改标签窗口［Change label］，您可在此输入与首个选择的命令中的第一个字节相关联的标签（符号名）。注意，在多种编程语言中，冒号可以是标签的一部分。</p>
-<p>分号［Semicolon］(;) - 添加注释［comment］。显示添加注释窗口［Add label］或修改注释窗口［Change label］，您可在此输入与首条所选命令的第一个字节相关联的注释（注释串会显示在最后一列中）。注意，多种汇编语言使用分号作为注释开始。您也可以在注释列双击需要注释的命令行。   命令行插件支持的命令   CALC 判断表达式   WATCH 添加监视表达式</p>
-<p>AT 在指定地址进行反汇编</p>
-<p>FOLLOW 跟随命令 ORIG 反汇编于 EIP   DUMP 在指定地址进行转存</p>
-<p>DA 转存为反汇编代码   DB 使用十六进制字节格式转存   DC 使用 ASCII 格式转存</p>
-<p>DD 转存在堆栈格式   DU 转存在 UNICODE 格式</p>
-<p>DW 使用十六进制字词格式转存   STK   AS （AS + 地址 + 字符串） 在指定地址进行汇编   BP 进行条件中断（有条件的断点）</p>
-<p>BPX 中断在全部调用 （Call） BPD 清除全部调用中的断点   BC 清除断点   MR 内存断点于访问时   MW 内存断点于写入时   MD 清除内存断点   HR 访问时进行硬件中断   HW 写入时进行硬件中断</p>
-<p>HE 执行时进行硬件中断   HD 清除硬件断点   STOP 停止运行程序调试 PAUSE 暂停执行程序调试   RUN 运行程序进行调试   GE 运行和通过例外</p>
-<p>SI 单步进入 Call 中 SO 步过 Call TI 跟踪进入直到地址   TO 跟踪步过直到地址 TC 跟踪进入直到满足条件</p>
-<p>TOC 跟踪步过直到满足条件   TR 运行直到返回   TU 运行直到用户代码   LOG 查看记录窗口   MOD 查看模块窗口</p>
-<p>MEM 查看内存窗口</p>
-<p>CPU 查看 CPU 窗口</p>
-<p>CS 查看 Call 堆栈   BRK 查看断点窗口</p>
-<p>OPT 打开选项设置窗口   EXIT 退出 OllyDbg   QUIT 退出 OllyDbg   OPEN 打开一个可执行文件   CLOSE 关闭可执行文件   RST 重新运行当前程序   HELP 查看 API 函数的帮助</p>
+    <title>vim忘记使用sudo</title>
+    <url>/vim%E5%BF%98%E8%AE%B0%E4%BD%BF%E7%94%A8sudo/</url>
+    <content><![CDATA[<h1 id="vim忘记使用sudo">vim忘记使用sudo</h1>
+<p>修改完文件后，进入命令模式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">:w !sudo tee %</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux知识</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>解决cencrack在线工具包的Direct错误</title>
+    <url>/%E8%A7%A3%E5%86%B3cencrack%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7%E5%8C%85%E7%9A%84Direct%E9%94%99%E8%AF%AF/</url>
+    <content><![CDATA[<p>开启此功能即可正常运行:</p>
+<img src="/%E8%A7%A3%E5%86%B3cencrack%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7%E5%8C%85%E7%9A%84Direct%E9%94%99%E8%AF%AF/directplay.png" class="" title="directplay">
 ]]></content>
       <categories>
         <category>windows工具</category>
       </categories>
   </entry>
   <entry>
-    <title>操作系统第二节课笔记-处理器管理功能概要</title>
-    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E6%A6%82%E8%A6%81/</url>
-    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E6%A6%82%E8%A6%81/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E6%A6%82%E8%A6%81.pdf" title="操作系统第二节课笔记-处理器管理功能概要pdf文档下载">操作系统第二节课笔记-处理器管理功能概要pdf文档下载</a>
-<a id="more"></a>
-<h2 id="操作系统的处理器管理功能概要">操作系统的处理器管理功能概要</h2>
-<h3 id="处理器资源-最重要的资源">处理器资源-最重要的资源</h3>
-<h4 id="处理器调度-如何分配">处理器调度-如何分配</h4>
-<ul>
-<li>作业调度
-<ul>
-<li>作业后备队列选取若干作业装入内存</li>
-<li>作业选择与资源分配</li>
-<li>调入内存建立进程</li>
-</ul></li>
-<li>进程调度
-<ul>
-<li>就绪进程队列</li>
-<li>进程选择与处理及分配</li>
-<li>保存现场<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，恢复现场<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
-</ul></li>
-<li>调度算法
-<ul>
-<li>先来先服务，nice值低的进程优先权高，时间轮片选择的几率更大，运行的机会更多</li>
-</ul></li>
-</ul>
-<h4 id="进程控制">进程控制</h4>
-<ul>
-<li>主要任务
-<ul>
-<li>创建进程</li>
-<li>撤销进程</li>
-<li>切换进程状态</li>
-</ul></li>
-<li>进程控制机制
-<ul>
-<li><strong>原语</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
-<li><strong>进程&amp;线程</strong><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
-</ul></li>
-</ul>
-<h4 id="进程同步">进程同步</h4>
-<ul>
-<li>主要任务
-<ul>
-<li>进程/现成的并发执行协调</li>
-<li>互斥/同步方式</li>
-<li><strong>临界资源</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a><strong>&amp;临界区</strong><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>
-<ul>
-<li>要保证各个进程互斥的访问临界资源/临界区</li>
-</ul></li>
-</ul></li>
-<li>进程同步机制
-<ul>
-<li>开/关锁原语【支持简单的/短时间的互斥问题】</li>
-<li>信号量机制</li>
-<li>管程【高级编程概念】</li>
-</ul></li>
-</ul>
-<h4 id="进程通信">进程通信</h4>
-<ul>
-<li>主要任务
-<ul>
-<li>进程(线程)间的信息交换</li>
-</ul></li>
-<li>进程通信方式
-<ul>
-<li>共享存储器</li>
-<li>管道通信</li>
-<li>消息传递系统
-<ul>
-<li>消息缓冲队列</li>
-<li>邮箱</li>
-</ul></li>
-</ul></li>
-</ul>
-<hr />
-<h3 id="内存资源管理">内存资源管理</h3>
-<h4 id="内存分配">内存分配</h4>
-<ul>
-<li>主要任务
-<ul>
-<li>使程序各得其所</li>
-<li>提高存储器利用率</li>
-<li>适应程序和数据的动态增长需要</li>
-</ul></li>
-<li>内存分配机制
-<ul>
-<li>内存分配用数据结构</li>
-<li>内存分配
-<ul>
-<li>连续/离散分配方式</li>
-<li>静态/动态分配方式</li>
-</ul></li>
-<li>内存回收</li>
-</ul></li>
-</ul>
-<h4 id="内存保护">内存保护</h4>
-<ul>
-<li>主要任务
-<ul>
-<li>首先保证内核安全，其次确保程序见互不干扰</li>
-<li>存取访问控制</li>
-</ul></li>
-<li>内存保护机制
-<ul>
-<li>越界检查</li>
-<li>硬件实现</li>
-<li>保护方式
-<ul>
-<li>上下限界限寄存器</li>
-<li>页号&lt;页表长度</li>
-<li>段号&lt;段表长度&amp;&amp;段内地址&lt;段长</li>
-<li>特权级比较</li>
-</ul></li>
-</ul></li>
-</ul>
-<h4 id="地址映射转换">地址映射/转换</h4>
-<ul>
-<li><p>主要任务</p>
-<ul>
-<li>逻辑地址转换为物理地址</li>
-</ul></li>
-<li><p>基本概念</p>
-<ul>
-<li>地址空间&amp;内存空间</li>
-<li>逻辑/相对/有效地址</li>
-<li>物理/绝对地址</li>
-</ul></li>
-<li><p>地址映射机制</p>
-<ul>
-<li>硬件实现</li>
-<li>重定位寄存器、页表/段表、快表</li>
-</ul></li>
-</ul>
-<h4 id="内存扩充">内存扩充</h4>
-<ul>
-<li><p>主要任务</p>
-<ul>
-<li>从逻辑上扩充内存容量</li>
-</ul></li>
-<li><p>内存扩充的可行性</p>
-<ul>
-<li><p>程序运行局部性原理</p></li>
-<li><p>离散分配方式</p></li>
-</ul></li>
-<li><p>内存扩充机制</p>
-<ul>
-<li>虚拟存储技术</li>
-<li>硬件(页/段表、缺页/段中断、地址变换)</li>
-<li>软件(请求调入/置换功能)</li>
-</ul></li>
-</ul>
-<hr />
-<h3 id="设备管理">设备管理</h3>
-<h4 id="设备分配">设备分配</h4>
-<ul>
-<li>主要任务
-<ul>
-<li>设备及相应控制器的通道的分配</li>
-</ul></li>
-<li>设备分配机制
-<ul>
-<li>设备分配用的数据结构</li>
-<li>设备分配与设备分配所对应的方式</li>
-<li>设备分配与回收算法</li>
-<li><strong>设备独立性</strong><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></li>
-<li><strong>虚拟设备</strong><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></li>
-</ul></li>
-</ul>
-<h4 id="缓冲管理">缓冲管理</h4>
-<ul>
-<li>主要任务
-<ul>
-<li>管理各样的缓冲区</li>
-<li>缓和CPU和I/O速度不匹配</li>
-<li>提高资源利用率和系统吞吐量</li>
-</ul></li>
-<li>缓冲管理机制
-<ul>
-<li>单/双/多缓冲类型</li>
-<li><strong>字符缓冲</strong><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>与<strong>盘块缓冲</strong><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></li>
-<li>共用缓冲池机制</li>
-</ul></li>
-</ul>
-<h4 id="设备处理">设备处理</h4>
-<ul>
-<li>主要任务
-<ul>
-<li>CPU与设备控制器间的通信</li>
-</ul></li>
-<li>设备处理过程
-<ul>
-<li>I/O请求提出</li>
-<li>I/O请求合法性检查</li>
-<li>了解设备状态</li>
-<li>传递参数并设置工作方式</li>
-<li>通道程序自动构成<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></li>
-<li>发送I/O指令和启动I/O设备</li>
-<li>及时响应中断请求</li>
-</ul></li>
-</ul>
-<hr />
-<h3 id="文件管理">文件管理</h3>
-<h4 id="文件存储空间管理">文件存储空间管理</h4>
-<ul>
-<li>主要任务
-<ul>
-<li>使每个文件各得其所</li>
-<li>提高外存空间利用率</li>
-<li>提高外存空间访问速度</li>
-</ul></li>
-<li>文件存储空间管理机制
-<ul>
-<li>存储空间所用的数据结构</li>
-<li>存储空间的分配与回收功能</li>
-<li>离散/连续的分配方式</li>
-<li>以盘块/<strong>簇</strong><a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>为基本分配单位</li>
-</ul></li>
-</ul>
-<h4 id="目录管理">目录管理</h4>
-<ul>
-<li>主要任务
-<ul>
-<li>文件的按名存取</li>
-<li>提高文件查找速度</li>
-<li>支持文件的重命名，共享，保护</li>
-</ul></li>
-<li>目录管理机制
-<ul>
-<li>文件控制块与索引节点(inode)</li>
-<li>目录结构</li>
-<li>目录检索手段</li>
-</ul></li>
-</ul>
-<h4 id="文件的读写和存取控制">文件的读写和存取控制</h4>
-<ul>
-<li>文件的读写管理
-<ul>
-<li>从外存读取数据或将数据存入外存</li>
-<li>目录检索-&gt;外存地址-&gt;读写指针-&gt;读写操作</li>
-<li>文件描述符表和文件表(提高文件的读写)</li>
-</ul></li>
-<li>文件的存取控制
-<ul>
-<li>防止未经核准的用户存取文件</li>
-<li>防止冒名顶替存取文件</li>
-<li>防止以不正确的方式使用文件</li>
-<li>系统级/用户级/文件级存取控制</li>
-</ul></li>
-</ul>
-<h3 id="操作系统的特征">操作系统的特征</h3>
-<ul>
-<li>并发性·
-<ul>
-<li><strong>并行与并发、程序与进程/线程</strong><a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></li>
-</ul></li>
-<li>共享性
-<ul>
-<li>互斥共享方式，同时访问方式，<strong>可重入码</strong><a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></li>
-</ul></li>
-<li>虚拟性
-<ul>
-<li>模拟虚拟机，虚拟内存，虚拟盘，虚拟设备</li>
-</ul></li>
-<li>异步性
-<ul>
-<li>进程的执行顺序与执行时间的不确定性</li>
-</ul></li>
-</ul>
-<h2 id="操作系统的设计原则及非结构化设计问题">操作系统的设计原则及非结构化设计问题</h2>
-<h3 id="操作系统的设计原则">操作系统的设计原则</h3>
-<ul>
-<li>可维护性
-<ul>
-<li>纠错性/适应性/完善性/预防性维护</li>
-</ul></li>
-<li>可靠性
-<ul>
-<li>正确性/健壮性</li>
-</ul></li>
-<li>可理解性</li>
-<li>可用性</li>
-<li>性能
-<ul>
-<li>系统资源利用率及用户请求响应</li>
-</ul></li>
-</ul>
-<h3 id="模块化操作系统的结构评价">模块化操作系统的结构评价</h3>
-<ul>
-<li>优点
-<ul>
-<li>提高了设计的正确性、可理解性和可维护性</li>
-<li>增强了操作系统的可适应性</li>
-<li>加速了操作系统的开发过程</li>
-</ul></li>
-<li>尚存改进空间方面
-<ul>
-<li>模块划分和接口规定难保正确和合理</li>
-<li>未能区别共享资源和独占资源</li>
-<li>管理差异导致模块间依赖关系复杂</li>
-</ul></li>
-</ul>
-<hr />
-<section class="footnotes" role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p>将当前寄存器中的内容入栈，并跳转至至下一现场<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>把原寄存器中的内容从栈顶恢复到寄存器中<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>计算机进程的控制通常由原语完成。所谓原语，一般是指由若干条指令组成的程序段，用来实现某个特定功能，在执行过程中不可被中断。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>线程包含于进程，共享进程在内存中的资源<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5" role="doc-endnote"><p>一段时间之内只能被一个进程所访问的资源叫做临界资源<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p>临界资源的代码区叫做临界区,访问临界资源的代码栈<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7" role="doc-endnote"><p>程序和设备不直接关联，程序应访问逻辑设备，便于程序移植，提高程序可扩充性，提高程序的可维护性<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8" role="doc-endnote"><p>独占性质设备，设置共享，通过虚拟技术，把物理上的独占设备转换成共享设备<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9" role="doc-endnote"><p>对于键盘使用字符缓冲<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10" role="doc-endnote"><p>对于磁盘/软盘/硬盘/使用盘块缓冲<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11" role="doc-endnote"><p>仅限于通道控制方式，通道的形成，是由驱动程序自动构成的<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12" role="doc-endnote"><p>簇是由多个扇区组成的逻辑结构，每个扇区512个字节，簇的大小就是扇区的整数倍<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13" role="doc-endnote"><p>并行：任何一个时间点上，多个事件同时发生；并发：一段时间内，多个事件同时发生；线程：本身不用有资源，可以共享进程的资源<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14" role="doc-endnote"><p>不可修改的可执行代码，大家都要对该代码调用和执行<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
+    <title>电子电路符号</title>
+    <url>/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%A6%E5%8F%B7/</url>
+    <content><![CDATA[<h2 id="重要结论">重要结论:</h2>
+<h4 id="零值电阻从电气特性上来说是等效于零值电压源的.">零值电阻从电气特性上来说,是等效于零值电压源的.</h4>
+<h4 id="独立电压源的电流是由外电路决定的.">独立电压源的电流是由外电路决定的.</h4>
+<h4 id="开路或无穷值电阻从电气特性上等效为零值电流源.">开路或无穷值电阻从电气特性上等效为零值电流源.</h4>
+<p>2b法是指根据两个b(branch支路)求解出b个电流和b个电压</p>
+<p><span class="math inline">\(P_a\)</span>是吸收功率 <span class="math inline">\(P_d\)</span>是发出功率 <span class="math inline">\(U_S\)</span>是电压源,Voltage Source <span class="math inline">\(I_S\)</span>是电流源,current Intensity Source <span class="math inline">\(R_{EQ}\)</span>是等效电阻</p>
 ]]></content>
       <categories>
-        <category>大学</category>
+        <category>电子电路</category>
       </categories>
   </entry>
   <entry>
-    <title>调制与解调</title>
-    <url>/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/</url>
-    <content><![CDATA[<h1 id="调制与解调">调制与解调</h1>
-<h2 id="相关术语">相关术语</h2>
-<ul>
-<li>消息(massage)-有意义的实体</li>
-<li>数据(data)-运送消息的实体，编码后的消息</li>
-<li>信号(signal)-数据的表现形式，电器/电磁表现</li>
-</ul>
+    <title>2018-寒假作业笔记</title>
+    <url>/2018-%E5%AF%92%E5%81%87%E4%BD%9C%E4%B8%9A%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="寒假作业笔记">2018寒假作业笔记</h1>
 <a id="more"></a>
-<h2 id="信号分类">信号分类</h2>
-<h3 id="数字信号">数字信号</h3>
+<h5 id="ftp">ftp</h5>
+<p><code>apt-get install vsftpd</code></p>
+<p>ftp的配置文件主要有三个，位于/etc/vsftpd/目录下，分别是：</p>
 <ul>
-<li>离散的</li>
+<li>ftpusers 该文件用来指定那些用户不能访问ftp服务器。</li>
+<li>user_list 该文件用来指示的默认账户在默认情况下也不能访问ftp</li>
+<li>vsftpd.conf vsftpd的主配置文件</li>
 </ul>
-<h3 id="模拟信号">模拟信号</h3>
-<ul>
-<li>连续的</li>
-</ul>
-<h2 id="数据分类">数据分类</h2>
-<ul>
-<li>模拟数据</li>
-<li>数字数据</li>
-</ul>
-<h2 id="码元">码元</h2>
-<p>这只是我的理解，我搜索了很多资料，都是在说电平云云。</p>
-<p>导体传输信号，他的最高电平是+5v，最低电压是-5v。</p>
-<p>以下说明建立在<strong>归零制</strong>的前提下，且在理想条件下，没有介质电阻导致压降，且接收端没有误差，理论上，是可以无限制的分区段的</p>
-<p>现在我们定义+5v代表为1，-5v代表0，0v不代表信息。那么这套系统每一次非归零的跳变都传输了1bit，设每秒发生一次跳变，则他的比特率为1bps，波特率也等于1baud。</p>
-<p>我们把-5v到+5v分成四个区段，令-5v代表00，-2.5v代表01，+2.5v代表10，+5v代表11，设每秒发生一次跳变，那么这套系统每次非归零的跳变传输了2bit，则它的比特率为2bps，波特率为1baud。他有四个种离散状态，称为四进制码元。</p>
-<p>我们把-5V到+5v分成八个区段，令-5v代表000，-3.75v代表001，-2.5v代表010，-1.25v代表011，1.25v代表100，2.5v代表101，3.75v代表110，5v代表111。那么这套系统每一次非归零的跳变都传输了3bit，设每秒发生一次跳变，则它的比特率为3bps，波特率为1baud。他有八种离散状态，称为八进制码元。</p>
-<p>以此类推，如果可以把-5v到+5v均分成更多2的整数次方个区段，那么理论上每次发生非归零的跳变都会发送<span class="math inline">\(\log_{2}区段数\)</span>个bit。但是每次只发送了1baud。</p>
-<h3 id="波特率计算">波特率计算</h3>
-<p><span class="math display">\[
-I=S\log_2N​
-\]</span></p>
-<p>其中<span class="math inline">\(I\)</span> 为传信率，<span class="math inline">\(S\)</span> 为波特率，<span class="math inline">\(N\)</span> 为每个码元负载的信息量，而<span class="math inline">\(\log _{2}{N}\)</span>以比特为单位。</p>
-<h2 id="基带信号">基带信号</h2>
-<p>基本频带信号，信源信号，原始信号，一般为数字信号</p>
-<h3 id="基带调制">基带调制</h3>
-<p>基带信号进行波形变换，这种过程称为编码(<strong>coding</strong>)，编码后的信号能通过一定手段还原。基带调制后的信号仍然是基带信号</p>
-<h3 id="带通调制">带通调制</h3>
-<p>使用载波(<strong>carrier</strong>)进行调制，把基带信号加载到高频信号上，并转换为模拟信号，这种过程叫做带通调制</p>
-<h4 id="带通信号">带通信号</h4>
-<p>经过带通调制的模拟信号叫做带通信号</p>
-<h2 id="数字信号基带信号常用编码方式">数字信号/基带信号常用编码方式</h2>
-<ul>
-<li><strong>不归零制</strong>：正电平代表1，负电平代表0</li>
-<li><strong>归零制</strong>：正脉冲代表1，负脉冲代表0</li>
-<li><strong>曼彻斯特编码</strong>：周期中心向上跳变代表1，周期中心向下跳变代表0，反之亦可</li>
-<li><strong>差分曼彻斯特编码</strong>：每一位中心始终有跳变，位边界有跳变代表0，位边界没有跳变代表1</li>
-</ul>
-<img src="/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/%E5%B8%B8%E8%A7%81%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E7%BC%96%E7%A0%81.png" class="" title="常见数字信号编码">
-<h4 id="从波形来看曼彻斯特编码产生信号的频率比不归零制高">从波形来看：曼彻斯特编码产生信号的频率比不归零制高</h4>
-<h4 id="从自同步能力来看-不归零制不能推断信号的时钟频率这叫没有自同步能力曼彻斯特与差分曼彻斯特编码可以推断信号的始终频率具有自同步能力">从自同步能力来看 ，不归零制不能推断信号的时钟频率，这叫没有自同步能力；曼彻斯特与差分曼彻斯特编码可以推断信号的始终频率，具有自同步能力</h4>
+<p>编辑vsftpd.conf <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">listen&#x3D;YES</span><br><span class="line">&#x2F;&#x2F;开启端口监听</span><br><span class="line">anonymous_enable&#x3D;YES</span><br><span class="line">&#x2F;&#x2F;允许匿名下载</span><br><span class="line">lcoal_enable&#x3D;YES</span><br><span class="line">&#x2F;&#x2F;允许本地用户登录</span><br><span class="line">anao_upload_enable&#x3D;NO</span><br><span class="line">&#x2F;&#x2F;禁止匿名用户上传</span><br><span class="line">local_umask&#x3D;022</span><br><span class="line">&#x2F;&#x2F;umask值</span><br></pre></td></tr></table></figure></p>
+<h5 id="umask权限总结">umask权限总结</h5>
+<p>文件省缺权限:666 文件夹省缺权限:777 umask的作用就是省缺权限减去umask每位的值得到新建文件的权限 例如默认umask为022 666-022=644 777-022=755</p>
 <hr />
-<h2 id="基本带通载波信号调制">基本带通/载波信号调制</h2>
+<h5 id="nmap弱口令爆破">nmap弱口令爆破</h5>
 <ul>
-<li>调幅(AM)：载波的振幅随基带数字信号变化，可用乘法器实现，也叫幅度键控</li>
-<li>调频(FM)：载波的频率随基带数字信号变化，也叫频移键控</li>
-<li>调相(PM)：载波的初始相位随基带数字信号变化，也叫相移键控</li>
+<li><p>ftp <code>nmap -p 21 -sV --script=ftp-anon -v x.x.x.x(ip)</code></p></li>
+<li><p>mysql <code>nmap -p 3306 --script mysql-empty-password.nse -v x.x.x.x(ip)</code>//空密码爆破,适用于批量 <code>nmap -p 3306 --script mysql-brute.nse -v x.x.x.x(ip)</code>//弱口令爆破</p></li>
+<li><p>smb <code>nmap -p 445 --script smb-vuln-ms17-010.nse x.x.x.x(ip)</code> &gt; 脚本集 &gt; smb-vuln-ms08-067.nse &gt; smb-vuln-ms10-054.nse &gt; smb-vuln-ms10-061.nse &gt; smb-vuln-ms17-010.nse</p></li>
+<li><h2 id="smtp-nmap--p-25---script-smtp-brute.nse--v-x.x.x.xip">smtp <code>nmap -p 25 --script smtp-brute.nse -v x.x.x.x(ip)</code></h2>
+<h5 id="hydra爆破">Hydra爆破</h5></li>
+<li><p>ssh <code>hydra 127.0.0.2 ssh -l root -P pass.txt</code></p></li>
+<li><p>smb <code>hydra -l administrator -P pass.txt IP smb</code></p></li>
+<li><p>ftp <code>hydra IP ftp -l 用户名 -P 密码字典 -t 线程(默认16) -vV</code></p></li>
 </ul>
-<img src="/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/%E5%9F%BA%E6%9C%AC%E5%B8%A6%E9%80%9A%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95.jpg" class="" title="基本带通调制方法">
-<h3 id="为什么需要载波调制">为什么需要载波调制</h3>
-<ul>
-<li>因为数字基带信号主要集中在低频段，只适合在低通型信道中传输。但是带通型信道更常见，所以必须用数字基带信号对载波进行调制，使基带信号搬移到高频的载波频率上。</li>
-<li>天线尺寸(<span class="math inline">\(\lambda/4\)</span>)，其中<span class="math inline">\(\lambda=c/f\)</span>为载波波长</li>
-</ul>
-<h3 id="调频调幅调制与信号的关系">调频调幅调制与信号的关系</h3>
-<img src="/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/%E8%B0%83%E9%A2%91%E8%B0%83%E5%B9%85%E4%B8%8E%E4%BF%A1%E5%8F%B7%E5%85%B3%E7%B3%BB.gif" class="" title="调频调幅与信号关系">
-<h3 id="二进制数字调制">二进制数字调制</h3>
-<h4 id="二进制幅度键控2ask">二进制幅度键控（2ASK）</h4>
-<ul>
-<li>在幅度键控中，载波幅度随调制信号而变化，载波的幅度随着数字信号1和0在两个电平间转换。</li>
-<li>二进制幅度控件又称为<strong>通-断控件</strong>（OOK）</li>
-<li>OOK信号的时域表达</li>
-</ul>
-<p><span class="math display">\[
-S_{OOK}(t)=a_n \cdot Acos\omega_ct
-\]</span></p>
-其中a为二进制信息，可表示为 $$ a_n
-<span class="math display">\[\begin{cases}
-0 出现概率为P\\
-1 出现概率为1-P
-
-\end{cases}\]</span>
-<p>$$</p>
 ]]></content>
       <categories>
-        <category>无线电</category>
+        <category>运维</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>2018-寒假学习记录</title>
+    <url>/2018-%E5%AF%92%E5%81%87%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1 id="寒假学习记录">2018-寒假学习记录</h1>
+<h3 id="假期学习了">假期学习了</h3>
+<ul>
+<li>Thinkphp5.1</li>
+<li>Bootstrap4</li>
+<li>jquery ajax</li>
+<li>markdown</li>
+</ul>
+<h2 id="section"><a id="more"></a></h2>
+<h4 id="便于爬虫识别的html标签">便于爬虫识别的html标签</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">section定义 </span><br><span class="line">	用来区分各板块</span><br><span class="line">header main footer为方便爬虫检索</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">table定义</span><br><span class="line"></span><br><span class="line">&lt;table border&#x3D;&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;th&gt;Month&lt;&#x2F;th&gt;</span><br><span class="line">&lt;th&gt;Savings&lt;&#x2F;th&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td&gt;January&lt;&#x2F;td&gt;</span><br><span class="line">&lt;td&gt;$100&lt;&#x2F;td&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">div 背景图片自适应显示</span><br><span class="line">	background-image: url(..&#x2F;imgs&#x2F;footerkuang.png);</span><br><span class="line">    background-repeat: no-repeat;     &#x2F;&#x2F;无重复</span><br><span class="line">    background-size: 100% 100%;</span><br><span class="line">    -moz-background-size: 100% 100%;</span><br><span class="line">	</span><br><span class="line">图片自适应div大小 </span><br><span class="line">	可重复</span><br><span class="line">	background-size:contain</span><br></pre></td></tr></table></figure>
+<h4 id="thinkphp5.1">ThinkPhp5.1</h4>
+<ol type="1">
+<li>在linux下,需要权限php程序才能运行php文件,所以需要<code>chown apache2.apache2 /var/html/tp5/runtime -R</code> 递归修改tp5下的runtime目录</li>
+<li>在linux下,使用文件上传,应该给tp5目录下的public/upload目录apapche用户权限,否则无法上传文件.</li>
+<li>在linux下,需要额外安装php7.2-mysql,否则会产生无法访问数据库的错误.</li>
+<li>linux配置php-fpm时,使用sock连接fpm时应该这么写</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        DocumentRoot &quot;&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&quot;                        </span><br><span class="line">        ServerName www.divint3.com            </span><br><span class="line">        ServerAlias divint3.com               </span><br><span class="line">        DirectoryIndex index.htm index.php index.html</span><br><span class="line">  &lt;Directory &quot;&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&quot;&gt;</span><br><span class="line">        Options FollowSymLinks ExecCGI &#x2F;&#x2F;禁止访问目录,允许在该目录下执行CGI脚本</span><br><span class="line">        AllowOverride All &#x2F;&#x2F;允许rewrite,根据htc</span><br><span class="line">        Order allow,deny &#x2F;&#x2F;设置缺省的访问权限与Allow和Deny语句的处理顺序</span><br><span class="line">        Allow from all &#x2F;&#x2F;允许从任何地址访问</span><br><span class="line">        Require all granted &#x2F;&#x2F;允许所有请求访问资源</span><br><span class="line">        Satisfy all &#x2F;&#x2F;禁止直接访问</span><br><span class="line">  &lt;&#x2F;Directory&gt;</span><br><span class="line">        ProxyRequests Off</span><br><span class="line">        ProxyPassMatch ^&#x2F;(.*\.php(&#x2F;.*)?)$ unix:&#x2F;run&#x2F;php&#x2F;php7.2-fpm.sock|fcgi:&#x2F;&#x2F;localhost&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&#x2F;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+<p>最后用phpinfo()验证是否开启php-fpm成功</p>
+<ol start="5" type="1">
+<li>linux下apache开启模块 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">a2enmod rewrite </span><br><span class="line">a2enmod proxy</span><br><span class="line">a2enmod proxy_fcgi</span><br></pre></td></tr></table></figure></li>
+<li>想要隐藏url的php文件名,应该编辑.<strong>htaccess</strong> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">  Options +FollowSymlinks -Multiviews</span><br><span class="line">  RewriteEngine On</span><br><span class="line"></span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">  &#x2F;&#x2F;以上为默认配置文件</span><br><span class="line">  RewriteRule ^(.*)$ index.php?s&#x3D;$1 [QSA,PT,L]</span><br><span class="line">  &#x2F;&#x2F;写的是rewrite规则,可以省略index.php文件访问</span><br><span class="line">&lt;&#x2F;IfModule&gt;</span><br></pre></td></tr></table></figure></li>
+<li>本来要自己写分页操作的,没想到tp5自己有分页操作,语法 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">bkList</span><span class="params">($type)</span></span>&#123;</span><br><span class="line">    $info=Bkarticle::where(<span class="string">"type"</span>,$type)-&gt;paginate(<span class="number">10</span>);</span><br><span class="line">    <span class="comment">// 获取分页显示</span></span><br><span class="line">    $page = $info-&gt;render();</span><br><span class="line">    <span class="comment">// 模板变量赋值</span></span><br><span class="line">    <span class="keyword">$this</span>-&gt;assign(<span class="string">'info'</span>, $info);</span><br><span class="line">    <span class="keyword">$this</span>-&gt;assign(<span class="string">'page'</span>, $page);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;fetch();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> Bkartical为数据库中的同名表.可用于查询数据库中的同名表.<code>paginate(10)</code>的意思是每页显示十条数据. 这是tp5中的模型操作数据库. <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;extend name="./common/father" /&#125; //继承父模板</span><br><span class="line"></span><br><span class="line">&#123;block name="title"&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>灾害大百科<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">&#123;/block&#125;</span><br><span class="line"></span><br><span class="line">&#123;block name="content"&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"text-center table  table-bordered"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>文章标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>文章内容预览<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            &#123;volist name='info' id='bklist' length="50"&#125;</span><br><span class="line">            &#123;php&#125;</span><br><span class="line">                $content=$bklist["content"];</span><br><span class="line">                preg_replace('/<span class="tag">&lt;<span class="name">\s*img\s+[^</span>&gt;</span>]*?src\s*=\s*(\'|\")(.*?)\\1[^&gt;]*?\/?\s*&gt;/i','[图片]',$content); //把数据库中取出的html文本数据中的匹配img标签的文本替换为[img],因为这这只是一个预览内容,不能把整个img文件链接地址暴露出来</span><br><span class="line">                preg_replace('/(<span class="tag">&lt;/<span class="name">?)(w+)([^</span>&gt;</span>]*&gt;)/e', "'\1'.strtoupper('\2').'\3'", $content); //替换掉所有标签,只保留文本内容</span><br><span class="line">                $content=substr($content,0,100); //截取100的长度</span><br><span class="line">            &#123;/php&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/bkarticle/&#123;$bklist.id&#125;"</span>&gt;</span>&#123;$bklist.title&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"text-left"</span>&gt;</span>&#123;php&#125;echo $content;&#123;/php&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            &#123;/volist&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float-right"</span>&gt;</span>&#123;$info|raw&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span> //这里输出分页表</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;/block&#125;</span><br><span class="line"></span><br><span class="line">&#123;block name="js"&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/static/js/baike/bklist.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;/block&#125;</span><br></pre></td></tr></table></figure> 使用jquery为对象添加class,因为{$info|raw}输出的是一个html代码,而这个代码不法修改,只能用jquery确定元素,增加class <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;main section div div ul li&quot;).addClass(&quot;page-item&quot;);</span><br><span class="line">    $(&quot;main section div div ul span&quot;).addClass(&quot;page-link&quot;);</span><br><span class="line">    $(&quot;main section div div ul li a&quot;).addClass(&quot;page-link&quot;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure> 分页效果如下 <img src="/uploads/fzcms.png" alt="分页" /></li>
+<li>phpstrom在linux下有个东西不知道怎么取消,反正就是根据是否使用git提交文件的颜色会有变化,其实只要Alt+F12 用git同步就行了,一个add,一个comment颜色就没啦,这种颜色不一样保持了我这个强迫症不断备份啊.红色是未提交,绿色是新添加,蓝色是已修改</li>
+</ol>
+<p>9.PHP版本过高会使tp5无法连接数据库,在尝试数据库迁移时,会报错<code>SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client</code>发生这种错误，是由于MySQL 8默认使用了新的密码验证插件：caching_sha2_password，而之前的PHP版本中所带的mysqlnd无法支持这种验证。</p>
+<p>修改 /etc/mysql/my.cnf，添加下面一行： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">default_authentication_plugin&#x3D; mysql_native_password</span><br></pre></td></tr></table></figure> 然后重置密码： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER USER &#39;user&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;password&#39;;</span><br></pre></td></tr></table></figure> ---</p>
+<h4 id="简单的ajax.post">简单的ajax.post</h4>
+<ol type="1">
+<li>首先说说a标签如何触发onclick事件</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span> <span class="attr">onclick</span>=<span class="string">"js_method()"</span>&gt;</span>Some Thing<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里herf超链接指向了一个空的js脚本,然后定义onclick事件 这样,我们可以使用a标签使用onclick事件发送一个ajax请求 定义一个类 叫做upload,创建一个方法,用来接收数据,这里在js处理完数据后,php仍然会检验数据可用性,我把它定义在了<strong>admin/bkadd/addcheck</strong>下, <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 前端文章上传类</span></span><br><span class="line"><span class="comment">* @author Divint3</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> upload = &#123;</span><br><span class="line">    check: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> type = $(<span class="string">'input[name="type"]:checked'</span>).val();</span><br><span class="line">        <span class="keyword">var</span> title = $(<span class="string">'input[name="title"]'</span>).val();</span><br><span class="line">        <span class="keyword">var</span> content = editor.txt.html();<span class="comment">//获取各种值并定义变量</span></span><br><span class="line">        <span class="keyword">if</span> (content == <span class="string">"&lt;p&gt;&lt;br&gt;&lt;/p&gt;"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"内容不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!title) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"标题不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!type) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"未指定文章类型"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> url = <span class="string">"admin/bkadd/addcheck"</span>;</span><br><span class="line">        <span class="keyword">var</span> data = &#123;</span><br><span class="line">            <span class="string">"type"</span>: type,</span><br><span class="line">            <span class="string">"title"</span>: title,</span><br><span class="line">            <span class="string">"content"</span>: content,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        $.post(url, data, <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;<span class="comment">//result是admin/bkadd/addcheck返回的json数据</span></span><br><span class="line">            <span class="keyword">if</span> (result.status) &#123;<span class="comment">//status返回的是php检验数据是否成功,检验数据成功后,tp5助手函数db会返回一个非零数值,如果插入失败,返回零</span></span><br><span class="line">                dialog.success(result.message);<span class="comment">//dialog封装了layer弹出层的方法,方便调用</span></span><br><span class="line">                editor.txt.html(<span class="string">'&lt;p&gt;&lt;br&gt;&lt;/p&gt;'</span>);</span><br><span class="line">                $(<span class="string">'input[name="title"]'</span>).val(<span class="string">""</span>);<span class="comment">//数据信息清空</span></span><br><span class="line">            &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                dialog.error(result.message);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"JSON"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>PHP检验代码如下</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addCheck</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//这里接收ajax请求,处理请求</span></span><br><span class="line">        $type = $_POST[<span class="string">'type'</span>];</span><br><span class="line">        $title = $_POST[<span class="string">'title'</span>];</span><br><span class="line">        $content = $_POST[<span class="string">'content'</span>];</span><br><span class="line">        <span class="keyword">if</span> (!$type) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'未指定文章类型'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!$title) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'标题不能为空'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ($content == <span class="string">"&lt;p&gt;&lt;br&gt;&lt;/p&gt;"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'内容不能为空'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        $data = [</span><br><span class="line">            <span class="string">"type"</span> =&gt; $type,</span><br><span class="line">            <span class="string">"title"</span> =&gt; $title,</span><br><span class="line">            <span class="string">"content"</span> =&gt; $content,</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        $isset = Bkarticle::where(<span class="string">"title"</span>, $title)-&gt;find();</span><br><span class="line">        <span class="keyword">if</span> ($isset == <span class="keyword">array</span>()) &#123;</span><br><span class="line">            $s = db(<span class="string">"bkarticle"</span>)-&gt;data($data)-&gt;insert();</span><br><span class="line">            <span class="keyword">return</span> show($s, <span class="string">"插入百科文章成功"</span>, <span class="keyword">array</span>(</span><br><span class="line">                <span class="string">"type"</span> =&gt; $type,</span><br><span class="line">                <span class="string">"content"</span> =&gt; $content,</span><br><span class="line">            ));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">"这个文章名已经被用过了"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这里的show方法我定义在了application下的comment.php下,因为这里是公共方法,所有方法都可以引用 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">($status, $message, $data = array<span class="params">()</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $result=[</span><br><span class="line">        <span class="string">'status'</span>=&gt;$status,</span><br><span class="line">        <span class="string">'message'</span>=&gt;$message,</span><br><span class="line">        <span class="string">'data'</span>=&gt;$data,</span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">exit</span>(json_encode($result));</span><br><span class="line">&#125;<span class="comment">//就是返回了一个json,给使用ajax.post方法的一个result,这样js才能处理插入状态</span></span><br></pre></td></tr></table></figure></p>
+<hr />
+<h4 id="bootstrap4">bootstrap4</h4>
+<ol type="1">
+<li>使用bs4的原因是他的排版和配色真的好看,给大家一个bs4主题链接https://bootswatch.com/ ,配色什么的方案多样.</li>
+<li>bs4的栅格结构也很好,支持动态响应.反正我现阶段是写不出来.</li>
+<li>bs4没啥好说的,就是个css加js,调用就完事了. 常用知识点 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">容器</span><br><span class="line">	container 类用于固定宽度并支持响应式布局的容器。</span><br><span class="line">	container-fluid 类用于 100% 宽度，占据全部视口（viewport）的容器</span><br><span class="line">颜色操作 bg-</span><br><span class="line">	primary</span><br><span class="line">	secondary</span><br><span class="line">	success</span><br><span class="line">	waring</span><br><span class="line">	light(高亮)</span><br><span class="line">	</span><br><span class="line">前景色 text-</span><br><span class="line"></span><br><span class="line">字体位置</span><br><span class="line">	text-center&#x2F;left&#x2F;right</span><br><span class="line">	font-weight-normal 普通</span><br><span class="line">				-bold 加粗</span><br><span class="line">英文变换</span><br><span class="line">	text-lowercase 小写</span><br><span class="line">		-uppercase 大写</span><br><span class="line">		-capitalize 自动大小写</span><br><span class="line">字体大小 display-</span><br><span class="line">	display-1 最大</span><br><span class="line">			-2</span><br><span class="line">			-3</span><br><span class="line">			-4 最小</span><br><span class="line"></span><br><span class="line">网格系统 col-</span><br><span class="line">	一共划分为12个网格</span><br><span class="line">	.col- 针对极小屏幕</span><br><span class="line">	.col-sm- 平板 - 屏幕宽度等于或大于 576px</span><br><span class="line">	.col-md- 桌面显示器 - 屏幕宽度等于或大于 768px)</span><br><span class="line">	.col-lg- 大桌面显示器 - 屏幕宽度等于或大于 992px)</span><br><span class="line">	.col-xl- 超大桌面显示器 - 屏幕宽度等于或大于 1200px)</span><br><span class="line">	</span><br><span class="line">	xl与lg同时存在,若大于xl判定,使用xl规则,大于lg小于xl,使用lg规则,以此类推</span><br><span class="line">	只定义了col-md 那么md及md以上使用md的规则,md以下使用默认规则</span><br><span class="line">	</span><br><span class="line">	offset-</span><br><span class="line">		偏移系统,指定偏移多少单位,最高12</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">余白与边框 </span><br><span class="line">	padding 余白</span><br><span class="line">	margin 边框</span><br><span class="line">	写法</span><br><span class="line">		p&#x2F;m&#123;location&#x3D;t[op]b[lod]l[eft]r[ight]xy&#125;-size</span><br><span class="line">		x代表上下</span><br><span class="line">		y代表左右</span><br><span class="line">	size定义值</span><br><span class="line">		1 0.25rem</span><br><span class="line">		2 0.5rem</span><br><span class="line">		3 1rem</span><br><span class="line">		4 1.5rem</span><br><span class="line">		5 3rem</span><br><span class="line">	maigin在class中定义</span><br><span class="line">		margin-tblr:#px %</span><br><span class="line">	        &#123;margin-left: auto;</span><br><span class="line">            margin-right: auto;&#125;代表水平居中</span><br><span class="line">			</span><br><span class="line">按钮定义 btn-</span><br><span class="line">	primary</span><br><span class="line">	secondary</span><br><span class="line">	success</span><br><span class="line">	waring</span><br><span class="line">	light(高亮)</span><br><span class="line">定义行 row</span><br><span class="line">显示顺序 order	</span><br><span class="line">	order-屏幕尺寸-顺序值</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr />
+<h4 id="layer弹出层">layer弹出层</h4>
+<p>这就是个充数的,调用看官网就行了.</p>
+<hr />
+<h4 id="markdown">MarkDown</h4>
+<p>同上</p>
+]]></content>
+      <categories>
+        <category>编程</category>
       </categories>
   </entry>
 </search>
