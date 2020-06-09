@@ -120,39 +120,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Dns服务相关</title>
-    <url>/Dns%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3/</url>
-    <content><![CDATA[<h4 id="dig命令">dig命令</h4>
-<p>显示域名详细信息,所有记录 以前的方式是全量区域传送,但是大部分域名服务器经过配置已经不允许区域传送,所以使用如下命令 <code>dig -t ANY +noall +multiline +answer 域名 @DNS服务器</code> 全量区域传送方式: <code>dig -t AXFR 域名 @DNS服务器</code> 反向解析 <code>dig -x ip地址 @DNS服务器</code></p>
-]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Hexo-插件及配置</title>
-    <url>/Hexo-%E6%8F%92%E4%BB%B6%E5%8F%8A%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h3 id="本地搜索">本地搜索</h3>
-<h4 id="插件安装">插件安装</h4>
-<p>在hexo根目录安装 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure> &gt; 我安装完插件后,hexo就被卸载了,还要使用<code>yarn upgrade</code>重新安装一遍hexo,你也可以使用<code>yarn add hexo-generator-searchdb</code>命令安装插件</p>
-<p>修改根目录下的_config.yml <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">    <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">    <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">    <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure> 编辑主题配置文件,我是用的next主题 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure> #### 出现的异常 当我点击搜索按钮时,会发生页面无限加载,问题是我的一篇文章中出现了非<code>utf-8</code>的文字,所以造成了xml报错,无法被读取.根据根目录下的<code>search.xml</code>出错信息,找到原文章删除特殊字符即可.</p>
-<h3 id="引用标签">引用标签</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125; #路径引用</span><br><span class="line">&#123;% asset_img slug [title] %&#125; #图片引用</span><br><span class="line">&#123;% asset_link slug [title] %&#125; #文件引用,用作下载链接</span><br></pre></td></tr></table></figure>
-<h3 id="latex支持">latex支持</h3>
-<h4 id="卸载原有渲染器安装hexo-renderer-kramed">卸载原有渲染器,安装<strong>hexo-renderer-kramed</strong></h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn remove hexo-renderer-marked</span><br><span class="line">yarn add hexo-renderer-kramed</span><br></pre></td></tr></table></figure>
-<h4 id="修改next配置文件">修改next配置文件</h4>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Default (true) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in Front Matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">mathjax</span></span><br><span class="line">  <span class="comment">#engine: katex</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-rendering-pandoc (or hexo-renderer-kramed) needed to full MathJax support.</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">cdn:</span> <span class="string">https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML</span> <span class="comment">#问号后面的是引用配置</span></span><br><span class="line">    <span class="comment">#cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML</span></span><br></pre></td></tr></table></figure>
-<h4 id="修改解析错误">修改解析错误</h4>
-<p>这里的解析错误代表单行引用时要加四个反斜线才能正常换行</p>
-<h4 id="更换pandoc解码器">更换pandoc解码器</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn remove hexo-renderer-marked</span><br><span class="line">yarn add hexo-renderer-pandoc</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>博客相关</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Linux-Debian杂谈</title>
     <url>/Linux-Debian%E6%9D%82%E8%B0%88/</url>
     <content><![CDATA[<h3 id="rc.local服务">rc.local服务</h3>
@@ -175,6 +142,30 @@
 ]]></content>
       <categories>
         <category>debian特性</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Linux-etc文件夹下的常见配置文件</title>
+    <url>/Linux-etc%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E5%B8%B8%E8%A7%81%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<h4 id="配置文件">配置文件</h4>
+<p><strong>profile</strong> * 所有用户登录时所执行的脚本,他会调用用户目录下的.profile .bashrc .bash_login</p>
+<p><strong>bash.bashrc</strong> * 用户新建一个<strong>bash shell</strong>时所会执行的脚本文件</p>
+<p><strong>rc.local</strong> * 系统完全启动后会执行其中的命令</p>
+<p><strong>passwd</strong> * 用户名:密码:UID:GID:comment:家目录:shell</p>
+<p><strong>shadow</strong></p>
+<ul>
+<li>用户名:加密后的密码:最后一次修改时间:最小时间间隔:最大时间间隔:警告时间:不活动时间:失效时间:标志</li>
+</ul>
+<p><strong>gshadow</strong> * 用户组:用户组密码:用户组管理者:组成员</p>
+<p><strong>group</strong> * 组名:密码:GID:组内用户列表</p>
+<p><strong>login.defs</strong> * 使用<strong>useradd</strong>新建用户会从冲读取新用户权限的默认设定</p>
+<p><strong>skel</strong> * 新创立用户家目录的骨架,内含隐藏配置文件</p>
+<p><strong>nsswitch.conf</strong> * 记录了程序配置信息使用什么记录,类型有file,dns,等.表示了各种程序使用配置的优先级如果记录了项目使用file记录,会在/etc目录生成软件的同名配置文件,软件首先查询nss进程,获取配置文件信息后再使用数据</p>
+<p><strong>logrotate.conf</strong> * 记录了日志切割计划</p>
+<p><strong>rc.d/</strong> * 各种启动级别以及脚本文件,包括rc.sysinit,init.d目录,init.d目录下是可执行程序,用于在各级别启动级别下创建软链接</p>
+]]></content>
+      <categories>
+        <category>linux知识</category>
       </categories>
   </entry>
   <entry>
@@ -497,260 +488,6 @@
 ]]></content>
       <categories>
         <category>编程</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Linux-etc文件夹下的常见配置文件</title>
-    <url>/Linux-etc%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E5%B8%B8%E8%A7%81%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<h4 id="配置文件">配置文件</h4>
-<p><strong>profile</strong> * 所有用户登录时所执行的脚本,他会调用用户目录下的.profile .bashrc .bash_login</p>
-<p><strong>bash.bashrc</strong> * 用户新建一个<strong>bash shell</strong>时所会执行的脚本文件</p>
-<p><strong>rc.local</strong> * 系统完全启动后会执行其中的命令</p>
-<p><strong>passwd</strong> * 用户名:密码:UID:GID:comment:家目录:shell</p>
-<p><strong>shadow</strong></p>
-<ul>
-<li>用户名:加密后的密码:最后一次修改时间:最小时间间隔:最大时间间隔:警告时间:不活动时间:失效时间:标志</li>
-</ul>
-<p><strong>gshadow</strong> * 用户组:用户组密码:用户组管理者:组成员</p>
-<p><strong>group</strong> * 组名:密码:GID:组内用户列表</p>
-<p><strong>login.defs</strong> * 使用<strong>useradd</strong>新建用户会从冲读取新用户权限的默认设定</p>
-<p><strong>skel</strong> * 新创立用户家目录的骨架,内含隐藏配置文件</p>
-<p><strong>nsswitch.conf</strong> * 记录了程序配置信息使用什么记录,类型有file,dns,等.表示了各种程序使用配置的优先级如果记录了项目使用file记录,会在/etc目录生成软件的同名配置文件,软件首先查询nss进程,获取配置文件信息后再使用数据</p>
-<p><strong>logrotate.conf</strong> * 记录了日志切割计划</p>
-<p><strong>rc.d/</strong> * 各种启动级别以及脚本文件,包括rc.sysinit,init.d目录,init.d目录下是可执行程序,用于在各级别启动级别下创建软链接</p>
-]]></content>
-      <categories>
-        <category>linux知识</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Linux-命令缩写及含义</title>
-    <url>/Linux-%E5%91%BD%E4%BB%A4%E7%BC%A9%E5%86%99%E5%8F%8A%E5%90%AB%E4%B9%89/</url>
-    <content><![CDATA[<h4 id="命令缩写">命令缩写:</h4>
-<ul>
-<li>ls = list(列出目录内容)</li>
-<li>cd = Change Directory（改变目录）</li>
-<li>su = switch user 切换用户</li>
-<li>rpm = redhat package manager 红帽子打包管理器</li>
-<li>pwd = print work directory 打印当前目录 显示出当前工作目录的绝对路径</li>
-<li>ps = process status(进程状态，类似于windows的任务管理器) 常用参数:－auxf</li>
-<li>ps -auxf 显示进程状态</li>
-<li>df = disk free 其功能是显示磁盘可用空间数目信息及空间结点信息。换句话说，就是报告在任何安装的设备或目录中，还剩多少自由的空间。</li>
-<li>rpm = 即RedHat Package Management，是RedHat的发明之一</li>
-<li>rmdir = Remove Directory（删除目录）</li>
-<li>rm = Remove（删除目录或文件） <a id="more"></a></li>
-<li>cat = concatenate连锁 cat file1 file2&gt;&gt;file3把文件1和文件2的内容联合起来放到file3中</li>
-<li>insmod = install module,载入模块</li>
-<li>ln -s = link -soft 创建一个软链接，相当于创建一个快捷方式</li>
-<li>mkdir = Make Directory(创建目录</li>
-<li>touch = 摸一下,更新时间戳,常被用来创建文件</li>
-<li>man = Manual</li>
-<li>pwd = Print working directory</li>
-<li>su = Swith user</li>
-<li>cd = Change directory</li>
-<li>ls = List files</li>
-<li>ps = Process Status</li>
-<li>mkdir = Make directory</li>
-<li>rmdir = Remove directory</li>
-<li>mkfs = Make file system</li>
-<li>fsck = File system check</li>
-<li>cat = Concatenate</li>
-<li>uname = Unix name</li>
-<li>df = Disk free</li>
-<li>du = Disk usage</li>
-<li>lsmod = List modules</li>
-<li>mv = Move file</li>
-<li>rm = Remove file</li>
-<li>cp = Copy file</li>
-<li>ln = Link files</li>
-<li>mdadm = Multiple Disk and Device Administration 多磁盘和设备管理</li>
-<li>fg = Foreground</li>
-<li>bg = Background</li>
-<li>chown = Change owner</li>
-<li>chgrp = Change group</li>
-<li>chmod = Change mode</li>
-<li>umount = Unmount</li>
-<li>dd = 本来应根据其功能描述“Convert an copy”命名为“cc”，但“cc”已经被用以代表“C Complier”，所以命名为“dd”</li>
-<li>tar = Tape archive</li>
-<li>ldd = List dynamic dependencies</li>
-<li>insmod = Install module</li>
-<li>rmmod = Remove module</li>
-<li>lsmod = List module</li>
-<li>文件结尾的"rc"（如.bashrc、.xinitrc等） = Resource configuration</li>
-<li>Knnxxx / Snnxxx（位于rcx.d目录下） = K（Kill）；S(Service)；nn（执行顺序号）；xxx（服务标识）</li>
-<li>.a（扩展名a） = Archive，static library</li>
-<li>.so（扩展名so） = Shared object，dynamically linked library</li>
-<li>.o（扩展名o） = Object file，complied result of C/C++ source file</li>
-<li>RPM = Red hat package manager</li>
-<li>dpkg = Debian package manager</li>
-<li>apt = Advanced package tool（Debian或基于Debian的发行版中提供）</li>
-</ul>
-<h4 id="部分linux命令缩写">部分Linux命令缩写</h4>
-<ul>
-<li>FIFO = First In, First Out</li>
-<li>GRUB = GRand Unified Bootloader</li>
-<li>IFS = Internal Field Seperators</li>
-<li>LILO = LInux LOader</li>
-<li>MySQL = My是最初作者女儿的名字，SQL = Structured Query Language</li>
-<li>PHP = Personal Home Page Tools = PHP Hypertext Preprocessor</li>
-<li>PNG = PNG's Not GIF<br />
-</li>
-<li>PS = Prompt String</li>
-<li>Perl = "Pratical Extraction and Report Language" = "Pathologically Eclectic Rubbish Lister"</li>
-<li>Python 得名于电视剧Monty Python's Flying Circus</li>
-<li>Tcl = Tool Command Language</li>
-<li>Tk = ToolKit</li>
-<li>VT = Video Terminal</li>
-<li>YaST = Yet Another Setup Tool</li>
-<li>apache = "a patchy" server</li>
-<li>apt = Advanced Packaging Tool</li>
-<li>ar = archiver</li>
-<li>as = assembler</li>
-<li>awk = "Aho Weiberger and Kernighan" 三个作者的姓的第一个字母</li>
-<li>bash = Bourne Again SHell</li>
-<li>bc = Basic (Better) Calculator</li>
-<li>bg = BackGround</li>
-<li>biff = 作者Heidi Stettner在U.C.Berkely养的一条狗,喜欢对邮递员汪汪叫。</li>
-<li>cal = CALendar</li>
-<li>cat = CATenate</li>
-<li>cd = Change Directory</li>
-<li>chgrp = CHange GRouP</li>
-<li>chmod = CHange MODe</li>
-<li>chown = CHange OWNer</li>
-<li>chsh = CHange SHell</li>
-<li>cmp = compare</li>
-<li>cobra = Common Object Request Broker Architecture</li>
-<li>comm = common</li>
-<li>cp = CoPy</li>
-<li>cpio = CoPy In and Out</li>
-<li>cpp = C Pre Processor</li>
-<li>cron = Chronos 希腊文时间</li>
-<li>cups = Common Unix Printing System</li>
-<li>cvs = Current Version System</li>
-<li>daemon = Disk And Execution MONitor</li>
-<li>dc = Desk Calculator</li>
-<li>dd = Disk Dump</li>
-<li>df = Disk Free</li>
-<li>diff = DIFFerence</li>
-<li>dmesg = diagnostic message</li>
-<li>du = Disk Usage</li>
-<li>ed = editor</li>
-<li>egrep = Extended GREP</li>
-<li>elf = Extensible Linking Format</li>
-<li>elm = ELectronic Mail</li>
-<li>emacs = Editor MACroS</li>
-<li>eval = EVALuate</li>
-<li>ex = EXtended</li>
-<li>exec = EXECute</li>
-<li>fd = file descriptors</li>
-<li>fg = ForeGround</li>
-<li>fgrep = Fixed GREP</li>
-<li>fmt = format</li>
-<li>fsck = File System ChecK</li>
-<li>fstab = FileSystem TABle</li>
-<li>fvwm = F*** Virtual Window Manager</li>
-<li>gawk = GNU AWK</li>
-<li>gpg = GNU Privacy Guard</li>
-<li>groff = GNU troff</li>
-<li>hal = Hardware Abstraction Layer</li>
-<li>joe = Joe's Own Editor</li>
-<li>ksh = Korn SHell</li>
-<li>lame = Lame Ain't an MP3 Encoder</li>
-<li>lex = LEXical analyser</li>
-<li>lisp = LISt Processing = Lots of Irritating Superfluous Parentheses</li>
-<li>ln = LiNk</li>
-<li>lpr = Line PRint</li>
-<li>ls = list</li>
-<li>lsof = LiSt Open Files</li>
-<li>m4 = Macro processor Version 4</li>
-<li>man = MANual pages</li>
-<li>mawk = Mike Brennan's AWK</li>
-<li>mc = Midnight Commander</li>
-<li>mkfs = MaKe FileSystem</li>
-<li>mknod = MaKe NODe</li>
-<li>motd = Message of The Day</li>
-<li>mozilla = MOsaic GodZILLa</li>
-<li>mtab = Mount TABle</li>
-<li>mv = MoVe</li>
-<li>nano = Nano's ANOther editor</li>
-<li>nawk = New AWK</li>
-<li>nl = Number of Lines</li>
-<li>nm = names</li>
-<li>nohup = No HangUP</li>
-<li>nroff = New ROFF</li>
-<li>od = Octal Dump</li>
-<li>passwd = PASSWorD</li>
-<li>pg = pager</li>
-<li>pico = PIne's message COmposition editor</li>
-<li>pine = "Program for Internet News &amp; Email" = "Pine is not Elm"</li>
-<li>ping = 拟声 又 = Packet InterNet Grouper</li>
-<li>pirntcap = PRINTer CAPability</li>
-<li>popd = POP Directory</li>
-<li>pr = pre</li>
-<li>printf = PRINT Formatted</li>
-<li>ps = Processes Status</li>
-<li>pty = pseudo tty</li>
-<li>pushd = PUSH Directory</li>
-<li>pwd = Print Working Directory</li>
-<li>rc = runcom = run command, rc还是plan9的shell</li>
-<li>rev = REVerse</li>
-<li>rm = ReMove</li>
-<li>rn = Read News</li>
-<li>roff = RunOFF</li>
-<li>rpm = RPM Package Manager = RedHat Package Manager</li>
-<li>nsswitch = network service switch 网络服务转换</li>
-<li>rsh, rlogin, rvim中的r = Remote</li>
-<li>rxvt = ouR XVT</li>
-<li>seamoneky = 我</li>
-<li>sed = Stream EDitor</li>
-<li>seq = SEQuence</li>
-<li>shar = SHell ARchive</li>
-<li>slrn = S-Lang rn</li>
-<li>ss = Socket Statistics 套接字统计</li>
-<li>ssh = Secure SHell</li>
-<li>ssl = Secure Sockets Layer</li>
-<li>stty = Set TTY</li>
-<li>su = Substitute User</li>
-<li>svn = SubVersioN</li>
-<li>tar = Tape ARchive</li>
-<li>tcsh = TENEX C shell</li>
-<li>tee = T (T形水管接口)</li>
-<li>telnet = TEminaL over Network</li>
-<li>termcap = terminal capability</li>
-<li>terminfo = terminal information</li>
-<li>tex = τέχνη的缩写，希腊文art</li>
-<li>tr = traslate</li>
-<li>troff = Typesetter new ROFF</li>
-<li>tsort = Topological SORT</li>
-<li>tty = TeleTypewriter</li>
-<li>twm = Tom's Window Manager</li>
-<li>tz = TimeZone</li>
-<li>udev = Userspace DEV</li>
-<li>ulimit = User's LIMIT</li>
-<li>umask = User's MASK</li>
-<li>uniq = UNIQue</li>
-<li>vi = VIsual = Very Inconvenient</li>
-<li>vim = Vi IMproved</li>
-<li>wall = write all</li>
-<li>wc = Word Count</li>
-<li>wine = WINE Is Not an Emulator</li>
-<li>xargs = eXtended ARGuments</li>
-<li>xdm = X Display Manager</li>
-<li>xlfd = X Logical Font Description</li>
-<li>xmms = X Multimedia System</li>
-<li>xrdb = X Resources DataBase</li>
-<li>xwd = X Window Dump</li>
-<li>yacc = yet another compiler compiler</li>
-<li>Fish = the Friendly Interactive SHell</li>
-<li>su = Switch User</li>
-<li>MIME = Multipurpose Internet Mail Extensions</li>
-<li>ECMA = European Computer Manufacturers Association</li>
-<li>initrd = initialized RAM disk</li>
-</ul>
-<h3 id="转载自httpsblog.csdn.nethuyisuarticledetails55506771">转载自<a href="https://blog.csdn.net/huyisu/article/details/55506771" target="_blank" rel="noopener">https://blog.csdn.net/huyisu/article/details/55506771</a>*</h3>
-]]></content>
-      <categories>
-        <category>linux知识</category>
       </categories>
   </entry>
   <entry>
@@ -1470,15 +1207,74 @@
       </categories>
   </entry>
   <entry>
-    <title>nmap-笔记</title>
-    <url>/nmap-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="nmap">Nmap</h3>
-<h4 id="脚本">脚本</h4>
-<p>nmap的脚本默认目录为：<code>/usr/share/nmap/scripts/</code> 使用脚本的参数 <code>--script=%脚本名称%</code> 脚本的几个类型 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auth: 负责处理鉴权证书（绕开鉴权）的脚本  </span><br><span class="line">broadcast: 在局域网内探查更多服务开启状况，如dhcp&#x2F;dns&#x2F;sqlserver等服务  </span><br><span class="line">brute: 提供暴力破解方式，针对常见的应用如http&#x2F;snmp等  </span><br><span class="line">default: 使用-sC或-A选项扫描时候默认的脚本，提供基本脚本扫描能力  </span><br><span class="line">discovery: 对网络进行更多的信息，如SMB枚举、SNMP查询等  </span><br><span class="line">dos: 用于进行拒绝服务攻击  </span><br><span class="line">exploit: 利用已知的漏洞入侵系统  </span><br><span class="line">external: 利用第三方的数据库或资源，例如进行whois解析  </span><br><span class="line">fuzzer: 模糊测试的脚本，发送异常的包到目标机，探测出潜在漏洞 intrusive: 入侵性的脚本，此类脚本可能引发对方的IDS&#x2F;IPS的记录或屏蔽  </span><br><span class="line">malware: 探测目标机是否感染了病毒、开启了后门等信息  </span><br><span class="line">safe: 此类与intrusive相反，属于安全性脚本  </span><br><span class="line">version: 负责增强服务与版本扫描（Version Detection）功能的脚本  </span><br><span class="line">vuln: 负责检查目标机是否有常见的漏洞（Vulnerability），如是否有MS08_067</span><br></pre></td></tr></table></figure> <a id="more"></a></p>
-<hr />
-<ol type="1">
-<li>扫描类型 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-sT				TCP扫描</span><br><span class="line">-sS				TCP同步扫描：这项技术最大的好处是，很少有系统能够把这记</span><br><span class="line">				入系统日志。所以该技术又叫做隐身扫描。</span><br><span class="line">-sP				PING扫描：如果你只是想知道目标主机是否运行，而不想进行</span><br><span class="line">				其它扫描，才会用到这个选项。</span><br><span class="line">-sA				ACK扫描：这项高级的扫描方法通常用来穿过防火墙的规则集。</span><br><span class="line">-sV				探测目标主机操作系统及其详细信息，版本号等。</span><br><span class="line">2 通用选项</span><br><span class="line">-P0				在扫描之前，不必ping主机。有些网络的防火墙不允许ICMP</span><br><span class="line"> 				echo请求穿过，使用这个选项可以对这些网络进行扫描。</span><br><span class="line"> 				microsoft.com就是一个例子，因此在扫描这个站点时，你应该一直</span><br><span class="line"> 				使用-P0或者-PT 80选项。</span><br><span class="line">-PT			使用-PT 来设定目标端口。</span><br><span class="line">-PS			对于root用户，这个选项让nmap使用SYN包而不是ACK包来对目</span><br><span class="line">			标主机进行扫描。</span><br><span class="line">-PI			让nmap使用真正的ping(ICMP echo请求)来扫描目标主机是否正在</span><br><span class="line">			运行。</span><br><span class="line">-PB			这是默认的ping扫描选项。它使用ACK(-PT)和ICMP(-PI)两种扫描</span><br><span class="line">			类型并行扫描。如果防火墙能够过滤其中一种包，使用这种方法，	</span><br><span class="line">			你就能够穿过防火墙。</span><br><span class="line">-O			这个选项激活对TCP&#x2F;IP指纹特征(fingerprinting)的扫描，获得远</span><br><span class="line">			程主机的标志。</span><br><span class="line">-v			冗余模式，它会给出扫描过程中的详细信息。</span><br><span class="line">-oN			把扫描结果重定向到一个可读的文件中。</span><br><span class="line">-oM			把扫描结果重定向到文件中，这个文件使用主机可以解析的语法。</span><br><span class="line">			-oM-可以免于定义文件名。</span><br><span class="line">-resume	使用这个选项可以使扫描接着以前的扫描进行。nmap会接着日志文</span><br><span class="line">			件中的最后一次成功扫描进行新的扫描。</span><br><span class="line">-iR			让nmap自己随机挑选主机进行扫描。</span><br><span class="line">-p 			这个选项让你选择要进行扫描的端口号的范围。</span><br><span class="line">-F			快速扫描模式，只扫描在nmap-services文件中列出的端口。</span><br><span class="line">-D			使用诱饵扫描方法对目标网络&#x2F;主机进行扫描。</span><br><span class="line">-S 			在欺骗扫描时，使用这个选项。使用这个选项可以让目标认为是</span><br><span class="line">			其它的主机对自己进行扫描。</span><br><span class="line">-e			告诉nmap使用哪个接口发送和接受数据包。nmap能够自动对此接口</span><br><span class="line">			进行检测，如果无效就会告诉你。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-A 更详细的服务信息</span><br><span class="line">-sS 半开扫描，隐蔽式扫描</span><br><span class="line">-Pn 不发送icmp包确认主机存活</span><br><span class="line">-oX 输出xml文件用于存储到数据库</span><br><span class="line">-v 冗余模式</span><br><span class="line">-sI 指定空闲扫描主机</span><br><span class="line">-sV 主机系统扫描</span><br><span class="line">-sT TCP扫描</span><br><span class="line">-sU UDP扫描</span><br><span class="line">--scripts 引用脚本</span><br><span class="line">-P0 发送大小为0的ICMP包进行主机存活扫描</span><br></pre></td></tr></table></figure></li>
-</ol>
+    <title>Hexo-插件及配置</title>
+    <url>/Hexo-%E6%8F%92%E4%BB%B6%E5%8F%8A%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h3 id="本地搜索">本地搜索</h3>
+<h4 id="插件安装">插件安装</h4>
+<p>在hexo根目录安装 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure> &gt; 我安装完插件后,hexo就被卸载了,还要使用<code>yarn upgrade</code>重新安装一遍hexo,你也可以使用<code>yarn add hexo-generator-searchdb</code>命令安装插件</p>
+<p>修改根目录下的_config.yml <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">    <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">    <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">    <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure> 编辑主题配置文件,我是用的next主题 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure> #### 出现的异常 当我点击搜索按钮时,会发生页面无限加载,问题是我的一篇文章中出现了非<code>utf-8</code>的文字,所以造成了xml报错,无法被读取.根据根目录下的<code>search.xml</code>出错信息,找到原文章删除特殊字符即可.</p>
+<h3 id="引用标签">引用标签</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125; #路径引用</span><br><span class="line">&#123;% asset_img slug [title] %&#125; #图片引用</span><br><span class="line">&#123;% asset_link slug [title] %&#125; #文件引用,用作下载链接</span><br></pre></td></tr></table></figure>
+<h3 id="latex支持">latex支持</h3>
+<h4 id="卸载原有渲染器安装hexo-renderer-kramed">卸载原有渲染器,安装<strong>hexo-renderer-kramed</strong></h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn remove hexo-renderer-marked</span><br><span class="line">yarn add hexo-renderer-kramed</span><br></pre></td></tr></table></figure>
+<h4 id="修改next配置文件">修改next配置文件</h4>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Math Equations Render Support</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Default (true) will load mathjax / katex script on demand.</span></span><br><span class="line">  <span class="comment"># That is it only render those page which has `mathjax: true` in Front Matter.</span></span><br><span class="line">  <span class="comment"># If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">mathjax</span></span><br><span class="line">  <span class="comment">#engine: katex</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># hexo-rendering-pandoc (or hexo-renderer-kramed) needed to full MathJax support.</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">cdn:</span> <span class="string">https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML</span> <span class="comment">#问号后面的是引用配置</span></span><br><span class="line">    <span class="comment">#cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML</span></span><br></pre></td></tr></table></figure>
+<h4 id="修改解析错误">修改解析错误</h4>
+<p>这里的解析错误代表单行引用时要加四个反斜线才能正常换行</p>
+<h4 id="更换pandoc解码器">更换pandoc解码器</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn remove hexo-renderer-marked</span><br><span class="line">yarn add hexo-renderer-pandoc</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>博客相关</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>od-快捷键</title>
+    <url>/od-%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<p>无论当前的OllyDbg窗口是什么，这些快捷键均有效：  Ctrl+F2 - 重启程序，即重新启动被调试程序。如果当前没有调试的程序，OllyDbg会运行历史列表［history list］中的第一个程序。程序重启后，将会删除所有内存断点和硬件断点。 译者注：从实际使用效果看，硬件断点在程序重启后并没有移除。</p>
+<p>Alt+F2 - 关闭，即关闭被调试程序。如果程序仍在运行，会弹出一个提示信息，询问您是否要关闭程序。   F3 - 弹出“打开32位.EXE文件”对话框［Open 32-bit .EXE file］，您可以选择可执行文件，并可以输入运行参数。   Alt+F5 - 让OllyDbg总在最前面。如果被调试程序在某个断点处发生中断，而这时调试程序弹出一个总在最前面的窗口（一般为模式消息或模式对话框［modal message or dialog］），它可能会遮住OllyDbg的一部分，但是我们又不能移动最小化这个窗口。激活OllyDbg（比如按任务栏上的标签）并按 Alt+F5，OllyDbg将设置成总在最前面，会反过来遮住刚才那个窗口。如果您再按一下Alt+F5，OllyDbg会恢复到正常状态。 OllyDbg是否处于总在最前面状态，将会保存，在下一次调试时依然有效。当前是否处于总在最前面状态，会显示在状态栏中。</p>
+<p>F7 - 单步步入到下一条命令，如果当前命令是一个函数［Call］，则会停在这个函数体的第一条命令上。如果当前命令是是含有REP前缀，则只执行一次重复操作。 <a id="more"></a> Shift+F7 - 与F7相同，但是如果被调试程序发生异常而中止，调试器会首先尝试步入被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。</p>
+<p>Ctrl+F7 - 自动步入，在所有的函数调用中一条一条地执行命令（就像您按住F7键不放一样，只是更快一些）。当您执行其他一些单步命令，或者程序到达断点，或者发生异常时，自动步入过程都会停止。每次单步步入，OllyDbg都会更新所有的窗口。所以为了提高自动步入的速度，请您关闭不必要成窗口，对于保留的窗口最好尽量的小。按Esc键，可以停止自动步入。   F8 - 单步步过到下一条命令。如果当前命令是一个函数，则一次执行完这个函数（除非这个函数内部包含断点，或发生了异常）。如果当前命令是含有REP前缀，则会执行完重复操作，并停在下一条命令上。   Shift+F8 - 与F8相同，但是如果被调试程序发生异常而中止，调试器会首先尝试步过被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。   Ctrl+F8 - 自动步过，一条一条的执行命令，但并不进入函数调用内部（就像您按住F8键不放一样，只是更快一些）。当您执行其他一些单步命令，或者程序到达断点，或者发生异常时，自动步过过程都会停止。每次单步步过，OllyDbg都会更新所有的窗口。所以为了提高自动步过的速度，请您关闭不必要成窗口，对于保留的窗口最好尽量的小。按Esc键，可以停止自动步过。   F9 - 让程序继续执行。</p>
+<p>Shift+F9 - 与F9相同，但是如果被调试程序发生异常而中止，调试器会首先尝试执行被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。   Ctrl+F9 - 执行直到返回，跟踪程序直到遇到返回，在此期间不进入子函数也不更新CPU数据。因为程序是一条一条命令执行的，所以速度可能会慢一些。按Esc键，可以停止跟踪。   Alt+F9 - 执行直到返回到用户代码段，跟踪程序直到指令所属于的模块不在系统目录中，在此期间不进入子函数也不更新CPU数据。因为程序是一条一条执行的，所以速度可能会慢一些。按Esc键，可以停止跟踪。   Ctrl+F11 -Run跟踪步入，一条一条执行命令，进入每个子函数调用，并把寄存器的信息加入到Run跟踪的存储数据中。Run跟踪不会同步更新CPU窗口。</p>
+<p>F12 - 停止程序执行，同时暂停被调试程序的所有线程。请不要手动恢复线程运行，最好使用继续执行快捷键或菜单选项（像 F9）。   Ctrl+F12 - Run跟踪 步过，一条一条执行命令，但是不进入子函数调用，，并把寄存器的信息加入到Run跟踪的存储数据中。Run跟踪不会同步更新CPU窗口。   Esc - 如果当前处于自动运行或跟踪状态，则停止自动运行或跟踪；如果CPU显示的是跟踪数据，则显示真实数据。   Alt+B - 显示断点窗口。在这个窗口中，您可以编辑、删除、或跟进到断点处。 Alt+C - 显示CPU窗口。 Alt+E - 显示模块列表［list of modules］。   Alt+K - 显示调用栈［Call stack］窗口。   Alt+L - 显示日志窗口。   Alt+M - 显示内存窗口。   Alt+O - 显示选项对话框［Options dialog］   Ctrl+P - 显示补丁窗口。   Ctrl+T - 打开 暂停 Run跟踪 对话框   Alt+X - 关闭 OllyDbg。   大多数窗口都支持以下的键盘命令：   Alt+F3 - 关闭当前窗口。 c.&amp;vWmLSGE  Ctrl+F4 - 关闭当前窗口。 F5 - 最大化当前窗口或将当前窗口大小改为正常化。   F6 - 切换到下一个窗口。   Shift+F6 - 切换到前一个窗口。   F10 - 打开与当前窗口或面板相关的快捷菜单。   左方向键 - 显示窗口左方一个字节宽度的内容。   Ctrl+左方向键 - 显示窗口左方一栏的内容。   右方向键 - 显示窗口右方一个字节宽度的内容</p>
+<p>Ctrl+右方向键 - 显示窗口右方一栏的内容   反汇编窗口中的快捷键［Disassembler shortcuts］   当CPU窗口中的反汇编面板［Disassembler pane］处于激活状态时，您可以使用以下快捷键：   回车键 - 将选中的命令添加到命令历史［command history］中，如果当前命令是一个跳转、函数或者是转换表的一个部分，则进入到目的地址。   退格键 - 移除选中部分的自动分析信息。如果分析器将代码误识别为数据，这个快捷键就非常有用。请参考解码提示［decoding hints］. </p>
+<p>Alt+退格键 - 撤消所选部分的修改，以备份数据的相应内容替换所选部分。仅当备份数据存在且与所选部分不同时可用。</p>
+<p>Ctrl+F1 -如果API帮助文件已经选择，将打开与首个选择行内的符号名相关联的帮助主题。   F2 -在首个选择的命令上开关INT3 断点［Breakpoint］，也可以双击该行第二列。   Shift+F2 -在首个选择命令设置条件断点，参见忽略Kernel32中内存访问异常［Ignore memory access violations in Kernel32］。   F4 -执行到所选行，在首个选择的命令上设置一次性断点，然后继续执行调试程序，直到OllyDbg捕获到异常或者停止在该断点上。在程序执行到该命令之前，该一次性断点一直有效。如有必要，可在断点窗口［Breakpoints window］中删除它。   Shift+F4 -设置记录断点（一种条件断点，当条件满足时一些表达式的值会记录下来）， 详情参见断点［Breakpoint］。   Ctrl+F5 -打开与首个选择的命令相对应的源文件。   Alt+F7 -转到上一个找到的参考。   Alt+F8 -转到下一个找到参考。   Ctrl+A -分析当前模块的代码段。</p>
+<p>Ctrl+B - 开始二进制搜索。   Ctrl+C -复制所选内容到剪贴板。复制时会简单地按列宽截断不可见内容，如果希望排除不需要的列，可把这些列的宽度调整到最小。   Ctrl+E -以二进制（十六进制）格式编辑所选内容。   Ctrl+F -开始命令搜索。   Ctrl+G -转到某地址。该命令将弹出输入地址或表达式的窗口。该命令不会修改 EIP。</p>
+<p>Ctrl+J -列出所有的涉及到该位置的调用和跳转，在您用这个功能之前，您必须使用分析代码功能。 Ctrl+K - 查看与当前函数相关的调用树［Call tree］。在您用这个功能之前，您必须使用分析代码功能。</p>
+<p>Ctrl+L - 搜索下一个，重复上一次的搜索内容。   Ctrl+N - 打开当前模块的名称（标签）列表。</p>
+<p>Ctrl+O - 扫描object文件。扫描Object文件。该命令会显示扫描Object文件对话框，您可以在该对话框中选择Object文件或者lib文件，并扫描这个文件，试图找到在实际代码段中用到的目标模块。   Ctrl+R -搜索所选命令的参考。该命令扫描激活模块的全部可执行代码，以找到涉及到首个选中的命令的全部相关参考（包括：常量、跳转及调用），您可以在参考中使用快捷键 Alt+F7 和 Alt+F8来浏览这些参考。为便于您使用，被参考的命令也包含在该列表中。</p>
+<p>Ctrl+S -命令搜索。该命令显示命令查找［Find command］对话框供您输入汇编命令，并从当前命令开始搜索。   星号［Asterisk］(*) -转到原始位置（激活线程的EIP处）。</p>
+<p>Ctrl+星号(*) - 指定新的起始位置，设置当前所选线程的EIP为首个选择字节的地址。您可以在选择EIP并撤消该操作。</p>
+<p>加号［Plus］(+) -如果run跟踪［run trace］ 没有激活，则根据命令历史［command history］跳到下一条运行过命令的地方；否则跳到Run跟踪的下一个记录。   Ctrl+加号 - 跳到前一个函数开始处。（注意只是跳到，并不执行）</p>
+<p>减号［Minus］(-) - 如果run跟踪［run trace］ 没有激活，则根据命令历史［command history］跳到前一条运行过命令的地方；否则跳到Run跟踪的前一个记录。</p>
+<p>Ctrl+减号 - 跳到下一个函数开始处。（注意只是跳到，并不执行）   空格［Space］ - 修改命令。您可在显示对话框中以汇编语言修改实际指令或输入新指令，这些指令将替换实际代码，您也可以在想要修改的指令处双击鼠标。   冒号［Colon］( - 添加标签。显示添加标签窗口［Add label］或修改标签窗口［Change label］，您可在此输入与首个选择的命令中的第一个字节相关联的标签（符号名）。注意，在多种编程语言中，冒号可以是标签的一部分。</p>
+<p>分号［Semicolon］(;) - 添加注释［comment］。显示添加注释窗口［Add label］或修改注释窗口［Change label］，您可在此输入与首条所选命令的第一个字节相关联的注释（注释串会显示在最后一列中）。注意，多种汇编语言使用分号作为注释开始。您也可以在注释列双击需要注释的命令行。   命令行插件支持的命令   CALC 判断表达式   WATCH 添加监视表达式</p>
+<p>AT 在指定地址进行反汇编</p>
+<p>FOLLOW 跟随命令 ORIG 反汇编于 EIP   DUMP 在指定地址进行转存</p>
+<p>DA 转存为反汇编代码   DB 使用十六进制字节格式转存   DC 使用 ASCII 格式转存</p>
+<p>DD 转存在堆栈格式   DU 转存在 UNICODE 格式</p>
+<p>DW 使用十六进制字词格式转存   STK   AS （AS + 地址 + 字符串） 在指定地址进行汇编   BP 进行条件中断（有条件的断点）</p>
+<p>BPX 中断在全部调用 （Call） BPD 清除全部调用中的断点   BC 清除断点   MR 内存断点于访问时   MW 内存断点于写入时   MD 清除内存断点   HR 访问时进行硬件中断   HW 写入时进行硬件中断</p>
+<p>HE 执行时进行硬件中断   HD 清除硬件断点   STOP 停止运行程序调试 PAUSE 暂停执行程序调试   RUN 运行程序进行调试   GE 运行和通过例外</p>
+<p>SI 单步进入 Call 中 SO 步过 Call TI 跟踪进入直到地址   TO 跟踪步过直到地址 TC 跟踪进入直到满足条件</p>
+<p>TOC 跟踪步过直到满足条件   TR 运行直到返回   TU 运行直到用户代码   LOG 查看记录窗口   MOD 查看模块窗口</p>
+<p>MEM 查看内存窗口</p>
+<p>CPU 查看 CPU 窗口</p>
+<p>CS 查看 Call 堆栈   BRK 查看断点窗口</p>
+<p>OPT 打开选项设置窗口   EXIT 退出 OllyDbg   QUIT 退出 OllyDbg   OPEN 打开一个可执行文件   CLOSE 关闭可执行文件   RST 重新运行当前程序   HELP 查看 API 函数的帮助</p>
+]]></content>
+      <categories>
+        <category>windows工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>openssl-手动生成linux密码</title>
+    <url>/openssl-%E6%89%8B%E5%8A%A8%E7%94%9F%E6%88%90linux%E5%AF%86%E7%A0%81/</url>
+    <content><![CDATA[<h4 id="openssl生成linux密码">openssl生成linux密码</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl passwd -1 -salt <span class="string">'12345678'</span>  <span class="comment">#-1:表示采用的是MD5加密算法。 --salt:表示使用指定盐值</span></span><br><span class="line">Password:   <span class="comment">##这里输入的是密码</span></span><br></pre></td></tr></table></figure>
+<h3 id="可以结合cron定时计划suid实现任意添加用户到etcshadow文件指定uidgid等.达到获取最高权限的目的.">可以结合cron定时计划/suid实现任意添加用户到/etc/shadow文件,指定uid,gid等.达到获取最高权限的目的.</h3>
 ]]></content>
       <categories>
         <category>linux工具</category>
@@ -1727,16 +1523,6 @@
       </categories>
   </entry>
   <entry>
-    <title>单片机-输入设备</title>
-    <url>/%E5%8D%95%E7%89%87%E6%9C%BA-%E8%BE%93%E5%85%A5%E8%AE%BE%E5%A4%87/</url>
-    <content><![CDATA[<h4 id="键盘示例程序">键盘示例程序</h4>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;reg51.c&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uint unsigned int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uchar unsigned char</span></span><br><span class="line"></span><br><span class="line">sbit MDzhengzhuan_control=P0^<span class="number">0</span>;</span><br><span class="line">sbit MDfanzhuan_control=P0^<span class="number">1</span>;</span><br><span class="line">sbit MDstop_control=P0^<span class="number">2</span>;</span><br><span class="line">sbit light_on_control=P0^<span class="number">3</span>;</span><br><span class="line">sbit light_off_control=P0^<span class="number">4</span>;</span><br><span class="line">sbit fmq_on_control=P0^<span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">sbit JDQ_in=P1^<span class="number">0</span>;</span><br><span class="line">sbit MDfu=P1^<span class="number">3</span>;</span><br><span class="line">sbit MDzheng=P1^<span class="number">4</span>;</span><br><span class="line">sbit FMQ=P1^<span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(uint ms)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">key_input</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MDzhengzhuan</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MDfanzhuan</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MDstop</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">light_on</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">light_off</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fmq_on</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    P0=<span class="number">0xff</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        key_input();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(uint ms)</span></span>&#123;</span><br><span class="line">    uint i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;ms;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">110</span>;j++);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">key_input</span><span class="params">()</span></span>&#123;</span><br><span class="line">    P0=<span class="number">0xff</span>;</span><br><span class="line">    <span class="keyword">if</span>((P0&amp;<span class="number">0x3f</span>)!=<span class="number">0x3f</span>)&#123;</span><br><span class="line">        <span class="built_in">delay</span>(<span class="number">10</span>);</span><br><span class="line">        <span class="keyword">if</span>(MDzhengzhuan_control==<span class="number">0</span>)&#123;</span><br><span class="line">            MDzhengzhuan();</span><br><span class="line">            <span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(MDfanzhuan_control==<span class="number">0</span>)&#123;</span><br><span class="line">            MDfanzhuan();</span><br><span class="line">            <span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(MDstop_control==<span class="number">0</span>)&#123;</span><br><span class="line">            MDstop();</span><br><span class="line">            <span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(light_on_control==<span class="number">0</span>)&#123;</span><br><span class="line">            light_on();</span><br><span class="line">            <span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(light_off_control==<span class="number">0</span>)&#123;</span><br><span class="line">            light_off();</span><br><span class="line">            <span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(fmq_on_control==<span class="number">0</span>)&#123;</span><br><span class="line">            fmq_on();</span><br><span class="line">            <span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MDzhengzhuan</span><span class="params">()</span></span>&#123;</span><br><span class="line">    MDzheng=<span class="number">1</span>;</span><br><span class="line">    MDfu=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MDfanzhuan</span><span class="params">()</span></span>&#123;</span><br><span class="line">    MDzheng=<span class="number">0</span>;</span><br><span class="line">    MDfu=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MDstop</span><span class="params">()</span></span>&#123;</span><br><span class="line">    MDzheng=<span class="number">0</span>;</span><br><span class="line">    MDfu=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">light_on</span><span class="params">()</span></span>&#123;</span><br><span class="line">    JDQ_in=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">light_off</span><span class="params">()</span></span>&#123;</span><br><span class="line">    JDQ_in=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fmq_on</span><span class="params">()</span></span>&#123;</span><br><span class="line">    FMQ=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">delay</span>(<span class="number">1000</span>);</span><br><span class="line">    FMQ=<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">delay</span>(<span class="number">1000</span>);</span><br><span class="line">    FMQ=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">delay</span>(<span class="number">1000</span>);</span><br><span class="line">    FMQ=<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">delay</span>(<span class="number">1000</span>);</span><br><span class="line">    FMQ=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">delay</span>(<span class="number">1000</span>);</span><br><span class="line">    FMQ=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>单片机</category>
-      </categories>
-  </entry>
-  <entry>
     <title>在配置linux+php+vscode+xdebug时遇到的问题</title>
     <url>/%E5%9C%A8%E9%85%8D%E7%BD%AElinux-php-vscode-xdebug%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>首先在用户配置json配置这个,用于显示默认配置 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;workbench.settings.useSplitJSON&quot;: true,</span><br></pre></td></tr></table></figure> ###　源形式</p>
@@ -1749,57 +1535,6 @@
 ]]></content>
       <categories>
         <category>answer&amp;question</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>openssl-手动生成linux密码</title>
-    <url>/openssl-%E6%89%8B%E5%8A%A8%E7%94%9F%E6%88%90linux%E5%AF%86%E7%A0%81/</url>
-    <content><![CDATA[<h4 id="openssl生成linux密码">openssl生成linux密码</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl passwd -1 -salt <span class="string">'12345678'</span>  <span class="comment">#-1:表示采用的是MD5加密算法。 --salt:表示使用指定盐值</span></span><br><span class="line">Password:   <span class="comment">##这里输入的是密码</span></span><br></pre></td></tr></table></figure>
-<h3 id="可以结合cron定时计划suid实现任意添加用户到etcshadow文件指定uidgid等.达到获取最高权限的目的.">可以结合cron定时计划/suid实现任意添加用户到/etc/shadow文件,指定uid,gid等.达到获取最高权限的目的.</h3>
-]]></content>
-      <categories>
-        <category>linux工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>od-快捷键</title>
-    <url>/od-%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-    <content><![CDATA[<p>无论当前的OllyDbg窗口是什么，这些快捷键均有效：  Ctrl+F2 - 重启程序，即重新启动被调试程序。如果当前没有调试的程序，OllyDbg会运行历史列表［history list］中的第一个程序。程序重启后，将会删除所有内存断点和硬件断点。 译者注：从实际使用效果看，硬件断点在程序重启后并没有移除。</p>
-<p>Alt+F2 - 关闭，即关闭被调试程序。如果程序仍在运行，会弹出一个提示信息，询问您是否要关闭程序。   F3 - 弹出“打开32位.EXE文件”对话框［Open 32-bit .EXE file］，您可以选择可执行文件，并可以输入运行参数。   Alt+F5 - 让OllyDbg总在最前面。如果被调试程序在某个断点处发生中断，而这时调试程序弹出一个总在最前面的窗口（一般为模式消息或模式对话框［modal message or dialog］），它可能会遮住OllyDbg的一部分，但是我们又不能移动最小化这个窗口。激活OllyDbg（比如按任务栏上的标签）并按 Alt+F5，OllyDbg将设置成总在最前面，会反过来遮住刚才那个窗口。如果您再按一下Alt+F5，OllyDbg会恢复到正常状态。 OllyDbg是否处于总在最前面状态，将会保存，在下一次调试时依然有效。当前是否处于总在最前面状态，会显示在状态栏中。</p>
-<p>F7 - 单步步入到下一条命令，如果当前命令是一个函数［Call］，则会停在这个函数体的第一条命令上。如果当前命令是是含有REP前缀，则只执行一次重复操作。 <a id="more"></a> Shift+F7 - 与F7相同，但是如果被调试程序发生异常而中止，调试器会首先尝试步入被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。</p>
-<p>Ctrl+F7 - 自动步入，在所有的函数调用中一条一条地执行命令（就像您按住F7键不放一样，只是更快一些）。当您执行其他一些单步命令，或者程序到达断点，或者发生异常时，自动步入过程都会停止。每次单步步入，OllyDbg都会更新所有的窗口。所以为了提高自动步入的速度，请您关闭不必要成窗口，对于保留的窗口最好尽量的小。按Esc键，可以停止自动步入。   F8 - 单步步过到下一条命令。如果当前命令是一个函数，则一次执行完这个函数（除非这个函数内部包含断点，或发生了异常）。如果当前命令是含有REP前缀，则会执行完重复操作，并停在下一条命令上。   Shift+F8 - 与F8相同，但是如果被调试程序发生异常而中止，调试器会首先尝试步过被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。   Ctrl+F8 - 自动步过，一条一条的执行命令，但并不进入函数调用内部（就像您按住F8键不放一样，只是更快一些）。当您执行其他一些单步命令，或者程序到达断点，或者发生异常时，自动步过过程都会停止。每次单步步过，OllyDbg都会更新所有的窗口。所以为了提高自动步过的速度，请您关闭不必要成窗口，对于保留的窗口最好尽量的小。按Esc键，可以停止自动步过。   F9 - 让程序继续执行。</p>
-<p>Shift+F9 - 与F9相同，但是如果被调试程序发生异常而中止，调试器会首先尝试执行被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。   Ctrl+F9 - 执行直到返回，跟踪程序直到遇到返回，在此期间不进入子函数也不更新CPU数据。因为程序是一条一条命令执行的，所以速度可能会慢一些。按Esc键，可以停止跟踪。   Alt+F9 - 执行直到返回到用户代码段，跟踪程序直到指令所属于的模块不在系统目录中，在此期间不进入子函数也不更新CPU数据。因为程序是一条一条执行的，所以速度可能会慢一些。按Esc键，可以停止跟踪。   Ctrl+F11 -Run跟踪步入，一条一条执行命令，进入每个子函数调用，并把寄存器的信息加入到Run跟踪的存储数据中。Run跟踪不会同步更新CPU窗口。</p>
-<p>F12 - 停止程序执行，同时暂停被调试程序的所有线程。请不要手动恢复线程运行，最好使用继续执行快捷键或菜单选项（像 F9）。   Ctrl+F12 - Run跟踪 步过，一条一条执行命令，但是不进入子函数调用，，并把寄存器的信息加入到Run跟踪的存储数据中。Run跟踪不会同步更新CPU窗口。   Esc - 如果当前处于自动运行或跟踪状态，则停止自动运行或跟踪；如果CPU显示的是跟踪数据，则显示真实数据。   Alt+B - 显示断点窗口。在这个窗口中，您可以编辑、删除、或跟进到断点处。 Alt+C - 显示CPU窗口。 Alt+E - 显示模块列表［list of modules］。   Alt+K - 显示调用栈［Call stack］窗口。   Alt+L - 显示日志窗口。   Alt+M - 显示内存窗口。   Alt+O - 显示选项对话框［Options dialog］   Ctrl+P - 显示补丁窗口。   Ctrl+T - 打开 暂停 Run跟踪 对话框   Alt+X - 关闭 OllyDbg。   大多数窗口都支持以下的键盘命令：   Alt+F3 - 关闭当前窗口。 c.&amp;vWmLSGE  Ctrl+F4 - 关闭当前窗口。 F5 - 最大化当前窗口或将当前窗口大小改为正常化。   F6 - 切换到下一个窗口。   Shift+F6 - 切换到前一个窗口。   F10 - 打开与当前窗口或面板相关的快捷菜单。   左方向键 - 显示窗口左方一个字节宽度的内容。   Ctrl+左方向键 - 显示窗口左方一栏的内容。   右方向键 - 显示窗口右方一个字节宽度的内容</p>
-<p>Ctrl+右方向键 - 显示窗口右方一栏的内容   反汇编窗口中的快捷键［Disassembler shortcuts］   当CPU窗口中的反汇编面板［Disassembler pane］处于激活状态时，您可以使用以下快捷键：   回车键 - 将选中的命令添加到命令历史［command history］中，如果当前命令是一个跳转、函数或者是转换表的一个部分，则进入到目的地址。   退格键 - 移除选中部分的自动分析信息。如果分析器将代码误识别为数据，这个快捷键就非常有用。请参考解码提示［decoding hints］. </p>
-<p>Alt+退格键 - 撤消所选部分的修改，以备份数据的相应内容替换所选部分。仅当备份数据存在且与所选部分不同时可用。</p>
-<p>Ctrl+F1 -如果API帮助文件已经选择，将打开与首个选择行内的符号名相关联的帮助主题。   F2 -在首个选择的命令上开关INT3 断点［Breakpoint］，也可以双击该行第二列。   Shift+F2 -在首个选择命令设置条件断点，参见忽略Kernel32中内存访问异常［Ignore memory access violations in Kernel32］。   F4 -执行到所选行，在首个选择的命令上设置一次性断点，然后继续执行调试程序，直到OllyDbg捕获到异常或者停止在该断点上。在程序执行到该命令之前，该一次性断点一直有效。如有必要，可在断点窗口［Breakpoints window］中删除它。   Shift+F4 -设置记录断点（一种条件断点，当条件满足时一些表达式的值会记录下来）， 详情参见断点［Breakpoint］。   Ctrl+F5 -打开与首个选择的命令相对应的源文件。   Alt+F7 -转到上一个找到的参考。   Alt+F8 -转到下一个找到参考。   Ctrl+A -分析当前模块的代码段。</p>
-<p>Ctrl+B - 开始二进制搜索。   Ctrl+C -复制所选内容到剪贴板。复制时会简单地按列宽截断不可见内容，如果希望排除不需要的列，可把这些列的宽度调整到最小。   Ctrl+E -以二进制（十六进制）格式编辑所选内容。   Ctrl+F -开始命令搜索。   Ctrl+G -转到某地址。该命令将弹出输入地址或表达式的窗口。该命令不会修改 EIP。</p>
-<p>Ctrl+J -列出所有的涉及到该位置的调用和跳转，在您用这个功能之前，您必须使用分析代码功能。 Ctrl+K - 查看与当前函数相关的调用树［Call tree］。在您用这个功能之前，您必须使用分析代码功能。</p>
-<p>Ctrl+L - 搜索下一个，重复上一次的搜索内容。   Ctrl+N - 打开当前模块的名称（标签）列表。</p>
-<p>Ctrl+O - 扫描object文件。扫描Object文件。该命令会显示扫描Object文件对话框，您可以在该对话框中选择Object文件或者lib文件，并扫描这个文件，试图找到在实际代码段中用到的目标模块。   Ctrl+R -搜索所选命令的参考。该命令扫描激活模块的全部可执行代码，以找到涉及到首个选中的命令的全部相关参考（包括：常量、跳转及调用），您可以在参考中使用快捷键 Alt+F7 和 Alt+F8来浏览这些参考。为便于您使用，被参考的命令也包含在该列表中。</p>
-<p>Ctrl+S -命令搜索。该命令显示命令查找［Find command］对话框供您输入汇编命令，并从当前命令开始搜索。   星号［Asterisk］(*) -转到原始位置（激活线程的EIP处）。</p>
-<p>Ctrl+星号(*) - 指定新的起始位置，设置当前所选线程的EIP为首个选择字节的地址。您可以在选择EIP并撤消该操作。</p>
-<p>加号［Plus］(+) -如果run跟踪［run trace］ 没有激活，则根据命令历史［command history］跳到下一条运行过命令的地方；否则跳到Run跟踪的下一个记录。   Ctrl+加号 - 跳到前一个函数开始处。（注意只是跳到，并不执行）</p>
-<p>减号［Minus］(-) - 如果run跟踪［run trace］ 没有激活，则根据命令历史［command history］跳到前一条运行过命令的地方；否则跳到Run跟踪的前一个记录。</p>
-<p>Ctrl+减号 - 跳到下一个函数开始处。（注意只是跳到，并不执行）   空格［Space］ - 修改命令。您可在显示对话框中以汇编语言修改实际指令或输入新指令，这些指令将替换实际代码，您也可以在想要修改的指令处双击鼠标。   冒号［Colon］( - 添加标签。显示添加标签窗口［Add label］或修改标签窗口［Change label］，您可在此输入与首个选择的命令中的第一个字节相关联的标签（符号名）。注意，在多种编程语言中，冒号可以是标签的一部分。</p>
-<p>分号［Semicolon］(;) - 添加注释［comment］。显示添加注释窗口［Add label］或修改注释窗口［Change label］，您可在此输入与首条所选命令的第一个字节相关联的注释（注释串会显示在最后一列中）。注意，多种汇编语言使用分号作为注释开始。您也可以在注释列双击需要注释的命令行。   命令行插件支持的命令   CALC 判断表达式   WATCH 添加监视表达式</p>
-<p>AT 在指定地址进行反汇编</p>
-<p>FOLLOW 跟随命令 ORIG 反汇编于 EIP   DUMP 在指定地址进行转存</p>
-<p>DA 转存为反汇编代码   DB 使用十六进制字节格式转存   DC 使用 ASCII 格式转存</p>
-<p>DD 转存在堆栈格式   DU 转存在 UNICODE 格式</p>
-<p>DW 使用十六进制字词格式转存   STK   AS （AS + 地址 + 字符串） 在指定地址进行汇编   BP 进行条件中断（有条件的断点）</p>
-<p>BPX 中断在全部调用 （Call） BPD 清除全部调用中的断点   BC 清除断点   MR 内存断点于访问时   MW 内存断点于写入时   MD 清除内存断点   HR 访问时进行硬件中断   HW 写入时进行硬件中断</p>
-<p>HE 执行时进行硬件中断   HD 清除硬件断点   STOP 停止运行程序调试 PAUSE 暂停执行程序调试   RUN 运行程序进行调试   GE 运行和通过例外</p>
-<p>SI 单步进入 Call 中 SO 步过 Call TI 跟踪进入直到地址   TO 跟踪步过直到地址 TC 跟踪进入直到满足条件</p>
-<p>TOC 跟踪步过直到满足条件   TR 运行直到返回   TU 运行直到用户代码   LOG 查看记录窗口   MOD 查看模块窗口</p>
-<p>MEM 查看内存窗口</p>
-<p>CPU 查看 CPU 窗口</p>
-<p>CS 查看 Call 堆栈   BRK 查看断点窗口</p>
-<p>OPT 打开选项设置窗口   EXIT 退出 OllyDbg   QUIT 退出 OllyDbg   OPEN 打开一个可执行文件   CLOSE 关闭可执行文件   RST 重新运行当前程序   HELP 查看 API 函数的帮助</p>
-]]></content>
-      <categories>
-        <category>windows工具</category>
       </categories>
   </entry>
   <entry>
@@ -2427,145 +2162,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>操作系统第三节课笔记-操作系统接口</title>
-    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/</url>
-    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3.pdf" title="操作系统第三节课笔记-操作系统接口pdf文档下载">操作系统第三节课笔记-操作系统接口pdf文档下载</a>
-<a id="more"></a>
-<h1 id="操作系统接口">操作系统接口</h1>
-<h2 id="用户接口">用户接口</h2>
-<h3 id="用户接口分类">用户接口分类</h3>
-<ul>
-<li>基于表现形式划分
-<ul>
-<li>用户交互接口
-<ul>
-<li>CLI：文本界面，命令窗口(联/脱机命令接口)</li>
-<li>GUI：图形化用户接口(图形化操作界面)</li>
-</ul></li>
-<li>用户程序接口(方便用户调用访问系统资源，由一组系统调用(System call)组成</li>
-</ul></li>
-<li>基于使用者类型划分
-<ul>
-<li>本地用户接口</li>
-<li>远程用户接口(网络用户接口)</li>
-</ul></li>
-</ul>
-<h3 id="联机命令接口">联机命令接口</h3>
-<ul>
-<li><p>一组联机命令</p>
-<ul>
-<li>内部命令</li>
-<li>外部命令</li>
-</ul></li>
-<li><p>键盘处理程序</p></li>
-<li><p>命令解释程序</p></li>
-</ul>
-<h4 id="联机命令格式与分类">联机命令格式与分类</h4>
-<ul>
-<li><p>联机命令格式</p>
-<p><code>&lt;命令&gt; [&lt;可选项&gt;] &lt;参数&gt;</code></p></li>
-<li><p>联机命令类型</p>
-<ul>
-<li>系统访问类</li>
-<li>磁盘操作类</li>
-<li>网络通信类</li>
-<li><strong>输入输出重定向</strong>、<strong>管道</strong>、过滤命令</li>
-<li><strong>批处理方式</strong>(批处理文件/脚本)</li>
-</ul></li>
-</ul>
-<h3 id="键盘终端处理程序">键盘终端处理程序</h3>
-<ul>
-<li><p>基本功能</p>
-<ul>
-<li>接收用户从终端输入的字符
-<ul>
-<li>面向字符/行方式</li>
-</ul></li>
-<li>管理字符缓冲
-<ul>
-<li>专用缓冲区/公用缓冲区</li>
-</ul></li>
-<li>将字符打印到屏幕
-<ul>
-<li>硬件/软件实现方式</li>
-</ul></li>
-</ul>
-<p>特殊字符处理(中断/清屏/恢复jobs)</p></li>
-</ul>
-<h3 id="图形化用户接口">图形化用户接口</h3>
-<h4 id="图形化接口元素">图形化接口元素</h4>
-<ul>
-<li>桌面、鼠标、图标</li>
-<li>窗口、标题栏、工具栏、菜单栏</li>
-<li>菜单
-<ul>
-<li>弹出式(右键菜单等)</li>
-<li>下拉式(菜单栏的下拉菜单)</li>
-</ul></li>
-<li>对话框</li>
-</ul>
-<h4 id="图形化接口特点">图形化接口特点</h4>
-<ul>
-<li>简单,直观</li>
-<li>多屏,多窗口</li>
-<li>即使交互</li>
-<li>传递参数信息量大</li>
-</ul>
-<h4 id="图形化接口的实现及运行机制">图形化接口的实现及运行机制</h4>
-<ul>
-<li>面向对象的程序设计方法</li>
-<li>消息产生、传递及处理</li>
-<li>事件驱动方式</li>
-</ul>
-<h2 id="系统调用">系统调用</h2>
-<h3 id="系统调用基本概念">系统调用基本概念</h3>
-<h5 id="linux-系统调用列表"><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part1/appendix.html" target="_blank" rel="noopener">Linux 系统调用列表</a></h5>
-<ul>
-<li>定义
-<ul>
-<li>系统过程-&gt;系统服务-&gt;系统调用命令</li>
-</ul></li>
-<li>与普通过程调用的区别
-<ul>
-<li>运行在不同的系统状态</li>
-<li>软中断进入机制</li>
-<li>返回及重新调度问题</li>
-<li>嵌套调用</li>
-</ul></li>
-</ul>
-<h3 id="系统调用的类型">系统调用的类型</h3>
-<ul>
-<li>进程控制
-<ul>
-<li>进程的创建<em>fork</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、结束<em>exit</em>、等待子进程结束<em>waitpid</em></li>
-<li>进程属性设置<em>pid</em>与获取</li>
-<li>执行一个文件<em>exec</em></li>
-</ul></li>
-<li>文件操控
-<ul>
-<li>文件的创建<em>creat</em>、打开<em>open</em>、关闭<em>close</em>、读/写 <em>read/write</em></li>
-</ul></li>
-<li>进程通信-基于<em>IPC</em>
-<ul>
-<li>连接打开与关闭、消息收发与接收</li>
-</ul></li>
-<li>系统信息维护
-<ul>
-<li>时间设置与获取、文建访问/修改时间设置</li>
-</ul></li>
-</ul>
-<section class="footnotes" role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p>除了第一个进程[init]不是由fork创建的之外,其余所有进程都是由init fork出来的<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>大学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>操作系统第二节课笔记-处理器管理功能概要</title>
     <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E6%A6%82%E8%A6%81/</url>
     <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E6%A6%82%E8%A6%81/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E5%A4%84%E7%90%86%E5%99%A8%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD%E6%A6%82%E8%A6%81.pdf" title="操作系统第二节课笔记-处理器管理功能概要pdf文档下载">操作系统第二节课笔记-处理器管理功能概要pdf文档下载</a>
@@ -2893,189 +2489,6 @@
       </categories>
   </entry>
   <entry>
-    <title>操作系统第五节课笔记-进程控制</title>
-    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.pdf" title="操作系统第五节课笔记-进程控制pdf文档下载">操作系统第五节课笔记-进程控制pdf文档下载</a>
-<a id="more"></a>
-<h1 id="进程控制">进程控制</h1>
-<h3 id="进程控制块-pcb">进程控制块-PCB</h3>
-<p>Process Control Block</p>
-<ul>
-<li>进程实体的一部分，拥有描述进程情况及控制进程运行所需的全部信息的记录性数据结构</li>
-<li>使一个在多道程序环境下不能独立运行的程序，成为一个能独立运行的基本单位，一个能与其它进程并发执行的进程</li>
-<li>操作系统<strong>控制和管理</strong>并发执行进程的依据</li>
-<li>进程存在的唯一标志</li>
-<li>常驻内存，且存放于操作系统开辟的专门区域-PCB区</li>
-</ul>
-<h4 id="进程控制块中的信息">进程控制块中的信息</h4>
-<ul>
-<li>进程标识符
-<ul>
-<li>内(pid)/外部(进程名)、父/子进程、用户标识符</li>
-</ul></li>
-<li>处理器调度信息
-<ul>
-<li>通用、PC、PSW、用户占指针寄存器</li>
-</ul></li>
-<li>进程调度信息
-<ul>
-<li>进程状态、进程优先级(静态优先级，动态优先级)、事件及其他</li>
-</ul></li>
-<li>进程控制信息
-<ul>
-<li>程序和数据地址、进程同步通信机制</li>
-<li>资源清单、链接指针、进程图</li>
-</ul></li>
-</ul>
-<h3 id="进程图进程树">进程图（进程树）</h3>
-<ul>
-<li>描述进程家族的有向树
-<ul>
-<li>结点/有向边</li>
-<li>父/子进程</li>
-<li>祖先进程/祖先</li>
-</ul></li>
-</ul>
-<p>知道进程的子进程有助于在知道父进程的情况下，杀死其子进程</p>
-<p>知道进程的祖先进程有助于当子进程被杀死后通知父进程</p>
-<h3 id="pcb的组织方式">PCB的组织方式</h3>
-<p>执行指针</p>
-<p>就绪队列指针</p>
-<p>阻塞队列指针</p>
-<p>空闲队列指针</p>
-<ul>
-<li>链接方式
-<ul>
-<li>通过链表查询队列</li>
-</ul></li>
-<li>索引方式
-<ul>
-<li>建立索引表用于查询队列</li>
-</ul></li>
-</ul>
-<h2 id="进程的创建与终止">进程的创建与终止</h2>
-<h3 id="引起创建进程的事件">引起创建进程的事件</h3>
-<ul>
-<li>用户登录
-<ul>
-<li>分时系统中，验证为合法的终端用户登录</li>
-</ul></li>
-<li>作业调度
-<ul>
-<li>批处理系统中作业调度到某作业</li>
-</ul></li>
-<li>提供服务
-<ul>
-<li>运行中的用户程序提出某种请求</li>
-</ul></li>
-<li>应用请求
-<ul>
-<li>基于用户进程的需要由其自身创建新进程</li>
-</ul></li>
-</ul>
-<h3 id="引起终止进程的事件">引起终止进程的事件</h3>
-<ul>
-<li>正常结束
-<ul>
-<li>批处理系统中的Halt，分时系统中的LogsOff</li>
-</ul></li>
-<li>异常结束
-<ul>
-<li>越界错误、保护错误</li>
-<li>特权指令错误</li>
-<li>非法指令错误</li>
-<li>运行超时、等待超时</li>
-<li>算数运算错、I/O故障</li>
-</ul></li>
-<li>外界干预
-<ul>
-<li>操作员或者操作系统干预
-<ul>
-<li>发送SIGKILL信号强制杀死</li>
-</ul></li>
-<li>父进程请求/终止</li>
-</ul></li>
-</ul>
-<h3 id="进程创建过程">进程创建过程</h3>
-<h4 id="create原语">Create()原语</h4>
-<ol type="1">
-<li>分配标识符，并申请空白进程控制块</li>
-<li>为新进程的程序和数据及用户占分配必要的内存空间
-<ol type="1">
-<li>所需内存大小问题</li>
-</ol></li>
-<li>初始化进程控制快
-<ol type="1">
-<li>自身/父进程标识符</li>
-<li>处理机状态/调度信息</li>
-</ol></li>
-<li>讲新进程插入到就绪队列</li>
-</ol>
-<h3 id="进程终止过程">进程终止过程</h3>
-<h4 id="terminate原语">Terminate()原语</h4>
-<ol type="1">
-<li>检索被终止进程PCB，读取其进程状态</li>
-<li>若其正处于执行状态，立即终止执行并设置调度标志为真，来重新调度其他进程</li>
-<li>终止子孙进程</li>
-<li><strong>资源归还</strong>-最重要的过程</li>
-<li>一处被终止进程PCB，等待其他程序查询利用</li>
-</ol>
-<h2 id="进程的阻塞与唤醒">进程的阻塞与唤醒</h2>
-<h3 id="引起进程阻塞的事件">引起进程阻塞的事件</h3>
-<ul>
-<li>请求系统服务
-<ul>
-<li>但不能立刻满足，需要阻塞自己等待系统服务的响应</li>
-</ul></li>
-<li>启动某种操作
-<ul>
-<li>某种动作是本进程下一个动作的前趋，不满足不能向后执行</li>
-</ul></li>
-<li>新数据尚未到达
-<ul>
-<li>相互合作的进程必须先获得另一方的进程数据才能继续</li>
-</ul></li>
-<li>无新工作可做
-<ul>
-<li>特定功能的系统进程当完成任务且当前暂无任务</li>
-</ul></li>
-</ul>
-<h3 id="引起进程唤醒的事件">引起进程唤醒的事件</h3>
-<ul>
-<li>系统服务满足</li>
-<li>操作完成</li>
-<li>数据到达</li>
-<li>新任务出现</li>
-</ul>
-<h3 id="进程阻塞过程">进程阻塞过程</h3>
-<h4 id="block原语">Block()原语</h4>
-<ol type="1">
-<li>先立即停止执行，把进程控制块中的现行状态由执行状态改为阻塞状态，并将它插入到对应的阻塞队列中</li>
-<li>转调度程序进程重新调度，将处理机分配给另一就绪进程，并进行切换</li>
-</ol>
-<h3 id="进程唤醒过程">进程唤醒过程</h3>
-<h4 id="wakeup原语">Wakeup()原语</h4>
-<p>首先把阻塞进程从等待该事件的阻塞进程队列中移出，将其PCB中的现行状态由阻塞改为就绪，并插入到就绪队列中</p>
-<h2 id="进程的挂起与激活">进程的挂起与激活</h2>
-<h3 id="进程挂起过程">进程挂起过程</h3>
-<h4 id="suspend过程">Suspend()过程</h4>
-<ol type="1">
-<li>检查被挂起进程的状态并修改和插入到对应队列</li>
-<li>复制PCB到指定域</li>
-<li>若被挂进程正在执行则转向调度程序重新调度</li>
-</ol>
-<h3 id="进程激活过程">进程激活过程</h3>
-<h4 id="activate原语">Activate()原语</h4>
-<ol type="1">
-<li>检查进程现行状态并修改和插队</li>
-<li>若有新进程进入就绪队列并采用了抢占式调度策略，则检查和决定是否重新调度</li>
-</ol>
-]]></content>
-      <categories>
-        <category>大学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>操作系统第六节课笔记-进程同步</title>
     <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/</url>
     <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5.pdf" title="操作系统第六节课笔记-进程同步pdf文档下载">操作系统第六节课笔记-进程同步pdf文档下载</a>
@@ -3152,209 +2565,243 @@
       </categories>
   </entry>
   <entry>
-    <title>操作系统第四节课笔记-程序执行分析及前趋图</title>
-    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%9B%9B%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%88%86%E6%9E%90%E5%8F%8A%E5%89%8D%E8%B6%8B%E5%9B%BE/</url>
-    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%9B%9B%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%88%86%E6%9E%90%E5%8F%8A%E5%89%8D%E8%B6%8B%E5%9B%BE/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%9B%9B%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%88%86%E6%9E%90%E5%8F%8A%E5%89%8D%E8%B6%8B%E5%9B%BE.pdf" title="操作系统第四节课笔记-程序执行分析及前趋图pdf文档下载">操作系统第四节课笔记-程序执行分析及前趋图pdf文档下载</a>
-<a id="more"></a>
-<h1 id="程序执行分析及前趋图">程序执行分析及前趋图</h1>
-<h2 id="前趋图概念及举例说明">前趋图概念及举例说明</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[P1]--&gt;B[P2]</span><br><span class="line">A--&gt;C[P3]</span><br><span class="line">A--&gt;D[P4]</span><br><span class="line">B--&gt;E[P5]</span><br><span class="line">C--&gt;E</span><br><span class="line">D--&gt;F[P6]</span><br><span class="line">F--&gt;G[P7]</span><br><span class="line">E--&gt;G</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>前趋后继关系就是依赖关系</strong></li>
-<li>后继依赖前驱</li>
-<li>P2和P3可以并发</li>
-<li>Pi-&gt;Pj
-<ul>
-<li>称Pi是Pj的直接前趋</li>
-<li>称Pj是Pi的直接后继</li>
-</ul></li>
-</ul>
-<h2 id="程序的顺序执行">程序的顺序执行</h2>
-<h3 id="程序的构成结构">程序的构成结构</h3>
-<ul>
-<li><strong>顺序</strong></li>
-<li><strong>选择</strong></li>
-<li><strong>循环</strong></li>
-</ul>
-<h3 id="顺序执行的特征">顺序执行的特征</h3>
-<ul>
-<li>顺序性
-<ul>
-<li>处理机的操作，严格按照规定顺序执行</li>
-</ul></li>
-<li>封闭性
-<ul>
-<li>封闭环境下运行，对系统资源独占</li>
-<li>只有当前程序才能改变资源状态</li>
-<li>执行结果不受外界影响(debug除外)</li>
-</ul></li>
-<li>可再现性
-<ul>
-<li>只要环境和条件相同，程序的结果相同</li>
-</ul></li>
-</ul>
-<h3 id="程序的顺序性使其变得易于维护">程序的顺序性使其变得易于维护</h3>
-<h2 id="程序的并发执行">程序的并发执行</h2>
-<h4 id="一段时间内共享计算机资源">一段时间内共享计算机资源</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[S1]--&gt;C[S3]</span><br><span class="line">B[S2]--&gt;C</span><br><span class="line">C--&gt;D[S4]</span><br></pre></td></tr></table></figure>
-<h4 id="s1或s2谁先执行都可以因为他们没有前趋没有依赖关系可以并发执行">S1或S2谁先执行都可以，因为他们没有前趋，没有依赖关系，可以并发执行</h4>
-<h4 id="只有s1s2执行结束后s3才能执行s3执行结束后s4才能执行">只有S1S2执行结束后S3才能执行，S3执行结束后，S4才能执行</h4>
-<h3 id="并发时的特征">并发时的特征</h3>
-<ul>
-<li>间断性
-<ul>
-<li><strong>执行-&gt;暂停执行-&gt;执行</strong>的活动规律</li>
-</ul></li>
-<li>失去封闭性
-<ul>
-<li>因为共享系统资源，每个程序都可能对系统资源行程改变，程序一定受其他运行程序影响</li>
-</ul></li>
-<li>不可再现性
-<ul>
-<li>程序可能受到其他程序影响，资源都有可能发生变动</li>
-</ul></li>
-</ul>
-<h4 id="要想实现程序间并发执行结果可再现区别于静态描述程序的动态描述结果">要想实现程序间并发执行结果可再现，区别于静态描述程序的动态描述结果</h4>
-<h2 id="进程的定义及特征">进程的定义及特征</h2>
-<h3 id="进程的引入">进程的引入</h3>
-<ul>
-<li>并发、共享及多程序环境</li>
-<li>基于程序的概念已不能完整、有效的描述并发在内存中的运行状态</li>
-<li>必须建立并发程序的新的描述和控制机制</li>
-<li>基于程序段、数据段和进程控制块而引入进程的概念以对应程序的运行过程</li>
-<li>进程控制块存放了进程标识符、进程运行的当前状态、程序和数据的地址以及关于该程序运行时的CPU环境信息</li>
-</ul>
-<h3 id="进程的定义">进程的定义</h3>
-<ul>
-<li>进程是可并发执行的程序在一个数据集合上的进行过程，亦即进程实体的运行过程
-<ul>
-<li>进程实体由程序段，数据段及进程控制块三部分构成</li>
-</ul></li>
-<li>进程是系统进行资源分配和调度的一个独立单位</li>
-</ul>
-<h3 id="进程和程序的区别于联系">进程和程序的区别于联系</h3>
-<ul>
-<li>结构特征
-<ul>
-<li>程序段、数据段及进程控制块</li>
-</ul></li>
-<li>动态性
-<ul>
-<li>生命周期及<strong>执行</strong>本质</li>
-</ul></li>
-<li>并发性
-<ul>
-<li>共存于内存、宏观同时运行</li>
-</ul></li>
-<li>独立性
-<ul>
-<li>调度、资源分配、运行</li>
-</ul></li>
-<li>异步性
-<ul>
-<li>推进相互独立、速度不可知</li>
-</ul></li>
-</ul>
-<h2 id="进程状态及状态转换图">进程状态及状态转换图</h2>
-<h3 id="进程的基本状态及状态转换">进程的基本状态及状态转换</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">D[新状态]--&gt;|接纳|A</span><br><span class="line">A[就绪状态]--&gt;|调度|B[运行状态]--&gt;|I&#x2F;O请求或等某事件|C[阻塞状态]--&gt;|I&#x2F;O完成或时间发生|A</span><br><span class="line">B--&gt;|超时|A</span><br><span class="line">B--&gt;|结束|E[中止状态]</span><br></pre></td></tr></table></figure>
-<h4 id="三种核心状态">三种核心状态</h4>
-<ul>
-<li><p>检查资源，对进程记账</p>
-<p>其中<span class="math inline">\(I\)</span> 为传信率，<span class="math inline">\(S\)</span> 为波特率，<span class="math inline">\(N\)</span> 为每个码元负载的信息量，而<span class="math inline">\(\log _{2}{N}\)</span>以比特为单位。</p>
-<p>就绪状态</p></li>
-<li><p>运行状态</p></li>
-<li><p>阻塞状态</p></li>
-</ul>
-<h4 id="状态特性">状态特性</h4>
-<ul>
-<li>单向
-<ul>
-<li>运行-&gt;阻塞-&gt;就绪</li>
-</ul></li>
-<li>双向
-<ul>
-<li>运行-&gt;就绪</li>
-<li>就绪-&gt;运行</li>
-</ul></li>
-</ul>
-<h3 id="进程的父子关系">进程的父子关系</h3>
-<ul>
-<li>子进程由父进程fork出来</li>
-</ul>
-<h4 id="僵尸进程">僵尸进程</h4>
-<ul>
-<li>一个进程结束了，但是他的父进程没有等待（调用wait / waitpid）他，那么他将变成一个僵尸进程</li>
-</ul>
-<h4 id="孤儿进程">孤儿进程</h4>
-<ul>
-<li>父进程调用两次fork，杀死子进程。剩下的孙子进程会成为孤儿进程，孤儿进程由init程序进行处理。 因为init是一切进程的父进程。</li>
-</ul>
-<h3 id="引入程序挂起状态">引入程序挂起状态</h3>
-<ul>
-<li>终端用户的请求
-<ul>
-<li>发现问题</li>
-</ul></li>
-<li>父进程的请求
-<ul>
-<li>考察、修改或协调子进程</li>
-</ul></li>
-<li>操作系统的需要
-<ul>
-<li>检查资源，对进程记账</li>
-</ul></li>
-<li>负载调节
-<ul>
-<li>保证实时系统正常运行</li>
-</ul></li>
-</ul>
-<h2 id="unix进程状态转换图">UNIX进程状态转换图</h2>
-<img src="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%9B%9B%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%88%86%E6%9E%90%E5%8F%8A%E5%89%8D%E8%B6%8B%E5%9B%BE/unix.jpg" class="" title="unix进程状态转换图">
-<h2 id="linux进程状态转换图">Linux进程状态转换图</h2>
-<img src="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%9B%9B%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%88%86%E6%9E%90%E5%8F%8A%E5%89%8D%E8%B6%8B%E5%9B%BE/linux.jpg" class="" title="linux进程状态转换图">
-<h1 id="课后习题">课后习题</h1>
-<ol type="1">
-<li>程序在独占处理器的情况下运行时。将会体现出顺序性的执行特征，这是指<strong>处理机的操作，严格按照规定顺序执行</strong></li>
-<li>现在操作系统中，<strong>进程</strong>是系统实施内存资源分配和管理的一个独立实体。</li>
-<li>与程序相比，进程是一个动态的概念，具有一定的生命周期，并支持多道程序并发执行。关于并发说法最准确的说法是<strong>多道程序同时进入内存，并在宏观上（即一段时间内）同时运行</strong></li>
-<li>关于进程各种基本状态之间的转化，不可能直接发生的状态转化为<strong>阻塞状态=&gt;运行状态</strong></li>
-<li>进程在<strong>系统采用时间片轮转调度算法且分配给进程的时间片用完</strong>的条件下，将会从运行状态转化为就绪状态。</li>
-<li>关于进场的状态转换，引入挂起状态的的原因不包括<strong>进程进行I/O操作室应保证处理器的高效利用</strong>。</li>
-<li>下面对进程的描述中，错误的是
-<ol type="1">
-<li>晋城市动态的概念（√）</li>
-<li>进程的执行需要处理机（√）</li>
-<li>进程具有生命周期（√）</li>
-<li><strong>进程是指令的集合（进程里面还包含栈/堆等数据结构的非指令结构×）</strong></li>
-</ol></li>
-<li>在进程管理时，当<strong>等待的事件出现</strong>时，进程从阻塞状态变为就绪状态。</li>
-<li>分配到必要的资源并获得处理机时的进程状态是<strong>执行状态</strong>。</li>
-<li>一个进程用完了分配给它的时间片后，它的状态变为<strong>就绪状态</strong>。</li>
-<li>操作系统通过<strong>PCB</strong>对进程进行管理。
-<ol type="1">
-<li>PCB：进程控制块(Processing Control Block)</li>
-</ol></li>
-<li>关于进程的状态转换，当进程处于<strong>普通阻塞状态</strong>的情况下，不可能直接转化为挂起就绪状态。</li>
-<li>多到程序环境下，操作系统分配资源以<strong>进程</strong>为基本单位。</li>
-<li>进程的<strong>动态性</strong>和并发性是两个很重要的属性。</li>
-<li>进程被创建后即进入<strong>就绪队列</strong>排队。</li>
-</ol>
+    <title>单片机-输入设备</title>
+    <url>/%E5%8D%95%E7%89%87%E6%9C%BA-%E8%BE%93%E5%85%A5%E8%AE%BE%E5%A4%87/</url>
+    <content><![CDATA[<h4 id="键盘示例程序">键盘示例程序</h4>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;reg51.c&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uint unsigned int</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uchar unsigned char</span></span><br><span class="line"></span><br><span class="line">sbit MDzhengzhuan_control=P0^<span class="number">0</span>;</span><br><span class="line">sbit MDfanzhuan_control=P0^<span class="number">1</span>;</span><br><span class="line">sbit MDstop_control=P0^<span class="number">2</span>;</span><br><span class="line">sbit light_on_control=P0^<span class="number">3</span>;</span><br><span class="line">sbit light_off_control=P0^<span class="number">4</span>;</span><br><span class="line">sbit fmq_on_control=P0^<span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">sbit JDQ_in=P1^<span class="number">0</span>;</span><br><span class="line">sbit MDfu=P1^<span class="number">3</span>;</span><br><span class="line">sbit MDzheng=P1^<span class="number">4</span>;</span><br><span class="line">sbit FMQ=P1^<span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(uint ms)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">key_input</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MDzhengzhuan</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MDfanzhuan</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MDstop</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">light_on</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">light_off</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fmq_on</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    P0=<span class="number">0xff</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        key_input();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(uint ms)</span></span>&#123;</span><br><span class="line">    uint i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;ms;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">110</span>;j++);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">key_input</span><span class="params">()</span></span>&#123;</span><br><span class="line">    P0=<span class="number">0xff</span>;</span><br><span class="line">    <span class="keyword">if</span>((P0&amp;<span class="number">0x3f</span>)!=<span class="number">0x3f</span>)&#123;</span><br><span class="line">        <span class="built_in">delay</span>(<span class="number">10</span>);</span><br><span class="line">        <span class="keyword">if</span>(MDzhengzhuan_control==<span class="number">0</span>)&#123;</span><br><span class="line">            MDzhengzhuan();</span><br><span class="line">            <span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(MDfanzhuan_control==<span class="number">0</span>)&#123;</span><br><span class="line">            MDfanzhuan();</span><br><span class="line">            <span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(MDstop_control==<span class="number">0</span>)&#123;</span><br><span class="line">            MDstop();</span><br><span class="line">            <span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(light_on_control==<span class="number">0</span>)&#123;</span><br><span class="line">            light_on();</span><br><span class="line">            <span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(light_off_control==<span class="number">0</span>)&#123;</span><br><span class="line">            light_off();</span><br><span class="line">            <span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(fmq_on_control==<span class="number">0</span>)&#123;</span><br><span class="line">            fmq_on();</span><br><span class="line">            <span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MDzhengzhuan</span><span class="params">()</span></span>&#123;</span><br><span class="line">    MDzheng=<span class="number">1</span>;</span><br><span class="line">    MDfu=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MDfanzhuan</span><span class="params">()</span></span>&#123;</span><br><span class="line">    MDzheng=<span class="number">0</span>;</span><br><span class="line">    MDfu=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MDstop</span><span class="params">()</span></span>&#123;</span><br><span class="line">    MDzheng=<span class="number">0</span>;</span><br><span class="line">    MDfu=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">light_on</span><span class="params">()</span></span>&#123;</span><br><span class="line">    JDQ_in=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">light_off</span><span class="params">()</span></span>&#123;</span><br><span class="line">    JDQ_in=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fmq_on</span><span class="params">()</span></span>&#123;</span><br><span class="line">    FMQ=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">delay</span>(<span class="number">1000</span>);</span><br><span class="line">    FMQ=<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">delay</span>(<span class="number">1000</span>);</span><br><span class="line">    FMQ=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">delay</span>(<span class="number">1000</span>);</span><br><span class="line">    FMQ=<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">delay</span>(<span class="number">1000</span>);</span><br><span class="line">    FMQ=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">delay</span>(<span class="number">1000</span>);</span><br><span class="line">    FMQ=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>大学</category>
+        <category>单片机</category>
       </categories>
   </entry>
   <entry>
-    <title>数据库表设计</title>
-    <url>/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E8%AE%BE%E8%AE%A1/</url>
-    <content><![CDATA[<h3 id="无限分类">无限分类</h3>
-<p>无限分类类似于磁盘中linux的文件查找机制 表的设计可以简化为 id-&gt;就是id啊 pid-&gt;父级id</p>
-<p>高级一点,也方便查找的数据表结构可以新增一个字段 path-&gt;递归记录父类id,包括祖id</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">()</span></span>&#123;  <span class="comment">//这是一个控制器,用来接收post参数</span></span><br><span class="line">	$name=trim($_POST[<span class="string">'name'</span>]);</span><br><span class="line">	$pid=trim($_POST[<span class="string">'pid'</span>]);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">isset</span>($pid))&#123;</span><br><span class="line">		<span class="keyword">do</span>&#123;</span><br><span class="line">			$pid=db(goods)-&gt;limit([<span class="string">'pid'</span>=&gt;$pid])-&gt;select();</span><br><span class="line">			$path=$pid.$path;</span><br><span class="line">		&#125;<span class="keyword">while</span>($pid!=<span class="number">0</span>);</span><br><span class="line">		$id=db(goods)-&gt;save([<span class="string">'name'</span>=&gt;$name,<span class="string">'pid'</span>=&gt;$pid,<span class="string">'path'</span>=&gt;$path]); </span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		$id=db(goods)-&gt;save([<span class="string">'name'</span>=&gt;$name,<span class="string">'pid'</span>=&gt;<span class="number">0</span>]);<span class="comment">//需要设定$path默认为零,也就是说,如果没有传入path,他就是一个根分类</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>($id);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>Linux-命令缩写及含义</title>
+    <url>/Linux-%E5%91%BD%E4%BB%A4%E7%BC%A9%E5%86%99%E5%8F%8A%E5%90%AB%E4%B9%89/</url>
+    <content><![CDATA[<h4 id="命令缩写">命令缩写:</h4>
+<ul>
+<li>ls = list(列出目录内容)</li>
+<li>cd = Change Directory（改变目录）</li>
+<li>su = switch user 切换用户</li>
+<li>rpm = redhat package manager 红帽子打包管理器</li>
+<li>pwd = print work directory 打印当前目录 显示出当前工作目录的绝对路径</li>
+<li>ps = process status(进程状态，类似于windows的任务管理器) 常用参数:－auxf</li>
+<li>ps -auxf 显示进程状态</li>
+<li>df = disk free 其功能是显示磁盘可用空间数目信息及空间结点信息。换句话说，就是报告在任何安装的设备或目录中，还剩多少自由的空间。</li>
+<li>rpm = 即RedHat Package Management，是RedHat的发明之一</li>
+<li>rmdir = Remove Directory（删除目录）</li>
+<li>rm = Remove（删除目录或文件） <a id="more"></a></li>
+<li>cat = concatenate连锁 cat file1 file2&gt;&gt;file3把文件1和文件2的内容联合起来放到file3中</li>
+<li>insmod = install module,载入模块</li>
+<li>ln -s = link -soft 创建一个软链接，相当于创建一个快捷方式</li>
+<li>mkdir = Make Directory(创建目录</li>
+<li>touch = 摸一下,更新时间戳,常被用来创建文件</li>
+<li>man = Manual</li>
+<li>pwd = Print working directory</li>
+<li>su = Swith user</li>
+<li>cd = Change directory</li>
+<li>ls = List files</li>
+<li>ps = Process Status</li>
+<li>mkdir = Make directory</li>
+<li>rmdir = Remove directory</li>
+<li>mkfs = Make file system</li>
+<li>fsck = File system check</li>
+<li>cat = Concatenate</li>
+<li>uname = Unix name</li>
+<li>df = Disk free</li>
+<li>du = Disk usage</li>
+<li>lsmod = List modules</li>
+<li>mv = Move file</li>
+<li>rm = Remove file</li>
+<li>cp = Copy file</li>
+<li>ln = Link files</li>
+<li>mdadm = Multiple Disk and Device Administration 多磁盘和设备管理</li>
+<li>fg = Foreground</li>
+<li>bg = Background</li>
+<li>chown = Change owner</li>
+<li>chgrp = Change group</li>
+<li>chmod = Change mode</li>
+<li>umount = Unmount</li>
+<li>dd = 本来应根据其功能描述“Convert an copy”命名为“cc”，但“cc”已经被用以代表“C Complier”，所以命名为“dd”</li>
+<li>tar = Tape archive</li>
+<li>ldd = List dynamic dependencies</li>
+<li>insmod = Install module</li>
+<li>rmmod = Remove module</li>
+<li>lsmod = List module</li>
+<li>文件结尾的"rc"（如.bashrc、.xinitrc等） = Resource configuration</li>
+<li>Knnxxx / Snnxxx（位于rcx.d目录下） = K（Kill）；S(Service)；nn（执行顺序号）；xxx（服务标识）</li>
+<li>.a（扩展名a） = Archive，static library</li>
+<li>.so（扩展名so） = Shared object，dynamically linked library</li>
+<li>.o（扩展名o） = Object file，complied result of C/C++ source file</li>
+<li>RPM = Red hat package manager</li>
+<li>dpkg = Debian package manager</li>
+<li>apt = Advanced package tool（Debian或基于Debian的发行版中提供）</li>
+</ul>
+<h4 id="部分linux命令缩写">部分Linux命令缩写</h4>
+<ul>
+<li>FIFO = First In, First Out</li>
+<li>GRUB = GRand Unified Bootloader</li>
+<li>IFS = Internal Field Seperators</li>
+<li>LILO = LInux LOader</li>
+<li>MySQL = My是最初作者女儿的名字，SQL = Structured Query Language</li>
+<li>PHP = Personal Home Page Tools = PHP Hypertext Preprocessor</li>
+<li>PNG = PNG's Not GIF<br />
+</li>
+<li>PS = Prompt String</li>
+<li>Perl = "Pratical Extraction and Report Language" = "Pathologically Eclectic Rubbish Lister"</li>
+<li>Python 得名于电视剧Monty Python's Flying Circus</li>
+<li>Tcl = Tool Command Language</li>
+<li>Tk = ToolKit</li>
+<li>VT = Video Terminal</li>
+<li>YaST = Yet Another Setup Tool</li>
+<li>apache = "a patchy" server</li>
+<li>apt = Advanced Packaging Tool</li>
+<li>ar = archiver</li>
+<li>as = assembler</li>
+<li>awk = "Aho Weiberger and Kernighan" 三个作者的姓的第一个字母</li>
+<li>bash = Bourne Again SHell</li>
+<li>bc = Basic (Better) Calculator</li>
+<li>bg = BackGround</li>
+<li>biff = 作者Heidi Stettner在U.C.Berkely养的一条狗,喜欢对邮递员汪汪叫。</li>
+<li>cal = CALendar</li>
+<li>cat = CATenate</li>
+<li>cd = Change Directory</li>
+<li>chgrp = CHange GRouP</li>
+<li>chmod = CHange MODe</li>
+<li>chown = CHange OWNer</li>
+<li>chsh = CHange SHell</li>
+<li>cmp = compare</li>
+<li>cobra = Common Object Request Broker Architecture</li>
+<li>comm = common</li>
+<li>cp = CoPy</li>
+<li>cpio = CoPy In and Out</li>
+<li>cpp = C Pre Processor</li>
+<li>cron = Chronos 希腊文时间</li>
+<li>cups = Common Unix Printing System</li>
+<li>cvs = Current Version System</li>
+<li>daemon = Disk And Execution MONitor</li>
+<li>dc = Desk Calculator</li>
+<li>dd = Disk Dump</li>
+<li>df = Disk Free</li>
+<li>diff = DIFFerence</li>
+<li>dmesg = diagnostic message</li>
+<li>du = Disk Usage</li>
+<li>ed = editor</li>
+<li>egrep = Extended GREP</li>
+<li>elf = Extensible Linking Format</li>
+<li>elm = ELectronic Mail</li>
+<li>emacs = Editor MACroS</li>
+<li>eval = EVALuate</li>
+<li>ex = EXtended</li>
+<li>exec = EXECute</li>
+<li>fd = file descriptors</li>
+<li>fg = ForeGround</li>
+<li>fgrep = Fixed GREP</li>
+<li>fmt = format</li>
+<li>fsck = File System ChecK</li>
+<li>fstab = FileSystem TABle</li>
+<li>fvwm = F*** Virtual Window Manager</li>
+<li>gawk = GNU AWK</li>
+<li>gpg = GNU Privacy Guard</li>
+<li>groff = GNU troff</li>
+<li>hal = Hardware Abstraction Layer</li>
+<li>joe = Joe's Own Editor</li>
+<li>ksh = Korn SHell</li>
+<li>lame = Lame Ain't an MP3 Encoder</li>
+<li>lex = LEXical analyser</li>
+<li>lisp = LISt Processing = Lots of Irritating Superfluous Parentheses</li>
+<li>ln = LiNk</li>
+<li>lpr = Line PRint</li>
+<li>ls = list</li>
+<li>lsof = LiSt Open Files</li>
+<li>m4 = Macro processor Version 4</li>
+<li>man = MANual pages</li>
+<li>mawk = Mike Brennan's AWK</li>
+<li>mc = Midnight Commander</li>
+<li>mkfs = MaKe FileSystem</li>
+<li>mknod = MaKe NODe</li>
+<li>motd = Message of The Day</li>
+<li>mozilla = MOsaic GodZILLa</li>
+<li>mtab = Mount TABle</li>
+<li>mv = MoVe</li>
+<li>nano = Nano's ANOther editor</li>
+<li>nawk = New AWK</li>
+<li>nl = Number of Lines</li>
+<li>nm = names</li>
+<li>nohup = No HangUP</li>
+<li>nroff = New ROFF</li>
+<li>od = Octal Dump</li>
+<li>passwd = PASSWorD</li>
+<li>pg = pager</li>
+<li>pico = PIne's message COmposition editor</li>
+<li>pine = "Program for Internet News &amp; Email" = "Pine is not Elm"</li>
+<li>ping = 拟声 又 = Packet InterNet Grouper</li>
+<li>pirntcap = PRINTer CAPability</li>
+<li>popd = POP Directory</li>
+<li>pr = pre</li>
+<li>printf = PRINT Formatted</li>
+<li>ps = Processes Status</li>
+<li>pty = pseudo tty</li>
+<li>pushd = PUSH Directory</li>
+<li>pwd = Print Working Directory</li>
+<li>rc = runcom = run command, rc还是plan9的shell</li>
+<li>rev = REVerse</li>
+<li>rm = ReMove</li>
+<li>rn = Read News</li>
+<li>roff = RunOFF</li>
+<li>rpm = RPM Package Manager = RedHat Package Manager</li>
+<li>nsswitch = network service switch 网络服务转换</li>
+<li>rsh, rlogin, rvim中的r = Remote</li>
+<li>rxvt = ouR XVT</li>
+<li>seamoneky = 我</li>
+<li>sed = Stream EDitor</li>
+<li>seq = SEQuence</li>
+<li>shar = SHell ARchive</li>
+<li>slrn = S-Lang rn</li>
+<li>ss = Socket Statistics 套接字统计</li>
+<li>ssh = Secure SHell</li>
+<li>ssl = Secure Sockets Layer</li>
+<li>stty = Set TTY</li>
+<li>su = Substitute User</li>
+<li>svn = SubVersioN</li>
+<li>tar = Tape ARchive</li>
+<li>tcsh = TENEX C shell</li>
+<li>tee = T (T形水管接口)</li>
+<li>telnet = TEminaL over Network</li>
+<li>termcap = terminal capability</li>
+<li>terminfo = terminal information</li>
+<li>tex = τέχνη的缩写，希腊文art</li>
+<li>tr = traslate</li>
+<li>troff = Typesetter new ROFF</li>
+<li>tsort = Topological SORT</li>
+<li>tty = TeleTypewriter</li>
+<li>twm = Tom's Window Manager</li>
+<li>tz = TimeZone</li>
+<li>udev = Userspace DEV</li>
+<li>ulimit = User's LIMIT</li>
+<li>umask = User's MASK</li>
+<li>uniq = UNIQue</li>
+<li>vi = VIsual = Very Inconvenient</li>
+<li>vim = Vi IMproved</li>
+<li>wall = write all</li>
+<li>wc = Word Count</li>
+<li>wine = WINE Is Not an Emulator</li>
+<li>xargs = eXtended ARGuments</li>
+<li>xdm = X Display Manager</li>
+<li>xlfd = X Logical Font Description</li>
+<li>xmms = X Multimedia System</li>
+<li>xrdb = X Resources DataBase</li>
+<li>xwd = X Window Dump</li>
+<li>yacc = yet another compiler compiler</li>
+<li>Fish = the Friendly Interactive SHell</li>
+<li>su = Switch User</li>
+<li>MIME = Multipurpose Internet Mail Extensions</li>
+<li>ECMA = European Computer Manufacturers Association</li>
+<li>initrd = initialized RAM disk</li>
+</ul>
+<h3 id="转载自httpsblog.csdn.nethuyisuarticledetails55506771">转载自<a href="https://blog.csdn.net/huyisu/article/details/55506771" target="_blank" rel="noopener">https://blog.csdn.net/huyisu/article/details/55506771</a>*</h3>
 ]]></content>
       <categories>
-        <category>编程</category>
+        <category>linux知识</category>
       </categories>
   </entry>
   <entry>
@@ -3377,6 +2824,145 @@
 ]]></content>
       <categories>
         <category>无线电</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>操作系统第三节课笔记-操作系统接口</title>
+    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/</url>
+    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3.pdf" title="操作系统第三节课笔记-操作系统接口pdf文档下载">操作系统第三节课笔记-操作系统接口pdf文档下载</a>
+<a id="more"></a>
+<h1 id="操作系统接口">操作系统接口</h1>
+<h2 id="用户接口">用户接口</h2>
+<h3 id="用户接口分类">用户接口分类</h3>
+<ul>
+<li>基于表现形式划分
+<ul>
+<li>用户交互接口
+<ul>
+<li>CLI：文本界面，命令窗口(联/脱机命令接口)</li>
+<li>GUI：图形化用户接口(图形化操作界面)</li>
+</ul></li>
+<li>用户程序接口(方便用户调用访问系统资源，由一组系统调用(System call)组成</li>
+</ul></li>
+<li>基于使用者类型划分
+<ul>
+<li>本地用户接口</li>
+<li>远程用户接口(网络用户接口)</li>
+</ul></li>
+</ul>
+<h3 id="联机命令接口">联机命令接口</h3>
+<ul>
+<li><p>一组联机命令</p>
+<ul>
+<li>内部命令</li>
+<li>外部命令</li>
+</ul></li>
+<li><p>键盘处理程序</p></li>
+<li><p>命令解释程序</p></li>
+</ul>
+<h4 id="联机命令格式与分类">联机命令格式与分类</h4>
+<ul>
+<li><p>联机命令格式</p>
+<p><code>&lt;命令&gt; [&lt;可选项&gt;] &lt;参数&gt;</code></p></li>
+<li><p>联机命令类型</p>
+<ul>
+<li>系统访问类</li>
+<li>磁盘操作类</li>
+<li>网络通信类</li>
+<li><strong>输入输出重定向</strong>、<strong>管道</strong>、过滤命令</li>
+<li><strong>批处理方式</strong>(批处理文件/脚本)</li>
+</ul></li>
+</ul>
+<h3 id="键盘终端处理程序">键盘终端处理程序</h3>
+<ul>
+<li><p>基本功能</p>
+<ul>
+<li>接收用户从终端输入的字符
+<ul>
+<li>面向字符/行方式</li>
+</ul></li>
+<li>管理字符缓冲
+<ul>
+<li>专用缓冲区/公用缓冲区</li>
+</ul></li>
+<li>将字符打印到屏幕
+<ul>
+<li>硬件/软件实现方式</li>
+</ul></li>
+</ul>
+<p>特殊字符处理(中断/清屏/恢复jobs)</p></li>
+</ul>
+<h3 id="图形化用户接口">图形化用户接口</h3>
+<h4 id="图形化接口元素">图形化接口元素</h4>
+<ul>
+<li>桌面、鼠标、图标</li>
+<li>窗口、标题栏、工具栏、菜单栏</li>
+<li>菜单
+<ul>
+<li>弹出式(右键菜单等)</li>
+<li>下拉式(菜单栏的下拉菜单)</li>
+</ul></li>
+<li>对话框</li>
+</ul>
+<h4 id="图形化接口特点">图形化接口特点</h4>
+<ul>
+<li>简单,直观</li>
+<li>多屏,多窗口</li>
+<li>即使交互</li>
+<li>传递参数信息量大</li>
+</ul>
+<h4 id="图形化接口的实现及运行机制">图形化接口的实现及运行机制</h4>
+<ul>
+<li>面向对象的程序设计方法</li>
+<li>消息产生、传递及处理</li>
+<li>事件驱动方式</li>
+</ul>
+<h2 id="系统调用">系统调用</h2>
+<h3 id="系统调用基本概念">系统调用基本概念</h3>
+<h5 id="linux-系统调用列表"><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part1/appendix.html" target="_blank" rel="noopener">Linux 系统调用列表</a></h5>
+<ul>
+<li>定义
+<ul>
+<li>系统过程-&gt;系统服务-&gt;系统调用命令</li>
+</ul></li>
+<li>与普通过程调用的区别
+<ul>
+<li>运行在不同的系统状态</li>
+<li>软中断进入机制</li>
+<li>返回及重新调度问题</li>
+<li>嵌套调用</li>
+</ul></li>
+</ul>
+<h3 id="系统调用的类型">系统调用的类型</h3>
+<ul>
+<li>进程控制
+<ul>
+<li>进程的创建<em>fork</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、结束<em>exit</em>、等待子进程结束<em>waitpid</em></li>
+<li>进程属性设置<em>pid</em>与获取</li>
+<li>执行一个文件<em>exec</em></li>
+</ul></li>
+<li>文件操控
+<ul>
+<li>文件的创建<em>creat</em>、打开<em>open</em>、关闭<em>close</em>、读/写 <em>read/write</em></li>
+</ul></li>
+<li>进程通信-基于<em>IPC</em>
+<ul>
+<li>连接打开与关闭、消息收发与接收</li>
+</ul></li>
+<li>系统信息维护
+<ul>
+<li>时间设置与获取、文建访问/修改时间设置</li>
+</ul></li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>除了第一个进程[init]不是由fork创建的之外,其余所有进程都是由init fork出来的<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>大学</category>
       </categories>
   </entry>
   <entry>
@@ -3601,6 +3187,462 @@ A\bigcap A=A,A\bigcap S=A,A\bigcap \emptyset=\emptyset
       </categories>
   </entry>
   <entry>
+    <title>操作系统第五节课笔记-进程控制</title>
+    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.pdf" title="操作系统第五节课笔记-进程控制pdf文档下载">操作系统第五节课笔记-进程控制pdf文档下载</a>
+<a id="more"></a>
+<h1 id="进程控制">进程控制</h1>
+<h3 id="进程控制块-pcb">进程控制块-PCB</h3>
+<p>Process Control Block</p>
+<ul>
+<li>进程实体的一部分，拥有描述进程情况及控制进程运行所需的全部信息的记录性数据结构</li>
+<li>使一个在多道程序环境下不能独立运行的程序，成为一个能独立运行的基本单位，一个能与其它进程并发执行的进程</li>
+<li>操作系统<strong>控制和管理</strong>并发执行进程的依据</li>
+<li>进程存在的唯一标志</li>
+<li>常驻内存，且存放于操作系统开辟的专门区域-PCB区</li>
+</ul>
+<h4 id="进程控制块中的信息">进程控制块中的信息</h4>
+<ul>
+<li>进程标识符
+<ul>
+<li>内(pid)/外部(进程名)、父/子进程、用户标识符</li>
+</ul></li>
+<li>处理器调度信息
+<ul>
+<li>通用、PC、PSW、用户占指针寄存器</li>
+</ul></li>
+<li>进程调度信息
+<ul>
+<li>进程状态、进程优先级(静态优先级，动态优先级)、事件及其他</li>
+</ul></li>
+<li>进程控制信息
+<ul>
+<li>程序和数据地址、进程同步通信机制</li>
+<li>资源清单、链接指针、进程图</li>
+</ul></li>
+</ul>
+<h3 id="进程图进程树">进程图（进程树）</h3>
+<ul>
+<li>描述进程家族的有向树
+<ul>
+<li>结点/有向边</li>
+<li>父/子进程</li>
+<li>祖先进程/祖先</li>
+</ul></li>
+</ul>
+<p>知道进程的子进程有助于在知道父进程的情况下，杀死其子进程</p>
+<p>知道进程的祖先进程有助于当子进程被杀死后通知父进程</p>
+<h3 id="pcb的组织方式">PCB的组织方式</h3>
+<p>执行指针</p>
+<p>就绪队列指针</p>
+<p>阻塞队列指针</p>
+<p>空闲队列指针</p>
+<ul>
+<li>链接方式
+<ul>
+<li>通过链表查询队列</li>
+</ul></li>
+<li>索引方式
+<ul>
+<li>建立索引表用于查询队列</li>
+</ul></li>
+</ul>
+<h2 id="进程的创建与终止">进程的创建与终止</h2>
+<h3 id="引起创建进程的事件">引起创建进程的事件</h3>
+<ul>
+<li>用户登录
+<ul>
+<li>分时系统中，验证为合法的终端用户登录</li>
+</ul></li>
+<li>作业调度
+<ul>
+<li>批处理系统中作业调度到某作业</li>
+</ul></li>
+<li>提供服务
+<ul>
+<li>运行中的用户程序提出某种请求</li>
+</ul></li>
+<li>应用请求
+<ul>
+<li>基于用户进程的需要由其自身创建新进程</li>
+</ul></li>
+</ul>
+<h3 id="引起终止进程的事件">引起终止进程的事件</h3>
+<ul>
+<li>正常结束
+<ul>
+<li>批处理系统中的Halt，分时系统中的LogsOff</li>
+</ul></li>
+<li>异常结束
+<ul>
+<li>越界错误、保护错误</li>
+<li>特权指令错误</li>
+<li>非法指令错误</li>
+<li>运行超时、等待超时</li>
+<li>算数运算错、I/O故障</li>
+</ul></li>
+<li>外界干预
+<ul>
+<li>操作员或者操作系统干预
+<ul>
+<li>发送SIGKILL信号强制杀死</li>
+</ul></li>
+<li>父进程请求/终止</li>
+</ul></li>
+</ul>
+<h3 id="进程创建过程">进程创建过程</h3>
+<h4 id="create原语">Create()原语</h4>
+<ol type="1">
+<li>分配标识符，并申请空白进程控制块</li>
+<li>为新进程的程序和数据及用户占分配必要的内存空间
+<ol type="1">
+<li>所需内存大小问题</li>
+</ol></li>
+<li>初始化进程控制快
+<ol type="1">
+<li>自身/父进程标识符</li>
+<li>处理机状态/调度信息</li>
+</ol></li>
+<li>讲新进程插入到就绪队列</li>
+</ol>
+<h3 id="进程终止过程">进程终止过程</h3>
+<h4 id="terminate原语">Terminate()原语</h4>
+<ol type="1">
+<li>检索被终止进程PCB，读取其进程状态</li>
+<li>若其正处于执行状态，立即终止执行并设置调度标志为真，来重新调度其他进程</li>
+<li>终止子孙进程</li>
+<li><strong>资源归还</strong>-最重要的过程</li>
+<li>一处被终止进程PCB，等待其他程序查询利用</li>
+</ol>
+<h2 id="进程的阻塞与唤醒">进程的阻塞与唤醒</h2>
+<h3 id="引起进程阻塞的事件">引起进程阻塞的事件</h3>
+<ul>
+<li>请求系统服务
+<ul>
+<li>但不能立刻满足，需要阻塞自己等待系统服务的响应</li>
+</ul></li>
+<li>启动某种操作
+<ul>
+<li>某种动作是本进程下一个动作的前趋，不满足不能向后执行</li>
+</ul></li>
+<li>新数据尚未到达
+<ul>
+<li>相互合作的进程必须先获得另一方的进程数据才能继续</li>
+</ul></li>
+<li>无新工作可做
+<ul>
+<li>特定功能的系统进程当完成任务且当前暂无任务</li>
+</ul></li>
+</ul>
+<h3 id="引起进程唤醒的事件">引起进程唤醒的事件</h3>
+<ul>
+<li>系统服务满足</li>
+<li>操作完成</li>
+<li>数据到达</li>
+<li>新任务出现</li>
+</ul>
+<h3 id="进程阻塞过程">进程阻塞过程</h3>
+<h4 id="block原语">Block()原语</h4>
+<ol type="1">
+<li>先立即停止执行，把进程控制块中的现行状态由执行状态改为阻塞状态，并将它插入到对应的阻塞队列中</li>
+<li>转调度程序进程重新调度，将处理机分配给另一就绪进程，并进行切换</li>
+</ol>
+<h3 id="进程唤醒过程">进程唤醒过程</h3>
+<h4 id="wakeup原语">Wakeup()原语</h4>
+<p>首先把阻塞进程从等待该事件的阻塞进程队列中移出，将其PCB中的现行状态由阻塞改为就绪，并插入到就绪队列中</p>
+<h2 id="进程的挂起与激活">进程的挂起与激活</h2>
+<h3 id="进程挂起过程">进程挂起过程</h3>
+<h4 id="suspend过程">Suspend()过程</h4>
+<ol type="1">
+<li>检查被挂起进程的状态并修改和插入到对应队列</li>
+<li>复制PCB到指定域</li>
+<li>若被挂进程正在执行则转向调度程序重新调度</li>
+</ol>
+<h3 id="进程激活过程">进程激活过程</h3>
+<h4 id="activate原语">Activate()原语</h4>
+<ol type="1">
+<li>检查进程现行状态并修改和插队</li>
+<li>若有新进程进入就绪队列并采用了抢占式调度策略，则检查和决定是否重新调度</li>
+</ol>
+]]></content>
+      <categories>
+        <category>大学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>操作系统第四节课笔记-程序执行分析及前趋图</title>
+    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%9B%9B%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%88%86%E6%9E%90%E5%8F%8A%E5%89%8D%E8%B6%8B%E5%9B%BE/</url>
+    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%9B%9B%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%88%86%E6%9E%90%E5%8F%8A%E5%89%8D%E8%B6%8B%E5%9B%BE/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%9B%9B%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%88%86%E6%9E%90%E5%8F%8A%E5%89%8D%E8%B6%8B%E5%9B%BE.pdf" title="操作系统第四节课笔记-程序执行分析及前趋图pdf文档下载">操作系统第四节课笔记-程序执行分析及前趋图pdf文档下载</a>
+<a id="more"></a>
+<h1 id="程序执行分析及前趋图">程序执行分析及前趋图</h1>
+<h2 id="前趋图概念及举例说明">前趋图概念及举例说明</h2>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[P1]--&gt;B[P2]</span><br><span class="line">A--&gt;C[P3]</span><br><span class="line">A--&gt;D[P4]</span><br><span class="line">B--&gt;E[P5]</span><br><span class="line">C--&gt;E</span><br><span class="line">D--&gt;F[P6]</span><br><span class="line">F--&gt;G[P7]</span><br><span class="line">E--&gt;G</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>前趋后继关系就是依赖关系</strong></li>
+<li>后继依赖前驱</li>
+<li>P2和P3可以并发</li>
+<li>Pi-&gt;Pj
+<ul>
+<li>称Pi是Pj的直接前趋</li>
+<li>称Pj是Pi的直接后继</li>
+</ul></li>
+</ul>
+<h2 id="程序的顺序执行">程序的顺序执行</h2>
+<h3 id="程序的构成结构">程序的构成结构</h3>
+<ul>
+<li><strong>顺序</strong></li>
+<li><strong>选择</strong></li>
+<li><strong>循环</strong></li>
+</ul>
+<h3 id="顺序执行的特征">顺序执行的特征</h3>
+<ul>
+<li>顺序性
+<ul>
+<li>处理机的操作，严格按照规定顺序执行</li>
+</ul></li>
+<li>封闭性
+<ul>
+<li>封闭环境下运行，对系统资源独占</li>
+<li>只有当前程序才能改变资源状态</li>
+<li>执行结果不受外界影响(debug除外)</li>
+</ul></li>
+<li>可再现性
+<ul>
+<li>只要环境和条件相同，程序的结果相同</li>
+</ul></li>
+</ul>
+<h3 id="程序的顺序性使其变得易于维护">程序的顺序性使其变得易于维护</h3>
+<h2 id="程序的并发执行">程序的并发执行</h2>
+<h4 id="一段时间内共享计算机资源">一段时间内共享计算机资源</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[S1]--&gt;C[S3]</span><br><span class="line">B[S2]--&gt;C</span><br><span class="line">C--&gt;D[S4]</span><br></pre></td></tr></table></figure>
+<h4 id="s1或s2谁先执行都可以因为他们没有前趋没有依赖关系可以并发执行">S1或S2谁先执行都可以，因为他们没有前趋，没有依赖关系，可以并发执行</h4>
+<h4 id="只有s1s2执行结束后s3才能执行s3执行结束后s4才能执行">只有S1S2执行结束后S3才能执行，S3执行结束后，S4才能执行</h4>
+<h3 id="并发时的特征">并发时的特征</h3>
+<ul>
+<li>间断性
+<ul>
+<li><strong>执行-&gt;暂停执行-&gt;执行</strong>的活动规律</li>
+</ul></li>
+<li>失去封闭性
+<ul>
+<li>因为共享系统资源，每个程序都可能对系统资源行程改变，程序一定受其他运行程序影响</li>
+</ul></li>
+<li>不可再现性
+<ul>
+<li>程序可能受到其他程序影响，资源都有可能发生变动</li>
+</ul></li>
+</ul>
+<h4 id="要想实现程序间并发执行结果可再现区别于静态描述程序的动态描述结果">要想实现程序间并发执行结果可再现，区别于静态描述程序的动态描述结果</h4>
+<h2 id="进程的定义及特征">进程的定义及特征</h2>
+<h3 id="进程的引入">进程的引入</h3>
+<ul>
+<li>并发、共享及多程序环境</li>
+<li>基于程序的概念已不能完整、有效的描述并发在内存中的运行状态</li>
+<li>必须建立并发程序的新的描述和控制机制</li>
+<li>基于程序段、数据段和进程控制块而引入进程的概念以对应程序的运行过程</li>
+<li>进程控制块存放了进程标识符、进程运行的当前状态、程序和数据的地址以及关于该程序运行时的CPU环境信息</li>
+</ul>
+<h3 id="进程的定义">进程的定义</h3>
+<ul>
+<li>进程是可并发执行的程序在一个数据集合上的进行过程，亦即进程实体的运行过程
+<ul>
+<li>进程实体由程序段，数据段及进程控制块三部分构成</li>
+</ul></li>
+<li>进程是系统进行资源分配和调度的一个独立单位</li>
+</ul>
+<h3 id="进程和程序的区别于联系">进程和程序的区别于联系</h3>
+<ul>
+<li>结构特征
+<ul>
+<li>程序段、数据段及进程控制块</li>
+</ul></li>
+<li>动态性
+<ul>
+<li>生命周期及<strong>执行</strong>本质</li>
+</ul></li>
+<li>并发性
+<ul>
+<li>共存于内存、宏观同时运行</li>
+</ul></li>
+<li>独立性
+<ul>
+<li>调度、资源分配、运行</li>
+</ul></li>
+<li>异步性
+<ul>
+<li>推进相互独立、速度不可知</li>
+</ul></li>
+</ul>
+<h2 id="进程状态及状态转换图">进程状态及状态转换图</h2>
+<h3 id="进程的基本状态及状态转换">进程的基本状态及状态转换</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">D[新状态]--&gt;|接纳|A</span><br><span class="line">A[就绪状态]--&gt;|调度|B[运行状态]--&gt;|I&#x2F;O请求或等某事件|C[阻塞状态]--&gt;|I&#x2F;O完成或时间发生|A</span><br><span class="line">B--&gt;|超时|A</span><br><span class="line">B--&gt;|结束|E[中止状态]</span><br></pre></td></tr></table></figure>
+<h4 id="三种核心状态">三种核心状态</h4>
+<ul>
+<li><p>检查资源，对进程记账</p>
+<p>其中<span class="math inline">\(I\)</span> 为传信率，<span class="math inline">\(S\)</span> 为波特率，<span class="math inline">\(N\)</span> 为每个码元负载的信息量，而<span class="math inline">\(\log _{2}{N}\)</span>以比特为单位。</p>
+<p>就绪状态</p></li>
+<li><p>运行状态</p></li>
+<li><p>阻塞状态</p></li>
+</ul>
+<h4 id="状态特性">状态特性</h4>
+<ul>
+<li>单向
+<ul>
+<li>运行-&gt;阻塞-&gt;就绪</li>
+</ul></li>
+<li>双向
+<ul>
+<li>运行-&gt;就绪</li>
+<li>就绪-&gt;运行</li>
+</ul></li>
+</ul>
+<h3 id="进程的父子关系">进程的父子关系</h3>
+<ul>
+<li>子进程由父进程fork出来</li>
+</ul>
+<h4 id="僵尸进程">僵尸进程</h4>
+<ul>
+<li>一个进程结束了，但是他的父进程没有等待（调用wait / waitpid）他，那么他将变成一个僵尸进程</li>
+</ul>
+<h4 id="孤儿进程">孤儿进程</h4>
+<ul>
+<li>父进程调用两次fork，杀死子进程。剩下的孙子进程会成为孤儿进程，孤儿进程由init程序进行处理。 因为init是一切进程的父进程。</li>
+</ul>
+<h3 id="引入程序挂起状态">引入程序挂起状态</h3>
+<ul>
+<li>终端用户的请求
+<ul>
+<li>发现问题</li>
+</ul></li>
+<li>父进程的请求
+<ul>
+<li>考察、修改或协调子进程</li>
+</ul></li>
+<li>操作系统的需要
+<ul>
+<li>检查资源，对进程记账</li>
+</ul></li>
+<li>负载调节
+<ul>
+<li>保证实时系统正常运行</li>
+</ul></li>
+</ul>
+<h2 id="unix进程状态转换图">UNIX进程状态转换图</h2>
+<img src="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%9B%9B%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%88%86%E6%9E%90%E5%8F%8A%E5%89%8D%E8%B6%8B%E5%9B%BE/unix.jpg" class="" title="unix进程状态转换图">
+<h2 id="linux进程状态转换图">Linux进程状态转换图</h2>
+<img src="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%9B%9B%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%88%86%E6%9E%90%E5%8F%8A%E5%89%8D%E8%B6%8B%E5%9B%BE/linux.jpg" class="" title="linux进程状态转换图">
+<h1 id="课后习题">课后习题</h1>
+<ol type="1">
+<li>程序在独占处理器的情况下运行时。将会体现出顺序性的执行特征，这是指<strong>处理机的操作，严格按照规定顺序执行</strong></li>
+<li>现在操作系统中，<strong>进程</strong>是系统实施内存资源分配和管理的一个独立实体。</li>
+<li>与程序相比，进程是一个动态的概念，具有一定的生命周期，并支持多道程序并发执行。关于并发说法最准确的说法是<strong>多道程序同时进入内存，并在宏观上（即一段时间内）同时运行</strong></li>
+<li>关于进程各种基本状态之间的转化，不可能直接发生的状态转化为<strong>阻塞状态=&gt;运行状态</strong></li>
+<li>进程在<strong>系统采用时间片轮转调度算法且分配给进程的时间片用完</strong>的条件下，将会从运行状态转化为就绪状态。</li>
+<li>关于进场的状态转换，引入挂起状态的的原因不包括<strong>进程进行I/O操作室应保证处理器的高效利用</strong>。</li>
+<li>下面对进程的描述中，错误的是
+<ol type="1">
+<li>晋城市动态的概念（√）</li>
+<li>进程的执行需要处理机（√）</li>
+<li>进程具有生命周期（√）</li>
+<li><strong>进程是指令的集合（进程里面还包含栈/堆等数据结构的非指令结构×）</strong></li>
+</ol></li>
+<li>在进程管理时，当<strong>等待的事件出现</strong>时，进程从阻塞状态变为就绪状态。</li>
+<li>分配到必要的资源并获得处理机时的进程状态是<strong>执行状态</strong>。</li>
+<li>一个进程用完了分配给它的时间片后，它的状态变为<strong>就绪状态</strong>。</li>
+<li>操作系统通过<strong>PCB</strong>对进程进行管理。
+<ol type="1">
+<li>PCB：进程控制块(Processing Control Block)</li>
+</ol></li>
+<li>关于进程的状态转换，当进程处于<strong>普通阻塞状态</strong>的情况下，不可能直接转化为挂起就绪状态。</li>
+<li>多到程序环境下，操作系统分配资源以<strong>进程</strong>为基本单位。</li>
+<li>进程的<strong>动态性</strong>和并发性是两个很重要的属性。</li>
+<li>进程被创建后即进入<strong>就绪队列</strong>排队。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>大学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>概率论第三节课-条件概率和全概率公式</title>
+    <url>/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE-%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="条件概率和全概率公式">条件概率和全概率公式</h1>
+<h2 id="条件概率">条件概率</h2>
+<h3 id="定义">定义</h3>
+<p>设 <span class="math inline">\(A\)</span>,<span class="math inline">\(B\)</span>是两个事件,且 <span class="math inline">\(P(A)&gt;0\)</span>,称 <span class="math display">\[
+P(B|A)=\frac{P(AB)}{P(A)}
+\]</span> 为在事件 <span class="math inline">\(A\)</span>发生的条件下事件 <span class="math inline">\(B\)</span>发生的条件概率</p>
+<p>同理可得 <span class="math display">\[
+P(A|B)=\frac{P(AB)}{P(B)}
+\]</span> 为事件 <span class="math inline">\(B\)</span>发生的条件下 <span class="math inline">\(A\)</span>发生的概率 <a id="more"></a> ### 性质</p>
+<ol type="1">
+<li>非负性：对于每一事件 <span class="math inline">\(B\)</span>,有 <span class="math inline">\(P(B|A)\geq 0\)</span></li>
+<li>规范性：对于必然事件 <span class="math inline">\(S\)</span>,有 <span class="math inline">\(P(S|A)=1\)</span></li>
+<li>可列可加性：设 <span class="math inline">\(B_1,B_2,\cdots\)</span>是两两不相容事件,则有</li>
+</ol>
+<p><span class="math display">\[
+\begin{equation*}
+P(\mathop{\bigcup}\limits_{i-1}^\infty B_i|A)=\sum\limits_{i-1} ^\infty P(B_i|A)
+\end{equation*}
+\]</span></p>
+<p>即条件概率满足概率的三个性质,所以条件概率也是概率</p>
+<hr />
+<h2 id="乘法定理">乘法定理</h2>
+<p>设 <span class="math inline">\(A\)</span>,<span class="math inline">\(B\)</span>是两个事件,且 <span class="math inline">\(P(A)&gt;0\)</span>,则 <span class="math display">\[
+P(B|A)=\frac{P(AB)}{P(A)} \longrightarrow P(AB)=P(A|B)P(A)
+\]</span> 由此的到下面乘法定理:</p>
+<p>设 <span class="math inline">\(P(A)&gt;0\)</span>,则有<span class="math inline">\(P(AB)=P(B|A)P(A)\)</span></p>
+<h4 id="推广">推广</h4>
+<p>设 <span class="math inline">\(A,B,C\)</span>为事件,且 <span class="math inline">\(P(AB)&gt;0\)</span>,则有 <span class="math display">\[
+P(ABC)=P(C|AB)P(B|A)P(A)
+\]</span> 一般设 <span class="math inline">\(A_1,A_2,\cdots ,A_n\)</span>为 <span class="math inline">\(n\)</span>个事件, <span class="math inline">\(n\geq2\)</span>,且 <span class="math inline">\(P(A_1A_2\cdots A_{n-1})&gt;0\)</span>,则有 <span class="math display">\[
+P(A_1A_2\cdots A_n)=P(A_n|A_1A_2\cdots A_{n-1})P(A_{n-1}|A_1A_2\cdots A_{n-2})\cdots P(A_2|A_1)P(A_1)
+\]</span></p>
+<hr />
+<h2 id="全概率公式">全概率公式</h2>
+<h3 id="样本空间的划分或完备事件组">样本空间的划分(或完备事件组)</h3>
+<h4 id="定义-1">定义</h4>
+<p>设 <span class="math inline">\(S\)</span>为试验 <span class="math inline">\(E\)</span>的样本空间,<span class="math inline">\(B_1,B_2,\cdots B_n\)</span>为 <span class="math inline">\(E\)</span>的一组事件,若</p>
+<ol type="1">
+<li><span class="math inline">\(B_iB_j=\emptyset ,i\neq j,i,j=1,2,\cdots,n\)</span> //任何两个事件没有交集</li>
+<li><span class="math inline">\(B_1\bigcup B_2 \bigcup \cdots B_n=S\)</span> //所有事件的并集构成一个样本空间</li>
+</ol>
+<p>则称 <span class="math inline">\(B_1,B_2,\cdots B_n\)</span>为样本空间 <span class="math inline">\(S\)</span>的一个划分或一个完备事件组</p>
+<h3 id="全概率公式-1">全概率公式</h3>
+<h4 id="定理">定理</h4>
+<p>设试验 <span class="math inline">\(E\)</span>的样本空间为 <span class="math inline">\(S\)</span>,<span class="math inline">\(A\)</span>为 <span class="math inline">\(E\)</span>的时间 <span class="math inline">\(B_1,B_2,\cdots ,B_n\)</span>为 <span class="math inline">\(S\)</span>的一个划分,且 <span class="math inline">\(P(B_i)&gt;0(i=1,2,\cdots n)\)</span>则 <span class="math display">\[
+P(A)=P(A|B_1)P(B_1)+P(A|B_2)P(B_2)+\cdots +P(A|B_n)P(B_n)
+\]</span> 上式称为 <strong>全概率公式</strong></p>
+<h4 id="说明">说明</h4>
+<p>全概率公式的主要用处在于他可以讲一个复杂时间的概率计算问题,分解为若干个简单事件的概率计算问题,最后应用概率的可加性求出最终的结果</p>
+<p><strong>化整为零——各个击破——合而为一</strong></p>
+<h3 id="贝叶斯公式">贝叶斯公式</h3>
+<h4 id="定理-1">定理</h4>
+<p>设试验 <span class="math inline">\(E\)</span>的样本空间为 <span class="math inline">\(S\)</span>. <span class="math inline">\(A\)</span>为 <span class="math inline">\(E\)</span>的时间.<span class="math inline">\(B_1,B_2,\cdots,B_n\)</span>为 <span class="math inline">\(S\)</span>的一个划分,且 <span class="math inline">\(P(A)&gt;0,P(B_1)&gt;0\ (i=1,2,\cdots,n)\)</span>,则 <span class="math display">\[
+P(B_i|A)=\frac{P(A|B_i)P(B_i)}{\sum\limits_{j-1}^nP(A|B_j)P(B_j)}
+\]</span> 上式称为 <strong>贝叶斯公式</strong></p>
+<hr />
+<h2 id="小结">小结</h2>
+<p><span class="math display">\[
+条件概率P(B|A)=\frac{P(AB)}{P(A)}\longrightarrow 乘法定理P(AB)=P(B|A)P(A) \\
+\downarrow \\
+全概率公式 \\
+P(A)=P(A|B_1)P(B_1)+P(A|B_2)P(B_2)+\cdots +P(A|B_n)P(B_n) \\
+\downarrow\\
+贝叶斯公式 \\
+P(B_i|A)=\frac{P(A|B_i)P(B_i)}{\sum\limits_{j-1}^nP(A|B_j)P(B_j)},i=1,2,\cdots,n
+\]</span></p>
+<h3 id="条件概率-pab与积事件概率-pab的区别">条件概率 <span class="math inline">\(P(A|B)\)</span>与积事件概率 <span class="math inline">\(P(AB)\)</span>的区别</h3>
+<p><span class="math inline">\(P(AB)\)</span>表示在样本空间 <span class="math inline">\(S\)</span>中, <span class="math inline">\(AB\)</span>发生的概率,而 <span class="math inline">\(P(B|A)\)</span>表示缩小的样本空间 <span class="math inline">\(S_A\)</span>中, <span class="math inline">\(B\)</span>发生的概率.用古典概率公式,则 <span class="math display">\[
+P(B|A)=\frac{AB中基本事件数}{S_A中基本事件数} \\
+P(AB)=\frac{AB中基本事件数}{S中基本事件数}
+\]</span> 一般来说, <span class="math inline">\(P(B|A)\)</span>比 <span class="math inline">\(P(AB)\)</span>大.</p>
+]]></content>
+      <categories>
+        <category>大学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>概率论与数理统计第二节课-随机事件的概率</title>
     <url>/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE-%E9%9A%8F%E6%9C%BA%E4%BA%8B%E4%BB%B6%E7%9A%84%E6%A6%82%E7%8E%87/</url>
     <content><![CDATA[<h1 id="随机事件的概率">1.2 随机事件的概率</h1>
@@ -3726,82 +3768,27 @@ P(A)=\frac{mA}{mS}
       </categories>
   </entry>
   <entry>
-    <title>概率论第三节课-条件概率和全概率公式</title>
-    <url>/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE-%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%92%8C%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F/</url>
-    <content><![CDATA[<h1 id="条件概率和全概率公式">条件概率和全概率公式</h1>
-<h2 id="条件概率">条件概率</h2>
-<h3 id="定义">定义</h3>
-<p>设 <span class="math inline">\(A\)</span>,<span class="math inline">\(B\)</span>是两个事件,且 <span class="math inline">\(P(A)&gt;0\)</span>,称 <span class="math display">\[
-P(B|A)=\frac{P(AB)}{P(A)}
-\]</span> 为在事件 <span class="math inline">\(A\)</span>发生的条件下事件 <span class="math inline">\(B\)</span>发生的条件概率</p>
-<p>同理可得 <span class="math display">\[
-P(A|B)=\frac{P(AB)}{P(B)}
-\]</span> 为事件 <span class="math inline">\(B\)</span>发生的条件下 <span class="math inline">\(A\)</span>发生的概率 <a id="more"></a> ### 性质</p>
-<ol type="1">
-<li>非负性：对于每一事件 <span class="math inline">\(B\)</span>,有 <span class="math inline">\(P(B|A)\geq 0\)</span></li>
-<li>规范性：对于必然事件 <span class="math inline">\(S\)</span>,有 <span class="math inline">\(P(S|A)=1\)</span></li>
-<li>可列可加性：设 <span class="math inline">\(B_1,B_2,\cdots\)</span>是两两不相容事件,则有</li>
-</ol>
+    <title>电子电路基础</title>
+    <url>/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h4 id="电功率">电功率</h4>
+<p>定义:单位时间内所转换的电能 符号:<span class="math inline">\(P\)</span>(直流电路) 单位:<span class="math inline">\(W\)</span></p>
 <p><span class="math display">\[
-\begin{equation*}
-P(\mathop{\bigcup}\limits_{i-1}^\infty B_i|A)=\sum\limits_{i-1} ^\infty P(B_i|A)
-\end{equation*}
-\]</span></p>
-<p>即条件概率满足概率的三个性质,所以条件概率也是概率</p>
-<hr />
-<h2 id="乘法定理">乘法定理</h2>
-<p>设 <span class="math inline">\(A\)</span>,<span class="math inline">\(B\)</span>是两个事件,且 <span class="math inline">\(P(A)&gt;0\)</span>,则 <span class="math display">\[
-P(B|A)=\frac{P(AB)}{P(A)} \longrightarrow P(AB)=P(A|B)P(A)
-\]</span> 由此的到下面乘法定理:</p>
-<p>设 <span class="math inline">\(P(A)&gt;0\)</span>,则有<span class="math inline">\(P(AB)=P(B|A)P(A)\)</span></p>
-<h4 id="推广">推广</h4>
-<p>设 <span class="math inline">\(A,B,C\)</span>为事件,且 <span class="math inline">\(P(AB)&gt;0\)</span>,则有 <span class="math display">\[
-P(ABC)=P(C|AB)P(B|A)P(A)
-\]</span> 一般设 <span class="math inline">\(A_1,A_2,\cdots ,A_n\)</span>为 <span class="math inline">\(n\)</span>个事件, <span class="math inline">\(n\geq2\)</span>,且 <span class="math inline">\(P(A_1A_2\cdots A_{n-1})&gt;0\)</span>,则有 <span class="math display">\[
-P(A_1A_2\cdots A_n)=P(A_n|A_1A_2\cdots A_{n-1})P(A_{n-1}|A_1A_2\cdots A_{n-2})\cdots P(A_2|A_1)P(A_1)
+\begin{aligned}
+    电源产生功率: P_U=EI \\
+    电源输出功率: {P_U}_S=U_SI \\
+    负载采用功率: P_L=U_LI 
+\end{aligned}
 \]</span></p>
 <hr />
-<h2 id="全概率公式">全概率公式</h2>
-<h3 id="样本空间的划分或完备事件组">样本空间的划分(或完备事件组)</h3>
-<h4 id="定义-1">定义</h4>
-<p>设 <span class="math inline">\(S\)</span>为试验 <span class="math inline">\(E\)</span>的样本空间,<span class="math inline">\(B_1,B_2,\cdots B_n\)</span>为 <span class="math inline">\(E\)</span>的一组事件,若</p>
-<ol type="1">
-<li><span class="math inline">\(B_iB_j=\emptyset ,i\neq j,i,j=1,2,\cdots,n\)</span> //任何两个事件没有交集</li>
-<li><span class="math inline">\(B_1\bigcup B_2 \bigcup \cdots B_n=S\)</span> //所有事件的并集构成一个样本空间</li>
-</ol>
-<p>则称 <span class="math inline">\(B_1,B_2,\cdots B_n\)</span>为样本空间 <span class="math inline">\(S\)</span>的一个划分或一个完备事件组</p>
-<h3 id="全概率公式-1">全概率公式</h3>
-<h4 id="定理">定理</h4>
-<p>设试验 <span class="math inline">\(E\)</span>的样本空间为 <span class="math inline">\(S\)</span>,<span class="math inline">\(A\)</span>为 <span class="math inline">\(E\)</span>的时间 <span class="math inline">\(B_1,B_2,\cdots ,B_n\)</span>为 <span class="math inline">\(S\)</span>的一个划分,且 <span class="math inline">\(P(B_i)&gt;0(i=1,2,\cdots n)\)</span>则 <span class="math display">\[
-P(A)=P(A|B_1)P(B_1)+P(A|B_2)P(B_2)+\cdots +P(A|B_n)P(B_n)
-\]</span> 上式称为 <strong>全概率公式</strong></p>
-<h4 id="说明">说明</h4>
-<p>全概率公式的主要用处在于他可以讲一个复杂时间的概率计算问题,分解为若干个简单事件的概率计算问题,最后应用概率的可加性求出最终的结果</p>
-<p><strong>化整为零——各个击破——合而为一</strong></p>
-<h3 id="贝叶斯公式">贝叶斯公式</h3>
-<h4 id="定理-1">定理</h4>
-<p>设试验 <span class="math inline">\(E\)</span>的样本空间为 <span class="math inline">\(S\)</span>. <span class="math inline">\(A\)</span>为 <span class="math inline">\(E\)</span>的时间.<span class="math inline">\(B_1,B_2,\cdots,B_n\)</span>为 <span class="math inline">\(S\)</span>的一个划分,且 <span class="math inline">\(P(A)&gt;0,P(B_1)&gt;0\ (i=1,2,\cdots,n)\)</span>,则 <span class="math display">\[
-P(B_i|A)=\frac{P(A|B_i)P(B_i)}{\sum\limits_{j-1}^nP(A|B_j)P(B_j)}
-\]</span> 上式称为 <strong>贝叶斯公式</strong></p>
-<hr />
-<h2 id="小结">小结</h2>
-<p><span class="math display">\[
-条件概率P(B|A)=\frac{P(AB)}{P(A)}\longrightarrow 乘法定理P(AB)=P(B|A)P(A) \\
-\downarrow \\
-全概率公式 \\
-P(A)=P(A|B_1)P(B_1)+P(A|B_2)P(B_2)+\cdots +P(A|B_n)P(B_n) \\
-\downarrow\\
-贝叶斯公式 \\
-P(B_i|A)=\frac{P(A|B_i)P(B_i)}{\sum\limits_{j-1}^nP(A|B_j)P(B_j)},i=1,2,\cdots,n
-\]</span></p>
-<h3 id="条件概率-pab与积事件概率-pab的区别">条件概率 <span class="math inline">\(P(A|B)\)</span>与积事件概率 <span class="math inline">\(P(AB)\)</span>的区别</h3>
-<p><span class="math inline">\(P(AB)\)</span>表示在样本空间 <span class="math inline">\(S\)</span>中, <span class="math inline">\(AB\)</span>发生的概率,而 <span class="math inline">\(P(B|A)\)</span>表示缩小的样本空间 <span class="math inline">\(S_A\)</span>中, <span class="math inline">\(B\)</span>发生的概率.用古典概率公式,则 <span class="math display">\[
-P(B|A)=\frac{AB中基本事件数}{S_A中基本事件数} \\
-P(AB)=\frac{AB中基本事件数}{S中基本事件数}
-\]</span> 一般来说, <span class="math inline">\(P(B|A)\)</span>比 <span class="math inline">\(P(AB)\)</span>大.</p>
+<h4 id="电能">电能</h4>
+<p>定义:在时间<span class="math inline">\(t\)</span>内转换的电功率称为电能 <span class="math display">\[
+\begin{aligned}
+    W=Pt
+\end{aligned}
+\]</span> 符号:<span class="math inline">\(W\)</span> 单位:<span class="math inline">\(J\)</span> 单位转换:千瓦时(<span class="math inline">\(kW\cdot h\)</span>) * 一千瓦时等于一度电 :<span class="math inline">\(1kW\cdot h=3.6 \times 10^6J\)</span></p>
 ]]></content>
       <categories>
-        <category>大学</category>
+        <category>电子电路</category>
       </categories>
   </entry>
   <entry>
@@ -3833,30 +3820,6 @@ P(AB)=\frac{AB中基本事件数}{S中基本事件数}
 ]]></content>
       <categories>
         <category>linux渗透</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>电子电路基础</title>
-    <url>/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h4 id="电功率">电功率</h4>
-<p>定义:单位时间内所转换的电能 符号:<span class="math inline">\(P\)</span>(直流电路) 单位:<span class="math inline">\(W\)</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-    电源产生功率: P_U=EI \\
-    电源输出功率: {P_U}_S=U_SI \\
-    负载采用功率: P_L=U_LI 
-\end{aligned}
-\]</span></p>
-<hr />
-<h4 id="电能">电能</h4>
-<p>定义:在时间<span class="math inline">\(t\)</span>内转换的电功率称为电能 <span class="math display">\[
-\begin{aligned}
-    W=Pt
-\end{aligned}
-\]</span> 符号:<span class="math inline">\(W\)</span> 单位:<span class="math inline">\(J\)</span> 单位转换:千瓦时(<span class="math inline">\(kW\cdot h\)</span>) * 一千瓦时等于一度电 :<span class="math inline">\(1kW\cdot h=3.6 \times 10^6J\)</span></p>
-]]></content>
-      <categories>
-        <category>电子电路</category>
       </categories>
   </entry>
   <entry>
@@ -3921,6 +3884,52 @@ P(AB)=\frac{AB中基本事件数}{S中基本事件数}
 ]]></content>
       <categories>
         <category>硬件</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>网络通信</title>
+    <url>/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/</url>
+    <content><![CDATA[<h3 id="交换机就是多路网桥">交换机就是多路网桥</h3>
+<h3 id="mac表">MAC表</h3>
+<p>由交换机维护,记录了自己子网中的所有主机MAC地址</p>
+<h3 id="arp表">ARP表</h3>
+<p>由计算机维护,记录了MAC与IP地址的对应关系</p>
+<h3 id="路由表">路由表</h3>
+<p>由路由器维护,记录了不同网段网段的信息</p>
+<h4 id="直连路由">直连路由</h4>
+<p>是直接连接在路由器接口的网段，由路由器自动生成.</p>
+<h4 id="非直连路由">非直连路由</h4>
+<p>就是不是直接连接在路由器接口上的网段，此记录需要手动添加或者是使用动态路由.</p>
+<h4 id="主机路由网络路由">主机路由/网络路由</h4>
+<p>最佳匹配作为选择标准</p>
+<h4 id="默认路由">默认路由</h4>
+<p>路由表中无法匹配</p>
+<h5 id="路由汇聚">路由汇聚</h5>
+<h4 id="网络地址主机地址">网络地址/主机地址</h4>
+<h5 id="子网划分">子网划分</h5>
+<p>子网掩码借用位/右移位 剩下的地址 全0为网络地址,全一为广播地址 其余为主机地址</p>
+<h4 id="合并网络">合并网络</h4>
+<p>子网掩码左移 子网个数为(2^位移数)个 由于子网掩码左移,原来子网中的部分广播地址变为可用地址由于多了一位,是原来受限制的位不再受限制,拓展了一位,使原来子网中的广播地址不再是全1,所以可以作为主机地址使用 使用连续子网可以合并为超网</p>
+<h3 id="广播">广播</h3>
+<h4 id="受限广播">受限广播</h4>
+<p>在子网内传播,不被路由转发,地址为255.255.255.255 0xFFFFFFFF #### 直接广播 发送到广播地址,会发送到该子网内的所有主机</p>
+<h3 id="网关">网关</h3>
+<p>网关就是子网中路由器的地址</p>
+<h3 id="ip地址与类别">IP地址与类别</h3>
+<h4 id="不进行子网划分">不进行子网划分</h4>
+<h4 id="a类">A类:</h4>
+<p>地址范围:1.0.0.1-126.255.255.254 (0000 0001.00000000.00000000.00000000~01111110.111111111.11111111.11111110） 地址范围:1.0.0.0-126.255.255.255 （这种写法是把全0全1都算进去了，其它几类类似） 网络号范围: 1~126                        （0000 0001 ~ 0111 1110） 默认子网掩码:255.0.0.0 或  0xFF000000（十六进制） 私有号段:10.0.0.0-10.255.255.255 前1个字节(8位)为网络号，后3个字节(24位)为主机号. A类第1位必须是0. 最大网络数:2^7-2 最大主机数:2^24-2 全0全1的地址不可分配，作为保留地址. 上面减2也是这个原因. 一般用于大型网络.</p>
+<h4 id="b类">B类:</h4>
+<p>地址范围:128.1.0.1-191.255.255.254  网络号范围:128.1 ~ 191.255 默认子网掩码:255.255.0.0 或 0xFFFF0000(十六进制) 私有号段:172.16.0.0-172.31.255.255 前2个字节(16位)为网络号，后2个字节(16位)为主机号. 前两位固定为10. 最大网络数:2^14-1 最大主机数:2^16-2 一般用于中等规模网络.</p>
+<h4 id="c类">C类:</h4>
+<p>地址范围:192.0.1.1-223.255.255.254 网络号段范围:192.0.1 ~ 223.255.255 子网掩码:255.255.255.0 或  0xFFFFFF00 (十六进制) 私有号段:192.168.0.0-192.168.255.255 前3个字节(24位)为网络号，后1个字节(8位)为主机号. 前3位固定为110. 最大网络数:2^21-1 最大主机数:2^8-2 一般用于小型网络. #### D类: 地址范围:224.0.0.1-239.255.255.254 是多播地址.该类IP地址的最前面为“1110”，所以地址的网络号取值于224~239之间. 一般用于多路广播用户 . #### E类: 是保留地址.该类IP地址的最前面为“1111”，所以地址的网络号取值于240~255之间.</p>
+<h5 id="回送地址">回送地址:</h5>
+<p>127.x.x.x        有的资料说，它属于A类. 如127.0.0.1  等效于localhost或本机IP.  一般用于测试使用. 例如:ping 127.0.0.1来测试本机TCP/IP是否正常.http://127.0.0.1:8080 等效 http://localhost:8080</p>
+<h5 id="特殊说明">特殊说明</h5>
+<p>每一个字节都为0的地址（0.0.0.0）对应当前主机. IP地址中的每一个字节都为1的IP地址（255.255.255.255）是当前子网的广播地址. IP地址中凡是以11110开头的E类IP的地址，都保留用于将来和实验使用. 网络号的第一个8位不能全为0. IP地址不能以127为开头，该类地址中数字127.0.0.1~127.255.255.254用于回路测试.</p>
+]]></content>
+      <categories>
+        <category>大学</category>
       </categories>
   </entry>
   <entry>
@@ -4170,52 +4179,6 @@ A\overrightarrow{x}=\overrightarrow{v}
 ]]></content>
       <categories>
         <category>数学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>网络通信</title>
-    <url>/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/</url>
-    <content><![CDATA[<h3 id="交换机就是多路网桥">交换机就是多路网桥</h3>
-<h3 id="mac表">MAC表</h3>
-<p>由交换机维护,记录了自己子网中的所有主机MAC地址</p>
-<h3 id="arp表">ARP表</h3>
-<p>由计算机维护,记录了MAC与IP地址的对应关系</p>
-<h3 id="路由表">路由表</h3>
-<p>由路由器维护,记录了不同网段网段的信息</p>
-<h4 id="直连路由">直连路由</h4>
-<p>是直接连接在路由器接口的网段，由路由器自动生成.</p>
-<h4 id="非直连路由">非直连路由</h4>
-<p>就是不是直接连接在路由器接口上的网段，此记录需要手动添加或者是使用动态路由.</p>
-<h4 id="主机路由网络路由">主机路由/网络路由</h4>
-<p>最佳匹配作为选择标准</p>
-<h4 id="默认路由">默认路由</h4>
-<p>路由表中无法匹配</p>
-<h5 id="路由汇聚">路由汇聚</h5>
-<h4 id="网络地址主机地址">网络地址/主机地址</h4>
-<h5 id="子网划分">子网划分</h5>
-<p>子网掩码借用位/右移位 剩下的地址 全0为网络地址,全一为广播地址 其余为主机地址</p>
-<h4 id="合并网络">合并网络</h4>
-<p>子网掩码左移 子网个数为(2^位移数)个 由于子网掩码左移,原来子网中的部分广播地址变为可用地址由于多了一位,是原来受限制的位不再受限制,拓展了一位,使原来子网中的广播地址不再是全1,所以可以作为主机地址使用 使用连续子网可以合并为超网</p>
-<h3 id="广播">广播</h3>
-<h4 id="受限广播">受限广播</h4>
-<p>在子网内传播,不被路由转发,地址为255.255.255.255 0xFFFFFFFF #### 直接广播 发送到广播地址,会发送到该子网内的所有主机</p>
-<h3 id="网关">网关</h3>
-<p>网关就是子网中路由器的地址</p>
-<h3 id="ip地址与类别">IP地址与类别</h3>
-<h4 id="不进行子网划分">不进行子网划分</h4>
-<h4 id="a类">A类:</h4>
-<p>地址范围:1.0.0.1-126.255.255.254 (0000 0001.00000000.00000000.00000000~01111110.111111111.11111111.11111110） 地址范围:1.0.0.0-126.255.255.255 （这种写法是把全0全1都算进去了，其它几类类似） 网络号范围: 1~126                        （0000 0001 ~ 0111 1110） 默认子网掩码:255.0.0.0 或  0xFF000000（十六进制） 私有号段:10.0.0.0-10.255.255.255 前1个字节(8位)为网络号，后3个字节(24位)为主机号. A类第1位必须是0. 最大网络数:2^7-2 最大主机数:2^24-2 全0全1的地址不可分配，作为保留地址. 上面减2也是这个原因. 一般用于大型网络.</p>
-<h4 id="b类">B类:</h4>
-<p>地址范围:128.1.0.1-191.255.255.254  网络号范围:128.1 ~ 191.255 默认子网掩码:255.255.0.0 或 0xFFFF0000(十六进制) 私有号段:172.16.0.0-172.31.255.255 前2个字节(16位)为网络号，后2个字节(16位)为主机号. 前两位固定为10. 最大网络数:2^14-1 最大主机数:2^16-2 一般用于中等规模网络.</p>
-<h4 id="c类">C类:</h4>
-<p>地址范围:192.0.1.1-223.255.255.254 网络号段范围:192.0.1 ~ 223.255.255 子网掩码:255.255.255.0 或  0xFFFFFF00 (十六进制) 私有号段:192.168.0.0-192.168.255.255 前3个字节(24位)为网络号，后1个字节(8位)为主机号. 前3位固定为110. 最大网络数:2^21-1 最大主机数:2^8-2 一般用于小型网络. #### D类: 地址范围:224.0.0.1-239.255.255.254 是多播地址.该类IP地址的最前面为“1110”，所以地址的网络号取值于224~239之间. 一般用于多路广播用户 . #### E类: 是保留地址.该类IP地址的最前面为“1111”，所以地址的网络号取值于240~255之间.</p>
-<h5 id="回送地址">回送地址:</h5>
-<p>127.x.x.x        有的资料说，它属于A类. 如127.0.0.1  等效于localhost或本机IP.  一般用于测试使用. 例如:ping 127.0.0.1来测试本机TCP/IP是否正常.http://127.0.0.1:8080 等效 http://localhost:8080</p>
-<h5 id="特殊说明">特殊说明</h5>
-<p>每一个字节都为0的地址（0.0.0.0）对应当前主机. IP地址中的每一个字节都为1的IP地址（255.255.255.255）是当前子网的广播地址. IP地址中凡是以11110开头的E类IP的地址，都保留用于将来和实验使用. 网络号的第一个8位不能全为0. IP地址不能以127为开头，该类地址中数字127.0.0.1~127.255.255.254用于回路测试.</p>
-]]></content>
-      <categories>
-        <category>大学</category>
       </categories>
   </entry>
   <entry>
@@ -5660,6 +5623,43 @@ S_{OOK}(t)=a_n \cdot Acos\omega_ct
 ]]></content>
       <categories>
         <category>writeup</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>数据库表设计</title>
+    <url>/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<h3 id="无限分类">无限分类</h3>
+<p>无限分类类似于磁盘中linux的文件查找机制 表的设计可以简化为 id-&gt;就是id啊 pid-&gt;父级id</p>
+<p>高级一点,也方便查找的数据表结构可以新增一个字段 path-&gt;递归记录父类id,包括祖id</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">()</span></span>&#123;  <span class="comment">//这是一个控制器,用来接收post参数</span></span><br><span class="line">	$name=trim($_POST[<span class="string">'name'</span>]);</span><br><span class="line">	$pid=trim($_POST[<span class="string">'pid'</span>]);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">isset</span>($pid))&#123;</span><br><span class="line">		<span class="keyword">do</span>&#123;</span><br><span class="line">			$pid=db(goods)-&gt;limit([<span class="string">'pid'</span>=&gt;$pid])-&gt;select();</span><br><span class="line">			$path=$pid.$path;</span><br><span class="line">		&#125;<span class="keyword">while</span>($pid!=<span class="number">0</span>);</span><br><span class="line">		$id=db(goods)-&gt;save([<span class="string">'name'</span>=&gt;$name,<span class="string">'pid'</span>=&gt;$pid,<span class="string">'path'</span>=&gt;$path]); </span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		$id=db(goods)-&gt;save([<span class="string">'name'</span>=&gt;$name,<span class="string">'pid'</span>=&gt;<span class="number">0</span>]);<span class="comment">//需要设定$path默认为零,也就是说,如果没有传入path,他就是一个根分类</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>($id);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Dns服务相关</title>
+    <url>/Dns%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3/</url>
+    <content><![CDATA[<h4 id="dig命令">dig命令</h4>
+<p>显示域名详细信息,所有记录 以前的方式是全量区域传送,但是大部分域名服务器经过配置已经不允许区域传送,所以使用如下命令 <code>dig -t ANY +noall +multiline +answer 域名 @DNS服务器</code> 全量区域传送方式: <code>dig -t AXFR 域名 @DNS服务器</code> 反向解析 <code>dig -x ip地址 @DNS服务器</code></p>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>nmap-笔记</title>
+    <url>/nmap-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="nmap">Nmap</h3>
+<h4 id="脚本">脚本</h4>
+<p>nmap的脚本默认目录为：<code>/usr/share/nmap/scripts/</code> 使用脚本的参数 <code>--script=%脚本名称%</code> 脚本的几个类型 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auth: 负责处理鉴权证书（绕开鉴权）的脚本  </span><br><span class="line">broadcast: 在局域网内探查更多服务开启状况，如dhcp&#x2F;dns&#x2F;sqlserver等服务  </span><br><span class="line">brute: 提供暴力破解方式，针对常见的应用如http&#x2F;snmp等  </span><br><span class="line">default: 使用-sC或-A选项扫描时候默认的脚本，提供基本脚本扫描能力  </span><br><span class="line">discovery: 对网络进行更多的信息，如SMB枚举、SNMP查询等  </span><br><span class="line">dos: 用于进行拒绝服务攻击  </span><br><span class="line">exploit: 利用已知的漏洞入侵系统  </span><br><span class="line">external: 利用第三方的数据库或资源，例如进行whois解析  </span><br><span class="line">fuzzer: 模糊测试的脚本，发送异常的包到目标机，探测出潜在漏洞 intrusive: 入侵性的脚本，此类脚本可能引发对方的IDS&#x2F;IPS的记录或屏蔽  </span><br><span class="line">malware: 探测目标机是否感染了病毒、开启了后门等信息  </span><br><span class="line">safe: 此类与intrusive相反，属于安全性脚本  </span><br><span class="line">version: 负责增强服务与版本扫描（Version Detection）功能的脚本  </span><br><span class="line">vuln: 负责检查目标机是否有常见的漏洞（Vulnerability），如是否有MS08_067</span><br></pre></td></tr></table></figure> <a id="more"></a></p>
+<hr />
+<ol type="1">
+<li>扫描类型 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-sT				TCP扫描</span><br><span class="line">-sS				TCP同步扫描：这项技术最大的好处是，很少有系统能够把这记</span><br><span class="line">				入系统日志。所以该技术又叫做隐身扫描。</span><br><span class="line">-sP				PING扫描：如果你只是想知道目标主机是否运行，而不想进行</span><br><span class="line">				其它扫描，才会用到这个选项。</span><br><span class="line">-sA				ACK扫描：这项高级的扫描方法通常用来穿过防火墙的规则集。</span><br><span class="line">-sV				探测目标主机操作系统及其详细信息，版本号等。</span><br><span class="line">2 通用选项</span><br><span class="line">-P0				在扫描之前，不必ping主机。有些网络的防火墙不允许ICMP</span><br><span class="line"> 				echo请求穿过，使用这个选项可以对这些网络进行扫描。</span><br><span class="line"> 				microsoft.com就是一个例子，因此在扫描这个站点时，你应该一直</span><br><span class="line"> 				使用-P0或者-PT 80选项。</span><br><span class="line">-PT			使用-PT 来设定目标端口。</span><br><span class="line">-PS			对于root用户，这个选项让nmap使用SYN包而不是ACK包来对目</span><br><span class="line">			标主机进行扫描。</span><br><span class="line">-PI			让nmap使用真正的ping(ICMP echo请求)来扫描目标主机是否正在</span><br><span class="line">			运行。</span><br><span class="line">-PB			这是默认的ping扫描选项。它使用ACK(-PT)和ICMP(-PI)两种扫描</span><br><span class="line">			类型并行扫描。如果防火墙能够过滤其中一种包，使用这种方法，	</span><br><span class="line">			你就能够穿过防火墙。</span><br><span class="line">-O			这个选项激活对TCP&#x2F;IP指纹特征(fingerprinting)的扫描，获得远</span><br><span class="line">			程主机的标志。</span><br><span class="line">-v			冗余模式，它会给出扫描过程中的详细信息。</span><br><span class="line">-oN			把扫描结果重定向到一个可读的文件中。</span><br><span class="line">-oM			把扫描结果重定向到文件中，这个文件使用主机可以解析的语法。</span><br><span class="line">			-oM-可以免于定义文件名。</span><br><span class="line">-resume	使用这个选项可以使扫描接着以前的扫描进行。nmap会接着日志文</span><br><span class="line">			件中的最后一次成功扫描进行新的扫描。</span><br><span class="line">-iR			让nmap自己随机挑选主机进行扫描。</span><br><span class="line">-p 			这个选项让你选择要进行扫描的端口号的范围。</span><br><span class="line">-F			快速扫描模式，只扫描在nmap-services文件中列出的端口。</span><br><span class="line">-D			使用诱饵扫描方法对目标网络&#x2F;主机进行扫描。</span><br><span class="line">-S 			在欺骗扫描时，使用这个选项。使用这个选项可以让目标认为是</span><br><span class="line">			其它的主机对自己进行扫描。</span><br><span class="line">-e			告诉nmap使用哪个接口发送和接受数据包。nmap能够自动对此接口</span><br><span class="line">			进行检测，如果无效就会告诉你。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-A 更详细的服务信息</span><br><span class="line">-sS 半开扫描，隐蔽式扫描</span><br><span class="line">-Pn 不发送icmp包确认主机存活</span><br><span class="line">-oX 输出xml文件用于存储到数据库</span><br><span class="line">-v 冗余模式</span><br><span class="line">-sI 指定空闲扫描主机</span><br><span class="line">-sV 主机系统扫描</span><br><span class="line">-sT TCP扫描</span><br><span class="line">-sU UDP扫描</span><br><span class="line">--scripts 引用脚本</span><br><span class="line">-P0 发送大小为0的ICMP包进行主机存活扫描</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>linux工具</category>
       </categories>
   </entry>
 </search>
