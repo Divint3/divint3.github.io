@@ -207,7 +207,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-06-09 14:29:04 / 修改时间：14:32:00" itemprop="dateCreated datePublished" datetime="2020-06-09T14:29:04+08:00">2020-06-09</time>
+              <time title="创建时间：2020-06-09 14:29:04 / 修改时间：17:34:44" itemprop="dateCreated datePublished" datetime="2020-06-09T14:29:04+08:00">2020-06-09</time>
             </span>
 
           
@@ -234,7 +234,6 @@
 <li>在跟踪的时候，如果执行某个CALL指令后就运行，一定要按键盘上的“F7”键进入这个CALL之内再单步跟踪；</li>
 <li>遇到在popad指令下的远转移指令时，要格处注意，因为这个远转移指令的目的地很可能就是OEP。</li>
 </ol>
-<h2 id="section">
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/%E8%BD%AF%E4%BB%B6%E7%A0%B4%E8%A7%A3/#more" rel="contents">
@@ -377,10 +376,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-06-08 13:27:12 / 修改时间：20:12:47" itemprop="dateCreated datePublished" datetime="2020-06-08T13:27:12+08:00">2020-06-08</time>
+              <time title="创建时间：2020-06-08 13:27:12" itemprop="dateCreated datePublished" datetime="2020-06-08T13:27:12+08:00">2020-06-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-09 14:51:37" itemprop="dateModified" datetime="2020-06-09T14:51:37+08:00">2020-06-09</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -832,75 +837,15 @@ P(A|B)=\frac{P(AB)}{P(B)}
     <div class="post-body" itemprop="articleBody">
 
       
-          
-<a id="more"></a>
-<h1 id="进程同步">进程同步</h1>
-<h2 id="并发进程间制约关系">并发进程间制约关系</h2>
-<ul>
-<li>资源共享关系-间接制约
-<ul>
-<li>多个今晨彼此无关，完全不知道或只能间接感知其他今春的存在</li>
-<li>系统保证个进程能互斥的访问临界资源</li>
-<li>系统资源统一分配，而不允许用户进程直接用</li>
-</ul></li>
-<li>相互合作关系-相互制约
-<ul>
-<li>系统应保证相互合作的个进程在执行次序上的协调和防止有关时间的差错</li>
-</ul></li>
-</ul>
-<h3 id="临界资源">临界资源</h3>
-<ul>
-<li>一段时间里只能为某个进程所访问的资源
-<ul>
-<li>许多物理设备，变量及表格</li>
-</ul></li>
-</ul>
-<h4 id="临界区">临界区</h4>
-<ul>
-<li>每个进程中访问临界资源的那段代码称为临界区，并不是内存中的一段区域</li>
-<li>保证个今晨互斥的进入自己的临界区是实现他们对临界资源的互斥访问的充要条件</li>
-</ul>
-<h4 id="访问临界资源的循环进程描述">访问临界资源的循环进程描述</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">进程Pi</span><br><span class="line">begin</span><br><span class="line">	repeat</span><br><span class="line">	......</span><br><span class="line">	进入区</span><br><span class="line">	临界区</span><br><span class="line">	退出区</span><br><span class="line">	......</span><br><span class="line">	until false；</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<h2 id="进程同步机制准则">进程同步机制准则</h2>
-<h3 id="进程同步机制基本准则">进程同步机制基本准则</h3>
-<ul>
-<li>空闲让进
-<ul>
-<li>当无进程处于临界区是，课允许请求进入临界区的进程立即进入自己的临界区</li>
-</ul></li>
-<li>忙则等待
-<ul>
-<li>当已有进程进入自己的临界区时，所有企图进入进入临界区的进程必须等待</li>
-</ul></li>
-<li>有限等待
-<ul>
-<li>对要求访问临界资源的进程，应保证该进程能在有限时间内进入自己的临界区</li>
-</ul></li>
-<li>让权等待
-<ul>
-<li>当进程不能进入自己的临界区是，应释放处理机</li>
-</ul></li>
-</ul>
-<h2 id="进程互斥访问临界资源的软件解决方案">进程互斥访问临界资源的软件解决方案</h2>
-<h3 id="算法1">算法#1</h3>
-<ul>
-<li><p>有两个进程Pi，Pj共享某临界资源R</p></li>
-<li><p>主程序</p></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">begin</span><br><span class="line">	perbegin &#x2F;&#x2F;并行执行</span><br><span class="line">	Pi;</span><br><span class="line">	Pj;</span><br><span class="line">	perend;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<h4 id="设置访问编号">设置访问编号</h4>
-<p>设置一个全局的整型变量,如果该变量等于本进程的pid号，则可访问临界区，如果不等于，程序进入循环，执行空操作等待其他进程释放。当进程使用完临界区代码后，全局变量指向另一个进程，使其可以访问临界区</p>
-<p>上面的算法属于强制交替访问临界资源，不能灵活考虑进程的实际需求，违背了空闲让进</p>
-<h3 id="算法2">算法#2</h3>
-<p>每一个进程,设置一个标志,宣誓自己的访问需求</p>
-<p>违背了忙则等待</p>
-<h3 id="算法3">算法#3</h3>
-<p>欲访问标志位,先确认其他进程的访问需求</p>
-<p>违背了空闲让进,有限等待</p>
-<h3 id="算法4">算法#4</h3>
-<p>欲访问标志位和访问标志</p>
-
+          <a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5.pdf" title="操作系统第六节课笔记-进程同步pdf文档下载">操作系统第六节课笔记-进程同步pdf文档下载</a>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
