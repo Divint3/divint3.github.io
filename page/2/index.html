@@ -182,6 +182,212 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.divint3.xyz/freemat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.png">
+      <meta itemprop="name" content="Divint3">
+      <meta itemprop="description" content="おかわいいこと">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HexBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/freemat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">freemat使用说明</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-24 11:02:58" itemprop="dateCreated datePublished" datetime="2020-03-24T11:02:58+08:00">2020-03-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-08 18:41:31" itemprop="dateModified" datetime="2020-06-08T18:41:31+08:00">2020-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="freemat">freemat</h1>
+<h2 id="变量与数组">变量与数组</h2>
+<h3 id="矩阵">矩阵</h3>
+<h4 id="单行一维矩阵创建">单行/一维矩阵创建</h4>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--&gt; a=[val1,val2,val3,...valn]</span><br><span class="line">--&gt; a=[val1 val2 val3 ...valn]</span><br></pre></td></tr></table></figure>
+<h4 id="多行多维矩阵创建">多行/多维矩阵创建</h4>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--&gt; a=[val1 val2 val3;val4 val5 val6;val7 val8 val9]</span><br><span class="line">--&gt; z=<span class="built_in">zeros</span>(<span class="number">5</span>,<span class="number">1</span>)</span><br><span class="line">--&gt; o=<span class="built_in">ones</span>(<span class="number">7</span>,<span class="number">8</span>)</span><br><span class="line">--&gt; r=<span class="built_in">rand</span>(<span class="number">3</span>,<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="矩阵运算">矩阵运算</h4>
+<h5 id="常规运算">常规运算</h5>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">--&gt; a=[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>;<span class="number">4</span> <span class="number">5</span> <span class="number">6</span>;<span class="number">7</span> <span class="number">8</span> <span class="number">9</span>]</span><br><span class="line">a =</span><br><span class="line"> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span></span><br><span class="line"> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span></span><br><span class="line">--&gt; a+<span class="number">10</span></span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"> <span class="number">11</span> <span class="number">12</span> <span class="number">13</span></span><br><span class="line"> <span class="number">14</span> <span class="number">15</span> <span class="number">16</span></span><br><span class="line"> <span class="number">17</span> <span class="number">18</span> <span class="number">19</span> </span><br><span class="line">--&gt; a*<span class="number">10</span></span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span></span><br><span class="line"> <span class="number">40</span> <span class="number">50</span> <span class="number">60</span></span><br><span class="line"> <span class="number">70</span> <span class="number">80</span> <span class="number">90</span></span><br></pre></td></tr></table></figure>
+<h5 id="转置矩阵">转置矩阵</h5>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--&gt; a'</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"> <span class="number">1</span> <span class="number">4</span> <span class="number">7</span></span><br><span class="line"> <span class="number">2</span> <span class="number">5</span> <span class="number">8</span></span><br><span class="line"> <span class="number">3</span> <span class="number">6</span> <span class="number">9</span></span><br></pre></td></tr></table></figure>
+<h5 id="修改矩阵">修改矩阵</h5>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--&gt; a(<span class="number">3</span>,<span class="number">3</span>)=<span class="number">10</span></span><br><span class="line">a =</span><br><span class="line">  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span></span><br><span class="line">  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span></span><br><span class="line">  <span class="number">7</span>  <span class="number">8</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<h5 id="逆矩阵">逆矩阵</h5>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--&gt; inv(a)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line">   <span class="number">-0.6667</span>   <span class="number">-1.3333</span>    <span class="number">1.0000</span></span><br><span class="line">   <span class="number">-0.6667</span>    <span class="number">3.6667</span>   <span class="number">-2.0000</span></span><br><span class="line">    <span class="number">1.0000</span>   <span class="number">-2.0000</span>    <span class="number">1.0000</span></span><br></pre></td></tr></table></figure>
+<h5 id="矩阵相乘">矩阵相乘</h5>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--&gt; a*inv(a)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line">    <span class="number">1.0000</span>         <span class="number">0</span>   <span class="number">-0.0000</span></span><br><span class="line">         <span class="number">0</span>    <span class="number">1.0000</span>         <span class="number">0</span></span><br><span class="line">         <span class="number">0</span>         <span class="number">0</span>    <span class="number">1.0000</span></span><br></pre></td></tr></table></figure>
+<h5 id="修改精确度">修改精确度</h5>
+<p><strong>精确度表</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>format short</td>
+<td>精确到小数点后四位</td>
+</tr>
+<tr class="even">
+<td>format long</td>
+<td>精确到小数点后十六位</td>
+</tr>
+<tr class="odd">
+<td>format rat</td>
+<td>用有理数模拟逼近无理数</td>
+</tr>
+<tr class="even">
+<td>format short e</td>
+<td>用科学计数法表示，且精确到小数点后四位</td>
+</tr>
+<tr class="odd">
+<td>format long e</td>
+<td>用科学计数法表示，且精确到小数点后十六位</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">--&gt; format long</span><br><span class="line">--&gt; a*inv(a)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line">   <span class="number">1.00000000000000</span>                  <span class="number">0</span>  <span class="number">-0.00000000000000</span></span><br><span class="line">                  <span class="number">0</span>   <span class="number">1.00000000000000</span>                  <span class="number">0</span></span><br><span class="line">                  <span class="number">0</span>                  <span class="number">0</span>   <span class="number">1.00000000000000</span></span><br></pre></td></tr></table></figure>
+<h5 id="水平串联">水平串联</h5>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--&gt; A=[a a]</span><br><span class="line">A =</span><br><span class="line">  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span></span><br><span class="line">  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span></span><br><span class="line">  <span class="number">7</span>  <span class="number">8</span> <span class="number">10</span>  <span class="number">7</span>  <span class="number">8</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<h5 id="垂直串联">垂直串联</h5>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">--&gt; A=[a;a]</span><br><span class="line">A =</span><br><span class="line">  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span></span><br><span class="line">  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span></span><br><span class="line">  <span class="number">7</span>  <span class="number">8</span> <span class="number">10</span></span><br><span class="line">  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span></span><br><span class="line">  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span></span><br><span class="line">  <span class="number">7</span>  <span class="number">8</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<h5 id="数组索引">数组索引</h5>
+<p>数组索引不和普通数组一样从0开始索引，例如二维数组，第一个元素就是A(1,1)</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--&gt; A(<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h5 id="解除变量">解除变量</h5>
+<p><code>clear A</code></p>
+<h5 id="结构索引">结构索引</h5>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">variable.fieldname&#x3D;&#39;value&#39;</span><br></pre></td></tr></table></figure>
+<h5 id="字段方法">字段方法</h5>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fieldname</span><br><span class="line">getfield(variable,&#39;field&#39;)</span><br><span class="line">setfield(variable,&#39;field&#39;)</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr class="header">
+<th><a href="https://ww2.mathworks.cn/help/matlab/ref/struct.html" target="_blank" rel="noopener"><code>struct</code></a></th>
+<th>结构体数组</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://ww2.mathworks.cn/help/matlab/ref/fieldnames.html" target="_blank" rel="noopener"><code>fieldnames</code></a></td>
+<td>结构体的字段名称，或者 Java 或 Microsoft COM 对象的公共字段</td>
+</tr>
+<tr class="even">
+<td><a href="https://ww2.mathworks.cn/help/matlab/ref/getfield.html" target="_blank" rel="noopener"><code>getfield</code></a></td>
+<td>结构体数组字段</td>
+</tr>
+<tr class="odd">
+<td><a href="https://ww2.mathworks.cn/help/matlab/ref/isfield.html" target="_blank" rel="noopener"><code>isfield</code></a></td>
+<td>确定输入是否为结构体数组字段</td>
+</tr>
+<tr class="even">
+<td><a href="https://ww2.mathworks.cn/help/matlab/ref/isstruct.html" target="_blank" rel="noopener"><code>isstruct</code></a></td>
+<td>确定输入是否为结构体数组</td>
+</tr>
+<tr class="odd">
+<td><a href="https://ww2.mathworks.cn/help/matlab/ref/orderfields.html" target="_blank" rel="noopener"><code>orderfields</code></a></td>
+<td>结构体数组的顺序字段</td>
+</tr>
+<tr class="even">
+<td><a href="https://ww2.mathworks.cn/help/matlab/ref/rmfield.html" target="_blank" rel="noopener"><code>rmfield</code></a></td>
+<td>删除结构体中的字段</td>
+</tr>
+<tr class="odd">
+<td><a href="https://ww2.mathworks.cn/help/matlab/ref/setfield.html" target="_blank" rel="noopener"><code>setfield</code></a></td>
+<td>为结构体数组字段赋值</td>
+</tr>
+<tr class="even">
+<td><a href="https://ww2.mathworks.cn/help/matlab/ref/arrayfun.html" target="_blank" rel="noopener"><code>arrayfun</code></a></td>
+<td>将函数应用于每个数组元素</td>
+</tr>
+<tr class="odd">
+<td><a href="https://ww2.mathworks.cn/help/matlab/ref/structfun.html" target="_blank" rel="noopener"><code>structfun</code></a></td>
+<td>对标量结构体的每个字段应用函数</td>
+</tr>
+<tr class="even">
+<td><a href="https://ww2.mathworks.cn/help/matlab/ref/table2struct.html" target="_blank" rel="noopener"><code>table2struct</code></a></td>
+<td>将表转换为结构体数组</td>
+</tr>
+<tr class="odd">
+<td><a href="https://ww2.mathworks.cn/help/matlab/ref/struct2table.html" target="_blank" rel="noopener"><code>struct2table</code></a></td>
+<td>将结构体数组转换为表</td>
+</tr>
+<tr class="even">
+<td><a href="https://ww2.mathworks.cn/help/matlab/ref/cell2struct.html" target="_blank" rel="noopener"><code>cell2struct</code></a></td>
+<td>将元胞数组转换为结构体数组</td>
+</tr>
+<tr class="odd">
+<td><a href="https://ww2.mathworks.cn/help/matlab/ref/struct2cell.html" target="_blank" rel="noopener"><code>struct2cell</code></a></td>
+<td>将结构体转换为元胞数组</td>
+</tr>
+</tbody>
+</table>
+<h3 id="单元数组">单元数组</h3>
+<h4 id="单元数组定义">单元数组定义</h4>
+<p>单元数组（<strong>Cell Array</strong>）将类型不同的相关数据集成到一个单一的变量中，使得大量相关数据的引用和处理变得简单方便；需要注意的是，单元数组仅仅是承载其他数据类型的容器，大部分的数学运算只是针对其中的具体数据进行的，而非针对单元数组本身进行。单元数组中的每一个元素称为单元（<strong>cell</strong>），单元可以包含任何类型的数据，如数值数组、字符、符号对象，甚至于其他的单元数组。单元数组可以使不同类型和不同维数的数组可以共存，细胞型数组实际上可以认为是一种以任意形式的数组为分量的多维数组。</p>
+<h4 id="单元数组的赋值">单元数组的赋值</h4>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A=&#123;row_def1;row_def2;row_def3;...row_defi&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="单元定义的赋值">单元定义的赋值</h4>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">row_defi= element_i1,element_i2,element_i3...element_iM</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.divint3.xyz/vim%E5%BF%98%E8%AE%B0%E4%BD%BF%E7%94%A8sudo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1114,195 +1320,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.divint3.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.png">
-      <meta itemprop="name" content="Divint3">
-      <meta itemprop="description" content="おかわいいこと">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HexBlog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">计算机网络第二节课笔记-计算机网络模型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-21 11:24:51" itemprop="dateCreated datePublished" datetime="2020-03-21T11:24:51+08:00">2020-03-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-08 20:21:50" itemprop="dateModified" datetime="2020-06-08T20:21:50+08:00">2020-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%A4%A7%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">大学</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-<a id="more"></a>
-<h1 id="计算机网络模型">计算机网络模型</h1>
-<h2 id="osi七层模型">OSI七层模型</h2>
-<h3 id="open-system-inerconnection-开放性系统互联">Open System Inerconnection 开放性系统互联</h3>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">OSI七层模型</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">7. Application <strong>应用层</strong>：软件交流协议</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6. Presentation <strong>表示层</strong>：对数据的压缩解压缩，加密解密，把比特信息转换为一定格式的数据流</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5. Session <strong>会话层</strong>：会话的建立，连接，拆除</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4. Transport <strong>传输层</strong>：核心层之一，负责端到端连接，例如负责TCP的可靠性传输</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3. Network <strong>网络层</strong>：核心层之一，最优路径<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，从源主机送达至目标机，以ip地址<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>作为主机标识</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2. Data Link <strong>数据链路层:提供介质访问服务</strong>。通过MAC<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>提供可靠的帧传递。提供差错控制、流控等</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">1. Physical 物理层：提供透明的比特流，任何可以表示两种状态的信号都可以。只管传输，不关心内容</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>七层模型每一层都完成特定功能，都为其上一层服务，每一层都使用下一层提供的服务【第一层和第七层除外】</li>
-</ul>
-<h2 id="dod模型">DOD模型</h2>
-<h3 id="department-of-defense-model-美国国防部模型">Department of Defense Model 美国国防部模型</h3>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">TCP/IP四层模型</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">4. Application <strong>应用层</strong><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">3. Transport <strong>传输层</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">2. Internet <strong>网络层</strong><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1. Network Access <strong>物理层</strong><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="osi模型和tcpip模型的不同">OSI模型和TCP/IP模型的不同</h2>
-<ul>
-<li>TCP/IP更简洁；OSI更易开发，更容易排除故障</li>
-<li>TCP/IP是在实践中产生的，OSI只是一种理论模型</li>
-</ul>
-<h2 id="osi没有流行的原因">OSI没有流行的原因</h2>
-<ul>
-<li>糟糕的时机
-<ul>
-<li>TCP/IP已经流行</li>
-<li>参杂了太多政策考量</li>
-<li>庞大，笨拙</li>
-</ul></li>
-</ul>
-<h2 id="数据传输">数据传输</h2>
-<h3 id="发方工作">发方工作</h3>
-<ol type="1">
-<li>封装打包，由高到低，逐级打包</li>
-<li>每一层上，加上头部信息
-<ol type="1">
-<li>OSI上三层，信息被表示为一定格式的数据流 <strong>DataStream</strong></li>
-<li>数据流到达传输层，会被切割为方便传输的数据段 <strong>Segment</strong>，并加上段头，标明序列号，端口号等信息</li>
-<li>数据段传到网络层，添加分组头成型分组 (<strong>Packet</strong>)分组头部中包含了寻址主机的IP和其他一些信息</li>
-<li>分组传到数据链路层，添加帧头，帧头包含物理地址，校验和</li>
-<li>帧到了物理层，被转换为比特流，被传送</li>
-<li><a href="https://blog.csdn.net/mincheat/article/details/61192701" target="_blank" rel="noopener">MAC、IP头、TCP头、UDP头帧格式、详解</a></li>
-</ol></li>
-</ol>
-<h3 id="收方工作">收方工作</h3>
-<ul>
-<li>逐层去掉头部，获取报文内部信息</li>
-</ul>
-<h3 id="关于协议数据单元不同层也有好多种说法">关于协议数据单元，不同层也有好多种说法</h3>
-<ol type="1">
-<li>应用层的PDU<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>叫数据流或者报文</li>
-<li>运输层（也叫传输层）PDU叫报文段，数据段，用户数据报</li>
-<li>网络层的是分组、包、IP数据报、数据报</li>
-<li>数据链路层的是帧</li>
-<li>物理层的是比特流</li>
-</ol>
-<h3 id="协议作用于对应层之间层与层之间有接口接口用于服务的调用">协议作用于对应层之间，层与层之间有接口，接口用于服务的调用</h3>
-<h3 id="任何一次通信都是由发方的封装开始接收方的解封装结束">任何一次通信，都是由发方的封装开始，接收方的解封装结束</h3>
-<section class="footnotes" role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p>最优路径就是路由最短路径<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>IP(<strong>Internet Protorol</strong>)地址，用于标识/寻找主机<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>MAC（<strong>Media Access Control Address</strong>）地址也称为<strong>局域网地址</strong>（LAN Address），<strong>MAC位址</strong>，<strong>以太网地址</strong>（Ethernet Address）或<strong>物理地址</strong>。不做修改的情况下，一般是唯一的。MAC地址用于在网络中唯一标示一个网卡，一台设备若有一或多个网卡，则每个网卡都需要并会有一个唯一的MAC地址。一个网卡亦可以虚拟出多个虚拟网卡，每个虚拟网卡都会有各自的MAC地址和ip地址<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>等同于OSI模型中的5-7层<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5" role="doc-endnote"><p>等同于OSI模型中的4层<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p>等同于OSI模型中的3层<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7" role="doc-endnote"><p>等同于OSI模型中的1-2层<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8" role="doc-endnote"><p>PDU (<strong>Protocol Data Unit</strong>)是指对等层次之间传递的数据单位<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1374,7 +1391,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

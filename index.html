@@ -182,6 +182,187 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.divint3.xyz/%E8%BD%AF%E4%BB%B6%E7%A0%B4%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.png">
+      <meta itemprop="name" content="Divint3">
+      <meta itemprop="description" content="おかわいいこと">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HexBlog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/%E8%BD%AF%E4%BB%B6%E7%A0%B4%E8%A7%A3/" class="post-title-link" itemprop="url">软件破解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-09 14:29:04 / 修改时间：14:29:43" itemprop="dateCreated datePublished" datetime="2020-06-09T14:29:04+08:00">2020-06-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="windows-程序的调试与破解">Windows 程序的调试与破解</h1>
+<h2 id="脱壳方法">脱壳方法</h2>
+<h3 id="单步跟踪法">单步跟踪法</h3>
+<p>脱壳的方法有很多，先来讲脱壳方法中最基础的单步跟踪法。单步跟踪法就是利用OD的单条指令执行功能，从壳的入口一直执行到OEP，最终通过这个OEP将原程序dump出来。然当，在单步跟踪的时候需要跳过一些不能执行到的指令。 使用单步跟踪法追踪OEP的常见步骤：</p>
+<ol type="1">
+<li>用OD载入待脱壳文件，如果出现压缩提示，选择“不分析代码”；</li>
+<li>向下单步跟踪，实现向下的跳转；</li>
+<li>遇到程序往上跳转的时候（包括循环），在回跳的下一句代码上单击并按键盘上的“F4”键跳过回跳指令；</li>
+<li>OD中的绿色线条表示跳转没有实理，不必理会，红色线条表示跳转已经实现；</li>
+<li>如果刚载入程序的时候，在附近有一个CALL指令，那么就要按键盘上的“F7”键跟进这个CALL内，不然程序很容易运行起来；</li>
+<li>在跟踪的时候，如果执行某个CALL指令后就运行，一定要按键盘上的“F7”键进入这个CALL之内再单步跟踪；</li>
+<li>遇到在popad指令下的远转移指令时，要格处注意，因为这个远转移指令的目的地很可能就是OEP。</li>
+</ol>
+<hr />
+<h3 id="esp定律法">ESP定律法</h3>
+<p>ESP定律法是脱壳的利器，是国外友人发现的。有了ESP定律，可以方便我们脱掉大多数的压缩壳。可谓是本世纪破解界中最伟大的发现之一。这里只简单的看一下狭义ESP定律的原理。 使用ESP定律追踪OEP的常见步骤：</p>
+<ol type="1">
+<li>将待脱壳程序载入到OD中，开始就按键盘上的“F8”键单步跟踪一步，这时如果看到OD右边的寄存器窗口中的ESP寄存器的值有没有变为红色，如果发现ESP寄存器的值变为红色，执行第2步；</li>
+<li>在OD的命令行窗口中执行命令hrXXXXXXXX,xxxxxxxx就是变为红色的ESP寄存器的值，在输入命令之后，一定不要忘记按键盘上的回车键；</li>
+<li>按键盘上的“F9”键让程序运行起来；</li>
+<li>使用单步跟踪的方法跟踪到OEP即可。</li>
+</ol>
+<hr />
+<h3 id="二次断点法">二次断点法</h3>
+<p>二次断点是有技巧的下两个断点，在两个断点之后就可以很轻松的找到OEP。 使用二次断点法追踪OEP的常见步骤：</p>
+<ol type="1">
+<li>将待脱壳程序载入到OD中，单击OD的“选项”菜单下的“调试设置”命令，在弹出的“调试选项”对话框中切换到“异常”选项卡，勾选该选项卡下的所有复选框，也就是忽略所有异常；</li>
+<li>按键盘上的“ALT+M”组合键打开OD的内存窗口；</li>
+<li>在OD的内存窗口中找到“.rsrc”区段，单击该区段后按键盘上的“F2”键在该区段上下一断点；</li>
+<li>按“Shift+F9”让程序运行到断点心处，而后再次打开OD的内存窗口，这次在“.rsrc”区段上面的“.code”区段（有的时候就是“.text”）上下一个断点；</li>
+<li>按“shift+F9”让程序运行到第二次下的断点处，然后单步跟踪既可以来到OEP。</li>
+</ol>
+<hr />
+<h3 id="末次异常法">末次异常法</h3>
+<p>在脱壳方法中，末次异常法又被称为最后一次异常法，这是最基础的脱壳技术之一。末次异常法脱壳很是简单，但就是这简单的脱壳方法可以挑掉曾经风靡一时的强壳。 使用末次异常法追踪OEP的常见步骤：</p>
+<ol type="1">
+<li>将待脱壳程序载入到OD中，单击OD的“选项”菜单，在弹出的菜单中单击“调试设置”命令，在随后弹出的“调试选项”对话框中切换到“异常”选项卡，清除该选项卡下所有复选框，也就是不忽略任何异常；</li>
+<li>连续按键盘上的“Shift+F9”组合键让程序运行起来，记录按键的次数X；</li>
+<li>回到OD中，按键盘上的“Ctrl+F2”组合键重新载入程序，按X-1次“Shift+F9”组合键；</li>
+<li>在OD右下角窗口中找到“SE句柄”或是“SE处理程序”，记录此处的内存地址；</li>
+<li>在OD的反汇编窗口中跟随到上一步记录下的内存地址，并在此内存地址处下一个断点；</li>
+<li>按键盘上的“Shift+F9”组合键让程序运行到上一步下的断点处，按键盘上的“F2”键取消此处的断点；</li>
+<li>使用单步跟踪法追踪到OEP。</li>
+</ol>
+<hr />
+<h3 id="模拟跟踪法">模拟跟踪法</h3>
+<p>在这章中讲到的众多脱壳方法中，我们首先讲了单步跟踪法脱壳，因为单步跟踪脱壳法是脱壳技术中最基础的方法，在后面其它的一些脱壳方法中总会或多或少的配合单步跟踪法才能顺利完成脱壳工作。便是始终是一次次的按“F8”键来单步跟踪程序，偶尔遇到回跳就跳过执行，这样机械性的操作很是烦人，那么能不能让机器来代替人力，让工具帮我们单步跟踪呢？答案是肯定的，这也就是这节讲的内容——模拟跟踪法。模拟脱壳法就是模拟单步跟踪来进行查找OEP。 模拟跟踪法的常见步骤：</p>
+<ol type="1">
+<li>将待脱壳程序载入OD中，先简单的跟踪一下程序，看看有没有SEH暗桩；</li>
+<li>按键盘上的“ALT+F9”打开OD的内存窗口，找到“SFX，输入表，资源”的行，并记录此行的内存地址；</li>
+<li>在OD的命令行窗口执行命令“tc eip&lt;上一步中记录下的地址”，命令执行后就会跟踪到OEP。</li>
+</ol>
+<hr />
+<h3 id="sfx自动脱壳法">SFX自动脱壳法</h3>
+<p>在上一节，我们使用模拟跟踪法代替手动单步跟踪法进行脱壳。在OD中，不但可以利用模拟跟踪来代替单步跟踪进行脱壳，从而节省劳动力，还有一种SFX自动脱壳的方法也可以节省劳动力，并能快速有效的将程序的壳脱掉。 使用SFX自动脱壳法脱壳的常见步骤：</p>
+<ol type="1">
+<li>将OD设置为忽略所有异常；</li>
+<li>在OD的“调试选项”对话框的“SFX”选项卡中选择“字节模式跟踪实际入口”选项并确定；</li>
+<li>将待脱壳程序载入OD，待程序载入完成后，会直接停在OEP处。</li>
+</ol>
+<hr />
+<h3 id="出口标志法">出口标志法</h3>
+<p>前面几个脱壳方法中有一个共同点，就是在单步跟踪到popad指令后面不远处的jmp指令的时候，就可以大胆的判断这个jmp指令的目的地址就是OEP。原因很简单，popad指令用于将壳运行之前保存的环境恢复，使原程序能正常运行。有些壳的popad指令很少，我们就可以查看被这种壳加壳的程序的所有popad指令，找到后面存在jmp指令的popad指令，然后来到其后的jmp指令的目的地址，这很可能就是OEP，然后就可以进行dump脱壳了。 使用出口标志法脱壳的常见步骤：</p>
+<ol type="1">
+<li><p>将待脱壳程序载入OD中，在OD的反汇编客人口中单击鼠标右键，在弹出的右键菜单中单击“查找”→“所有命令”，在弹出的输入框中输入“popad”并按“查找”按钮；</p></li>
+<li><p>逐一尝试跟踪查找到的所有“popad”指令，最终达到程序的OEP</p></li>
+</ol>
+<hr />
+<h3 id="pecompact高版本-特征码定位法">PECompact高版本-特征码定位法</h3>
+<ol type="1">
+<li>下断点 bp VirtualFree，中断后取消断点，alt+F9返回程序代码段</li>
+<li>ctrl+f 查找push 8000（特征码），下断点</li>
+<li>shift+f9 在断点处停止，取消断点</li>
+<li>单步跟踪到OEP</li>
+</ol>
+<hr />
+<h2 id="软件破解">软件破解</h2>
+<h3 id="注册破解">注册破解</h3>
+<h4 id="超级断点">超级断点</h4>
+<p>原理：在widows 最基础的模块 user32 处下断点，这样就可以做到，你做出任何动作都会发生中断。</p>
+<ol type="1">
+<li>鼠标右键-&gt;查看-&gt;user32 进入代码段</li>
+<li>Ctrl+b 查找 <code>F3 A5 8B C8 83 E1 03 F3 A4 E8</code>,在这里下断点。</li>
+<li>shift+f9 返回用户代码</li>
+<li>单步跟踪，观察堆栈及寄存器内容有无特殊字符串</li>
+</ol>
+<h4 id="配置文件断点">配置文件断点</h4>
+<p>原理： 在程序读取配置文件的代码段上下断点，来中断程序运行。</p>
+<ol type="1">
+<li>在悬浮窗上有个BP选项卡，点击查看</li>
+<li>找到BP GetPrivateProfileStringA，点击即可下断点</li>
+<li>单步跟踪，观察堆栈及寄存器内容有无特殊字符串</li>
+</ol>
+<h4 id="vb专属断点">VB专属断点</h4>
+<p>原理：VB有自己特有的系统调用，所以在系统调用上下断点就可以中断程序。</p>
+<ol type="1">
+<li>在悬浮窗上找到VB选项卡，点击查看</li>
+<li>常用的是 BP rtcMsgBox，消息窗口</li>
+</ol>
+<h4 id="干掉烦人的窗口">干掉烦人的窗口</h4>
+<p>原理：找到系统调用，返回程序领空，通过修改条件跳转实现不弹出窗口的目的。</p>
+<ol type="1">
+<li>运行，窗口弹出后点击暂停键，跳转到窗口弹出的代码段</li>
+<li>点击k 显示调用堆栈，找到本提示窗的调用堆栈，显式调用</li>
+<li>不要nop掉窗口信息，应该找到决定这串信息的关键跳转，向下走</li>
+<li>单步步过，经过return，找回自己的代码段，找出关键跳转</li>
+<li>干掉关键跳转</li>
+</ol>
+<hr />
+<h3 id="易语言网络验证初级破解">易语言网络验证初级破解</h3>
+<h4 id="pushd窗体法">pushd窗体法</h4>
+<ol type="1">
+<li>ctrl+g跳转到00401000</li>
+<li>ctrl+b查找二进制字串 勾选整个块 FF 25</li>
+<li>看到一堆的jmp 确定是易语言程序</li>
+<li>在jmp上面的push 0520*窗体就是启动窗体，就是程序进入的第一个窗体</li>
+<li>循环查找所有窗体
+<ol type="1">
+<li>查找命令 勾选整个块 push 10001</li>
+<li>看到push 0520*就是一个窗体</li>
+</ol></li>
+<li>替换启动窗体</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.divint3.xyz/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%99%BA%E8%83%BD%E8%AE%BE%E5%A4%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1004,212 +1185,6 @@ P(A|B)=\frac{P(AB)}{P(B)}
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.divint3.xyz/freemat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.png">
-      <meta itemprop="name" content="Divint3">
-      <meta itemprop="description" content="おかわいいこと">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HexBlog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/freemat%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">freemat使用说明</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-24 11:02:58" itemprop="dateCreated datePublished" datetime="2020-03-24T11:02:58+08:00">2020-03-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-08 18:41:31" itemprop="dateModified" datetime="2020-06-08T18:41:31+08:00">2020-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="freemat">freemat</h1>
-<h2 id="变量与数组">变量与数组</h2>
-<h3 id="矩阵">矩阵</h3>
-<h4 id="单行一维矩阵创建">单行/一维矩阵创建</h4>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--&gt; a=[val1,val2,val3,...valn]</span><br><span class="line">--&gt; a=[val1 val2 val3 ...valn]</span><br></pre></td></tr></table></figure>
-<h4 id="多行多维矩阵创建">多行/多维矩阵创建</h4>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--&gt; a=[val1 val2 val3;val4 val5 val6;val7 val8 val9]</span><br><span class="line">--&gt; z=<span class="built_in">zeros</span>(<span class="number">5</span>,<span class="number">1</span>)</span><br><span class="line">--&gt; o=<span class="built_in">ones</span>(<span class="number">7</span>,<span class="number">8</span>)</span><br><span class="line">--&gt; r=<span class="built_in">rand</span>(<span class="number">3</span>,<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="矩阵运算">矩阵运算</h4>
-<h5 id="常规运算">常规运算</h5>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">--&gt; a=[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>;<span class="number">4</span> <span class="number">5</span> <span class="number">6</span>;<span class="number">7</span> <span class="number">8</span> <span class="number">9</span>]</span><br><span class="line">a =</span><br><span class="line"> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line"> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span></span><br><span class="line"> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span></span><br><span class="line">--&gt; a+<span class="number">10</span></span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"> <span class="number">11</span> <span class="number">12</span> <span class="number">13</span></span><br><span class="line"> <span class="number">14</span> <span class="number">15</span> <span class="number">16</span></span><br><span class="line"> <span class="number">17</span> <span class="number">18</span> <span class="number">19</span> </span><br><span class="line">--&gt; a*<span class="number">10</span></span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span></span><br><span class="line"> <span class="number">40</span> <span class="number">50</span> <span class="number">60</span></span><br><span class="line"> <span class="number">70</span> <span class="number">80</span> <span class="number">90</span></span><br></pre></td></tr></table></figure>
-<h5 id="转置矩阵">转置矩阵</h5>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--&gt; a'</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"> <span class="number">1</span> <span class="number">4</span> <span class="number">7</span></span><br><span class="line"> <span class="number">2</span> <span class="number">5</span> <span class="number">8</span></span><br><span class="line"> <span class="number">3</span> <span class="number">6</span> <span class="number">9</span></span><br></pre></td></tr></table></figure>
-<h5 id="修改矩阵">修改矩阵</h5>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--&gt; a(<span class="number">3</span>,<span class="number">3</span>)=<span class="number">10</span></span><br><span class="line">a =</span><br><span class="line">  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span></span><br><span class="line">  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span></span><br><span class="line">  <span class="number">7</span>  <span class="number">8</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
-<h5 id="逆矩阵">逆矩阵</h5>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--&gt; inv(a)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line">   <span class="number">-0.6667</span>   <span class="number">-1.3333</span>    <span class="number">1.0000</span></span><br><span class="line">   <span class="number">-0.6667</span>    <span class="number">3.6667</span>   <span class="number">-2.0000</span></span><br><span class="line">    <span class="number">1.0000</span>   <span class="number">-2.0000</span>    <span class="number">1.0000</span></span><br></pre></td></tr></table></figure>
-<h5 id="矩阵相乘">矩阵相乘</h5>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--&gt; a*inv(a)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line">    <span class="number">1.0000</span>         <span class="number">0</span>   <span class="number">-0.0000</span></span><br><span class="line">         <span class="number">0</span>    <span class="number">1.0000</span>         <span class="number">0</span></span><br><span class="line">         <span class="number">0</span>         <span class="number">0</span>    <span class="number">1.0000</span></span><br></pre></td></tr></table></figure>
-<h5 id="修改精确度">修改精确度</h5>
-<p><strong>精确度表</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th>命令</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>format short</td>
-<td>精确到小数点后四位</td>
-</tr>
-<tr class="even">
-<td>format long</td>
-<td>精确到小数点后十六位</td>
-</tr>
-<tr class="odd">
-<td>format rat</td>
-<td>用有理数模拟逼近无理数</td>
-</tr>
-<tr class="even">
-<td>format short e</td>
-<td>用科学计数法表示，且精确到小数点后四位</td>
-</tr>
-<tr class="odd">
-<td>format long e</td>
-<td>用科学计数法表示，且精确到小数点后十六位</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">--&gt; format long</span><br><span class="line">--&gt; a*inv(a)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line">   <span class="number">1.00000000000000</span>                  <span class="number">0</span>  <span class="number">-0.00000000000000</span></span><br><span class="line">                  <span class="number">0</span>   <span class="number">1.00000000000000</span>                  <span class="number">0</span></span><br><span class="line">                  <span class="number">0</span>                  <span class="number">0</span>   <span class="number">1.00000000000000</span></span><br></pre></td></tr></table></figure>
-<h5 id="水平串联">水平串联</h5>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--&gt; A=[a a]</span><br><span class="line">A =</span><br><span class="line">  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span></span><br><span class="line">  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span></span><br><span class="line">  <span class="number">7</span>  <span class="number">8</span> <span class="number">10</span>  <span class="number">7</span>  <span class="number">8</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
-<h5 id="垂直串联">垂直串联</h5>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">--&gt; A=[a;a]</span><br><span class="line">A =</span><br><span class="line">  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span></span><br><span class="line">  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span></span><br><span class="line">  <span class="number">7</span>  <span class="number">8</span> <span class="number">10</span></span><br><span class="line">  <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span></span><br><span class="line">  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span></span><br><span class="line">  <span class="number">7</span>  <span class="number">8</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
-<h5 id="数组索引">数组索引</h5>
-<p>数组索引不和普通数组一样从0开始索引，例如二维数组，第一个元素就是A(1,1)</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--&gt; A(<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h5 id="解除变量">解除变量</h5>
-<p><code>clear A</code></p>
-<h5 id="结构索引">结构索引</h5>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">variable.fieldname&#x3D;&#39;value&#39;</span><br></pre></td></tr></table></figure>
-<h5 id="字段方法">字段方法</h5>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fieldname</span><br><span class="line">getfield(variable,&#39;field&#39;)</span><br><span class="line">setfield(variable,&#39;field&#39;)</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr class="header">
-<th><a href="https://ww2.mathworks.cn/help/matlab/ref/struct.html" target="_blank" rel="noopener"><code>struct</code></a></th>
-<th>结构体数组</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://ww2.mathworks.cn/help/matlab/ref/fieldnames.html" target="_blank" rel="noopener"><code>fieldnames</code></a></td>
-<td>结构体的字段名称，或者 Java 或 Microsoft COM 对象的公共字段</td>
-</tr>
-<tr class="even">
-<td><a href="https://ww2.mathworks.cn/help/matlab/ref/getfield.html" target="_blank" rel="noopener"><code>getfield</code></a></td>
-<td>结构体数组字段</td>
-</tr>
-<tr class="odd">
-<td><a href="https://ww2.mathworks.cn/help/matlab/ref/isfield.html" target="_blank" rel="noopener"><code>isfield</code></a></td>
-<td>确定输入是否为结构体数组字段</td>
-</tr>
-<tr class="even">
-<td><a href="https://ww2.mathworks.cn/help/matlab/ref/isstruct.html" target="_blank" rel="noopener"><code>isstruct</code></a></td>
-<td>确定输入是否为结构体数组</td>
-</tr>
-<tr class="odd">
-<td><a href="https://ww2.mathworks.cn/help/matlab/ref/orderfields.html" target="_blank" rel="noopener"><code>orderfields</code></a></td>
-<td>结构体数组的顺序字段</td>
-</tr>
-<tr class="even">
-<td><a href="https://ww2.mathworks.cn/help/matlab/ref/rmfield.html" target="_blank" rel="noopener"><code>rmfield</code></a></td>
-<td>删除结构体中的字段</td>
-</tr>
-<tr class="odd">
-<td><a href="https://ww2.mathworks.cn/help/matlab/ref/setfield.html" target="_blank" rel="noopener"><code>setfield</code></a></td>
-<td>为结构体数组字段赋值</td>
-</tr>
-<tr class="even">
-<td><a href="https://ww2.mathworks.cn/help/matlab/ref/arrayfun.html" target="_blank" rel="noopener"><code>arrayfun</code></a></td>
-<td>将函数应用于每个数组元素</td>
-</tr>
-<tr class="odd">
-<td><a href="https://ww2.mathworks.cn/help/matlab/ref/structfun.html" target="_blank" rel="noopener"><code>structfun</code></a></td>
-<td>对标量结构体的每个字段应用函数</td>
-</tr>
-<tr class="even">
-<td><a href="https://ww2.mathworks.cn/help/matlab/ref/table2struct.html" target="_blank" rel="noopener"><code>table2struct</code></a></td>
-<td>将表转换为结构体数组</td>
-</tr>
-<tr class="odd">
-<td><a href="https://ww2.mathworks.cn/help/matlab/ref/struct2table.html" target="_blank" rel="noopener"><code>struct2table</code></a></td>
-<td>将结构体数组转换为表</td>
-</tr>
-<tr class="even">
-<td><a href="https://ww2.mathworks.cn/help/matlab/ref/cell2struct.html" target="_blank" rel="noopener"><code>cell2struct</code></a></td>
-<td>将元胞数组转换为结构体数组</td>
-</tr>
-<tr class="odd">
-<td><a href="https://ww2.mathworks.cn/help/matlab/ref/struct2cell.html" target="_blank" rel="noopener"><code>struct2cell</code></a></td>
-<td>将结构体转换为元胞数组</td>
-</tr>
-</tbody>
-</table>
-<h3 id="单元数组">单元数组</h3>
-<h4 id="单元数组定义">单元数组定义</h4>
-<p>单元数组（<strong>Cell Array</strong>）将类型不同的相关数据集成到一个单一的变量中，使得大量相关数据的引用和处理变得简单方便；需要注意的是，单元数组仅仅是承载其他数据类型的容器，大部分的数学运算只是针对其中的具体数据进行的，而非针对单元数组本身进行。单元数组中的每一个元素称为单元（<strong>cell</strong>），单元可以包含任何类型的数据，如数值数组、字符、符号对象，甚至于其他的单元数组。单元数组可以使不同类型和不同维数的数组可以共存，细胞型数组实际上可以认为是一种以任意形式的数组为分量的多维数组。</p>
-<h4 id="单元数组的赋值">单元数组的赋值</h4>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A=&#123;row_def1;row_def2;row_def3;...row_defi&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="单元定义的赋值">单元定义的赋值</h4>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">row_defi= element_i1,element_i2,element_i3...element_iM</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1281,7 +1256,7 @@ P(A|B)=\frac{P(AB)}{P(B)}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
