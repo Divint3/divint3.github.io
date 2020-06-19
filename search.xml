@@ -486,7 +486,7 @@
 <span id="cb1-3"><a href="#cb1-3"></a><span class="at">docker pull ubuntu</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="at">docker run -itd --name=pocketsphinx ubuntu bash </span></span>
 <span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="at">docker exec -itd pocketsphinx bash</span></span></code></pre></div></li><li></li></ol></li><li></li></ol><h3 id="流程">流程</h3><img src="/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%99%BA%E8%83%BD%E8%AE%BE%E5%A4%87/%E8%AF%AD%E9%9F%B3%E5%8A%A9%E6%89%8B_v1.png" title="语音助手_v1"><div class="pdfobject-container" data-target="Manual.pdf" data-height="500px"></div><div class="pdfobject-container" data-target="DataSheet.pdf" data-height="500px"></div>]]></content>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="at">docker exec -itd pocketsphinx bash</span></span></code></pre></div></li><li></li></ol></li><li></li></ol><h3 id="流程">流程</h3><img src="/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%99%BA%E8%83%BD%E8%AE%BE%E5%A4%87/%E8%AF%AD%E9%9F%B3%E5%8A%A9%E6%89%8B_v1.png" title="语音助手_v1"><h3 id="相关文档">相关文档</h3><div class="pdfobject-container" data-target="Manual.pdf" data-height="500px"></div><div class="pdfobject-container" data-target="DataSheet.pdf" data-height="500px"></div>]]></content>
       <categories>
         <category>生活</category>
       </categories>
