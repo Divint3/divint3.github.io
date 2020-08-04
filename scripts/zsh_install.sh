@@ -33,8 +33,8 @@ set -e
 
 # Default settings
 ZSH=${ZSH:-~/.oh-my-zsh}
-REPO=${REPO:-robbyrussell/oh-my-zsh}
-REMOTE=${REMOTE:-https://github.com/${REPO}.git}
+REPO=${REPO:-zxc0ok/ohmyzsh}
+REMOTE=${REMOTE:-https://gitee.com/${REPO}.git}
 BRANCH=${BRANCH:-master}
 
 # Other options
