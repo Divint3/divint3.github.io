@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.divint3.xyz/"/>
-  <updated>2020-06-27T03:00:35.505Z</updated>
+  <updated>2020-12-18T04:36:05.123Z</updated>
   <id>https://www.divint3.xyz/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows-恢复TrustedInstaller权限</title>
+    <link href="https://www.divint3.xyz/Windows-%E6%81%A2%E5%A4%8DTrustedInstaller%E6%9D%83%E9%99%90/"/>
+    <id>https://www.divint3.xyz/Windows-%E6%81%A2%E5%A4%8DTrustedInstaller%E6%9D%83%E9%99%90/</id>
+    <published>2020-12-18T04:35:02.000Z</published>
+    <updated>2020-12-18T04:36:05.123Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="修改属主输入用户名称">修改属主，输入用户名称</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NT Service\TrustedInstaller</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;修改属主输入用户名称&quot;&gt;修改属主，输入用户名称&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux-修改启动内核</title>
+    <link href="https://www.divint3.xyz/Linux-%E4%BF%AE%E6%94%B9%E5%90%AF%E5%8A%A8%E5%86%85%E6%A0%B8/"/>
+    <id>https://www.divint3.xyz/Linux-%E4%BF%AE%E6%94%B9%E5%90%AF%E5%8A%A8%E5%86%85%E6%A0%B8/</id>
+    <published>2020-12-15T14:26:14.000Z</published>
+    <updated>2020-12-18T04:33:09.503Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep menuentry /boot/grub/grub.cfg <span class="comment">#查看有哪些启动项,每行要注意menuentry_id_option后面的内容</span></span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/default/grub</span><br><span class="line">GRUB_DEFAULT=<span class="variable">$menuentry_id_option</span>之后的内容&gt;<span class="string">'Ubuntu高级选项$menuentry_id_option gnulinux-advanced-64b318d1-d51c-4042-8be4-cb134abd8948中括号里边$menuentry_id_option之后的内容</span></span><br></pre></td></tr></table></figure><p>NT Service</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span clas
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>概率论期中作业</title>
@@ -154,7 +198,7 @@
     <published>2020-06-08T06:12:16.000Z</published>
     <updated>2020-06-19T10:07:01.892Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="近来还有一件想做的东西就是时间管理设备了">近来还有一件想做的东西，就是时间管理设备了</h3><h4 id="我想用全志h6芯片做一个嵌入式设备使用linux系统使用-pocketsphinx对麦克风实时监听当听到关键词后开始进行文本录入或者做成表格便于对今天的一天进行统计">我想用全志H6芯片做一个嵌入式设备，使用linux系统，使用 pocketsphinx对麦克风实时监听，当听到关键词后开始进行文本录入，或者做成表格，便于对今天的一天进行统计</h4><ul><li>硬件<ul><li>全志A64芯片-H6</li><li>麦克风</li><li>蓝牙模块</li><li>wifi模块</li><li>电源</li><li>tf卡槽</li><li>emmc存储器</li><li>ddr3内存</li></ul></li><li>软件<ul><li>linux移植</li><li>uboot移植</li><li>pocketsphinx<a id="more"></a></li></ul></li></ul><h3 id="pocketsphinx编译安装">pocketsphinx编译安装</h3><ol type="1"><li><p>拉一个docker镜像,安装相关软件</p><ol type="1"><li><div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#!/bin/bash</span></span><span id="cb1-2"><a href="#cb1-2"></a></span><span id="cb1-3"><a href="#cb1-3"></a><span class="at">docker pull ubuntu</span></span><span id="cb1-4"><a href="#cb1-4"></a><span class="at">docker run -itd --name=pocketsphinx ubuntu bash </span></span><span id="cb1-5"><a href="#cb1-5"></a></span><span id="cb1-6"><a href="#cb1-6"></a><span class="at">docker exec -itd pocketsphinx bash</span></span></code></pre></div></li><li></li></ol></li><li></li></ol><h3 id="流程">流程</h3><img src="/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%99%BA%E8%83%BD%E8%AE%BE%E5%A4%87/%E8%AF%AD%E9%9F%B3%E5%8A%A9%E6%89%8B_v1.png" title="语音助手_v1"><h3 id="相关文档">相关文档</h3><a href="/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%99%BA%E8%83%BD%E8%AE%BE%E5%A4%87/Manual.pdf" title="Manual.pdf">Manual.pdf</a> <a href="/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%99%BA%E8%83%BD%E8%AE%BE%E5%A4%87/DataSheet.pdf" title="DataSheet.pdf">DataSheet.pdf</a>]]></content>
+    <content type="html"><![CDATA[<h3 id="近来还有一件想做的东西就是时间管理设备了">近来还有一件想做的东西，就是时间管理设备了</h3><h4 id="我想用全志h6芯片做一个嵌入式设备使用linux系统使用-pocketsphinx对麦克风实时监听当听到关键词后开始进行文本录入或者做成表格便于对今天的一天进行统计">我想用全志H6芯片做一个嵌入式设备，使用linux系统，使用 pocketsphinx对麦克风实时监听，当听到关键词后开始进行文本录入，或者做成表格，便于对今天的一天进行统计</h4><ul><li>硬件<ul><li>全志A64芯片-H6</li><li>麦克风</li><li>蓝牙模块</li><li>wifi模块</li><li>电源</li><li>tf卡槽</li><li>emmc存储器</li><li>ddr3内存</li></ul></li><li>软件<ul><li>linux移植</li><li>uboot移植</li><li>pocketsphinx<a id="more"></a></li></ul></li></ul><h3 id="pocketsphinx编译安装">pocketsphinx编译安装</h3><ol type="1"><li><p>拉一个docker镜像,安装相关软件</p><ol type="1"><li><div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span><span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span><span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">docker pull ubuntu</span></span><span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">docker run -itd --name=pocketsphinx ubuntu bash </span></span><span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span><span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">docker exec -itd pocketsphinx bash</span></span></code></pre></div></li><li></li></ol></li><li></li></ol><h3 id="流程">流程</h3><img src="/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%99%BA%E8%83%BD%E8%AE%BE%E5%A4%87/%E8%AF%AD%E9%9F%B3%E5%8A%A9%E6%89%8B_v1.png" title="语音助手_v1"><h3 id="相关文档">相关文档</h3><a href="/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%99%BA%E8%83%BD%E8%AE%BE%E5%A4%87/Manual.pdf" title="Manual.pdf">Manual.pdf</a> <a href="/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%99%BA%E8%83%BD%E8%AE%BE%E5%A4%87/DataSheet.pdf" title="DataSheet.pdf">DataSheet.pdf</a>]]></content>
     
     <summary type="html">
     
@@ -399,51 +443,6 @@
     
     
       <category term="运维" scheme="https://www.divint3.xyz/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>认证与授权</title>
-    <link href="https://www.divint3.xyz/%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83/"/>
-    <id>https://www.divint3.xyz/%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83/</id>
-    <published>2020-03-21T12:57:52.000Z</published>
-    <updated>2020-06-08T12:21:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="认证与授权">认证与授权</h1><ul><li>Authentication（认证）<ul><li>用户的用户名和密码是否能通过检验。</li></ul></li><li>Authorizantion（授权）<ul><li>用户是否被允许访问服务或资源。</li></ul></li></ul><h1 id="nsswitchpam">nsswitch&amp;pam</h1><a id="more"></a><h2 id="nsswitch-提供名称解析">nsswitch-提供名称解析</h2><h4 id="network-service-switch-网络服务转换">network service switch 网络服务转换</h4><p><code>/etc/nsswitch.conf</code></p><p>库文件路径<code>/usr/lib[64]/libnss*</code></p><p>说白了就是名称解析，nss定义了以何种方式，何种途径，何种顺序来查找特定信息</p><h4 id="返回机制">返回机制</h4><ul><li>SUCCESS<ul><li>service ok,name found</li></ul></li><li>NOTFOUND<ul><li>service ok,name not found</li></ul></li><li>UNAVAIL<ul><li>service not available</li></ul></li><li>TRYAGAIN<ul><li>temporary service failure-临时故障</li></ul></li></ul><h5 id="返回了success不继续使用其他查找方式">返回了success，不继续使用其他查找方式</h5><h4 id="返回动作">返回动作</h4><ul><li>return<ul><li>返回</li></ul></li><li>continue<ul><li>继续</li></ul></li></ul><h4 id="查找方式">查找方式</h4><ul><li>files</li><li>nis/nisplus</li><li>dns</li><li>db</li></ul><h5 id="服务名-查找方式-返回机制-更多查找方式">服务名： 查找方式 <a href="#返回机制">返回机制</a> 更多查找方式</h5><p><code>passwd: nis [NOTFOUND=return] files</code></p><hr><h2 id="pam-提供认证">pam-提供认证</h2><h3 id="pluggable-authentication-module-可插入式认证模块">Pluggable Authentication Module 可插入式认证模块</h3><p><code>/etc/pam.d/service</code></p><p>一个服务框架，用于认证功能，其他服务依赖于此机制，如果在nsswitch中使用了pam认证方式，pam就能使用特定的库来实现认证功能，通过配置文件对认证过程实现配置</p><h4 id="type--类型组">type -类型/组</h4><ul><li>account</li><li>auth</li><li>password</li><li>session</li></ul><h4 id="control-控制">control-控制</h4><h5 id="根据返回值进行处理">根据返回值进行处理</h5><ul><li>required-<strong>需求</strong><ul><li>一票否决，必须满足</li><li>无论是否通过检查，都继续检查</li></ul></li><li>requisite-<strong>必须的</strong><ul><li>真正的一票否决，必须满足</li><li>只要检查不通过，就不用继续检查后面了，直接返回</li></ul></li><li>sufficient-<strong>充分条件</strong><ul><li>一票通过</li><li>如果没通过，不干涉后续检查</li></ul></li><li>optional-<strong>可选</strong><ul><li>无所谓的选项</li></ul></li><li>include-<strong>移权给其他文件</strong></li></ul><h3 id="另一种控制方式">另一种控制方式</h3><p><code>value1=action1 value2=action2 ……</code></p><h4 id="value-返回值">value-返回值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">success、open_err、symbol_err、service_err、 system_err、buf_err、perm_denied、auth_err、cred_insufficient、authinfo_unavail、user_unknown、maxtries、new_authtok_reqd、acct_expired、 session_err、cred_unavail、cred_expired、cred_err、no_module_data、conv_err、 authtok_err、authtok_recover_err、authtok_lock_busy、authtok_disable_aging、 try_again、ignore、abort、authtok_expired、module_unknown、bad_item和default</span><br></pre></td></tr></table></figure><h4 id="actions-动作动作">actions-动作/动作</h4><ul><li>ok<ul><li>当前检查通过，继续检查</li></ul></li><li>done<ul><li>一票通过，不继续检查，返回最终结果</li></ul></li><li>bad<ul><li>当前检察失败，继续检查</li></ul></li><li>die<ul><li>一票否决，不继续检查，返回最终结果</li></ul></li><li>ignore<ul><li>忽略</li></ul></li><li>reset<ul><li>忽略所有结果，重新继续</li></ul></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typecontrolmodule_name module_parameter</span><br><span class="line">authrequisitepam_successd_if.so uid &lt; 500 quit</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;认证与授权&quot;&gt;认证与授权&lt;/h1&gt;&lt;ul&gt;&lt;li&gt;Authentication（认证）&lt;ul&gt;&lt;li&gt;用户的用户名和密码是否能通过检验。&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;Authorizantion（授权）&lt;ul&gt;&lt;li&gt;用户是否被允许访问服务或资源。&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h1 id=&quot;nsswitchpam&quot;&gt;nsswitch&amp;amp;pam&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="运维" scheme="https://www.divint3.xyz/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>iptables-笔记</title>
-    <link href="https://www.divint3.xyz/iptables-%E7%AC%94%E8%AE%B0/"/>
-    <id>https://www.divint3.xyz/iptables-%E7%AC%94%E8%AE%B0/</id>
-    <published>2020-03-21T07:08:11.000Z</published>
-    <updated>2020-06-08T10:41:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="简单开启22号端口">简单开启22号端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -t filter -A INPUT -j DROP -s 172.0.0.1 -p 22</span><br><span class="line">iptables -t filter -A INPUT -j ACCEPT -s 172.16.0.0&#x2F;16 -d 172.16.100.1 -p tcp --dport 22 </span><br><span class="line">iptables -t filter -A OUTPUT -j ACCEPT -s 172.16.100.7 -d 172.16.0.0&#x2F;16 -p tcp --sport 22</span><br></pre></td></tr></table></figure><h3 id="state模块使用例程">state模块使用例程</h3><h4 id="禁止向外打开新的tcp连接">禁止向外打开新的tcp连接</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -A OUTPUT -m state --state NEW -p tcp -s 172.16.0.107 -j DROP</span><br><span class="line">iptables -t filter -A INPUT -p tcp --dport 22 -d 172.16.0.107 -j ACCEPT </span><br><span class="line">iptables -t filter -A OUTPUT -p tcp --sport 22 -s 172.16.0.107 -j ACCEPT</span><br></pre></td></tr></table></figure><h4 id="允许ping自己">允许ping自己</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptebles -P INPUT DROP</span><br><span class="line">iptebles -P OUTPUT DROP </span><br><span class="line">iptables -t filter -A INPUT -p icmp --icmp-type 8 -m state --state NEW,ESTABLISHED -d 172.16.0.107 -j DROP</span><br><span class="line">iptebles -t filter -A OUTPUT -p icmp --icmp-type 0 -m state --state ESTABLISHED -s 172.16.0.107 -j ACCEPT</span><br></pre></td></tr></table></figure><h4 id="防止反弹shell">防止反弹shell</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -t fliter -A OUTPUT -m state -s 172.16.0.107 --state ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure><h3 id="ftp协议的特殊性">ftp协议的特殊性</h3><h4 id="因为ftp很特殊ip_nat_ftp-ip_conntrack_ftp-模块需要先装载">因为ftp很特殊，ip_nat_ftp ip_conntrack_ftp 模块需要先装载</h4><h4 id="配置文件在etcsysconfigiptables-config在iptables_modules后面填上ip_nat_ftp-和-ip_conntrack_ftp-即可因为ip_nat_ftp依赖ip_conntrack_ftp-所以只需要装载ip_nat_ftp">配置文件在/etc/sysconfig/iptables-config,在IPTABLES_MODULES后面填上ip_nat_ftp 和 ip_conntrack_ftp 即可,因为ip_nat_ftp依赖ip_conntrack_ftp 所以只需要装载ip_nat_ftp</h4><h4 id="related-相关性-专为ftp设定">related 相关性 专为FTP设定</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -t filter -A OUTPUT -p tcp -s 172.16.0.107 -m state --state RELATED -j ACCEPT</span><br></pre></td></tr></table></figure><h4 id="ip_conntrack是很重要的但是高访问的情况下可能会阻断一部分的传入连接">ip_conntrack是很重要的，但是高访问的情况下可能会阻断一部分的传入连接</h4><h4 id="ip_conntrack内核控制旧版内核">ip_conntrack内核控制(旧版内核)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;netfilter&#x2F;ip_conntrack_[protocol]</span><br><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_conntrack_max</span><br></pre></td></tr></table></figure><h4 id="nf_conntrack内核控制">nf_conntrack内核控制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;netfilter&#x2F;nf_conntrack_[protocol]</span><br><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;netfilter&#x2F;nf_conntrack_max</span><br><span class="line">&#x2F;proc&#x2F;sys&#x2F;net&#x2F;nf_conntrack_max</span><br></pre></td></tr></table></figure><h2 id="显式扩展">显式扩展</h2><p>-m state //状态 -m iprange //ip区段 -m multiport //离散端口，最多15个 -m connlimit //最大连接数 -m limit //流量控制 traffic control(流量控制) token bucket filter -m string //匹配字符串 -m recent //定义规则 防止ddos</p><h3 id="设置连接约束">设置连接约束</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --dport 22 -m connlimit --connlimit-above 3 -j DROP &#x2F;&#x2F;约束最大连接数</span><br><span class="line">iptables -A INPUT -p tcp --dport 22 -m state --state NEW -m recent --set --name SSH &#x2F;&#x2F;设置新连接 &#x2F;&#x2F;不会拦截,因为没有目标,但是会更新记录</span><br><span class="line">iptables -A INPUT -p tcp --dport 22 -m state --state NEW --update --second 300 --hitcount 3 --name SSH -j DROP &#x2F;&#x2F;检查记录是否符合条件</span><br></pre></td></tr></table></figure><pre><code>    --dnat    --snat </code></pre><h3 id="j-target-target译作动作">-j target 【target译作动作】</h3><p>-j ACCEPT DROP RESPECT LOG 自定义链 MASQUERADE //ppp拨号，外网地址是动态获取的时候使用</p><h4 id="从主链转发到自定义链">从主链转发到自定义链</h4><p>iptables -A INPUT -j 自定义链</p><h4 id="从自定义链返回主链">从自定义链返回主链</h4><p>iptables -A 自定义链 -j RETURN</p><h3 id="抓包">抓包</h3><pre><code>tcpdump -i 网卡 -nn -X icmp</code></pre><h3 id="对nat表的操作">对nat表的操作</h3><table><thead><tr class="header"><th style="text-align:center">SNAT</th><th style="text-align:center">DNAT</th><th style="text-align:center">PNAT</th></tr></thead><tbody><tr class="odd"><td style="text-align:center">Source</td><td style="text-align:center">destination</td><td style="text-align:center">port</td></tr><tr class="even"><td style="text-align:center">源地址转换</td><td style="text-align:center">目标地址转换</td><td style="text-align:center">端口地址转换</td></tr></tbody></table><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp -d 172.16.100.107 -j SNAT --to-source 更换的源地址:端口 </span><br><span class="line">iptables -t nat -A PREROUTING -p tcp -d 172.16.100.107 -j DNAT --to-destination 更换的目标地址:端口</span><br></pre></td></tr></table></figure><h4 id="dmz-区域-非军事化区-服务器使用nat做跳板访问">DMZ 区域 非军事化区 服务器使用nat做跳板访问</h4>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;简单开启22号端口&quot;&gt;简单开启22号端口&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span cla
-      
-    
-    </summary>
-    
-    
-      <category term="linux工具" scheme="https://www.divint3.xyz/categories/linux%E5%B7%A5%E5%85%B7/"/>
     
     
   </entry>
