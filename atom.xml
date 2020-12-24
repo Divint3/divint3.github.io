@@ -145,30 +145,6 @@
   </entry>
   
   <entry>
-    <title>java开发手册</title>
-    <link href="https://www.divint3.xyz/java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/"/>
-    <id>https://www.divint3.xyz/java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/</id>
-    <published>2020-06-19T10:22:43.000Z</published>
-    <updated>2020-06-19T10:23:45.504Z</updated>
-    
-    <content type="html"><![CDATA[<div class="pdfobject-container" data-target="java开发手册.pdf" data-height="500px"></div>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;div class=&quot;pdfobject-container&quot; data-target=&quot;java开发手册.pdf&quot; data-height=&quot;500px&quot;&gt;&lt;/div&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="编程" scheme="https://www.divint3.xyz/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>wireshark使用</title>
     <link href="https://www.divint3.xyz/wireshark%E4%BD%BF%E7%94%A8/"/>
     <id>https://www.divint3.xyz/wireshark%E4%BD%BF%E7%94%A8/</id>
@@ -439,6 +415,30 @@
     
     
       <category term="数学" scheme="https://www.divint3.xyz/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vim忘记使用sudo</title>
+    <link href="https://www.divint3.xyz/vim%E5%BF%98%E8%AE%B0%E4%BD%BF%E7%94%A8sudo/"/>
+    <id>https://www.divint3.xyz/vim%E5%BF%98%E8%AE%B0%E4%BD%BF%E7%94%A8sudo/</id>
+    <published>2020-03-24T02:20:29.000Z</published>
+    <updated>2020-06-08T10:41:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="vim忘记使用sudo">vim忘记使用sudo</h1><p>修改完文件后，进入命令模式</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:w !sudo tee %</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;vim忘记使用sudo&quot;&gt;vim忘记使用sudo&lt;/h1&gt;&lt;p&gt;修改完文件后，进入命令模式&lt;/p&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;lin
+      
+    
+    </summary>
+    
+    
+      <category term="linux知识" scheme="https://www.divint3.xyz/categories/linux%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>
