@@ -731,4 +731,12 @@
         <category>writeup</category>
       </categories>
   </entry>
+  <entry>
+    <title>pacman-常用指令</title>
+    <url>/pacman-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S //从远程源获取并安装 相当于 apt install</span><br><span class="line">pacman -Syu //滚动升级、升级系统 相当于 apt upgrade &amp;&amp; apt dist-upgrade</span><br><span class="line">pacman -Rsc //卸载软件及其依赖 相当于 apt remove </span><br><span class="line">pacman -R //只卸载软件本体，不卸载依赖</span><br><span class="line">pacman -R $(pacman -Qqdt) //查找无用依赖并卸载  用于只删除软件包忘记删除赖时使用，当没有无用依赖，会返回一个error，代表删除完毕</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Arch</category>
+      </categories>
+  </entry>
 </search>
