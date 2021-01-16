@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.divint3.xyz/"/>
-  <updated>2021-01-15T16:57:18.121Z</updated>
+  <updated>2021-01-16T19:35:10.928Z</updated>
   <id>https://www.divint3.xyz/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2021计划</title>
+    <link href="https://www.divint3.xyz/2021%E8%AE%A1%E5%88%92/"/>
+    <id>https://www.divint3.xyz/2021%E8%AE%A1%E5%88%92/</id>
+    <published>2021-01-16T19:02:47.000Z</published>
+    <updated>2021-01-16T19:35:10.928Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="计划">2021计划</h1><p>今年呢，又是让人神经不能放松下来的一年啊，刚刚听说村子里的人有与无症状感染者接触的人员，已经被拉走隔离了，希望他没有事情吧，今年2020实在是太糟心了，可是我们又能怎样呢？接受现实吧，人生可不能<code>reset --hard HEAD~X</code>那样回退，只能向前看了啊。</p><p>今年的计划呢，分为两个备份，一个当然是能正常开学，回归校园的计划啦，其实在学校里根本没有计划，每天只要能学一点东西就很好了，就算每天都去实验室坐一天思考，我仍想不到我有什么自己想做的事。</p><p>当然还有一份计划是不返校在家，嘻嘻，这个可就好玩多啦。</p><ol type="1"><li>烤炉-made by 黄泥/红砖，其实2020年早就想做的，一直懒在家里没有做，后面就去练车了。<ol type="1"><li>木炭窖咯，什么都要靠买才是一点意思都没有呢。</li><li>砖块的话，就看看自己家里还有没有剩余的红砖了，如果没有的话，砖窖也可以列入计划之中，强度需求并不高，只需要别轻易碎掉就好，黄泥的话用稻草和在一起可以增加强度，砖块只是备用方案，就看到时候能不能撑住吧。</li><li>燃烧室理所应当的要和放置食物的地方分开啦，我可能会用铁板导热，等里面的温度满足要求的时候，我会把所有风口都堵住保持温度。</li></ol></li><li>糕点制作<ol type="1"><li>电动打蛋器：必备！！！！心水了好久了，一直都舍不得买，纯手动累死人啦--鸡蛋管够，哈哈哈哈</li><li>电烤炉：容积大一点吧，比较方便做戚风，与之配对的当然就是各种模具啦，期待ing~</li><li>低筋面粉</li></ol></li><li>烧烤架<ol type="1"><li>其实如果放假时间还是和2020年差不多的话，我想尝试养鸡，自给自足，哈哈哈</li></ol></li><li>发电装置<ol type="1"><li>妈妈在家经常会唠叨我用电量很大，大晚上还不睡觉，哎，我也没办法啊，所以说我打算向<strong>KREOSAN</strong>大魔王学习，做一些类似于太阳能板发电，风力发电的东西，这个嘛，可以组装也可以买现成的，但是买现成的确实没啥挑战，还是自己焊着玩有意思一点。</li><li>逆变器：这玩意我觉得不太好做，所以还是买现成的吧。</li><li>电池组：18650-12V电池组可能比较香一点，毕竟蓄电池也太贵了些。</li><li>可以向KREOSAN他们学着用旧自行车做一个人力发电装置。自行车加上直流电机。emmm，锻炼+发电，岂不美哉~</li></ol></li><li>学习投资<ol type="1"><li>基金真好玩，我这条命都是白酒给的。</li><li>说真的，应该系统的学习一下了。</li></ol></li><li>完成工作</li><li>发动机<ol type="1"><li>其实我还想玩斯特林外燃机之类的用来发电，真的好有趣的样子！</li><li>只能说，机械，才是男人的浪漫</li></ol></li></ol><p>目前就这些，我后面会进行补充的，一定还有更好玩的事等着我去发现！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;计划&quot;&gt;2021计划&lt;/h1&gt;&lt;p&gt;今年呢，又是让人神经不能放松下来的一年啊，刚刚听说村子里的人有与无症状感染者接触的人员，已经被拉走隔离了，希望他没有事情吧，今年2020实在是太糟心了，可是我们又能怎样呢？接受现实吧，人生可不能&lt;code&gt;reset --har
+      
+    
+    </summary>
+    
+    
+      <category term="计划" scheme="https://www.divint3.xyz/categories/%E8%AE%A1%E5%88%92/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>呼救要素</title>
@@ -408,27 +432,6 @@
     <summary type="html">
     
       &lt;h1 id=&quot;随机事件及其运算&quot;&gt;1.1 随机事件及其运算&lt;/h1&gt;&lt;h2 id=&quot;概率论发展历程&quot;&gt;概率论发展历程&lt;/h2&gt;&lt;h3 id=&quot;古典概率时期&quot;&gt;古典概率时期&lt;/h3&gt;&lt;p&gt;梅累骑士的&lt;strong&gt;赌徒问题&lt;/strong&gt;&lt;a href=&quot;#fn1&quot; class=&quot;footnote-ref&quot; id=&quot;fnref1&quot; role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;。梅累求教育帕斯卡，帕斯卡在1654年建立了概率论的第一个基本概念，&lt;strong&gt;数学期望&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;惠更斯、帕斯卡、费马创立了早期概率论，这一时期被称作 &lt;strong&gt;组合概率时期&lt;/strong&gt;，计算各种古典概率&lt;/p&gt;&lt;h3 id=&quot;初等概率时期&quot;&gt;初等概率时期&lt;/h3&gt;&lt;p&gt;伯努利提出&lt;strong&gt;概率&lt;/strong&gt;是&lt;strong&gt;频率&lt;/strong&gt;的&lt;strong&gt;稳定值&lt;/strong&gt;
-    
-    </summary>
-    
-    
-      <category term="大学" scheme="https://www.divint3.xyz/categories/%E5%A4%A7%E5%AD%A6/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统第六节课笔记-进程同步</title>
-    <link href="https://www.divint3.xyz/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/"/>
-    <id>https://www.divint3.xyz/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/</id>
-    <published>2020-03-31T03:35:52.000Z</published>
-    <updated>2020-06-09T06:38:56.000Z</updated>
-    
-    <content type="html"><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5.pdf" title="操作系统第六节课笔记-进程同步pdf文档下载">操作系统第六节课笔记-进程同步pdf文档下载</a><a id="more"></a><h1 id="进程同步">进程同步</h1><h2 id="并发进程间制约关系">并发进程间制约关系</h2><ul><li>资源共享关系-间接制约<ul><li>多个今晨彼此无关，完全不知道或只能间接感知其他今春的存在</li><li>系统保证个进程能互斥的访问临界资源</li><li>系统资源统一分配，而不允许用户进程直接用</li></ul></li><li>相互合作关系-相互制约<ul><li>系统应保证相互合作的个进程在执行次序上的协调和防止有关时间的差错</li></ul></li></ul><h3 id="临界资源">临界资源</h3><ul><li>一段时间里只能为某个进程所访问的资源<ul><li>许多物理设备，变量及表格</li></ul></li></ul><h4 id="临界区">临界区</h4><ul><li>每个进程中访问临界资源的那段代码称为临界区，并不是内存中的一段区域</li><li>保证个今晨互斥的进入自己的临界区是实现他们对临界资源的互斥访问的充要条件</li></ul><h4 id="访问临界资源的循环进程描述">访问临界资源的循环进程描述</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">进程Pi</span><br><span class="line">begin</span><br><span class="line">repeat</span><br><span class="line">......</span><br><span class="line">进入区</span><br><span class="line">临界区</span><br><span class="line">退出区</span><br><span class="line">......</span><br><span class="line">until false；</span><br><span class="line">end</span><br></pre></td></tr></table></figure><h2 id="进程同步机制准则">进程同步机制准则</h2><h3 id="进程同步机制基本准则">进程同步机制基本准则</h3><ul><li>空闲让进<ul><li>当无进程处于临界区是，课允许请求进入临界区的进程立即进入自己的临界区</li></ul></li><li>忙则等待<ul><li>当已有进程进入自己的临界区时，所有企图进入进入临界区的进程必须等待</li></ul></li><li>有限等待<ul><li>对要求访问临界资源的进程，应保证该进程能在有限时间内进入自己的临界区</li></ul></li><li>让权等待<ul><li>当进程不能进入自己的临界区是，应释放处理机</li></ul></li></ul><h2 id="进程互斥访问临界资源的软件解决方案">进程互斥访问临界资源的软件解决方案</h2><h3 id="算法1">算法#1</h3><ul><li><p>有两个进程Pi，Pj共享某临界资源R</p></li><li><p>主程序</p></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">begin</span><br><span class="line">perbegin &#x2F;&#x2F;并行执行</span><br><span class="line">Pi;</span><br><span class="line">Pj;</span><br><span class="line">perend;</span><br><span class="line">end</span><br></pre></td></tr></table></figure><h4 id="设置访问编号">设置访问编号</h4><p>设置一个全局的整型变量,如果该变量等于本进程的pid号，则可访问临界区，如果不等于，程序进入循环，执行空操作等待其他进程释放。当进程使用完临界区代码后，全局变量指向另一个进程，使其可以访问临界区</p><p>上面的算法属于强制交替访问临界资源，不能灵活考虑进程的实际需求，违背了空闲让进</p><h3 id="算法2">算法#2</h3><p>每一个进程,设置一个标志,宣誓自己的访问需求</p><p>违背了忙则等待</p><h3 id="算法3">算法#3</h3><p>欲访问标志位,先确认其他进程的访问需求</p><p>违背了空闲让进,有限等待</p><h3 id="算法4">算法#4</h3><p>欲访问标志位和访问标志</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;a href=&quot;/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E5%85%AD%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5.pdf&quot; title=&quot;操作系统第六节课笔记-进程同步pdf文档下载&quot;&gt;操作系统第六节课笔记-进程同步pdf文档下载&lt;/a&gt;
     
     </summary>
     
