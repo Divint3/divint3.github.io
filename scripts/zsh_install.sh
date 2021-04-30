@@ -33,7 +33,7 @@ set -e
 
 # Default settings
 ZSH=${ZSH:-~/.oh-my-zsh}
-REPO=${REPO:-shrekuu/ohmyzsh-ohmyzsh}
+REPO=${REPO:-mirrors/oh-my-zsh}
 REMOTE=${REMOTE:-https://gitee.com/${REPO}.git}
 BRANCH=${BRANCH:-master}
 
