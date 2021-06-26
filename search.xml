@@ -6762,4 +6762,21 @@ F_Z(z)=P\{Z\le z\}=P\{X+Y\le z\}=\mathop{\int\int}_{x+y\le z}f(x,y)dxdy
         <category>writeup</category>
       </categories>
   </entry>
+  <entry>
+    <title>acme.sh证书转换为p12</title>
+    <url>/acme-sh%E8%AF%81%E4%B9%A6%E8%BD%AC%E6%8D%A2%E4%B8%BAp12/</url>
+    <content><![CDATA[<h3 id="注册域名以及找到域名服务商例如dnspod">注册域名以及找到域名服务商（例如：DNSPod）</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> DP_Id=<span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="built_in">export</span> DP_Key=<span class="string">&quot;abc&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="先注册再生成证书使用dns方式">先注册，再生成证书，使用DNS方式</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">acme.sh --register-account -m divint3@gmail.com</span><br><span class="line">acme.sh --issue --dns dns_dp -d <span class="string">&quot;divint3.cf&quot;</span> -d <span class="string">&quot;*.divint3.cf&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="转换指令">转换指令</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl pkcs12 -<span class="built_in">export</span> -<span class="keyword">in</span> fullchain.cer \</span><br><span class="line">-inkey divint3.cf.cer \</span><br><span class="line">-out keystore.p12 \</span><br><span class="line">-name tomcat \</span><br><span class="line">-CAfile ca.cer \</span><br><span class="line">-caname root</span><br></pre></td></tr></table></figure>
+<h3 id="参考">参考</h3>
+<p><a href="https://www.jianshu.com/p/1a792f87b6fe">Let's Encrypt 证书申请及配置 - 简书 (jianshu.com)</a></p>
+<p><a href="https://blog.csdn.net/phris/article/details/106152081">HTTPS证书文件格式转换_phris的博客-CSDN博客</a></p>
+<p><a href="https://www.jianshu.com/p/eb52e0f5ee85">在Spring Boot中配置ssl证书实现https - 简书 (jianshu.com)</a></p>
+<p><a href="https://www.codenong.com/d-spring-boot-secured-by-lets-encrypt/">让我们加密保护的Spring Boot | 码农家园 (codenong.com)</a></p>
+<p><a href="https://console.dnspod.cn/account/token/token">API 密钥 - DNSPod-免费智能DNS解析服务商-电信_网通_教育网,智能DNS</a></p>
+]]></content>
+  </entry>
 </search>
