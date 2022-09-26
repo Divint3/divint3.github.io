@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>HexBlog</title>
+  
+  
+  <link href="https://www.divint3.cn/atom.xml" rel="self"/>
+  
+  <link href="https://www.divint3.cn/"/>
+  <updated>2021-11-19T06:40:20.000Z</updated>
+  <id>https://www.divint3.cn/</id>
+  
+  <author>
+    <name>Divint3</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.divint3.cn/11.19/"/>
+    <id>https://www.divint3.cn/11.19/</id>
+    <published>2022-09-26T05:04:55.321Z</published>
+    <updated>2021-11-19T06:40:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="要点">要点</h3><ol type="1"><li>看合同 查看滤波方法</li><li>使用库 ，有无滤波方法的实现库，对比rdl程序库和pdf文档</li><li></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;要点&quot;&gt;要点&lt;/h3&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;看合同 查看滤波方法&lt;/li&gt;
+&lt;li&gt;使用库 ，有无滤波方法的实现库，对比rdl程序库和pdf文档&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>工装设计</title>
+    <link href="https://www.divint3.cn/%E5%B7%A5%E8%A3%85%E8%AE%BE%E8%AE%A1/"/>
+    <id>https://www.divint3.cn/%E5%B7%A5%E8%A3%85%E8%AE%BE%E8%AE%A1/</id>
+    <published>2022-09-26T04:46:49.000Z</published>
+    <updated>2022-09-26T04:57:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简介">简介</h2><p>使用随身wifi(Ufi)设备刷入linux,再安装python等一系列工具进行基础开发环境建设</p><h3 id="安装开发软件">安装开发软件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt install python3 python3-pip python3-venv</span><br><span class="line">python3 -m venv ./venv</span><br><span class="line"><span class="built_in">cd</span> venv</span><br><span class="line"><span class="built_in">source</span> bin/activate</span><br><span class="line">pip install numpy matplotlib opencv-python opencv opencv-contrib-python pyzbar pyserial</span><br></pre></td></tr></table></figure><h3 id="测试程序">测试程序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/env python3</span></span><br><span class="line"><span class="comment">#Author: Divint3</span></span><br><span class="line"><span class="comment">#encoding:utf-8</span></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line">camera = cv2.VideoCapture(<span class="number">2</span>) <span class="comment"># 这里使用VideoCapture(2)的原因是此板原来有两个video设备,因为其底板是高通方案,所以有板载摄像头的驱动但是摄像头并未实装,所以在按照次序进行操作时,usb摄像头在第三个映射文件上也就是/dev/video2</span></span><br><span class="line">ret, frame = cap.read()</span><br><span class="line">cv2.imwrite(<span class="string">&quot;1.jpg&quot;</span>, frame)</span><br><span class="line">camera.release() <span class="comment"># 释放摄像头</span></span><br></pre></td></tr></table></figure><h2 id="参考资料">参考资料</h2><p><ahref="https://blog.csdn.net/qq_29568427/article/details/109708890">Python+opencv调用摄像头实现拍照并保存_zlj0133的博客-CSDN博客_python调用摄像头拍照保存</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+&lt;p&gt;使用随身wifi(Ufi)设备刷入linux,再安装python等一系列工具进行基础开发环境建设&lt;/p&gt;
+&lt;h3 id=&quot;安装开发软件&quot;&gt;安装开发软件&lt;/h3&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;t</summary>
+      
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ssh使用代理链接远程服务</title>
+    <link href="https://www.divint3.cn/ssh%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E9%93%BE%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/"/>
+    <id>https://www.divint3.cn/ssh%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E9%93%BE%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1/</id>
+    <published>2022-09-26T04:45:31.000Z</published>
+    <updated>2022-09-26T05:00:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -o <span class="string">&quot;ProxyCommand=nc -X 5 -x 192.168.68.180:8890 %h %p&quot;</span> root@hongkong1.divint3.cn -vv</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="参考资料">参考资料</h2><p><ahref="https://blog.csdn.net/qq_34139020/article/details/101039791">ssh使用代理登录远程服务器_qq_34139020的博客-CSDN博客_ssh使用代理</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>docker swarm配置</title>
+    <link href="https://www.divint3.cn/docker-swarm%E9%85%8D%E7%BD%AE/"/>
+    <id>https://www.divint3.cn/docker-swarm%E9%85%8D%E7%BD%AE/</id>
+    <published>2022-09-26T04:37:14.000Z</published>
+    <updated>2022-09-26T04:58:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="初始化swarm集群">初始化swarm集群</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker swarm init --advertise-addr=$(本机公网IP地址) --data-path-port=6789</span><br></pre></td></tr></table></figure><ul><li>为什么要变更数据端口呢?因为腾讯云会拦截原有端口上的数据报文,导致集群无法正常工作,现象是overlaynetwork无法链接到任意节点</li></ul><h3 id="加入swarm集群">加入swarm集群</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker swarm <span class="built_in">join</span> --token $(token) $(集群manager公网IP地址):2377 --advertise-addr=$(本机公网IP地址)</span><br></pre></td></tr></table></figure><h2 id="参考资料">参考资料</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;初始化swarm集群&quot;&gt;初始化swarm集群&lt;/h3&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;</summary>
+      
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Windows节省C盘空间的常用软链接</title>
+    <link href="https://www.divint3.cn/Windows%E8%8A%82%E7%9C%81C%E7%9B%98%E7%A9%BA%E9%97%B4%E7%9A%84%E5%B8%B8%E7%94%A8%E8%BD%AF%E9%93%BE%E6%8E%A5/"/>
+    <id>https://www.divint3.cn/Windows%E8%8A%82%E7%9C%81C%E7%9B%98%E7%A9%BA%E9%97%B4%E7%9A%84%E5%B8%B8%E7%94%A8%E8%BD%AF%E9%93%BE%E6%8E%A5/</id>
+    <published>2022-07-22T16:11:40.000Z</published>
+    <updated>2022-07-22T17:14:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol type="1"><li>创建目录</li><li>链接目录</li><li>安装scoop</li><li>安装maven</li><li>安装nodejs14</li><li>安装vscode</li><li></li></ol><h2 id="软链接设置">软链接设置</h2><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># scoop 软链接</span><br><span class="line">mklink /d <span class="variable">%USERPROFILE%</span>\scoop               E:\Programs\scoop</span><br><span class="line"># yarn 软链接</span><br><span class="line">mklink /d <span class="variable">%USERPROFILE%</span>\AppData\Local\yarn  E:\ENV\yarn</span><br><span class="line"># maven 软链接</span><br><span class="line">mklink /d <span class="variable">%USERPROFILE%</span>\.m2                 E:\ENV\.m2</span><br><span class="line"># vscode 软链接</span><br><span class="line">mklink /d <span class="variable">%USERPROFILE%</span>\.vscode             E:\Plugin\.vscode</span><br><span class="line"># source 软链接(Visual Studio项目默认存储地址,由于C#项目会下载依赖项目,所以也进行软链接设置)</span><br><span class="line">mklink /d <span class="variable">%USERPROFILE%</span>\source              E:\WorkSpace\source</span><br></pre></td></tr></table></figure><h2 id="目录设置">目录设置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">WorkSpace</span><br><span class="line">├── Code</span><br><span class="line">│   ├── eclipse</span><br><span class="line">│   ├── idea</span><br><span class="line">│   ├── keil</span><br><span class="line">│   ├── pycharm</span><br><span class="line">│   ├── test</span><br><span class="line">│   └── visual_studio</span><br><span class="line">└── Design</span><br><span class="line">    ├── model</span><br><span class="line">    │   ├── blender</span><br><span class="line">    │   └── solidworks</span><br><span class="line">    └── pcb</span><br><span class="line">        ├── altium_designer</span><br><span class="line">        └── kicad</span><br></pre></td></tr></table></figure><h2 id="参考资料">参考资料</h2>]]></content>
+    
+    
+    <summary type="html">软链接设置</summary>
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Visual Stdio 2022 调用CUDA11.6</title>
+    <link href="https://www.divint3.cn/Visual-Stdio-2022-%E8%B0%83%E7%94%A8CUDA11-6/"/>
+    <id>https://www.divint3.cn/Visual-Stdio-2022-%E8%B0%83%E7%94%A8CUDA11-6/</id>
+    <published>2022-07-02T11:54:47.000Z</published>
+    <updated>2022-07-02T13:07:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="步骤">步骤</h2><ol type="1"><li>安装N卡驱动,使用任何一个驱动管理程序即可。</li><li>使用<code>nvidia-smi</code>查看适配的<code>CUDA</code>版本，这里适配的是11.6版本。</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Sat Jul  2 19:32:36 2022</span><br><span class="line">+-----------------------------------------------------------------------------+</span><br><span class="line">| NVIDIA-SMI 512.15       Driver Version: 512.15       CUDA Version: 11.6     |</span><br><span class="line">|-------------------------------+----------------------+----------------------+</span><br><span class="line">| GPU  Name            TCC/WDDM | Bus-Id        Disp.A | Volatile Uncorr. ECC |</span><br><span class="line">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span><br><span class="line">|                               |                      |               MIG M. |</span><br><span class="line">|===============================+======================+======================|</span><br><span class="line">|   0  NVIDIA GeForce ... WDDM  | 00000000:01:00.0 Off |                  N/A |</span><br><span class="line">| N/A   42C    P0    N/A /  N/A |    123MiB /  4096MiB |      0%      Default |</span><br><span class="line">|                               |                      |                  N/A |</span><br><span class="line">+-------------------------------+----------------------+----------------------+</span><br></pre></td></tr></table></figure><ol start="3" type="1"><li>前往官网进行往期<code>CUDA</code>版本下载 <ahref="https://developer.nvidia.com/cuda-toolkit">cuda-toolkit下载地址</a>，点击<code>DownloadNow</code>，发现目前的版本为<code>11.7</code>，和我们需要的不适配，向下翻找，找到<ahref="https://developer.nvidia.com/cuda-toolkit-archive">Archive ofPrevious CUDA Releases</a>，下载我们需要的<code>11.6</code>版本。</li><li>下载对应系统的可执行文件执行，然后运行安装，选择最小化安装即可。该安装程序会自动配置环境变量及识别已经安装的<code>Visual Stdio</code>环境。</li><li>打开<code>Visual Stdio</code>进行开发，创建新项目，搜索模板<code>CUDA</code>发现出现了新的项目模板。使用该项目模板。<imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220702201409721.png" /></li><li>打开示例程序，发现运行不起来。我琢磨了好久，查了好多资料没有找到解决方案，始终无法编译出obj文件，最后只好设置<code>ld.exe</code>的位置到<code>PATH</code>全局变量，使用<code>nvcc</code>手动编译。</li><li>使用命令<code>nvcc.exe -c .\kernel.cu -o .\x64\Debug\kernel.cu.obj</code>进行编译，需要注意的是，此时编译出来的obj文件无法进行调试，需要加上参数<code>-g</code>方能进行调试。</li><li>再使用调试器即可正常看到运行结果 <imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220702202133241.png" /></li><li>使用<code>nvidia-smi</code>查看程序是否运行在显卡上，结果如下，该程序运行于显卡之上且可调试。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------------------------------------------------------------+</span><br><span class="line">| Processes:                                                                  |</span><br><span class="line">|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |</span><br><span class="line">|        ID   ID                                                   Usage      |</span><br><span class="line">|=============================================================================|</span><br><span class="line">|    0   N/A  N/A     19968    C+G   ...ge\Application\msedge.exe    N/A      |</span><br><span class="line">|    0   N/A  N/A     21008      C   ...64\Debug\CudaRuntime1.exe    N/A      |</span><br><span class="line">+-----------------------------------------------------------------------------+</span><br></pre></td></tr></table></figure></li><li>但是根据资料查到，原生调试时程序并不会运行于GPU而是CPU之上，需要借助插件才能实现GPU运行，但是我这里不需要使用插件即可运行于GPU之上，但是为了严谨，这里贴出插件的位置。位于<code>工具栏-&gt;扩展-&gt;Nsight</code>,需要打开<code>Break On Launch</code>才能进行调试。<imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220702202655003.png" /></li></ol><h2 id="参考资料">参考资料</h2><p><ahref="https://www.bilibili.com/read/cv16061498/">CUDA及cuDNN安装指南</a></p><p><ahref="https://tensorflow.google.cn/install/source_windows">CUDA和cuDNN对应版本</a></p><p><ahref="https://developer.nvidia.com/cuda-toolkit-archive">CUDA历史版本下载链接</a></p><p><ahref="https://developer.nvidia.com/rdp/cudnn-archive">cuDNN历史版本下载链接</a></p><p><a href="https://zhuanlan.zhihu.com/p/488518526">CUDA开发环境搭建 -知乎 (zhihu.com)</a></p><p><ahref="https://zhuanlan.zhihu.com/p/484016885">CUDA入门示例1：两个整型数组相加- 知乎 (zhihu.com)</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;步骤&quot;&gt;步骤&lt;/h2&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;安装N卡驱动,使用任何一个驱动管理程序即可。&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;nvidia-smi&lt;/code&gt;查看适配的&lt;code&gt;CUDA&lt;/code&gt;版本，这里适配的是11.6版本。&lt;/li</summary>
+      
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>站内下载</title>
+    <link href="https://www.divint3.cn/%E7%AB%99%E5%86%85%E4%B8%8B%E8%BD%BD/"/>
+    <id>https://www.divint3.cn/%E7%AB%99%E5%86%85%E4%B8%8B%E8%BD%BD/</id>
+    <published>2022-06-23T21:34:22.000Z</published>
+    <updated>2022-06-23T21:45:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="脚本下载">脚本下载</h3><p><a href="https://divint3.cn/scripts/zsh_install.sh">Oh_my_zsh</a></p><p><ahref="https://divint3.cn/scripts/ssr_server.sh">ShadowSocksR_server</a></p><p><ahref="https://divint3.cn/scripts/ssr_client.sh">ShadowSocksR_client</a></p><p><a href="https://divint3.cn/scripts/tcp.sh">TCP加速</a></p><p><ahref="https://divint3.cn/scripts/v2ray_caddy.sh">V2ray_caddy版</a></p><p><ahref="https://divint3.cn/scripts/v2ray_nginx.sh">V2ray_nginx版</a></p><hr /><h3 id="软件下载">软件下载</h3><p><a href="https://divint3.cn/tools/Cencrack.exe">CencrackWindows工具下载工具</a></p><p><a href="https://divint3.cn/tools/listary.exe">ListaryWindows文件查找工具</a></p><p><a href="https://divint3.cn/tools/Cencrack.exe">CodeInject代码注入工具</a></p>]]></content>
+    
+    
+    <summary type="html">文章包含了各种常用资料,脚本,软件的站内下载链接。</summary>
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>linux设备事件</title>
+    <link href="https://www.divint3.cn/linux%E8%AE%BE%E5%A4%87%E4%BA%8B%E4%BB%B6/"/>
+    <id>https://www.divint3.cn/linux%E8%AE%BE%E5%A4%87%E4%BA%8B%E4%BB%B6/</id>
+    <published>2022-06-23T08:20:36.000Z</published>
+    <updated>2022-06-23T08:21:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>udevadm</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;udevadm&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>植物大战僵尸外挂编写教程</title>
+    <link href="https://www.divint3.cn/%E6%A4%8D%E7%89%A9%E5%A4%A7%E6%88%98%E5%83%B5%E5%B0%B8%E5%A4%96%E6%8C%82%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/"/>
+    <id>https://www.divint3.cn/%E6%A4%8D%E7%89%A9%E5%A4%A7%E6%88%98%E5%83%B5%E5%B0%B8%E5%A4%96%E6%8C%82%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/</id>
+    <published>2022-06-19T16:41:39.000Z</published>
+    <updated>2022-06-23T22:03:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="教程">教程</h1><h3 id="阳光数修改">阳光数修改</h3><ol type="1"><li><p>通过CE找到基址,规律就是,第一步找到<code>mov eax,[]</code>类型的,第二部是根据第一部中括号中的寄存器变量,寻找<code>mov 括号中的寄存器名,[]</code>,后面以此类推,例如第一步是<code>mov eax,[esi+00005560]</code>,那么第二步就寻找<code>mov esi,[]</code>。这里有一个规律就是，当静态地址和动态地址都在结果范围中时，优先查看静态基址。</p><ol type="1"><li><p>第一次查找到动态地址</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">EAX=0000004B</span><br><span class="line">EBX=00000001</span><br><span class="line">ECX=00000000</span><br><span class="line">EDX=13DE97B0</span><br><span class="line">ESI=1627F418</span><br><span class="line">EDI=13D17888</span><br><span class="line">EBP=0019FA98</span><br><span class="line">ESP=00199790</span><br><span class="line">EIP=0048982B</span><br><span class="line"></span><br><span class="line">指针基址可能是 =1627F418</span><br><span class="line"></span><br><span class="line">0048981D - test al,al</span><br><span class="line">0048981F - jne 00489933</span><br><span class="line">00489825 - mov eax,[esi+00005560]</span><br><span class="line">0048982B - xor ecx,ecx</span><br><span class="line">0048982D - test eax,eax</span><br><span class="line"></span><br></pre></td></tr></table></figure></li><li><p>第二次查找到动态地址</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">EAX=00452650</span><br><span class="line">EBX=0019FD00</span><br><span class="line">ECX=02BD1B08</span><br><span class="line">EDX=00667BA0</span><br><span class="line">ESI=1627F418</span><br><span class="line">EDI=02BD1B08</span><br><span class="line">EBP=00000001</span><br><span class="line">ESP=0019FC60</span><br><span class="line">EIP=00452679</span><br><span class="line"></span><br><span class="line">指针基址可能是 =02BD1B08</span><br><span class="line"></span><br><span class="line">0045266A - cmp byte ptr [edi+000004CF],00</span><br><span class="line">00452671 - je 0045269B</span><br><span class="line">00452673 - mov esi,[edi+00000768]</span><br><span class="line">00452679 - test esi,esi</span><br><span class="line">0045267B - je 0045269B</span><br><span class="line"></span><br></pre></td></tr></table></figure></li><li><p>第三次查找到基址(静态地址)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">EAX=00007022</span><br><span class="line">EBX=FFFFFFFF</span><br><span class="line">ECX=001996B0</span><br><span class="line">EDX=7FFFFFFF</span><br><span class="line">ESI=02BD1B08</span><br><span class="line">EDI=FFFFFFFF</span><br><span class="line">EBP=00000000</span><br><span class="line">ESP=001995C8</span><br><span class="line">EIP=00487F6B</span><br><span class="line"></span><br><span class="line">指针基址可能是 =006A9EC0</span><br><span class="line"></span><br><span class="line">00487F55 - mov byte ptr [esp+64],00</span><br><span class="line">00487F5A - mov [esp+000000F0],00000001</span><br><span class="line">00487F65 - mov esi,[006A9EC0]</span><br><span class="line">00487F6B - mov eax,[esi+00000768]</span><br><span class="line">00487F71 - test eax,eax</span><br><span class="line"></span><br></pre></td></tr></table></figure></li></ol></li><li><p>阳光静态基址。<imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220620012111773.png"alt="image-20220620012111773" /></p></li><li><p>这时无论代码什么时候运行，都能定位到对应的地址。修改对应地址的数据即可修改阳光数。</p></li></ol><h3 id="破解阳光增加减少事件">破解阳光增加减少事件</h3><ol type="1"><li><p>右键基址，查看是谁修改了了内存中阳光数量对应的数据。</p><ol type="1"><li><p>阳光数减少事件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">EAX=0000004B</span><br><span class="line">EBX=00000032</span><br><span class="line">ECX=FFFFFFFF</span><br><span class="line">EDX=189B3760</span><br><span class="line">ESI=00000019</span><br><span class="line">EDI=189B3760</span><br><span class="line">EBP=189B3760</span><br><span class="line">ESP=0019FB70</span><br><span class="line">EIP=0041BA7C</span><br><span class="line"></span><br><span class="line">指针基址可能是 =189B3760</span><br><span class="line"></span><br><span class="line">0041BA72 - jg 0041BA80</span><br><span class="line">0041BA74 - sub esi,ebx</span><br><span class="line">0041BA76 - mov [edi+00005560],esi</span><br><span class="line">0041BA7C - mov al,01</span><br><span class="line">0041BA7E - pop esi</span><br><span class="line"></span><br></pre></td></tr></table></figure></li><li><p>阳光数增加事件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">EAX=189B3760</span><br><span class="line">EBX=00000001</span><br><span class="line">ECX=00000019</span><br><span class="line">EDX=D5820009</span><br><span class="line">ESI=191511F0</span><br><span class="line">EDI=189B3760</span><br><span class="line">EBP=0019F9D8</span><br><span class="line">ESP=0019F968</span><br><span class="line">EIP=00430A17</span><br><span class="line"></span><br><span class="line">指针基址可能是 =189B3760</span><br><span class="line"></span><br><span class="line">00430A0B - and ecx,32</span><br><span class="line">00430A0E - mov eax,[esi+04]</span><br><span class="line">00430A11 - add [eax+00005560],ecx</span><br><span class="line">00430A17 - mov ecx,[eax+00005560]</span><br><span class="line">00430A1D - cmp ecx,00002706</span><br></pre></td></tr></table></figure></li></ol></li><li><p>此时我们介入x64dbg，对对应位置的汇编进行分析。</p><ol type="1"><li><p>附加到进程，点击符号标签页，找到植物大战僵尸符号位置，双击进入。使用<code>Ctrl+G</code>跳转至汇编代码位置。先跳转至减少阳光的位置<code>0041BA76</code>,找到对应子函数的头，设置断点，回到游戏，使用阳光以触发断点。<imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220620014209328.png" /></p></li><li><p>可以看到目前所有阳光数为100，向日葵所需阳光数为50。<imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220620014445460.png" /></p></li><li><p>找到一处空白地址，写入原来的子程序中的指令，但是稍加修改，讲esi固定为0x2706也就是9990，为本游戏上限，当然也可以在增加阳光的子程序中解除此功能的判断，就可以做到阳光无上限。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">006510EB | BE 06270000      | mov esi,0x2706                        |</span><br><span class="line">006510F0 | 89B7 60550000    | mov dword ptr ds:[edi+0x5560],esi     |</span><br><span class="line">006510F6 | B0 01            | mov al,0x1                            |</span><br><span class="line">006510F8 | 5E               | pop esi                               |</span><br><span class="line">006510F9 | E9 81A9DCFF      | jmp plantsvszombies.41BA7F            |</span><br></pre></td></tr></table></figure></li><li><p>原汇编指令集修改为</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">0041BA60 | 56               | push esi                              |</span><br><span class="line">0041BA61 | 8BB7 60550000    | mov esi,dword ptr ds:[edi+0x5560]     | edi+5560:&quot;P\&quot;?&quot;</span><br><span class="line">0041BA67 | 8BD7             | mov edx,edi                           |</span><br><span class="line">0041BA69 | E8 12FFFFFF      | call &lt;plantsvszombies.sub_41B980&gt;     |</span><br><span class="line">0041BA6E | 03C6             | add eax,esi                           | 剩余阳光数</span><br><span class="line">0041BA70 | 3BD8             | cmp ebx,eax                           | 消费阳光数</span><br><span class="line">0041BA72 | 7F 0C            | jg plantsvszombies.41BA80             |</span><br><span class="line">0041BA74 | E9 72562300      | jmp plantsvszombies.6510EB            |</span><br><span class="line">0041BA79 | 90               | nop                                   |</span><br><span class="line">0041BA7A | 90               | nop                                   |</span><br><span class="line">0041BA7B | 90               | nop                                   |</span><br><span class="line">0041BA7C | 90               | nop                                   |</span><br><span class="line">0041BA7D | 90               | nop                                   |</span><br><span class="line">0041BA7E | 90               | nop                                   |</span><br><span class="line">0041BA7F | C3               | ret                                   |</span><br><span class="line">0041BA80 | 8B8F 8C000000    | mov ecx,dword ptr ds:[edi+0x8C]       | 异常链,当阳光数小于植物消耗的阳光</span><br><span class="line">0041BA86 | 8B01             | mov eax,dword ptr ds:[ecx]            |</span><br><span class="line">0041BA88 | 8B15 607B6A00    | mov edx,dword ptr ds:[0x6A7B60]       |</span><br><span class="line">0041BA8E | 8B80 D8000000    | mov eax,dword ptr ds:[eax+0xD8]       |</span><br><span class="line">0041BA94 | 52               | push edx                              |</span><br><span class="line">0041BA95 | FFD0             | call eax                              |</span><br><span class="line">0041BA97 | C787 78550000 46 | mov dword ptr ds:[edi+0x5578],0x46    | 46:&#x27;F&#x27;</span><br><span class="line">0041BAA1 | 32C0             | xor al,al                             |</span><br><span class="line">0041BAA3 | 5E               | pop esi                               |</span><br><span class="line">0041BAA4 | C3               | ret                                   |</span><br></pre></td></tr></table></figure></li><li><p>这样，在阳光减少时的子函数已经破解完成。</p></li><li><p>将ecx设置为0x2706,阳光存储上限。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">00430A11 | B9 06270000      | mov ecx,0x2706                        |</span><br><span class="line">00430A16 | 90               | nop                                   |</span><br></pre></td></tr></table></figure></li><li><p>阳光增加子函数破解完成。</p></li></ol></li></ol><h3 id="破解植物种植事件">破解植物种植事件</h3><ol type="1"><li>通过监控植物数量的方式间接查找植物种植事件。因为植物数量会因为植物种植事件而发生变化，所以植物种植事件一定会修改植物种植数量。</li></ol>]]></content>
+    
+    
+    <summary type="html">介绍了植物大战僵尸的外挂编写-初学者最好的破解练手项目</summary>
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Docker源</title>
+    <link href="https://www.divint3.cn/Docker%E6%BA%90/"/>
+    <id>https://www.divint3.cn/Docker%E6%BA%90/</id>
+    <published>2022-06-11T15:12:00.000Z</published>
+    <updated>2022-06-11T15:13:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="配置文件">配置文件</h1><h2 id="daemon.json">daemon.json</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;http://hub-mirror.c.163.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;https://registry.docker-cn.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;http://hub-mirror.c.163.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;配置文件&quot;&gt;配置文件&lt;/h1&gt;
+&lt;h2 id=&quot;daemon.json&quot;&gt;daemon.json&lt;/h2&gt;
+&lt;figure class=&quot;highlight json&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span clas</summary>
+      
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>恐怖机器人计划</title>
+    <link href="https://www.divint3.cn/%E6%81%90%E6%80%96%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AE%A1%E5%88%92/"/>
+    <id>https://www.divint3.cn/%E6%81%90%E6%80%96%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AE%A1%E5%88%92/</id>
+    <published>2022-06-10T08:55:19.000Z</published>
+    <updated>2022-06-10T09:10:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="计划原型">计划原型</h1><h2 id="选型">选型</h2><p>控制器选型: Xbox Controller</p><p>控制方案:</p><ol type="1"><li>gamepad内集成一个SOC,装上精简版Linux，使用XboxController驱动读取GamePad信号,再通过蓝牙透传传送至设备。这种方案的优势是机器人本体节电但是GamePad载体不节电，由于GamePad在手上，所以可以持续供电。<ol type="1"><li>也可以通过电脑链接GamePad读取信号，然后发送至蓝牙设备。</li></ol></li><li>机器人本体上安装Soc，使用Linux系统装载蓝牙驱动和GamePad驱动，用于读取GamePad信号并作出相关动作。</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;计划原型&quot;&gt;计划原型&lt;/h1&gt;
+&lt;h2 id=&quot;选型&quot;&gt;选型&lt;/h2&gt;
+&lt;p&gt;控制器选型: Xbox Controller&lt;/p&gt;
+&lt;p&gt;控制方案:&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;gamepad内集成一个SOC,装上精简版Linux，使用X</summary>
+      
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>新电脑安装流程</title>
+    <link href="https://www.divint3.cn/%E6%96%B0%E7%94%B5%E8%84%91%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/"/>
+    <id>https://www.divint3.cn/%E6%96%B0%E7%94%B5%E8%84%91%E5%AE%89%E8%A3%85%E6%B5%81%E7%A8%8B/</id>
+    <published>2022-06-08T23:28:34.000Z</published>
+    <updated>2022-06-09T07:40:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="流程">流程</h1><span id="more"></span><h2 id="安装的软件">安装的软件</h2><ol type="1"><li>安装uninstall tools 用于追踪安装</li><li>安装Microsoft Store</li><li>安装scoop,配置安装路径</li><li>使用scoop安装sudo</li><li>使用scoop安装vscode</li><li>使用scoop安装anaconda</li><li>使用scoop安装maven</li><li>使用scoop安装nodejs</li><li>安装listory</li><li>安装Rolan</li><li>安装Idea</li><li>安装Pycharm</li><li>安装Keli</li><li>安装Eclipse</li><li>安装CubeIDE</li><li>安装Linux子系统v2</li><li>安装watt toolkit</li><li>安装Cancrack并配置安装路径</li><li>安装腾讯软件管家</li><li>安装java</li><li>安装vs</li></ol>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;流程&quot;&gt;流程&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Jetbrains注册信息存储目录</title>
+    <link href="https://www.divint3.cn/Jetbrains%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8%E7%9B%AE%E5%BD%95/"/>
+    <id>https://www.divint3.cn/Jetbrains%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8%E7%9B%AE%E5%BD%95/</id>
+    <published>2022-06-08T23:16:55.000Z</published>
+    <updated>2022-06-08T23:19:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="存储目录">存储目录</h1><p>如果你想重置某个软件的注册时间的话,删除此文件夹下面的对应软件的<code>eval</code>文件夹下的注册信息。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Divint3\AppData\Roaming\JetBrains</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;存储目录&quot;&gt;存储目录&lt;/h1&gt;
+&lt;p&gt;如果你想重置某个软件的注册时间的话,删除此文件夹下面的对应软件的&lt;code&gt;eval&lt;/code&gt;文件夹下的注册信息。&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;</summary>
+      
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Ollydbg快速断点</title>
+    <link href="https://www.divint3.cn/Ollydbg%E5%BF%AB%E9%80%9F%E6%96%AD%E7%82%B9/"/>
+    <id>https://www.divint3.cn/Ollydbg%E5%BF%AB%E9%80%9F%E6%96%AD%E7%82%B9/</id>
+    <published>2022-06-07T04:26:09.000Z</published>
+    <updated>2022-06-08T20:48:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="介绍">介绍</h1><p>快速断点指令速查。</p><span id="more"></span><h2 id="一.-vc">一. VC</h2><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220607122755046.png" /></p><h3 id="messagebox">1. MessageBox</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BP MessageBoxA</span><br><span class="line">BP SendMessageA</span><br></pre></td></tr></table></figure><h3 id="dialogo-box">2. Dialogo Box</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BP GetWindowTextA</span><br><span class="line">BP GetDlgItemTextA</span><br></pre></td></tr></table></figure><h3 id="windows">3. Windows</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BP CreateWindowExA</span><br><span class="line">BP DialogBoxParamA</span><br><span class="line">BP ShowWindow</span><br></pre></td></tr></table></figure><h3 id="archives">4. Archives</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BP ReadFile</span><br><span class="line">BP WriteFile</span><br><span class="line">BP CreateFileA</span><br></pre></td></tr></table></figure><h3 id="archives-ini">5. Archives INI</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BP GetPrivateProfileStringA</span><br><span class="line">BP GetPricateProfileIntA</span><br></pre></td></tr></table></figure><h3 id="process">6. Process</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BP ExitProcess</span><br></pre></td></tr></table></figure><h3 id="registry">7. Registry</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BP RegCreateKeyA</span><br><span class="line">BP RegQueryValueExA</span><br><span class="line">BP RegOpenKeyA</span><br><span class="line">BP RegClosekey</span><br></pre></td></tr></table></figure><h3 id="date-and-hour">8. Date and Hour</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BP GetLocalTime</span><br><span class="line">BP GetSystemTime</span><br><span class="line">BP GetFileTime</span><br></pre></td></tr></table></figure><h3 id="access-to-units">9. Access to units</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BP GetDriveTypeA</span><br></pre></td></tr></table></figure><h3 id="string">10. String</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BP lstrcatA</span><br><span class="line">BP lstrcmpA</span><br><span class="line">BP lstrcpyA</span><br><span class="line">BP lstrlenA</span><br></pre></td></tr></table></figure><h2 id="二.-vb">二. VB</h2><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220607123606038.png" /></p><h3 id="messages-and-windows">1. Messages and Windows</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BP rtcMsgBox</span><br><span class="line">BP __vbaNew2</span><br></pre></td></tr></table></figure><h3 id="comparsion">2. Comparsion</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">BP __vbaVerCat</span><br><span class="line">BP __vbaVarVmpEq</span><br><span class="line">BP __vbaVarTextCmpEq</span><br><span class="line">BP __vbaVarTextTstEq</span><br><span class="line">BP __vbaVarTstEq</span><br><span class="line">BP __vbaStrCat</span><br><span class="line">BP __vbaStrCmp</span><br><span class="line">BP __vbaStrComp</span><br><span class="line">BP __vbaStrCompVar</span><br><span class="line">BP __vbaStrCopy</span><br><span class="line">BP __vbaStrTextCmp</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;介绍&lt;/h1&gt;
+&lt;p&gt;快速断点指令速查。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Crack" scheme="https://www.divint3.cn/categories/Crack/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>crackme160</title>
+    <link href="https://www.divint3.cn/crackme160/"/>
+    <id>https://www.divint3.cn/crackme160/</id>
+    <published>2022-06-06T11:12:20.000Z</published>
+    <updated>2022-06-11T06:23:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="介绍">介绍</h1><p>软件破解相关知识。</p><span id="more"></span><h2 id="破解">破解</h2><h3 id="acid-burn">Acid burn</h3><h4 id="破解-1">破解</h4><ol type="1"><li>首先查壳是VC写的。使用BP快捷操作中的<code>BP MessageBoxA</code>操作对消息框进行截断,</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220606191323333.png" /></p><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220606191422299.png" /></p><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220606191641310.png" /></p><ol start="2" type="1"><li>运行程序，进入<code>Serial/Name</code>子程序，输入任意字符串,点击<code>Check It Baby</code>。</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220606191941258.png" /></p><ol start="3" type="1"><li>进入调用堆栈<code>Alt+K</code>或者小按钮<code>k</code>查看,找到调用函数，右键显示调用.</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220606192210768.png" /></p><ol start="4" type="1"><li>向上翻找，找到入口处，设下断点。</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220606192358989.png" /></p><ol start="5" type="1"><li>再次运行程序，在断点处截断，查看右下角堆栈处右键选择反汇编窗口跟随。或者再次通过<code>Alt+k</code>找到调用堆栈，跳转至调用函数。</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220606192817037.png" /></p><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220606193102859.png" /></p><ol start="6" type="1"><li><p>找到注册码生成的核心逻辑。</p><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220606201218401.png" /></p></li></ol><h4 id="注册机">注册机</h4><ol type="1"><li>核心逻辑</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220606200946474.png" /></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line"><span class="type">char</span>* serial=<span class="string">&quot;abcd&quot;</span>;</span><br><span class="line"><span class="type">int</span> tmp1 = serial[<span class="number">0</span>];</span><br><span class="line"><span class="type">int</span> tmp2 = tmp1*<span class="number">0x29</span>;</span><br><span class="line"><span class="type">int</span> tmp3 = tmp2+tmp2;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;CW-%d-CRACKED&quot;</span>,tmp3);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><ol start="2" type="1"><li>注册码组装。</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220606201030824.png" /></p><ol start="3" type="1"><li>点击<code>Serial</code>按钮，进入子程序，和上面方法一样，<code>BP MessageBoxA</code>下断点。最后找到固定的注册码。</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220606202444766.png" /></p><h3 id="afkayas.1">Afkayas.1</h3><h4 id="破解-2">破解</h4><ol type="1"><li>查壳是VB写的，正常运行程序发现有MessageBox，故使用VB的快速特征断点。<code>BP rtcMsgBox</code>，运行程序，输入伪码，断下程序。</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220607131456577.png" /></p><ol start="2" type="1"><li>查看调用堆栈，追踪最上面的目标，就是函数调用方的地址，右键。跟随目标。</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220607131634054.png" /></p><ol start="3" type="1"><li>向上寻找关键跳转，设置断点，使用nop填充，使用补丁修补文件输出到破解软件。</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220607131836246.png" /></p><h4 id="注册机-1">注册机</h4><ol type="1"><li>在这个代码块中寻找注册码计算逻辑,分析得知,edi=6edi*0x17cfb,然后乘以用户名第一位的ascii码的算法.</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220607191306503.png" /></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line"><span class="type">char</span>* serial=<span class="string">&quot;abcd&quot;</span>;</span><br><span class="line"><span class="type">int</span> tmp1 = serial[<span class="number">0</span>];</span><br><span class="line"><span class="type">int</span> tmp2 = tmp1*<span class="number">0x29</span>;</span><br><span class="line"><span class="type">int</span> tmp3 = tmp2+tmp2;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;CW-%d-CRACKED&quot;</span>,tmp3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="afkayas.2">Afkayas.2</h3><h4 id="破解-3">破解</h4><ol type="1"><li>破解方法同上。</li><li>去除Nag。使用4C方法。先找到入口处入栈的地址<code>0x4067D4</code>，在数据窗口总使用表达式找到4C偏移处的内存地址。</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220607192350111.png" /></p><ol start="3" type="1"><li>找到第一个位置的内存地址，右键，在内存敞口中转到指定的<code>DWORD</code>。</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220607192441572.png" /></p><ol start="4" type="1"><li>这个地址我们能够看到两块相似数据，在第37块数据上，我们能够发现两个不一样的数据，一个是<code>00</code>，另一个是<code>01</code>，这个标志位标识了窗口的启动顺序，如果我们调换启动顺序，则可以消除Nag窗口，最后写出破解程序。</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220607192836820.png" /></p><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220607193200816.png" /></p><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220607193257547.png" /></p><h4 id="注册机-2">注册机</h4><ol type="1"><li>注册机无法修改Nga窗口的启动顺序。</li><li>向上寻找。</li></ol><p>算法如下</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 使用name: 111111</span></span><br><span class="line">    <span class="comment">// 使用serial: 222222</span></span><br><span class="line">    <span class="type">int</span> tmp1 = <span class="number">6</span>;</span><br><span class="line">    <span class="type">int</span> tmp2 = <span class="number">6</span> * <span class="number">88888</span>;</span><br><span class="line">    <span class="type">int</span> tmp3 = tmp2 + <span class="number">0x31</span>;</span><br><span class="line">    <span class="comment">// printf(&quot;%x\n&quot;, tmp3);</span></span><br><span class="line">    <span class="comment">// printf(&quot;%d\n&quot;, tmp3);</span></span><br><span class="line">    <span class="type">double</span> tmp4 = tmp3;</span><br><span class="line">    <span class="type">double</span> tmp5 = tmp4 + <span class="number">2</span>;</span><br><span class="line">    <span class="type">double</span> tmp6 = tmp5 * <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// printf(&quot;%f\n&quot;, tmp6);</span></span><br><span class="line">    <span class="type">double</span> tmp7 = tmp6 - <span class="number">2</span>;</span><br><span class="line">    <span class="type">double</span> tmp8 = tmp7+<span class="number">15</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%f\n&quot;</span>, tmp8);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="ckme">CKme</h3><h4 id="破解-4">破解</h4><p>由于x64dbg出现了向后反汇编错误，故本次破解使用了Ollydbg.</p><ol type="1"><li>本项目中查壳发现是Dolphin编写的，故使用各种常规断点，无法断下程序。后使用<code>E2A（Dolphin事件到地址查询工具）</code>，得到输入框2中有<code>OneKeyUp</code>事件，函数名<code>chkcode</code>，根据函数地址下断点，<code>BP 457C40</code>。</li></ol><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220608150737478.png" /></p><p><imgsrc="https://blog-1258335711.cos.ap-chongqing.myqcloud.com/img/image-20220608150942382.png" /></p><ol start="2" type="1"><li><p>输入伪码，运行程序,使用单步跟踪。</p></li><li><p>发现可疑call，因为发现疑似注册码的字符串被这个call处理了，故步入此call。</p></li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00457CA4  |.  E8 93BFFAFF     call CKme.00403C3C</span><br></pre></td></tr></table></figure><ol start="4" type="1"><li>单步步过，发现注册码在一个循环体中拼接完成。</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">00403C5A   &gt; /8B449C 14     mov eax,dword ptr ss:[esp+ebx*4+0x14]</span><br><span class="line">00403C5E   . |89F2          mov edx,esi</span><br><span class="line">00403C60   . |85C0          test eax,eax</span><br><span class="line">00403C62   . |74 0A         je short CKme.00403C6E</span><br><span class="line">00403C64   . |8B48 FC       mov ecx,dword ptr ds:[eax-0x4]</span><br><span class="line">00403C67   . |01CE          add esi,ecx</span><br><span class="line">00403C69   . |E8 76EBFFFF   call CKme.004027E4</span><br><span class="line">00403C6E   &gt; |4B            dec ebx</span><br><span class="line">00403C6F   .^\75 E9         jnz short CKme.00403C5A</span><br></pre></td></tr></table></figure><ol start="5" type="1"><li>当循环跳出时，在栈帧中发现疑似的注册码。</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0019FB54   02325788  ASCII &quot;黑头Sun Bird11dseloffc-012-OK111111&quot;</span><br></pre></td></tr></table></figure><ol start="6" type="1"><li>暂时解除所有断点，进行注册码测试，在后续代码中发现对比流程。</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">00457D2C  |.  8B45 E0       mov eax,[local.8]                        ;  用户输入的注册码</span><br><span class="line">00457D2F  |.  8B93 18030000 mov edx,dword ptr ds:[ebx+0x318]         ;  计算出来的注册码</span><br><span class="line">00457D35  |.  E8 52BFFAFF   call CKme.00403C8C                       ;  对比注册码</span><br><span class="line">00457D3A  |.  75 0A         jnz short CKme.00457D46                  ;  关键跳转</span><br><span class="line">00457D3C  |.  C783 0C030000&gt;mov dword ptr ds:[ebx+0x30C],0x3E        ;  存入0x3e</span><br></pre></td></tr></table></figure><ol start="7" type="1"><li>当输入正确的注册码后，这里不会执行跳转，而是讲一个数据存入了数据地址中。发现注册成功的标志并没有显示出来，所以猜测，注册码比对事件不是在<code>chkcode</code>函数中实现的，而是另外实现的，所以寻找其他事件地址，进行调试，我们发现panel上面有两个事件，<code>onclick</code>和<code>ondbclick</code>，故需要分别调试，不然<code>ondbclick</code>可能会被<code>onclick</code>事件获取。首先，不进行断点注册，使用单击panel发现没有反应，双击后象征注册成功的照片出现，说明对比事件发生在<code>ondbclick</code>事件中,对双击事件的地址<code>00457E7C</code>下断点。发现在这里对数据进行了对比，如果对比成功，则写入0x85。</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">00457EF5  |.  83BE 0C030000&gt;cmp dword ptr ds:[esi+0x30C],0x3E        ;  数据对比</span><br><span class="line">00457EFC  |.  75 0A         jnz short CKme.00457F08</span><br><span class="line">00457EFE  |.  C786 0C030000&gt;mov dword ptr ds:[esi+0x30C],0x85</span><br></pre></td></tr></table></figure><ol start="8" type="1"><li>对<code>onclick</code>事件下断点，对panel进行单击，发现这里会对<code>0x30C</code>处的数据进行比对，如果比对成功，则不会跳过下面的流程，注册成功的信息也会显示出来。</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">00458031  |.  81BE 0C030000&gt;cmp dword ptr ds:[esi+0x30C],0x85</span><br><span class="line">0045803B  |.  75 76         jnz short CKme.004580B3</span><br></pre></td></tr></table></figure><h4 id="注册机-3">注册机</h4><p>这个注册机很简单，就是<code>黑头Sun Bird11dseloffc-012-OK</code>拼接用户名即可。</p><h2 id="出现的函数">出现的函数</h2><p><code>vbaR8Str</code>：将整数转换为双精度小数</p><p><code>vbaStrI4</code>: 转换数字到字符串的函数</p><h2 id="遇到的问题">遇到的问题</h2><h2 id="x64dbg出现的问题">x64dbg出现的问题</h2><p><a href="https://52sbl.cn/discussion/28574.html">逆向工程 - 强制解释x64dbg 中的代码 向后反编译的问题 (52sbl.cn)</a></p><h3id="dolphin在win10系统上出现的问题">Dolphin在Win10系统上出现的问题</h3><p>在脱壳时IAT修复失败,常常会出现找不到的函数。</p>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;介绍&lt;/h1&gt;
+&lt;p&gt;软件破解相关知识。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>常用软件</title>
+    <link href="https://www.divint3.cn/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"/>
+    <id>https://www.divint3.cn/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</id>
+    <published>2022-06-05T12:08:41.000Z</published>
+    <updated>2022-07-02T13:07:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="常用软件">常用软件</h3><ol type="1"><li>硬盘工具<ol type="1"><li>MRT (低级格式化工具)</li></ol></li><li>Rolan (软件启动器)</li><li>下载工具<ol type="1"><li>IDM</li><li>FDM</li></ol></li><li>文档工具<ol type="1"><li>Typora</li><li>Obsidian</li></ol></li><li>编辑软件<ol type="1"><li>Visual Studio Code</li><li>Sublime</li></ol></li><li>十六进制编辑工具<ol type="1"><li>WinHex</li><li>HexEdit</li></ol></li><li>照片信息读取<ol type="1"><li>ExifTool</li></ol></li><li>调试工具<ol type="1"><li>动态调试<ol type="1"><li>OllyDbg</li><li>x64dbg</li></ol></li><li>静态调试<ol type="1"><li>IDA Pro</li><li>Ghidra</li></ol></li></ol></li><li>PE信息查看器<ol type="1"><li>CFF Explorer</li></ol></li><li>查壳工具<ol type="1"><li>PEID</li><li>DetectIt Easy</li><li>EXEInfoPE</li><li></li></ol></li><li>仓库<ol type="1"><li>mvn:Nexus</li><li>docker:Harbor</li></ol></li><li>代码检测<ol type="1"><li>sonar</li></ol></li><li>负载均衡<ol type="1"><li>lvs</li><li>haproxy</li><li>nginx<ol type="1"><li>geo</li><li>upsteam</li></ol></li></ol></li><li>高可用<ol type="1"><li>keepalived</li><li>heartbeat</li></ol></li><li>负载均衡和高可用的搭档<ol type="1"><li>lvs:keepalived</li><li>haproxy:heartbeat</li></ol></li><li>socat可以用来管理haproxy的负载均衡</li><li>CI<ol type="1"><li>drone</li><li>jekins</li></ol></li><li>GITServer<ol type="1"><li>gitea</li><li>gogs</li></ol></li><li>java使用库<ol type="1"><li>testcontainers</li><li>junit</li><li>structamp</li><li>h2</li><li>flyway</li></ol></li><li>集群<ol type="1"><li>数据库<ol type="1"><li><pre><code>Galera</code></pre></li></ol></li></ol></li><li>ORM框架 Object Relational Mapping 对象关系映射框架<ol type="1"><li>Mybatis</li><li>JPA(Hibernate) Hibernate是原生JPA的上位替代</li></ol></li><li>连接池<ol type="1"><li>HikariCP</li><li>druid</li><li>tomcat-jdbc</li><li>dbcp</li><li>c3p0</li></ol></li><li>终端共享<ol type="1"><li>tmate</li></ol></li><li>p2p<ol type="1"><li>n2n</li></ol></li><li>嵌入式界面<ol type="1"><li>LVGL</li><li>MiniGUI</li><li>Qt for MCUs</li><li>emWin</li></ol></li><li>Windows平台 Windows memory hacking library<ol type="1"><li>BlackBone</li></ol></li><li>Linux平台 elf 文件查看工具<ol type="1"><li>readelf</li><li>file</li><li>nm</li><li>objdump</li><li>objcopy</li><li>addr2line</li><li>lsof</li></ol></li><li>监控同步软件<ol type="1"><li>同步专家远程版</li></ol></li><li>arduino<ol type="1"><li>多线程库<ol type="1"><li>ProtoThread</li><li>Scoop</li><li>FreeRTOS</li></ol></li><li>定时任务<ol type="1"><li>Tricker</li></ol></li></ol></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;常用软件&quot;&gt;常用软件&lt;/h3&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;硬盘工具
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;MRT (低级格式化工具)&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Rolan (软件启动器)&lt;/li&gt;
+&lt;li&gt;下载工具
+&lt;ol t</summary>
+      
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>http状态码</title>
+    <link href="https://www.divint3.cn/http%E7%8A%B6%E6%80%81%E7%A0%81/"/>
+    <id>https://www.divint3.cn/http%E7%8A%B6%E6%80%81%E7%A0%81/</id>
+    <published>2022-06-05T08:38:06.000Z</published>
+    <updated>2022-06-05T08:38:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.runoob.com/http/http-status-codes.html">HTTP状态码 | 菜鸟教程 (runoob.com)</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.runoob.com/http/http-status-codes.html&quot;&gt;HTTP
+状态码 | 菜鸟教程 (runoob.com)&lt;/a&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CAD</title>
+    <link href="https://www.divint3.cn/CAD/"/>
+    <id>https://www.divint3.cn/CAD/</id>
+    <published>2022-05-30T14:47:36.000Z</published>
+    <updated>2022-05-30T14:48:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="参考资料">参考资料</h2><p><ahref="https://zhuanlan.zhihu.com/p/337182324?ivk_sa=1024320u">史上最全CAD快捷键汇总大全- 知乎 (zhihu.com)</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://zhuanlan.zhihu.com/p/337182324?ivk_sa=1024320u&quot;&gt;史上最全CAD快捷键汇总大全
+- 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>esp32资料</title>
+    <link href="https://www.divint3.cn/esp32%E8%B5%84%E6%96%99/"/>
+    <id>https://www.divint3.cn/esp32%E8%B5%84%E6%96%99/</id>
+    <published>2022-05-30T06:07:13.000Z</published>
+    <updated>2022-05-30T14:48:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="参考资料">参考资料</h2><p><ahref="https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32/get-started/index.html">快速入门- ESP32 - — ESP-IDF 编程指南 latest 文档 (espressif.com)</a></p><p><a href="https://zhuanlan.zhihu.com/p/349721245">ESP-MESH无线组网，让智能家居通信组网更方便 | ESP32轻松学（Arduino版） - 知乎(zhihu.com)</a></p><p><ahref="https://www.caffreyfans.top/2020/12/31/SPI%20Flash%20Modes/">SPIFlash Modes 介绍 | Caffreyfans</a></p><p><ahref="https://blog.csdn.net/stcaaa/article/details/89474013">串口调试工具中的DTR和RTS是什么意思_SunSkyCity的博客-CSDN博客_dtrrts</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;&lt;a
+href=&quot;https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32/get-started/index.html&quot;&gt;快速入门
+- ESP32 -</summary>
+      
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>usb转蓝牙模块资料</title>
+    <link href="https://www.divint3.cn/usb%E8%BD%AC%E8%93%9D%E7%89%99%E6%A8%A1%E5%9D%97%E8%B5%84%E6%96%99/"/>
+    <id>https://www.divint3.cn/usb%E8%BD%AC%E8%93%9D%E7%89%99%E6%A8%A1%E5%9D%97%E8%B5%84%E6%96%99/</id>
+    <published>2022-05-30T04:11:51.000Z</published>
+    <updated>2022-06-04T06:17:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="参考资料">参考资料</h2><p><a href="https://www.cnblogs.com/iini/p/9095551.html">Nordic nRF5SDK和softdevice介绍 - iini - 博客园 (cnblogs.com)</a></p><p><a href="https://www.cnblogs.com/iini/p/9332463.html">nRF5SDK软件架构及softdevice工作原理 - iini - 博客园 (cnblogs.com)</a></p><p><ahref="https://www.nordicsemi.com/Products/nRF52805/Download?lang=en#infotabs">设备信息-nRF52805- Compatible downloads - nordicsemi.com</a></p><p><ahref="https://devzone.nordicsemi.com/guides/short-range-guides/b/getting-started/posts/developing-for-the-nrf52805-with-nrf5-sdk">使用SDK进行开发- Developing for the nRF52805 with nRF5 SDK - Getting Started - nRF5 SDKguides - Nordic DevZone (nordicsemi.com)</a></p><p><a href="https://www.cnblogs.com/iini/p/9279618.html">如何调试nRF5SDK - iini - 博客园 (cnblogs.com)</a></p><p><a href="https://www.freebuf.com/sectool/278903.html">一文读懂RTT -FreeBuf网络安全行业门户</a></p><p><ahref="https://infocenter.nordicsemi.com/index.jsp?topic=%2Fug_nrf52832_dk%2FUG%2Fnrf52_DK%2Fintro.html">NordicSemiconductor Infocenter nRF52805 开发套件</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/iini/p/9095551.html&quot;&gt;Nordic nRF5
+SDK和softdevice介绍 - iini - 博客园 (cnblogs.com)&lt;/</summary>
+      
+    
+    
+    
+    <category term="未分类" scheme="https://www.divint3.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+  </entry>
+  
+</feed>
